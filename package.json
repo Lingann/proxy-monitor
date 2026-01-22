@@ -1,0 +1,36 @@
+{
+  "name": "proxy-monitor",
+  "version": "2.0.0",
+  "description": "Network connection monitoring tool built with Electron + TypeScript",
+  "main": "dist/main/index.js",
+  "scripts": {
+    "dev": "tsc && electron .",
+    "build": "tsc",
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "keywords": ["network", "monitor", "proxy", "electron", "typescript"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.0.10",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.4.0",
+    "typescript": "^5.9.3"
+  },
+  "build": {
+    "appId": "com.proxy-monitor.app",
+    "productName": "Proxy Monitor",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "src/renderer/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": ["nsis"]
+    }
+  }
+}
