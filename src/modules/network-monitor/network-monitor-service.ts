@@ -1,5 +1,11 @@
 import * as si from 'systeminformation';
+import { execa } from 'execa';
+import * as path from 'path';
+import { fileURLToPath } from 'url';
 import type { ProcessInfo, ConnectionInfo, RemoteIPGroup, NetworkAnalysisData } from '../../shared/common-types.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export class NetworkMonitor {
   private processFilters: string[];
@@ -15,10 +21,11 @@ export class NetworkMonitor {
 
   async analyze(): Promise<NetworkAnalysisData> {
     // Get connections first to know which processes are using network
-    const [connectionsData, allProcesses, networkStats] = await Promise.all([
+    const [connectionsData, allProcesses, networkStats, trafficStats] = await Promise.all([
       si.networkConnections(),
       si.processes(),
-      si.networkStats()
+      si.networkStats(),
+      this.getWindowsTrafficStats()
     ]);
     
     // Filter connections to only established (or others if needed, user said "using network")
@@ -90,6 +97,15 @@ export class NetworkMonitor {
              // si docs: memRss: number (bytes)
              p.memory = Math.round((raw.memRss / 1024 / 1024) * 100) / 100;
         }
+
+        // Apply traffic stats (approximate from IO) if process has connections
+        if (p.totalConnections > 0 && trafficStats.length > 0) {
+             const traffic = trafficStats.find((t: any) => t.IDProcess === p.pid);
+             if (traffic) {
+                 p.downloadSpeed = traffic.IOReadBytesPerSec || 0;
+                 p.uploadSpeed = traffic.IOWriteBytesPerSec || 0;
+             }
+        }
     });
 
     const remoteIPGroups = this.groupConnectionsByIP(connections);
@@ -160,5 +176,45 @@ export class NetworkMonitor {
         ports: Array.from(data.ports).sort((a, b) => a - b),
       }))
       .sort((a, b) => b.count - a.count);
+  }
+
+  private async getWindowsTrafficStats(): Promise<any[]> {
+    if (process.platform !== 'win32') {
+        return [];
+    }
+    
+    try {
+        const scriptContent = `
+$ErrorActionPreference = "SilentlyContinue"
+$data = @(Get-CimInstance Win32_PerfFormattedData_PerfProc_Process | 
+    Select-Object IDProcess, Name, IOReadBytesPerSec, IOWriteBytesPerSec | 
+    Where-Object { $_.IOReadBytesPerSec -gt 0 -or $_.IOWriteBytesPerSec -gt 0 })
+
+if ($data.Count -gt 0) {
+    $data | ConvertTo-Json -Compress
+} else {
+    Write-Output "[]"
+}
+`;
+        // Convert script to UTF-16LE buffer for PowerShell EncodedCommand
+        const scriptBuffer = Buffer.from(scriptContent, 'utf16le');
+        const encodedCommand = scriptBuffer.toString('base64');
+
+        const { stdout } = await execa('powershell', [
+            '-NoProfile', 
+            '-NonInteractive',
+            '-ExecutionPolicy', 'Bypass', 
+            '-EncodedCommand', encodedCommand
+        ]);
+        
+        if (!stdout || stdout.trim() === '') {
+            return [];
+        }
+        
+        return JSON.parse(stdout);
+    } catch (err) {
+        console.error('Failed to get Windows traffic stats:', err);
+        return [];
+    }
   }
 }
