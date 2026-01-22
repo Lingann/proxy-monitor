@@ -5,6 +5,7 @@ import { SettingsModule } from '../modules/settings';
 import { ConfigManager } from '../core/config-manager';
 import { I18nService } from '../core/i18n-service';
 import { ModuleManager } from '../core/module-manager';
+import { DatabaseService } from '../core/database-service';
 
 const ejs = require('electron-ejs');
 
@@ -14,6 +15,9 @@ let mainWindow: BrowserWindow | null = null;
 const configManager = ConfigManager.getInstance();
 const i18nService = I18nService.getInstance();
 i18nService.setLocale(configManager.getConfig().locale);
+
+// Initialize Database Service
+const databaseService = DatabaseService.getInstance();
 
 const moduleManager = ModuleManager.getInstance();
 moduleManager.register(NetworkMonitorModule);
@@ -66,6 +70,7 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
+    databaseService.close();
     app.quit();
   }
 });

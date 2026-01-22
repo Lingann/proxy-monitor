@@ -4,7 +4,7 @@ import { app } from 'electron';
 
 export class I18nService {
   private static instance: I18nService;
-  private locale: string = 'en';
+  private locale: string = 'zh';
   private translations: Record<string, any> = {};
 
   private constructor() {}

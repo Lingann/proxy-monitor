@@ -6,12 +6,20 @@ export interface AppConfig {
   locale: string;
   theme: 'light' | 'dark';
   processFilters: string[];
+  database: {
+    type: 'sqlite3';
+    filename: string;
+  };
 }
 
 const DEFAULT_CONFIG: AppConfig = {
-  locale: 'en',
+  locale: 'zh',
   theme: 'light',
-  processFilters: ['GameView', 'GameViewer', 'proxy']
+  processFilters: ['GameView', 'GameViewer', 'proxy'],
+  database: {
+    type: 'sqlite3',
+    filename: 'proxy-monitor.db'
+  }
 };
 
 export class ConfigManager {
