@@ -10,14 +10,14 @@ import {
 import { isEmpty } from './common-input-utils.js';
 
 export class CommonInput {
-  private config: InputConfig;
-  private state: InputState;
+  protected config: InputConfig;
+  protected state: InputState;
   
-  private container!: HTMLElement;
-  private wrapper!: HTMLElement;
-  private input!: HTMLInputElement;
-  private clearButton: HTMLElement | null = null;
-  private errorElement!: HTMLElement;
+  protected container!: HTMLElement;
+  protected wrapper!: HTMLElement;
+  protected input!: HTMLInputElement;
+  protected clearButton: HTMLElement | null = null;
+  protected errorElement!: HTMLElement;
 
   constructor(config: InputConfig) {
     this.config = {
@@ -35,7 +35,7 @@ export class CommonInput {
     this.init();
   }
 
-  private init(): void {
+  protected init(): void {
     // 1. Create Elements
     this.container = createContainer(this.config);
     this.wrapper = createInputWrapper();
