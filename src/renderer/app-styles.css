@@ -1,5 +1,6 @@
 @import "./templates/components/common-table/common-table.css";
 @import "./templates/components/common-select/common-select.css";
+@import "./templates/components/common-search-input/common-search-input.css";
 
 :root {
     --bg-primary: #ffffff;

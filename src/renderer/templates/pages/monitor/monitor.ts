@@ -2,6 +2,7 @@ import { t } from '../../../utils/index.js';
 import { CommonTable } from '../../components/common-table/common-table.js';
 import { Column } from '../../components/common-table/common-table-types.js';
 import { CommonSelect } from '../../components/common-select/index.js';
+import { CommonSearchInput } from '../../components/common-search-input/common-search-input.js';
 import { initChart } from '../../../utils/echarts-theme.js';
 // @ts-ignore
 const echarts = (window as any).echarts;
@@ -48,6 +49,8 @@ let totalDownloadEl: HTMLDivElement;
 let processTable: CommonTable<ProcessData>;
 let serverTable: CommonTable<ServerGroupData>;
 let connectionTable: CommonTable<ConnectionData>;
+let searchInput: CommonSearchInput;
+let currentSearchTerm: string = '';
 
 let connectionListEl: HTMLDivElement;
 let analysisContentEl: HTMLDivElement;
@@ -241,8 +244,19 @@ function formatSpeed(bytesPerSec: number): string {
 
 function updateProcessTable(data: any): void {
     if (!processTable) return;
+
+    let processes = data.processes || [];
+
+    // Filter by search term
+    if (currentSearchTerm) {
+        processes = processes.filter((p: any) => 
+            (p.name && p.name.toLowerCase().includes(currentSearchTerm)) || 
+            (p.pid && p.pid.toString().includes(currentSearchTerm))
+        );
+    }
+
     // Use keepPage = true to prevent jumping to page 1
-    processTable.setData(data.processes, true);
+    processTable.setData(processes, true);
     if ((window as any).feather) (window as any).feather.replace();
 }
 
@@ -319,6 +333,20 @@ export function initMonitor() {
     }
 
 
+
+
+    // Initialize Search Input
+    searchInput = new CommonSearchInput('processSearchContainer', {
+        placeholder: t('monitor.search_placeholder') || 'Search PID / Name',
+        width: '100%',
+        enableDropdown: false,
+        onSearch: (term) => {
+            currentSearchTerm = term.trim().toLowerCase();
+            if (currentData) {
+                updateProcessTable(currentData);
+            }
+        }
+    });
 
     // Initialize Process Table
     processTable = new CommonTable<ProcessData>('processTableContainer', {
