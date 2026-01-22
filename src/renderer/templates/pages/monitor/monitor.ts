@@ -61,7 +61,7 @@ let currentData: any = null;
 let trafficChart: any = null;
 let pollInterval: any = null;
 
-const trafficHistory: { time: string; upload: number; download: number }[] = [];
+const trafficHistory: { time: Date; upload: number; download: number }[] = [];
 const MAX_HISTORY = 60;
 
 function showStatus(message: string, type: 'info' | 'success' | 'error'): void {
@@ -145,6 +145,7 @@ function updateChart(upload: number, download: number) {
             left: '3%',
             right: '4%',
             bottom: '3%',
+            top: '12%',
             containLabel: true
         },
         xAxis: {
@@ -177,11 +178,11 @@ function updateChart(upload: number, download: number) {
                 type: 'line',
                 showSymbol: false,
                 data: trafficHistory.map(item => [item.time, item.upload]),
-                itemStyle: { color: '#FF8787' },
+                itemStyle: { color: '#d96a6a' },
                 areaStyle: {
                     color: new (window as any).echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        { offset: 0, color: 'rgba(255, 135, 135, 0.5)' },
-                        { offset: 1, color: 'rgba(255, 135, 135, 0.1)' }
+                        { offset: 0, color: 'rgba(217, 106, 106, 0.5)' },
+                        { offset: 1, color: 'rgba(217, 106, 106, 0.1)' }
                     ])
                 }
             },
@@ -190,11 +191,11 @@ function updateChart(upload: number, download: number) {
                 type: 'line',
                 showSymbol: false,
                 data: trafficHistory.map(item => [item.time, item.download]),
-                itemStyle: { color: '#4FC3F7' },
+                itemStyle: { color: '#5d9bc9' },
                 areaStyle: {
                     color: new (window as any).echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        { offset: 0, color: 'rgba(79, 195, 247, 0.5)' },
-                        { offset: 1, color: 'rgba(79, 195, 247, 0.1)' }
+                        { offset: 0, color: 'rgba(93, 155, 201, 0.5)' },
+                        { offset: 1, color: 'rgba(93, 155, 201, 0.1)' }
                     ])
                 }
             }
