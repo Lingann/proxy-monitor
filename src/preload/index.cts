@@ -11,5 +11,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   saveSettings: (settings: any): Promise<boolean> => 
     ipcRenderer.invoke('save-settings', settings),
   getSettings: (): Promise<any> =>
-    ipcRenderer.invoke('get-settings')
+    ipcRenderer.invoke('get-settings'),
+  getRecentTraffic: (): Promise<any[]> =>
+    ipcRenderer.invoke('get-recent-traffic')
 });

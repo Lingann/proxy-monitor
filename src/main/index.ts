@@ -84,6 +84,10 @@ ipcMain.handle('analyze-connections', async (): Promise<any> => {
   return await networkMonitor.analyze();
 });
 
+ipcMain.handle('get-recent-traffic', async (): Promise<any> => {
+  return await networkMonitor.getRecentTrafficHistory();
+});
+
 ipcMain.handle('set-filters', async (_event, filters: string[]): Promise<void> => {
   networkMonitor.setFilters(filters);
 });

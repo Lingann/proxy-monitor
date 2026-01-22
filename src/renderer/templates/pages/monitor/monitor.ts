@@ -103,20 +103,8 @@ function updateStats(data: any): void {
     updateChart(totalUpload, totalDownload);
 }
 
-function updateChart(upload: number, download: number) {
+function renderChart() {
     if (!trafficChart) return;
-
-    const now = new Date();
-
-    trafficHistory.push({
-        time: now,
-        upload: upload,
-        download: download
-    });
-
-    if (trafficHistory.length > MAX_HISTORY) {
-        trafficHistory.shift();
-    }
 
     const option = {
         tooltip: {
@@ -203,6 +191,45 @@ function updateChart(upload: number, download: number) {
     };
 
     trafficChart.setOption(option);
+}
+
+function updateChart(upload: number, download: number) {
+    if (!trafficChart) return;
+
+    const now = new Date();
+
+    trafficHistory.push({
+        time: now,
+        upload: upload,
+        download: download
+    });
+
+    if (trafficHistory.length > MAX_HISTORY) {
+        trafficHistory.shift();
+    }
+
+    renderChart();
+}
+
+async function loadHistory() {
+    try {
+        const history = await (window as any).electronAPI.getRecentTraffic();
+        if (history && Array.isArray(history)) {
+             history.forEach((h: any) => {
+                 trafficHistory.push({
+                     time: new Date(h.timestamp),
+                     upload: h.tx,
+                     download: h.rx
+                 });
+             });
+             while (trafficHistory.length > MAX_HISTORY) {
+                 trafficHistory.shift();
+             }
+             renderChart();
+        }
+    } catch (e) {
+        console.error('Failed to load history', e);
+    }
 }
 
 function formatSpeed(bytesPerSec: number): string {
@@ -463,5 +490,6 @@ export function initMonitor() {
     }
 
     // Start polling when initialized
+    loadHistory();
     startPolling();
 }
