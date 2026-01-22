@@ -8,6 +8,12 @@ import { I18nService } from '../core/i18n-service.js';
 import { ModuleManager } from '../core/module-manager.js';
 import { DatabaseService } from '../core/database-service.js';
 import ejs from 'electron-ejs';
+import { ensureElevation } from './elevation.js';
+
+// Ensure admin privileges on Windows
+if (process.platform === 'win32') {
+  ensureElevation();
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
