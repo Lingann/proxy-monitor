@@ -1,5 +1,5 @@
 import * as si from 'systeminformation';
-import type { ProcessInfo, ConnectionInfo, RemoteIPGroup, NetworkAnalysisData } from '../../shared/common-types';
+import type { ProcessInfo, ConnectionInfo, RemoteIPGroup, NetworkAnalysisData } from '../../shared/common-types.js';
 
 export class NetworkMonitor {
   private processFilters: string[];

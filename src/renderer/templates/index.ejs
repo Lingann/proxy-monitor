@@ -21,9 +21,9 @@
         </main>
     </div>
     <script>
-        var exports = {}; // Shim for CommonJS output
+        window.translations = <%- JSON.stringify(translations) %>;
         feather.replace();
     </script>
-    <script src="../renderer-entry.js"></script>
+    <script type="module" src="../renderer-entry.js"></script>
 </body>
 </html>

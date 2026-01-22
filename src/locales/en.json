@@ -14,7 +14,8 @@
     "servers": "Servers",
     "memory": "Memory Usage",
     "status_analyzing": "Analyzing...",
-    "status_complete": "Analysis complete!"
+    "status_complete": "Analysis complete!",
+    "status_complete_count": "Analysis complete! Found {count} active connections."
   },
   "settings": {
     "title": "Application Settings",
@@ -23,5 +24,54 @@
     "process_filters": "Process Filters",
     "save": "Save Settings",
     "saved": "Settings saved!"
+  },
+  "table": {
+    "pid": "PID",
+    "name": "Name",
+    "category": "Category",
+    "download": "Download",
+    "upload": "Upload",
+    "connections": "Connections",
+    "actions": "Actions",
+    "ip_address": "IP Address",
+    "ports": "Ports",
+    "count": "Count",
+    "purpose": "Purpose",
+    "local_address": "Local Address",
+    "remote_address": "Remote Address",
+    "state": "State",
+    "no_data": "No data",
+    "no_processes": "No processes found",
+    "no_connections": "No connections found",
+    "no_active_connections": "No active connections"
+  },
+  "category": {
+    "third_party": "Third-party"
+  },
+  "purpose": {
+    "https": "HTTPS encrypted connection",
+    "http": "HTTP connection",
+    "custom": "Custom protocol connection",
+    "unknown": "Unknown purpose"
+  },
+  "details": {
+    "title": "Process Details",
+    "basic_info": "Basic Info",
+    "active_connections": "Active Connections",
+    "process_servers": "Connected Servers"
+  },
+  "actions": {
+    "view_details": "View Details",
+    "limit_speed": "Limit Speed",
+    "more_actions": "More Actions",
+    "end_process": "End Process",
+    "locate_file": "Locate File",
+    "properties": "Properties"
+  },
+  "messages": {
+    "limit_speed_unavailable": "Limit Speed feature is not available for process {pid} (requires system driver).",
+    "confirm_end_process": "Are you sure you want to end process {pid}?",
+    "locating_file": "Locating file for process {pid}...",
+    "properties_for": "Properties for process {pid}..."
   }
 }

@@ -1,2 +1,2 @@
-export * from './network-monitor-service';
-export * from './network-monitor-module';
+export * from './network-monitor-service.js';
+export * from './network-monitor-module.js';

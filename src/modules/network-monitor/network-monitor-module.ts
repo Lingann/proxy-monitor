@@ -1,4 +1,4 @@
-import { Module } from '../../core/module-manager';
+import { Module } from '../../core/module-manager.js';
 
 export const NetworkMonitorModule: Module = {
     id: 'network-monitor',

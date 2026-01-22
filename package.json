@@ -2,6 +2,7 @@
   "name": "proxy-monitor",
   "version": "2.0.0",
   "description": "Network connection monitoring tool built with Electron + TypeScript",
+  "type": "module",
   "main": "dist/main/index.js",
   "scripts": {
     "dev": "tsc && copy src\\renderer\\app-styles.css dist\\renderer\\ && xcopy /E /I /Y src\\renderer\\templates dist\\renderer\\templates && xcopy /E /I /Y src\\renderer\\lib dist\\renderer\\lib && xcopy /E /I /Y src\\locales dist\\locales && electron .",

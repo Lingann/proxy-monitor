@@ -1,13 +1,16 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
-import { NetworkMonitor, NetworkMonitorModule } from '../modules/network-monitor';
-import { SettingsModule } from '../modules/settings';
-import { ConfigManager } from '../core/config-manager';
-import { I18nService } from '../core/i18n-service';
-import { ModuleManager } from '../core/module-manager';
-import { DatabaseService } from '../core/database-service';
+import { fileURLToPath } from 'url';
+import { NetworkMonitor, NetworkMonitorModule } from '../modules/network-monitor/index.js';
+import { SettingsModule } from '../modules/settings/index.js';
+import { ConfigManager } from '../core/config-manager.js';
+import { I18nService } from '../core/i18n-service.js';
+import { ModuleManager } from '../core/module-manager.js';
+import { DatabaseService } from '../core/database-service.js';
+import ejs from 'electron-ejs';
 
-const ejs = require('electron-ejs');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -29,7 +32,8 @@ const networkMonitor = new NetworkMonitor(configManager.getConfig().processFilte
 /* 设置 EJS 模板引擎 */
 const ejsInstance = new ejs({
     modules: moduleManager.getModules(),
-    t: (key: string) => i18nService.t(key)
+    t: (key: string) => i18nService.t(key),
+    translations: i18nService.getTranslations()
 }, {
     root: path.join(__dirname, '../renderer/templates')
 });
@@ -39,7 +43,7 @@ function createWindow(): void {
     width: 1400,
     height: 900,
     webPreferences: {
-      preload: path.join(__dirname, '../preload/index.js'),
+      preload: path.join(__dirname, '../preload/index.cjs'),
       nodeIntegration: false,
       contextIsolation: true,
     },

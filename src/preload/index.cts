@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import type { NetworkAnalysisData, AnalysisConfig } from '../shared/common-types';
+import type { NetworkAnalysisData, AnalysisConfig } from '../shared/common-types.js';
 
 contextBridge.exposeInMainWorld('electronAPI', {
   analyzeConnections: (): Promise<NetworkAnalysisData> =>

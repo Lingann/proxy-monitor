@@ -2,7 +2,7 @@ import Database from 'better-sqlite3';
 import { app } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
-import { ConfigManager } from './config-manager';
+import { ConfigManager } from './config-manager.js';
 
 export class DatabaseService {
   private static instance: DatabaseService;

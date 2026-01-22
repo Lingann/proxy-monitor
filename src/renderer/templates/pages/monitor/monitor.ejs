@@ -41,34 +41,17 @@
         <table id="processTable">
             <thead>
                 <tr>
-                    <th>PID</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Download</th>
-                    <th>Upload</th>
-                    <th>Connections</th>
-                    <th>Actions</th>
+                    <th><%= t('table.pid') %></th>
+                    <th><%= t('table.name') %></th>
+                    <th><%= t('table.category') %></th>
+                    <th><%= t('table.download') %></th>
+                    <th><%= t('table.upload') %></th>
+                    <th><%= t('table.connections') %></th>
+                    <th><%= t('table.actions') %></th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td colspan="7" class="no-data">No data</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h2><%= t('monitor.servers') %></h2>
-    <div class="table-container">
-        <table id="serverTable">
-            <thead>
-                <tr>
-                    <th>IP Address</th>
-                    <th>Ports</th>
-                    <th>Count</th>
-                    <th>Purpose</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td colspan="4" class="no-data">No data</td></tr>
+                <tr><td colspan="7" class="no-data"><%= t('table.no_data') %></td></tr>
             </tbody>
         </table>
     </div>
@@ -80,26 +63,41 @@
         <button id="backToMonitorBtn" class="btn-icon">
             <i data-feather="arrow-left"></i>
         </button>
-        <h2>Process Details: <span id="detailProcessName"></span></h2>
+        <h2><%= t('details.title') %>: <span id="detailProcessName"></span></h2>
     </div>
     
     <div class="details-content">
         <div class="info-card">
-            <h3>Basic Info</h3>
-            <p><strong>PID:</strong> <span id="detailPid"></span></p>
-            <p><strong>Category:</strong> <span id="detailCategory"></span></p>
-            <p><strong>Memory:</strong> <span id="detailMemory"></span></p>
+            <h3><%= t('details.basic_info') %></h3>
+            <p><strong><%= t('table.pid') %>:</strong> <span id="detailPid"></span></p>
+            <p><strong><%= t('table.category') %>:</strong> <span id="detailCategory"></span></p>
+            <p><strong><%= t('monitor.memory') %>:</strong> <span id="detailMemory"></span></p>
             <p><strong>CPU:</strong> <span id="detailCpu"></span>%</p>
         </div>
 
-        <h3>Active Connections</h3>
+        <h3><%= t('details.process_servers') %></h3>
+        <div class="table-container">
+            <table id="detailServerTable">
+                <thead>
+                    <tr>
+                        <th><%= t('table.ip_address') %></th>
+                        <th><%= t('table.ports') %></th>
+                        <th><%= t('table.count') %></th>
+                        <th><%= t('table.purpose') %></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <h3><%= t('details.active_connections') %></h3>
         <div class="table-container">
             <table id="detailConnectionTable">
                 <thead>
                     <tr>
-                        <th>Local Address</th>
-                        <th>Remote Address</th>
-                        <th>State</th>
+                        <th><%= t('table.local_address') %></th>
+                        <th><%= t('table.remote_address') %></th>
+                        <th><%= t('table.state') %></th>
                     </tr>
                 </thead>
                 <tbody></tbody>

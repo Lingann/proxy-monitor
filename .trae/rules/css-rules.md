@@ -1,3 +1,7 @@
+@css-rules
+1. 优先使用Grid布局、Flex布局 来实现页面布局，避免使用float、inline-block 等布局方式。
+2. 禁止使用鼠标悬浮时，位移元素的方式来实现交互效果，例如：hover 时改变元素位置、缩放等， 优先使用阴影、字体加重、背景颜色变化等方式来实现交互效果。
+
 @css-variable-rules
 
 1. 变量命名推荐采用“三段式命名法”（Triptych Notation），格式为：`namespace-value-type-variable-name`。

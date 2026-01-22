@@ -61,6 +61,10 @@ export class I18nService {
     return key;
   }
 
+  public getTranslations(): Record<string, any> {
+    return this.translations;
+  }
+
   public getLocale(): string {
       return this.locale;
   }
