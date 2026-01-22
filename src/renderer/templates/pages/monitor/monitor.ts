@@ -107,10 +107,9 @@ function updateChart(upload: number, download: number) {
     if (!trafficChart) return;
 
     const now = new Date();
-    const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
 
     trafficHistory.push({
-        time: timeStr,
+        time: now,
         upload: upload,
         download: download
     });
@@ -123,24 +122,46 @@ function updateChart(upload: number, download: number) {
         tooltip: {
             trigger: 'axis',
             formatter: (params: any) => {
-                let res = `${params[0].name}<br/>`;
+                let res = '';
+                if (params[0] && params[0].value && params[0].value[0]) {
+                     res = `${params[0].value[0].toLocaleTimeString()}<br/>`;
+                }
                 params.forEach((item: any) => {
-                    res += `${item.marker} ${item.seriesName}: ${formatSpeed(item.value)}<br/>`;
+                    // item.value is [date, number]
+                    res += `${item.marker} ${item.seriesName}: ${formatSpeed(item.value[1])}<br/>`;
                 });
                 return res;
+            },
+            axisPointer: {
+                animation: false
             }
         },
         legend: {
             data: [t('monitor.total_upload'), t('monitor.total_download')],
-            bottom: 0
+            top: 0,
+            icon: 'circle'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
         },
         xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: trafficHistory.map(item => item.time)
+            type: 'time',
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
+                formatter: '{HH}:{mm}:{ss}'
+            }
         },
         yAxis: {
             type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            },
             axisLabel: {
                 formatter: (value: number) => {
                     if (value === 0) return '0';
@@ -154,24 +175,26 @@ function updateChart(upload: number, download: number) {
             {
                 name: t('monitor.total_upload'),
                 type: 'line',
-                data: trafficHistory.map(item => item.upload),
-                itemStyle: { color: '#e03e3e' },
+                showSymbol: false,
+                data: trafficHistory.map(item => [item.time, item.upload]),
+                itemStyle: { color: '#FF8787' },
                 areaStyle: {
                     color: new (window as any).echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        { offset: 0, color: 'rgba(224, 62, 62, 0.3)' },
-                        { offset: 1, color: 'rgba(224, 62, 62, 0.05)' }
+                        { offset: 0, color: 'rgba(255, 135, 135, 0.5)' },
+                        { offset: 1, color: 'rgba(255, 135, 135, 0.1)' }
                     ])
                 }
             },
             {
                 name: t('monitor.total_download'),
                 type: 'line',
-                data: trafficHistory.map(item => item.download),
-                itemStyle: { color: '#2eaadc' },
+                showSymbol: false,
+                data: trafficHistory.map(item => [item.time, item.download]),
+                itemStyle: { color: '#4FC3F7' },
                 areaStyle: {
                     color: new (window as any).echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        { offset: 0, color: 'rgba(46, 170, 220, 0.3)' },
-                        { offset: 1, color: 'rgba(46, 170, 220, 0.05)' }
+                        { offset: 0, color: 'rgba(79, 195, 247, 0.5)' },
+                        { offset: 1, color: 'rgba(79, 195, 247, 0.1)' }
                     ])
                 }
             }
