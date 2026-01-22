@@ -81,8 +81,16 @@ function updateStats(data: any): void {
     const totalMemory = data.processes.reduce((sum: number, p: any) => sum + p.memory, 0);
     
     // Calculate total speeds
-    const totalDownload = data.processes.reduce((sum: number, p: any) => sum + (p.downloadSpeed || 0), 0);
-    const totalUpload = data.processes.reduce((sum: number, p: any) => sum + (p.uploadSpeed || 0), 0);
+    let totalDownload = 0;
+    let totalUpload = 0;
+
+    if (data.globalStats) {
+        totalDownload = data.globalStats.downloadSpeed;
+        totalUpload = data.globalStats.uploadSpeed;
+    } else {
+        totalDownload = data.processes.reduce((sum: number, p: any) => sum + (p.downloadSpeed || 0), 0);
+        totalUpload = data.processes.reduce((sum: number, p: any) => sum + (p.uploadSpeed || 0), 0);
+    }
 
     if (processCountEl) processCountEl.textContent = data.processes.length.toString();
     if (connectionCountEl) connectionCountEl.textContent = data.connections.length.toString();

@@ -15,8 +15,11 @@ export class NetworkMonitor {
 
   async analyze(): Promise<NetworkAnalysisData> {
     // Get connections first to know which processes are using network
-    const connectionsData = await si.networkConnections();
-    const allProcesses = await si.processes();
+    const [connectionsData, allProcesses, networkStats] = await Promise.all([
+      si.networkConnections(),
+      si.processes(),
+      si.networkStats()
+    ]);
     
     // Filter connections to only established (or others if needed, user said "using network")
     // Usually ESTABLISHED, LISTEN, TIME_WAIT etc. User probably cares about active usage.
@@ -91,11 +94,29 @@ export class NetworkMonitor {
 
     const remoteIPGroups = this.groupConnectionsByIP(connections);
 
+    // Calculate global stats
+    let totalDownload = 0;
+    let totalUpload = 0;
+    const interfaceStats = networkStats.map(iface => {
+         totalDownload += iface.rx_sec;
+         totalUpload += iface.tx_sec;
+        return {
+            iface: iface.iface,
+            rx_sec: iface.rx_sec,
+            tx_sec: iface.tx_sec
+        };
+    });
+
     return {
       analysisTime: new Date().toISOString(),
       processes: processes.filter(p => p.totalConnections > 0), // Only show processes with connections? User said "using network"
       connections,
       remoteIPGroups,
+      globalStats: {
+        uploadSpeed: totalUpload,
+        downloadSpeed: totalDownload,
+        interfaces: interfaceStats
+      }
     };
   }
 

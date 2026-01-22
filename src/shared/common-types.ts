@@ -26,11 +26,22 @@ export interface RemoteIPGroup {
   ports: number[];
 }
 
+export interface NetworkInterfaceStats {
+  iface: string;
+  rx_sec: number;
+  tx_sec: number;
+}
+
 export interface NetworkAnalysisData {
   analysisTime: string;
   processes: ProcessInfo[];
   connections: ConnectionInfo[];
   remoteIPGroups: RemoteIPGroup[];
+  globalStats: {
+    uploadSpeed: number;
+    downloadSpeed: number;
+    interfaces: NetworkInterfaceStats[];
+  };
 }
 
 export interface AnalysisConfig {
