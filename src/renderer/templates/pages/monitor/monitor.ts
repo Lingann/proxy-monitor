@@ -35,7 +35,6 @@ interface ConnectionData {
 
 // DOM Elements
 let analyzeBtn: HTMLButtonElement;
-let refreshBtn: HTMLButtonElement;
 let statusEl: HTMLDivElement;
 
 let processCountEl: HTMLDivElement;
@@ -301,7 +300,6 @@ function stopPolling() {
 export function initMonitor() {
     // Initialize elements
     analyzeBtn = document.getElementById('analyzeBtn') as HTMLButtonElement;
-    refreshBtn = document.getElementById('refreshBtn') as HTMLButtonElement;
     statusEl = document.getElementById('status') as HTMLDivElement;
     processCountEl = document.getElementById('processCount') as HTMLDivElement;
     connectionCountEl = document.getElementById('connectionCount') as HTMLDivElement;
@@ -384,7 +382,6 @@ export function initMonitor() {
 
     // Event Listeners
     if (analyzeBtn) analyzeBtn.addEventListener('click', () => analyzeConnections(false));
-    if (refreshBtn) refreshBtn.addEventListener('click', () => analyzeConnections(false));
 
     // Expose functions to window
     (window as any).showDetails = (pid: number) => {
