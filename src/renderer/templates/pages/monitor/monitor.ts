@@ -1,6 +1,7 @@
 import { t } from '../../../utils/index.js';
 import { CommonTable } from '../../components/common-table/common-table.js';
 import { Column } from '../../components/common-table/common-table-types.js';
+import { CommonSelect } from '../../components/common-select/index.js';
 import { initChart } from '../../../utils/echarts-theme.js';
 // @ts-ignore
 const echarts = (window as any).echarts;
@@ -316,6 +317,8 @@ export function initMonitor() {
             trafficChart?.resize();
         });
     }
+
+
 
     // Initialize Process Table
     processTable = new CommonTable<ProcessData>('processTableContainer', {

@@ -1,4 +1,5 @@
 @import "./templates/components/common-table/common-table.css";
+@import "./templates/components/common-select/common-select.css";
 
 :root {
     --bg-primary: #ffffff;

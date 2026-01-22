@@ -1,9 +1,13 @@
 import { PaginationOptions } from './common-table-types.js';
+import { CommonSelect } from '../common-select/index.js';
 
 export class CommonTablePagination {
   private element: HTMLElement;
+  private controlsWrapper: HTMLElement;
+  private pageSizeWrapper: HTMLElement;
   private onPageChange: (page: number) => void;
   private onPageSizeChange?: (pageSize: number) => void;
+  private pageSizeSelect?: CommonSelect;
 
   constructor(
     onPageChange: (page: number) => void,
@@ -11,6 +15,20 @@ export class CommonTablePagination {
   ) {
     this.element = document.createElement('div');
     this.element.className = 'common-table-pagination';
+    
+    // Initialize containers
+    this.controlsWrapper = document.createElement('div');
+    this.controlsWrapper.className = 'common-table-pagination__controls';
+    
+    this.pageSizeWrapper = document.createElement('div');
+    
+    // Set layout: Right aligned
+    this.element.style.justifyContent = 'flex-end';
+    this.element.style.gap = '12px';
+    
+    this.element.appendChild(this.controlsWrapper);
+    this.element.appendChild(this.pageSizeWrapper);
+
     this.onPageChange = onPageChange;
     this.onPageSizeChange = onPageSizeChange;
   }
@@ -26,53 +44,12 @@ export class CommonTablePagination {
     }
     
     this.element.style.display = 'flex';
-    this.element.innerHTML = '';
+    
+    // Clear and rebuild controls only
+    this.controlsWrapper.innerHTML = '';
     
     const pageSize = options.pageSize;
     const totalPages = Math.ceil(total / pageSize);
-    const start = (currentPage - 1) * pageSize + 1;
-    const end = Math.min(currentPage * pageSize, total);
-
-    // Left side container for Page Size and Info
-    const leftContainer = document.createElement('div');
-    leftContainer.style.display = 'flex';
-    leftContainer.style.alignItems = 'center';
-    leftContainer.style.gap = '12px';
-
-    // Page Size Select
-    const pageSizeSelect = document.createElement('select');
-    pageSizeSelect.className = 'common-table-pagination__select';
-    [10, 20, 50, 100].forEach(size => {
-        const option = document.createElement('option');
-        option.value = String(size);
-        option.textContent = `${size} / page`;
-        if (size === pageSize) {
-            option.selected = true;
-        }
-        pageSizeSelect.appendChild(option);
-    });
-    
-    pageSizeSelect.onchange = (e) => {
-        const newSize = parseInt((e.target as HTMLSelectElement).value, 10);
-        if (this.onPageSizeChange) {
-            this.onPageSizeChange(newSize);
-        }
-    };
-    leftContainer.appendChild(pageSizeSelect);
-
-    // Info Text
-    const info = document.createElement('span');
-    info.className = 'common-table-pagination__info';
-    info.textContent = total > 0 
-      ? `${start}-${end} / ${total}`
-      : '0 / 0';
-    leftContainer.appendChild(info);
-
-    this.element.appendChild(leftContainer);
-
-    // Controls Wrapper
-    const controls = document.createElement('div');
-    controls.className = 'common-table-pagination__controls';
 
     // Prev
     const prevBtn = this.createButton(
@@ -82,7 +59,7 @@ export class CommonTablePagination {
         if (currentPage > 1) this.onPageChange(currentPage - 1);
       }
     );
-    controls.appendChild(prevBtn);
+    this.controlsWrapper.appendChild(prevBtn);
 
     // Pages
     const pages = this.generatePageNumbers(currentPage, totalPages);
@@ -91,14 +68,14 @@ export class CommonTablePagination {
         const span = document.createElement('span');
         span.className = 'common-table-pagination__ellipsis';
         span.textContent = '...';
-        controls.appendChild(span);
+        this.controlsWrapper.appendChild(span);
       } else {
         const pageBtn = this.createPageButton(
           Number(page), 
           Number(page) === currentPage,
           () => this.onPageChange(Number(page))
         );
-        controls.appendChild(pageBtn);
+        this.controlsWrapper.appendChild(pageBtn);
       }
     });
 
@@ -110,9 +87,32 @@ export class CommonTablePagination {
         if (currentPage < totalPages) this.onPageChange(currentPage + 1);
       }
     );
-    controls.appendChild(nextBtn);
+    this.controlsWrapper.appendChild(nextBtn);
 
-    this.element.appendChild(controls);
+    // Page Size Select
+    if (!this.pageSizeSelect) {
+        this.pageSizeSelect = new CommonSelect(this.pageSizeWrapper, {
+            options: [10, 20, 50, 100].map(size => ({
+                label: `${size} / page`,
+                value: size
+            })),
+            defaultValue: pageSize,
+            width: '120px',
+            size: 'medium', // Use medium size (32px) to match buttons
+            placeholder: 'Page Size',
+            onChange: (val) => {
+                const newSize = Number(val);
+                 if (this.onPageSizeChange && newSize !== pageSize) {
+                    this.onPageSizeChange(newSize);
+                }
+            }
+        });
+    } else {
+        // Just update value if needed, don't destroy
+        if (this.pageSizeSelect.getValue() !== pageSize) {
+            this.pageSizeSelect.setValue(pageSize);
+        }
+    }
   }
 
   private generatePageNumbers(current: number, total: number): (number | string)[] {
