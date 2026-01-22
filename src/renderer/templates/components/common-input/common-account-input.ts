@@ -1,6 +1,6 @@
 import { CommonInput } from './common-input.js';
 import { InputConfig } from './common-input-types.js';
-import { ACCOUNT_ICON } from './common-input-utils.js';
+import { ACCOUNT_ICON } from '../common-icons/index.js';
 
 export class CommonAccountInput extends CommonInput {
   constructor(config: InputConfig) {

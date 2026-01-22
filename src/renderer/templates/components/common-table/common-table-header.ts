@@ -1,5 +1,6 @@
 import { t } from '../../../utils/i18n-helper.js';
 import { Column, SortState } from './common-table-types.js';
+import { SORT_ASC_ICON, SORT_DESC_ICON, SORT_DEFAULT_ICON } from '../common-icons/index.js';
 
 interface HeaderEvents {
   onSort: (key: string) => void;
@@ -56,14 +57,11 @@ export class CommonTableHeader<T> {
         if (sortState.key === col.key) {
            icon.classList.add('active');
            icon.innerHTML = sortState.direction === 'asc' 
-             ? '<svg width="10" height="10" viewBox="0 0 1024 1024"><path d="M512 320L192 704h640z" fill="currentColor"/></svg>' // Up
-             : '<svg width="10" height="10" viewBox="0 0 1024 1024"><path d="M512 704L192 320h640z" fill="currentColor"/></svg>'; // Down
+             ? SORT_ASC_ICON // Up
+             : SORT_DESC_ICON; // Down
         } else {
            // Default neutral state (double arrow)
-           icon.innerHTML = '<svg width="10" height="10" viewBox="0 0 1024 1024" style="opacity: 0.3"><path d="M512 320L192 640h640z M512 704L192 384h640z" fill="currentColor"/></svg>';
-           // Or just empty if preferred, but usually "sortable" implies visible affordance. 
-           // Let's use a simple up/down stack.
-           icon.innerHTML = '<div style="display:flex;flex-direction:column;line-height:0.5;transform:scale(0.7);opacity:0.3"><svg width="10" height="6" viewBox="0 0 1024 512"><path d="M512 64L128 448h768z" fill="currentColor"/></svg><svg width="10" height="6" viewBox="0 0 1024 512" style="margin-top:2px"><path d="M512 448L128 64h768z" fill="currentColor"/></svg></div>';
+           icon.innerHTML = SORT_DEFAULT_ICON;
         }
         titleWrapper.appendChild(icon);
       }

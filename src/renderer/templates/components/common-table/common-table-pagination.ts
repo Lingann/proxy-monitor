@@ -1,5 +1,8 @@
 import { PaginationOptions } from './common-table-types.js';
 import { CommonSelect } from '../common-select/index.js';
+import { PAGINATION_PREV_ICON, PAGINATION_NEXT_ICON } from '../common-icons/index.js';
+
+
 
 export class CommonTablePagination {
   private element: HTMLElement;
@@ -81,7 +84,7 @@ export class CommonTablePagination {
 
     // Next
     const nextBtn = this.createButton(
-      '<svg width="12" height="12" viewBox="0 0 1024 1024"><path d="M765.7 486.8L314.9 144.7c-5.3-3.9-12.9-0.4-12.9 6.3v67.3c0 4.9 2.9 9.6 7.2 12.8L636 512l-326.8 380.9c-4.3 3.2-7.2 7.9-7.2 12.8v67.3c0 6.7 7.7 10.4 12.9 6.3l450.8-335.1a31.86 31.86 0 0 0 0-50.3z" fill="currentColor"/></svg>', 
+      PAGINATION_NEXT_ICON, 
       currentPage >= totalPages || total === 0, 
       () => {
         if (currentPage < totalPages) this.onPageChange(currentPage + 1);

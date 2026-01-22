@@ -1,5 +1,5 @@
 import { InputConfig } from './common-input-types.js';
-import { DEFAULT_CLEAR_ICON } from './common-input-utils.js';
+import { INPUT_CLEAR_ICON as DEFAULT_CLEAR_ICON } from '../common-icons/index.js';
 
 /**
  * Creates the main container for the input component

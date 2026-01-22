@@ -1,6 +1,6 @@
 import { CommonInput } from './common-input.js';
 import { InputConfig } from './common-input-types.js';
-import { PASSWORD_ICON, EYE_ICON, EYE_OFF_ICON } from './common-input-utils.js';
+import { PASSWORD_ICON, EYE_ICON, EYE_OFF_ICON } from '../common-icons/index.js';
 
 export class CommonPasswordInput extends CommonInput {
   constructor(config: InputConfig) {

@@ -1,10 +1,6 @@
 import { SearchInputOption } from './common-search-input-types.js';
 import { highlightText } from './common-search-input-utils.js';
-
-const ICONS = {
-  search: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`,
-  clear: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`
-};
+import { SEARCH_ICON, SEARCH_CLEAR_ICON } from '../common-icons/index.js';
 
 export function createContainer(width?: string): HTMLElement {
   const container = document.createElement('div');
@@ -27,7 +23,7 @@ export function createInputWrapper(placeholder: string, prefixIcon?: string): {
   // Prefix Icon
   const prefixEl = document.createElement('div');
   prefixEl.className = 'common-search-input__prefix';
-  prefixEl.innerHTML = prefixIcon || ICONS.search;
+  prefixEl.innerHTML = prefixIcon || SEARCH_ICON;
   
   // Input
   const input = document.createElement('input');
@@ -39,7 +35,7 @@ export function createInputWrapper(placeholder: string, prefixIcon?: string): {
   // Clear Icon
   const clearEl = document.createElement('div');
   clearEl.className = 'common-search-input__clear';
-  clearEl.innerHTML = ICONS.clear;
+  clearEl.innerHTML = SEARCH_CLEAR_ICON;
   clearEl.style.display = 'none'; // Hidden by default
   
   wrapper.appendChild(prefixEl);
