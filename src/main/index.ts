@@ -1,12 +1,10 @@
-import { app, BrowserWindow, ipcMain, dialog } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import { NetworkAnalyzer } from './network-analyzer';
-import { ReportGenerator } from './report-generator';
 import type { NetworkAnalysisData, AnalysisConfig } from '../shared/types';
 
 let mainWindow: BrowserWindow | null = null;
 const networkAnalyzer = new NetworkAnalyzer();
-const reportGenerator = new ReportGenerator();
 
 function createWindow(): void {
   mainWindow = new BrowserWindow({
@@ -54,20 +52,6 @@ ipcMain.handle('analyze-connections', async (): Promise<NetworkAnalysisData> => 
 
 ipcMain.handle('set-filters', async (_event, filters: string[]): Promise<void> => {
   networkAnalyzer.setFilters(filters);
-});
-
-ipcMain.handle('generate-report', async (_event, data: NetworkAnalysisData): Promise<string> => {
-  const { canceled, filePath } = await dialog.showSaveDialog(mainWindow!, {
-    defaultPath: path.join(app.getPath('downloads'), 'ProxyMonitorReport.html'),
-    filters: [{ name: 'HTML Files', extensions: ['html'] }],
-  });
-
-  if (canceled || !filePath) {
-    throw new Error('Save dialog was cancelled');
-  }
-
-  reportGenerator.saveReport(data, filePath);
-  return filePath;
 });
 
 ipcMain.handle('get-config', async (): Promise<AnalysisConfig> => {

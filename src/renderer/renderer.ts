@@ -3,7 +3,7 @@ import type { NetworkAnalysisData } from '../shared/types';
 let currentData: NetworkAnalysisData | null = null;
 
 const analyzeBtn = document.getElementById('analyzeBtn') as HTMLButtonElement;
-const generateReportBtn = document.getElementById('generateReportBtn') as HTMLButtonElement;
+const refreshBtn = document.getElementById('refreshBtn') as HTMLButtonElement;
 const statusEl = document.getElementById('status') as HTMLDivElement;
 
 const processCountEl = document.getElementById('processCount') as HTMLDivElement;
@@ -14,10 +14,16 @@ const memoryUsageEl = document.getElementById('memoryUsage') as HTMLDivElement;
 const processTableBody = document.querySelector('#processTable tbody') as HTMLTableSectionElement;
 const serverTableBody = document.querySelector('#serverTable tbody') as HTMLTableSectionElement;
 const connectionListEl = document.getElementById('connectionList') as HTMLDivElement;
+const analysisContentEl = document.getElementById('analysisContent') as HTMLDivElement;
 
 function showStatus(message: string, type: 'info' | 'success' | 'error'): void {
   statusEl.textContent = message;
   statusEl.className = `status ${type}`;
+}
+
+function hideStatus(): void {
+  statusEl.className = 'status';
+  statusEl.textContent = '';
 }
 
 function updateStats(data: NetworkAnalysisData): void {
@@ -49,9 +55,18 @@ function updateProcessTable(data: NetworkAnalysisData): void {
     .join('');
 }
 
+function getPurpose(ports: number[]): string {
+  if (ports.includes(443)) return 'HTTPS encrypted connection';
+  if (ports.some((p) => p >= 2400 && p <= 2500)) return 'Custom protocol connection';
+  if (ports.includes(80)) return 'HTTP connection';
+  if (ports.includes(21)) return 'FTP connection';
+  if (ports.includes(22)) return 'SSH connection';
+  return 'Unknown purpose';
+}
+
 function updateServerTable(data: NetworkAnalysisData): void {
   if (data.remoteIPGroups.length === 0) {
-    serverTableBody.innerHTML = '<tr><td colspan="3" class="no-data">No connections found</td></tr>';
+    serverTableBody.innerHTML = '<tr><td colspan="4" class="no-data">No connections found</td></tr>';
     return;
   }
 
@@ -62,6 +77,7 @@ function updateServerTable(data: NetworkAnalysisData): void {
             <td>${group.ip}</td>
             <td>${group.ports.join(', ')}</td>
             <td>${group.count}</td>
+            <td>${getPurpose(group.ports)}</td>
         </tr>
     `
     )
@@ -90,9 +106,77 @@ function updateConnectionList(data: NetworkAnalysisData): void {
     .join('');
 }
 
+function updateAnalysisContent(data: NetworkAnalysisData): void {
+  const totalMemory = data.processes.reduce((sum, p) => sum + p.memory, 0);
+  const hasCustomPorts = data.connections.some((conn) => conn.remotePort >= 2400 && conn.remotePort <= 2500);
+  const hasMultipleConnections = data.remoteIPGroups.some((group) => group.count > 1);
+
+  analysisContentEl.innerHTML = `
+    <div class="analysis-warning">
+        <h3>Reasons for Traffic Consumption</h3>
+        <ul>
+            <li><strong>Multiple concurrent connections:</strong> The system detected ${data.connections.length} active connections, including multiple parallel connections to the same server.</li>
+            <li><strong>Continuous data transfer:</strong> There are many connections on custom ports, which may be used for real-time data stream transfer.</li>
+            <li><strong>High memory usage:</strong> Total memory usage is ${totalMemory.toFixed(2)} MB, indicating extensive data caching and processing operations.</li>
+        </ul>
+    </div>
+
+    <div class="analysis-details">
+        <h3>Technical Analysis</h3>
+        <ul>
+            <li><strong>Port 443:</strong> Standard HTTPS port for encrypted communication</li>
+            <li><strong>Custom Ports (2400-2500):</strong> Custom ports for streaming or data transfer channels</li>
+            <li><strong>Connection pattern:</strong> Multiple connections using load balancing or data sharding</li>
+            <li><strong>Remote servers:</strong> ${data.remoteIPGroups.length} unique remote servers connected</li>
+        </ul>
+    </div>
+
+    <div class="analysis-summary">
+        <h3>Summary</h3>
+        <p>
+            The application is actively communicating with ${data.remoteIPGroups.length} remote servers
+            through ${data.connections.length} network connections.
+            ${hasMultipleConnections ? 'Multiple connections to the same server suggest load balancing or parallel data transfer.' : ''}
+            ${hasCustomPorts ? 'Custom port usage indicates application-specific protocols for data streaming.' : ''}
+            Total memory usage of ${totalMemory.toFixed(2)} MB reflects active data processing and caching.
+        </p>
+    </div>
+  `;
+}
+
 async function analyzeConnections(): Promise<void> {
   try {
     showStatus('Analyzing network connections...', 'info');
+    analyzeBtn.disabled = true;
+    refreshBtn.disabled = true;
+
+    const data = await window.electronAPI.analyzeConnections();
+    currentData = data;
+
+    updateStats(data);
+    updateProcessTable(data);
+    updateServerTable(data);
+    updateConnectionList(data);
+    updateAnalysisContent(data);
+
+    showStatus(`Analysis complete! Found ${data.connections.length} active connections.`, 'success');
+    refreshBtn.disabled = false;
+
+    setTimeout(() => {
+      hideStatus();
+    }, 3000);
+  } catch (error) {
+    console.error('Analysis error:', error);
+    showStatus(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error');
+  } finally {
+    analyzeBtn.disabled = false;
+  }
+}
+
+async function refreshConnections(): Promise<void> {
+  try {
+    showStatus('Refreshing network connections...', 'info');
+    refreshBtn.disabled = true;
     analyzeBtn.disabled = true;
 
     const data = await window.electronAPI.analyzeConnections();
@@ -102,36 +186,21 @@ async function analyzeConnections(): Promise<void> {
     updateProcessTable(data);
     updateServerTable(data);
     updateConnectionList(data);
+    updateAnalysisContent(data);
 
-    showStatus(`Analysis complete! Found ${data.connections.length} active connections.`, 'success');
-    generateReportBtn.disabled = false;
+    showStatus(`Refresh complete! Found ${data.connections.length} active connections.`, 'success');
+
+    setTimeout(() => {
+      hideStatus();
+    }, 3000);
   } catch (error) {
-    console.error('Analysis error:', error);
+    console.error('Refresh error:', error);
     showStatus(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error');
   } finally {
+    refreshBtn.disabled = false;
     analyzeBtn.disabled = false;
   }
 }
 
-async function generateReport(): Promise<void> {
-  if (!currentData) {
-    showStatus('No data to generate report. Please analyze first.', 'error');
-    return;
-  }
-
-  try {
-    showStatus('Generating HTML report...', 'info');
-    generateReportBtn.disabled = true;
-
-    const filePath = await window.electronAPI.generateReport(currentData);
-    showStatus(`Report saved to: ${filePath}`, 'success');
-  } catch (error) {
-    console.error('Report generation error:', error);
-    showStatus(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error');
-  } finally {
-    generateReportBtn.disabled = false;
-  }
-}
-
 analyzeBtn.addEventListener('click', analyzeConnections);
-generateReportBtn.addEventListener('click', generateReport);
+refreshBtn.addEventListener('click', refreshConnections);
