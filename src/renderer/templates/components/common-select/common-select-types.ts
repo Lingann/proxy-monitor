@@ -5,12 +5,17 @@ export interface SelectOption {
   [key: string]: any; // Allow extra props
 }
 
+export type ValidateTrigger = 'change' | 'blur' | 'focus';
+
 export interface ValidationResult {
-  valid: boolean;
+  isValid: boolean;
   message?: string;
 }
 
-export type ValidatorFunction = (value: string | number | null) => ValidationResult;
+export interface SelectValidator {
+  trigger?: ValidateTrigger | ValidateTrigger[];
+  validate: (value: string | number | null) => ValidationResult | Promise<ValidationResult>;
+}
 
 export interface SelectConfig {
   options?: SelectOption[];
@@ -20,8 +25,12 @@ export interface SelectConfig {
   maxItems?: number; // Max items to show before scrolling (default 5 or 6)
   defaultValue?: string | number;
   disabled?: boolean;
-  validator?: ValidatorFunction;
-  validateTrigger?: 'change' | 'blur'; // Default 'change'
+  
+  /**
+   * Validator configuration
+   */
+  validator?: SelectValidator;
+  
   zIndex?: number;
   onChange?: (value: string | number | null, option?: SelectOption) => void;
   onFocus?: (e: Event) => void;

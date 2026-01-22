@@ -32,6 +32,10 @@ export const createInputElement = (config: InputConfig): HTMLInputElement => {
   input.placeholder = config.placeholder || '';
   input.disabled = !!config.disabled;
   
+  if (config.maxLength) {
+    input.maxLength = config.maxLength;
+  }
+
   if (config.defaultValue) {
     input.value = config.defaultValue;
   }

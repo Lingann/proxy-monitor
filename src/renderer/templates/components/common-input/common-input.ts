@@ -1,4 +1,4 @@
-import { InputConfig, InputState } from './common-input-types.js';
+import { InputConfig, InputState, ValidateTrigger } from './common-input-types.js';
 import { 
   createContainer, 
   createInputWrapper, 
@@ -23,7 +23,6 @@ export class CommonInput {
     this.config = {
       size: 'medium',
       type: 'text',
-      validateTrigger: 'blur',
       ...config
     };
 
@@ -78,6 +77,8 @@ export class CommonInput {
   }
 
   private bindEvents(): void {
+    const triggers = this.getValidationTriggers();
+
     // Input Event
     this.input.addEventListener('input', (e) => {
       const value = (e.target as HTMLInputElement).value;
@@ -89,7 +90,7 @@ export class CommonInput {
         this.config.onChange(value);
       }
 
-      if (this.config.validateTrigger === 'change') {
+      if (triggers.includes('change')) {
         this.validate();
       }
     });
@@ -102,6 +103,10 @@ export class CommonInput {
       if (this.config.onFocus) {
         this.config.onFocus(e);
       }
+
+      if (triggers.includes('focus')) {
+        this.validate();
+      }
     });
 
     // Blur Event
@@ -109,11 +114,23 @@ export class CommonInput {
       this.state.isFocused = false;
       this.container.classList.remove('is-focused');
       
+      if (this.config.trim) {
+        const currentValue = this.input.value;
+        const trimmedValue = currentValue.trim();
+        
+        if (currentValue !== trimmedValue) {
+          this.setValue(trimmedValue);
+          if (this.config.onChange) {
+            this.config.onChange(trimmedValue);
+          }
+        }
+      }
+
       if (this.config.onBlur) {
         this.config.onBlur(e);
       }
 
-      if (this.config.validateTrigger === 'blur') {
+      if (triggers.includes('blur')) {
         this.validate();
       }
     });
@@ -134,6 +151,17 @@ export class CommonInput {
         this.input.focus();
       });
     }
+  }
+
+  private getValidationTriggers(): ValidateTrigger[] {
+    if (!this.config.validator) {
+      return [];
+    }
+    if (!this.config.validator.trigger) {
+      return ['blur']; // Default to blur
+    }
+    const trigger = this.config.validator.trigger;
+    return Array.isArray(trigger) ? trigger : [trigger];
   }
 
   private updateClearButtonVisibility(): void {
@@ -192,23 +220,32 @@ export class CommonInput {
     }
 
     try {
-      const isValid = await this.config.validator(this.state.value);
-      this.state.isValid = isValid;
-
-      if (!isValid) {
-        this.container.classList.add('is-error');
-        if (this.config.errorMessage) {
-          this.errorElement.textContent = this.config.errorMessage;
-        }
+      const result = await this.config.validator.validate(this.state.value);
+      
+      if (!result.isValid) {
+        this.setError(result.message || '');
       } else {
-        this.container.classList.remove('is-error');
-        this.errorElement.textContent = '';
+        this.clearError();
       }
 
-      return isValid;
+      return result.isValid;
     } catch (error) {
       console.error('Validation failed:', error);
       return false;
     }
+  }
+
+  public setError(message: string): void {
+    this.state.isValid = false;
+    this.state.errorMessage = message;
+    this.container.classList.add('is-error');
+    this.errorElement.textContent = message;
+  }
+
+  public clearError(): void {
+    this.state.isValid = true;
+    this.state.errorMessage = undefined;
+    this.container.classList.remove('is-error');
+    this.errorElement.textContent = '';
   }
 }

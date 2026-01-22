@@ -1,5 +1,5 @@
-import { SelectConfig, SelectOption, SelectState } from './common-select-types.js';
-import { validateValue, findOption, calculateDropdownPosition } from './common-select-utils.js';
+import { SelectConfig, SelectOption, SelectState, ValidateTrigger } from './common-select-types.js';
+import { findOption, calculateDropdownPosition } from './common-select-utils.js';
 import { createContainer, createTrigger, createDropdown, createOption, createErrorElement } from './common-select-render.js';
 
 export class CommonSelect {
@@ -27,7 +27,6 @@ export class CommonSelect {
     this.config = {
       options: [],
       maxItems: 5,
-      validateTrigger: 'change',
       placeholder: 'Please select',
       ...config
     };
@@ -70,6 +69,8 @@ export class CommonSelect {
   }
 
   private bindEvents() {
+    const triggers = this.getValidationTriggers();
+
     // Trigger click
     this.trigger.addEventListener('click', (e) => {
       if (this.config.disabled) return;
@@ -85,14 +86,22 @@ export class CommonSelect {
       }
     });
     
-    // Focus/Blur for validation if needed
-    if (this.config.onFocus) {
-      this.trigger.addEventListener('focus', this.config.onFocus);
-    }
+    // Focus
+    this.trigger.addEventListener('focus', (e) => {
+      if (this.config.onFocus) {
+        this.config.onFocus(e);
+      }
+      
+      if (triggers.includes('focus')) {
+        this.validate();
+      }
+    });
     
+    // Blur
     this.trigger.addEventListener('blur', (e) => {
       if (this.config.onBlur) this.config.onBlur(e);
-      if (this.config.validateTrigger === 'blur') {
+      
+      if (triggers.includes('blur')) {
         // Delay validation slightly to check if we just clicked an option
         setTimeout(() => {
             if (!this.state.isOpen) {
@@ -101,6 +110,13 @@ export class CommonSelect {
         }, 100);
       }
     });
+  }
+
+  private getValidationTriggers(): ValidateTrigger[] {
+    if (!this.config.validator) return [];
+    if (!this.config.validator.trigger) return ['change']; // Default to change for select
+    const trigger = this.config.validator.trigger;
+    return Array.isArray(trigger) ? trigger : [trigger];
   }
 
   private handleClickOutside(e: MouseEvent) {
@@ -147,9 +163,6 @@ export class CommonSelect {
     this.state.isOpen = false;
     this.wrapper.classList.remove('is-open');
     document.removeEventListener('click', this.boundHandleClickOutside);
-    
-    // Validate on close if trigger is 'blur' effectively (or if we want to validate on selection finished)
-    // Actually, 'change' usually validates immediately. 'blur' validates when leaving.
   }
 
   public setValue(value: string | number | null, emitChange: boolean = true) {
@@ -184,9 +197,14 @@ export class CommonSelect {
       this.config.onChange(value, option);
     }
     
-    if (this.config.validateTrigger === 'change') {
+    const triggers = this.getValidationTriggers();
+    if (triggers.includes('change')) {
       this.validate();
     }
+  }
+
+  public clear() {
+    this.setValue(null);
   }
 
   public getValue(): string | number | null {
@@ -196,9 +214,7 @@ export class CommonSelect {
   public setOptions(options: SelectOption[]) {
     this.config.options = options;
     this.renderOptions();
-    // If current value is no longer valid, should we clear it? 
-    // Usually yes, or keep it but it won't have a label. 
-    // Let's re-set value to refresh label if it exists in new options.
+    // Re-set value to refresh label if it exists in new options.
     this.setValue(this.state.selectedValue, false);
   }
 
@@ -214,22 +230,43 @@ export class CommonSelect {
     }
   }
 
-  public validate(): boolean {
-    const result = validateValue(this.state.selectedValue, this.config.validator);
-    this.state.isValid = result.valid;
-    this.state.errorMessage = result.message || null;
-    
-    if (!result.valid) {
-      this.wrapper.classList.add('is-error');
-      this.errorEl.textContent = result.message || '';
-      this.errorEl.style.display = 'block';
-    } else {
-      this.wrapper.classList.remove('is-error');
-      this.errorEl.textContent = '';
-      this.errorEl.style.display = 'none';
+  public async validate(): Promise<boolean> {
+    if (!this.config.validator) {
+      return true;
     }
     
-    return result.valid;
+    try {
+      const result = await this.config.validator.validate(this.state.selectedValue);
+      this.state.isValid = result.isValid;
+      this.state.errorMessage = result.message || null;
+      
+      if (!result.isValid) {
+        this.setError(result.message || '');
+      } else {
+        this.clearError();
+      }
+      
+      return result.isValid;
+    } catch (e) {
+      console.error('Validation failed', e);
+      return false;
+    }
+  }
+
+  public setError(message: string) {
+    this.state.isValid = false;
+    this.state.errorMessage = message;
+    this.wrapper.classList.add('is-error');
+    this.errorEl.textContent = message;
+    this.errorEl.style.display = 'block';
+  }
+
+  public clearError() {
+    this.state.isValid = true;
+    this.state.errorMessage = null;
+    this.wrapper.classList.remove('is-error');
+    this.errorEl.textContent = '';
+    this.errorEl.style.display = 'none';
   }
 
   private renderOptions() {

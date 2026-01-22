@@ -1,12 +1,4 @@
-import { SelectOption, ValidatorFunction, ValidationResult } from './common-select-types.js';
-
-/**
- * Validates the value using the provided validator function.
- */
-export function validateValue(value: string | number | null, validator?: ValidatorFunction): ValidationResult {
-  if (!validator) return { valid: true };
-  return validator(value);
-}
+import { SelectOption } from './common-select-types.js';
 
 /**
  * Finds an option by value.

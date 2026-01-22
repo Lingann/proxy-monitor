@@ -1,5 +1,17 @@
 export type InputSize = 'small' | 'medium' | 'large';
 
+export type ValidateTrigger = 'change' | 'blur' | 'focus';
+
+export interface ValidationResult {
+  isValid: boolean;
+  message?: string;
+}
+
+export interface InputValidator {
+  trigger?: ValidateTrigger | ValidateTrigger[];
+  validate: (value: string) => ValidationResult | Promise<ValidationResult>;
+}
+
 export interface InputConfig {
   /**
    * Container element to mount the component
@@ -39,6 +51,17 @@ export interface InputConfig {
    * @default false
    */
   clearable?: boolean;
+
+  /**
+   * Maximum length of input
+   */
+  maxLength?: number;
+
+  /**
+   * Whether to trim whitespace on blur
+   * @default false
+   */
+  trim?: boolean;
   
   /**
    * Custom prefix icon (HTML string)
@@ -51,21 +74,9 @@ export interface InputConfig {
   suffixIcon?: string;
   
   /**
-   * Validation function
-   * Return true if valid, false if invalid
+   * Validator configuration
    */
-  validator?: (value: string) => boolean | Promise<boolean>;
-  
-  /**
-   * Error message to show when validation fails
-   */
-  errorMessage?: string;
-  
-  /**
-   * Trigger validation on change or blur
-   * @default 'blur'
-   */
-  validateTrigger?: 'change' | 'blur';
+  validator?: InputValidator;
   
   /**
    * Callback when value changes
