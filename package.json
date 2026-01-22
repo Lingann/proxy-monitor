@@ -4,7 +4,7 @@
   "description": "Network connection monitoring tool built with Electron + TypeScript",
   "main": "dist/main/index.js",
   "scripts": {
-    "dev": "tsc && copy src\\renderer\\app-styles.css dist\\renderer\\ && xcopy /E /I /Y src\\renderer\\templates dist\\renderer\\templates && xcopy /E /I /Y src\\locales dist\\locales && electron .",
+    "dev": "tsc && copy src\\renderer\\app-styles.css dist\\renderer\\ && xcopy /E /I /Y src\\renderer\\templates dist\\renderer\\templates && xcopy /E /I /Y src\\renderer\\lib dist\\renderer\\lib && xcopy /E /I /Y src\\locales dist\\locales && electron .",
     "build": "tsc",
     "start": "electron .",
     "dist": "electron-builder"
@@ -21,7 +21,6 @@
   "devDependencies": {
     "@types/ejs": "^3.1.5",
     "@types/node": "^25.0.10",
-    "@types/sqlite3": "^5.1.0",
     "electron": "^40.0.0",
     "electron-builder": "^26.4.0",
     "typescript": "^5.9.3"
@@ -42,6 +41,7 @@
       "dist/**/*",
       "src/renderer/templates/**/*",
       "src/renderer/app-styles.css",
+      "src/renderer/lib/**/*",
       "src/locales/**/*",
       "package.json"
     ],
@@ -54,6 +54,7 @@
   "dependencies": {
     "ejs": "^4.0.1",
     "electron-ejs": "^1.2.1",
-    "sqlite3": "^5.1.7"
+    "execa": "^9.6.1",
+    "systeminformation": "^5.30.5"
   }
 }

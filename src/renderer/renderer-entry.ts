@@ -35,6 +35,14 @@ const serverTableBody = document.querySelector('#serverTable tbody') as HTMLTabl
 const connectionListEl = document.getElementById('connectionList') as HTMLDivElement;
 const analysisContentEl = document.getElementById('analysisContent') as HTMLDivElement;
 
+// New Monitor Elements
+const monitorListView = document.getElementById('monitor-list-view');
+const monitorDetailsView = document.getElementById('monitor-details-view');
+const backToMonitorBtn = document.getElementById('backToMonitorBtn');
+const actionDropdown = document.getElementById('actionDropdown');
+
+let currentData: any = null;
+
 function showStatus(message: string, type: 'info' | 'success' | 'error'): void {
     if (!statusEl) return;
     statusEl.textContent = message;
@@ -57,10 +65,17 @@ function updateStats(data: any): void {
     if (memoryUsageEl) memoryUsageEl.textContent = `${totalMemory.toFixed(2)} MB`;
 }
 
+function formatSpeed(bytesPerSec: number): string {
+    if (!bytesPerSec) return '0 B/s';
+    if (bytesPerSec < 1024) return Math.round(bytesPerSec) + ' B/s';
+    if (bytesPerSec < 1024 * 1024) return (bytesPerSec / 1024).toFixed(1) + ' KB/s';
+    return (bytesPerSec / 1024 / 1024).toFixed(1) + ' MB/s';
+}
+
 function updateProcessTable(data: any): void {
     if (!processTableBody) return;
     if (data.processes.length === 0) {
-        processTableBody.innerHTML = '<tr><td colspan="4" class="no-data">No processes found</td></tr>';
+        processTableBody.innerHTML = '<tr><td colspan="7" class="no-data">No processes found</td></tr>';
         return;
     }
 
@@ -69,10 +84,28 @@ function updateProcessTable(data: any): void {
             <tr>
                 <td>${proc.pid}</td>
                 <td>${proc.name}</td>
-                <td>${proc.memory.toFixed(2)} MB</td>
-                <td>${proc.establishedConnections}</td>
+                <td>${proc.category || 'Third-party'}</td>
+                <td>${formatSpeed(proc.downloadSpeed)}</td>
+                <td>${formatSpeed(proc.uploadSpeed)}</td>
+                <td>${proc.establishedConnections} / ${proc.totalConnections}</td>
+                <td>
+                    <div class="action-cell">
+                        <button class="btn-icon" onclick="window.showDetails(${proc.pid})" title="View Details">
+                            <i data-feather="info" style="width: 16px; height: 16px;"></i>
+                        </button>
+                        <button class="btn-icon" onclick="window.limitSpeed(${proc.pid})" title="Limit Speed">
+                            <i data-feather="download" style="width: 16px; height: 16px;"></i>
+                        </button>
+                        <button class="btn-icon" onclick="window.toggleDropdown(event, ${proc.pid})" title="More Actions">
+                            <i data-feather="more-horizontal" style="width: 16px; height: 16px;"></i>
+                        </button>
+                    </div>
+                </td>
             </tr>
         `).join('');
+    
+    // Re-initialize icons for new elements
+    if ((window as any).feather) (window as any).feather.replace();
 }
 
 function getPurpose(ports: number[]): string {
@@ -105,7 +138,8 @@ async function analyzeConnections(): Promise<void> {
         showStatus('Analyzing network connections...', 'info');
         if (analyzeBtn) analyzeBtn.disabled = true;
 
-        const data = await window.electronAPI.analyzeConnections();
+        const data = await (window as any).electronAPI.analyzeConnections();
+        currentData = data; // Store for details view
 
         updateStats(data);
         updateProcessTable(data);
@@ -123,13 +157,120 @@ async function analyzeConnections(): Promise<void> {
 if (analyzeBtn) analyzeBtn.addEventListener('click', analyzeConnections);
 if (refreshBtn) refreshBtn.addEventListener('click', analyzeConnections);
 
+// --- New Monitor Features Logic ---
+
+// Expose functions to window for onclick handlers
+(window as any).showDetails = (pid: number) => {
+    if (!currentData) return;
+    const proc = currentData.processes.find((p: any) => p.pid === pid);
+    if (!proc) return;
+
+    // Fill details
+    const nameEl = document.getElementById('detailProcessName');
+    const pidEl = document.getElementById('detailPid');
+    const catEl = document.getElementById('detailCategory');
+    const memEl = document.getElementById('detailMemory');
+    const cpuEl = document.getElementById('detailCpu');
+
+    if (nameEl) nameEl.textContent = proc.name;
+    if (pidEl) pidEl.textContent = proc.pid.toString();
+    if (catEl) catEl.textContent = proc.category || 'Third-party';
+    if (memEl) memEl.textContent = proc.memory + ' MB';
+    if (cpuEl) cpuEl.textContent = proc.cpu ? proc.cpu.toFixed(1) : '0';
+
+    // Fill connections table
+    const connTableBody = document.querySelector('#detailConnectionTable tbody');
+    if (connTableBody) {
+        const conns = currentData.connections.filter((c: any) => c.processId === pid);
+        if (conns.length === 0) {
+            connTableBody.innerHTML = '<tr><td colspan="3" class="no-data">No active connections</td></tr>';
+        } else {
+            connTableBody.innerHTML = conns.map((c: any) => `
+                <tr>
+                    <td>${c.localAddress}:${c.localPort}</td>
+                    <td>${c.remoteAddress}:${c.remotePort}</td>
+                    <td>${c.state}</td>
+                </tr>
+            `).join('');
+        }
+    }
+
+    // Switch view
+    if (monitorListView) monitorListView.style.display = 'none';
+    if (monitorDetailsView) monitorDetailsView.style.display = 'block';
+};
+
+(window as any).limitSpeed = (pid: number) => {
+    // Placeholder for now
+    alert(`Limit Speed feature is not available for process ${pid} (requires system driver).`);
+};
+
+(window as any).toggleDropdown = (event: MouseEvent, pid: number) => {
+    event.stopPropagation();
+    if (!actionDropdown) return;
+    
+    // Position dropdown near the button
+    const btn = (event.currentTarget as HTMLElement);
+    const rect = btn.getBoundingClientRect();
+    
+    // Calculate position relative to viewport/document
+    actionDropdown.style.top = `${rect.bottom + window.scrollY}px`;
+    // Align right edge of dropdown with right edge of button if possible, or left
+    actionDropdown.style.left = `${rect.left + window.scrollX - 120}px`; 
+    actionDropdown.style.display = 'block';
+    
+    // Store current PID
+    actionDropdown.setAttribute('data-pid', pid.toString());
+};
+
+// Back Button Logic
+if (backToMonitorBtn) {
+    backToMonitorBtn.addEventListener('click', () => {
+        if (monitorListView) monitorListView.style.display = 'block';
+        if (monitorDetailsView) monitorDetailsView.style.display = 'none';
+    });
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', () => {
+    if (actionDropdown) actionDropdown.style.display = 'none';
+});
+
+// Dropdown Action Handlers
+if (actionDropdown) {
+    actionDropdown.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const action = target.getAttribute('data-action');
+        const pid = parseInt(actionDropdown.getAttribute('data-pid') || '0');
+        
+        if (!action || !pid) return;
+
+        if (action === 'details') {
+            (window as any).showDetails(pid);
+        } else if (action === 'limit') {
+            (window as any).limitSpeed(pid);
+        } else if (action === 'end') {
+            if (confirm(`Are you sure you want to end process ${pid}?`)) {
+                // Implement IPC call if available, or just alert for now
+                alert(`End process ${pid} requested.`);
+            }
+        } else if (action === 'locate') {
+            alert(`Locating file for process ${pid}...`);
+        } else if (action === 'properties') {
+            alert(`Properties for process ${pid}...`);
+        }
+    });
+}
+
+
 // Settings logic
 const saveSettingsBtn = document.getElementById('saveSettingsBtn') as HTMLButtonElement;
 const languageSelect = document.getElementById('languageSelect') as HTMLSelectElement;
 const settingsStatus = document.getElementById('settingsStatus') as HTMLDivElement;
 
 async function loadSettings() {
-    const settings = await window.electronAPI.getSettings();
+    if (!(window as any).electronAPI) return;
+    const settings = await (window as any).electronAPI.getSettings();
     if (languageSelect) languageSelect.value = settings.locale;
 }
 
@@ -138,7 +279,7 @@ if (saveSettingsBtn) {
         const settings = {
             locale: languageSelect.value
         };
-        const success = await window.electronAPI.saveSettings(settings);
+        const success = await (window as any).electronAPI.saveSettings(settings);
         if (success) {
             if (settingsStatus) {
                 settingsStatus.textContent = 'Settings saved! Reloading...';

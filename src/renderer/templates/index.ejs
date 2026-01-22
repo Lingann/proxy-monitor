@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title><%= t('app.title') %></title>
     <link rel="stylesheet" href="../app-styles.css">
-    <script src="https://unpkg.com/feather-icons"></script>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:;">
+    <script src="../lib/feather.min.js"></script>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:;">
 </head>
 <body>
     <div class="app-container">
@@ -21,6 +21,7 @@
         </main>
     </div>
     <script>
+        var exports = {}; // Shim for CommonJS output
         feather.replace();
     </script>
     <script src="../renderer-entry.js"></script>

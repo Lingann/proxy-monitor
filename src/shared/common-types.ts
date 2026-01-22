@@ -1,8 +1,11 @@
 export interface ProcessInfo {
   pid: number;
   name: string;
+  category: 'System' | 'Third-party';
   cpu: number;
   memory: number;
+  downloadSpeed: number;
+  uploadSpeed: number;
   totalConnections: number;
   establishedConnections: number;
 }
