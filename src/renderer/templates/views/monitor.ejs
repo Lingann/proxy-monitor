@@ -1,0 +1,73 @@
+<h1><%= t('modules.network_monitor') %></h1>
+
+<div class="controls" style="margin-bottom: 20px;">
+    <button id="analyzeBtn" class="btn btn-primary">
+        <i data-feather="activity" style="width: 14px; margin-right: 6px;"></i>
+        <%= t('monitor.analyze') %>
+    </button>
+    <button id="refreshBtn" class="btn">
+        <i data-feather="refresh-cw" style="width: 14px; margin-right: 6px;"></i>
+        <%= t('monitor.refresh') %>
+    </button>
+</div>
+
+<div id="status" class="status"></div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-value" id="processCount">0</div>
+        <div class="stat-label"><%= t('monitor.processes') %></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" id="connectionCount">0</div>
+        <div class="stat-label"><%= t('monitor.connections') %></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" id="serverCount">0</div>
+        <div class="stat-label"><%= t('monitor.servers') %></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" id="memoryUsage">0 MB</div>
+        <div class="stat-label"><%= t('monitor.memory') %></div>
+    </div>
+</div>
+
+<h2><%= t('monitor.processes') %></h2>
+<div class="table-container">
+    <table id="processTable">
+        <thead>
+            <tr>
+                <th>PID</th>
+                <th>Name</th>
+                <th>Memory</th>
+                <th>Connections</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td colspan="4" class="no-data">No data</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h2><%= t('monitor.servers') %></h2>
+<div class="table-container">
+    <table id="serverTable">
+        <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>Ports</th>
+                <th>Count</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td colspan="4" class="no-data">No data</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>Analysis</h2>
+<div id="analysisContent"></div>
+
+<h2><%= t('monitor.connections') %></h2>
+<div id="connectionList"></div>

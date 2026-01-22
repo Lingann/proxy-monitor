@@ -1,0 +1,27 @@
+{
+  "app": {
+    "title": "代理监控"
+  },
+  "modules": {
+    "network_monitor": "网络监控",
+    "settings": "设置"
+  },
+  "monitor": {
+    "analyze": "分析",
+    "refresh": "刷新",
+    "processes": "进程",
+    "connections": "连接",
+    "servers": "服务器",
+    "memory": "内存占用",
+    "status_analyzing": "分析中...",
+    "status_complete": "分析完成！"
+  },
+  "settings": {
+    "title": "应用设置",
+    "language": "语言",
+    "theme": "主题",
+    "process_filters": "进程过滤器",
+    "save": "保存设置",
+    "saved": "设置已保存！"
+  }
+}

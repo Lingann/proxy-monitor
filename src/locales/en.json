@@ -1,0 +1,27 @@
+{
+  "app": {
+    "title": "Proxy Monitor"
+  },
+  "modules": {
+    "network_monitor": "Network Monitor",
+    "settings": "Settings"
+  },
+  "monitor": {
+    "analyze": "Analyze",
+    "refresh": "Refresh",
+    "processes": "Processes",
+    "connections": "Connections",
+    "servers": "Servers",
+    "memory": "Memory Usage",
+    "status_analyzing": "Analyzing...",
+    "status_complete": "Analysis complete!"
+  },
+  "settings": {
+    "title": "Application Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "process_filters": "Process Filters",
+    "save": "Save Settings",
+    "saved": "Settings saved!"
+  }
+}

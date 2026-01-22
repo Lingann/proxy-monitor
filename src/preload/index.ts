@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import type { NetworkAnalysisData, AnalysisConfig } from '../shared/types';
+import type { NetworkAnalysisData, AnalysisConfig } from '../shared/common-types';
 
 contextBridge.exposeInMainWorld('electronAPI', {
   analyzeConnections: (): Promise<NetworkAnalysisData> =>
@@ -8,4 +8,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.invoke('set-filters', filters),
   getConfig: (): Promise<AnalysisConfig> =>
     ipcRenderer.invoke('get-config'),
+  saveSettings: (settings: any): Promise<boolean> => 
+    ipcRenderer.invoke('save-settings', settings),
+  getSettings: (): Promise<any> =>
+    ipcRenderer.invoke('get-settings')
 });

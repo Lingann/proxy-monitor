@@ -1,4 +1,4 @@
-import type { NetworkAnalysisData, AnalysisConfig } from '../shared/types';
+import type { NetworkAnalysisData, AnalysisConfig } from '../shared/common-types';
 
 declare global {
   interface Window {
@@ -6,6 +6,8 @@ declare global {
       analyzeConnections: () => Promise<NetworkAnalysisData>;
       setFilters: (filters: string[]) => Promise<void>;
       getConfig: () => Promise<AnalysisConfig>;
+      saveSettings: (settings: any) => Promise<boolean>;
+      getSettings: () => Promise<any>;
     };
   }
 }
