@@ -4,5 +4,5 @@ export const NetworkMonitorModule: Module = {
     id: 'network-monitor',
     nameKey: 'modules.network_monitor',
     icon: 'activity',
-    viewPath: 'views/monitor'
+    viewPath: 'pages/monitor/monitor'
 };
