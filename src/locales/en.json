@@ -4,7 +4,8 @@
   },
   "modules": {
     "network_monitor": "Network Monitor",
-    "settings": "Settings"
+    "settings": "Settings",
+    "component_library": "Component Library"
   },
   "monitor": {
     "analyze": "Analyze",

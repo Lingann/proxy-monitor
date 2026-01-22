@@ -3,6 +3,7 @@ import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { NetworkMonitor, NetworkMonitorModule } from '../modules/network-monitor/index.js';
 import { SettingsModule } from '../modules/settings/index.js';
+import { ComponentLibraryModule } from '../modules/component-library/index.js';
 import { ConfigManager } from '../core/config-manager.js';
 import { I18nService } from '../core/i18n-service.js';
 import { ModuleManager } from '../core/module-manager.js';
@@ -31,6 +32,7 @@ const databaseService = DatabaseService.getInstance();
 const moduleManager = ModuleManager.getInstance();
 moduleManager.register(NetworkMonitorModule);
 moduleManager.register(SettingsModule);
+moduleManager.register(ComponentLibraryModule);
 
 /* 初始化业务逻辑 */
 const networkMonitor = new NetworkMonitor(configManager.getConfig().processFilters);

@@ -4,7 +4,8 @@
   },
   "modules": {
     "network_monitor": "网络监控",
-    "settings": "设置"
+    "settings": "设置",
+    "component_library": "组件库"
   },
   "monitor": {
     "analyze": "分析",
