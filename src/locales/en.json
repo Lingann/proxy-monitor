@@ -9,6 +9,8 @@
   "monitor": {
     "analyze": "Analyze",
     "refresh": "Refresh",
+    "total_upload": "Total Upload",
+    "total_download": "Total Download",
     "processes": "Processes",
     "connections": "Connections",
     "servers": "Servers",

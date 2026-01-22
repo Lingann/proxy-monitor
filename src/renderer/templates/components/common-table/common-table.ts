@@ -55,11 +55,14 @@ export class CommonTable<T> {
       onSort: (key) => this.handleSort(key),
       onFilter: (key, val) => this.handleFilter(key, val),
       onColumnReorder: (from, to) => this.handleColumnReorder(from, to)
-    }, this.options.draggableColumns);
+    });
 
     this.body = new CommonTableBody<T>(this.options.onRowClick);
     
-    this.pagination = new CommonTablePagination((page) => this.handlePageChange(page));
+    this.pagination = new CommonTablePagination(
+        (page) => this.handlePageChange(page),
+        (pageSize) => this.handlePageSizeChange(pageSize)
+    );
 
     this.initStructure();
     this.render();
@@ -91,9 +94,28 @@ export class CommonTable<T> {
     this.container.appendChild(this.wrapper);
   }
 
-  public setData(data: T[]) {
+  public setData(data: T[], keepPage: boolean = false) {
     this.rawData = data;
-    this.currentPage = 1; // Reset to page 1 on new data
+    
+    if (!keepPage) {
+        this.currentPage = 1;
+    } else {
+        // Ensure current page is valid
+        const pageSize = this.options.pagination?.pageSize || 10;
+        const total = this.rawData.length; // Note: This should be filtered length ideally, but we don't know it yet. 
+                                         // However, render() recalculates everything.
+                                         // But to prevent "empty page" we might need to adjust.
+                                         // Let's rely on render logic to clamp or simple check here.
+                                         // Since we don't know filtered count here, we can't perfectly clamp.
+                                         // But render() resets logic if page is invalid?
+                                         // Actually paginateData in render handles slicing.
+                                         // If page is out of bounds, paginateData might return empty or last page?
+                                         // Let's check paginateData in common-table-data-processor.ts later if needed.
+                                         // For now, if we keep page, we assume the user wants to stay there.
+                                         // If data shrinks significantly, we might show empty table, which is fine, 
+                                         // or we can clamp after processing in render.
+    }
+
     this.render();
   }
 
@@ -102,12 +124,31 @@ export class CommonTable<T> {
     this.render();
   }
 
+  public refresh() {
+      this.render();
+  }
+
+  public reset() {
+      this.sortState = { key: null, direction: 'asc' };
+      this.filters = {};
+      this.currentPage = 1;
+      this.render();
+  }
+
   private render() {
     // 1. Process Data
     let processed = filterData(this.rawData, this.filters);
     processed = sortData(processed, this.sortState);
     
     const total = processed.length;
+    
+    // Clamp current page if needed
+    if (this.options.pagination?.enable) {
+        const maxPage = Math.ceil(total / this.options.pagination.pageSize) || 1;
+        if (this.currentPage > maxPage) {
+            this.currentPage = maxPage;
+        }
+    }
     
     // 2. Paginate
     let currentData = processed;
@@ -149,6 +190,14 @@ export class CommonTable<T> {
   private handlePageChange(page: number) {
     this.currentPage = page;
     this.render();
+  }
+
+  private handlePageSizeChange(pageSize: number) {
+      if (this.options.pagination) {
+          this.options.pagination.pageSize = pageSize;
+          this.currentPage = 1;
+          this.render();
+      }
   }
 
   private handleColumnReorder(fromIndex: number, toIndex: number) {

@@ -9,6 +9,8 @@
   "monitor": {
     "analyze": "分析",
     "refresh": "刷新",
+    "total_upload": "总上传速度",
+    "total_download": "总下载速度",
     "processes": "进程",
     "connections": "连接",
     "servers": "服务器",

@@ -3,11 +3,16 @@ import { PaginationOptions } from './common-table-types.js';
 export class CommonTablePagination {
   private element: HTMLElement;
   private onPageChange: (page: number) => void;
+  private onPageSizeChange?: (pageSize: number) => void;
 
-  constructor(onPageChange: (page: number) => void) {
+  constructor(
+    onPageChange: (page: number) => void,
+    onPageSizeChange?: (pageSize: number) => void
+  ) {
     this.element = document.createElement('div');
     this.element.className = 'common-table-pagination';
     this.onPageChange = onPageChange;
+    this.onPageSizeChange = onPageSizeChange;
   }
 
   public getElement(): HTMLElement {
@@ -28,44 +33,135 @@ export class CommonTablePagination {
     const start = (currentPage - 1) * pageSize + 1;
     const end = Math.min(currentPage * pageSize, total);
 
+    // Left side container for Page Size and Info
+    const leftContainer = document.createElement('div');
+    leftContainer.style.display = 'flex';
+    leftContainer.style.alignItems = 'center';
+    leftContainer.style.gap = '12px';
+
+    // Page Size Select
+    const pageSizeSelect = document.createElement('select');
+    pageSizeSelect.className = 'common-table-pagination__select';
+    [10, 20, 50, 100].forEach(size => {
+        const option = document.createElement('option');
+        option.value = String(size);
+        option.textContent = `${size} / page`;
+        if (size === pageSize) {
+            option.selected = true;
+        }
+        pageSizeSelect.appendChild(option);
+    });
+    
+    pageSizeSelect.onchange = (e) => {
+        const newSize = parseInt((e.target as HTMLSelectElement).value, 10);
+        if (this.onPageSizeChange) {
+            this.onPageSizeChange(newSize);
+        }
+    };
+    leftContainer.appendChild(pageSizeSelect);
+
     // Info Text
     const info = document.createElement('span');
     info.className = 'common-table-pagination__info';
     info.textContent = total > 0 
       ? `${start}-${end} / ${total}`
       : '0 / 0';
-    this.element.appendChild(info);
+    leftContainer.appendChild(info);
+
+    this.element.appendChild(leftContainer);
 
     // Controls Wrapper
     const controls = document.createElement('div');
     controls.className = 'common-table-pagination__controls';
 
-    // Previous Button
-    const prevBtn = this.createButton('<', currentPage === 1, () => {
-      if (currentPage > 1) this.onPageChange(currentPage - 1);
-    });
+    // Prev
+    const prevBtn = this.createButton(
+      '<svg width="12" height="12" viewBox="0 0 1024 1024"><path d="M724 218.3V151c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 335.1c5.3 3.9 12.9 0.4 12.9-6.3v-67.3c0-4.9-2.9-9.6-7.2-12.8L388 512l328.8-380.9c4.3-3.2 7.2-7.9 7.2-12.8z" fill="currentColor"/></svg>', 
+      currentPage === 1, 
+      () => {
+        if (currentPage > 1) this.onPageChange(currentPage - 1);
+      }
+    );
     controls.appendChild(prevBtn);
 
-    // Current Page Indicator
-    const current = document.createElement('span');
-    current.className = 'common-table-pagination__current';
-    current.textContent = String(currentPage);
-    controls.appendChild(current);
-
-    // Next Button
-    const nextBtn = this.createButton('>', currentPage >= totalPages || total === 0, () => {
-      if (currentPage < totalPages) this.onPageChange(currentPage + 1);
+    // Pages
+    const pages = this.generatePageNumbers(currentPage, totalPages);
+    pages.forEach(page => {
+      if (page === '...') {
+        const span = document.createElement('span');
+        span.className = 'common-table-pagination__ellipsis';
+        span.textContent = '...';
+        controls.appendChild(span);
+      } else {
+        const pageBtn = this.createPageButton(
+          Number(page), 
+          Number(page) === currentPage,
+          () => this.onPageChange(Number(page))
+        );
+        controls.appendChild(pageBtn);
+      }
     });
+
+    // Next
+    const nextBtn = this.createButton(
+      '<svg width="12" height="12" viewBox="0 0 1024 1024"><path d="M765.7 486.8L314.9 144.7c-5.3-3.9-12.9-0.4-12.9 6.3v67.3c0 4.9 2.9 9.6 7.2 12.8L636 512l-326.8 380.9c-4.3 3.2-7.2 7.9-7.2 12.8v67.3c0 6.7 7.7 10.4 12.9 6.3l450.8-335.1a31.86 31.86 0 0 0 0-50.3z" fill="currentColor"/></svg>', 
+      currentPage >= totalPages || total === 0, 
+      () => {
+        if (currentPage < totalPages) this.onPageChange(currentPage + 1);
+      }
+    );
     controls.appendChild(nextBtn);
 
     this.element.appendChild(controls);
   }
 
-  private createButton(text: string, disabled: boolean, onClick: () => void): HTMLButtonElement {
+  private generatePageNumbers(current: number, total: number): (number | string)[] {
+    if (total <= 7) {
+      return Array.from({ length: total }, (_, i) => i + 1);
+    }
+
+    const pages: (number | string)[] = [];
+    pages.push(1);
+
+    if (current > 4) {
+      pages.push('...');
+    }
+
+    let start = Math.max(2, current - 2);
+    let end = Math.min(total - 1, current + 2);
+
+    if (current <= 4) {
+      end = 5;
+    }
+    if (current >= total - 3) {
+      start = total - 4;
+    }
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    if (current < total - 3) {
+      pages.push('...');
+    }
+
+    pages.push(total);
+    return pages;
+  }
+
+  private createButton(html: string, disabled: boolean, onClick: () => void): HTMLButtonElement {
     const btn = document.createElement('button');
     btn.className = 'common-table-pagination__btn';
-    btn.textContent = text;
+    btn.innerHTML = html;
     btn.disabled = disabled;
+    btn.onclick = onClick;
+    return btn;
+  }
+
+  private createPageButton(page: number, active: boolean, onClick: () => void): HTMLButtonElement {
+    const btn = document.createElement('button');
+    btn.className = `common-table-pagination__page-btn ${active ? 'active' : ''}`;
+    btn.textContent = String(page);
     btn.onclick = onClick;
     return btn;
   }

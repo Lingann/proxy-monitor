@@ -10,14 +10,11 @@ interface HeaderEvents {
 export class CommonTableHeader<T> {
   private element: HTMLTableSectionElement;
   private events: HeaderEvents;
-  private draggedColIndex: number | null = null;
-  private draggable: boolean;
 
-  constructor(events: HeaderEvents, draggable: boolean = true) {
+  constructor(events: HeaderEvents) {
     this.element = document.createElement('thead');
     this.element.className = 'common-table__header';
     this.events = events;
-    this.draggable = draggable;
   }
 
   public getElement(): HTMLTableSectionElement {
@@ -29,17 +26,10 @@ export class CommonTableHeader<T> {
     const tr = document.createElement('tr');
     tr.className = 'common-table__header-row';
 
-    columns.forEach((col, index) => {
+    columns.forEach((col) => {
       const th = document.createElement('th');
       th.className = 'common-table__th';
       if (col.width) th.style.width = col.width;
-
-      // Drag & Drop
-      if (this.draggable) {
-        th.draggable = true;
-        th.classList.add('common-table__th--draggable');
-        this.setupDragEvents(th, index);
-      }
 
       // Content Container
       const content = document.createElement('div');
@@ -55,71 +45,73 @@ export class CommonTableHeader<T> {
 
       if (col.sortable) {
         th.classList.add('common-table__th--sortable');
-        titleWrapper.onclick = (e) => {
-           // Prevent bubble if clicking filter
-           if ((e.target as HTMLElement).tagName === 'INPUT') return;
+        titleWrapper.onclick = () => {
            this.events.onSort(col.key);
         };
         
+        // Always show sort icon placeholder or active icon
+        const icon = document.createElement('span');
+        icon.className = 'common-table__sort-icon';
+        
         if (sortState.key === col.key) {
-           const icon = document.createElement('span');
-           icon.className = 'common-table__sort-icon';
-           icon.textContent = sortState.direction === 'asc' ? '↑' : '↓';
-           titleWrapper.appendChild(icon);
+           icon.classList.add('active');
+           icon.innerHTML = sortState.direction === 'asc' 
+             ? '<svg width="10" height="10" viewBox="0 0 1024 1024"><path d="M512 320L192 704h640z" fill="currentColor"/></svg>' // Up
+             : '<svg width="10" height="10" viewBox="0 0 1024 1024"><path d="M512 704L192 320h640z" fill="currentColor"/></svg>'; // Down
+        } else {
+           // Default neutral state (double arrow)
+           icon.innerHTML = '<svg width="10" height="10" viewBox="0 0 1024 1024" style="opacity: 0.3"><path d="M512 320L192 640h640z M512 704L192 384h640z" fill="currentColor"/></svg>';
+           // Or just empty if preferred, but usually "sortable" implies visible affordance. 
+           // Let's use a simple up/down stack.
+           icon.innerHTML = '<div style="display:flex;flex-direction:column;line-height:0.5;transform:scale(0.7);opacity:0.3"><svg width="10" height="6" viewBox="0 0 1024 512"><path d="M512 64L128 448h768z" fill="currentColor"/></svg><svg width="10" height="6" viewBox="0 0 1024 512" style="margin-top:2px"><path d="M512 448L128 64h768z" fill="currentColor"/></svg></div>';
         }
+        titleWrapper.appendChild(icon);
       }
       content.appendChild(titleWrapper);
 
-      // Filter
-      if (col.filterable) {
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.className = 'common-table__filter-input';
-        input.placeholder = '...';
-        input.onclick = (e) => e.stopPropagation();
-        input.oninput = (e) => {
-          this.events.onFilter(col.key, (e.target as HTMLInputElement).value);
-        };
-        if (filters[col.key]) {
-          input.value = filters[col.key];
-        }
-        content.appendChild(input);
-      }
-
       th.appendChild(content);
+
+      // Resizer
+      this.setupResize(th);
+
       tr.appendChild(th);
     });
 
     this.element.appendChild(tr);
   }
 
-  private setupDragEvents(th: HTMLElement, index: number) {
-    th.addEventListener('dragstart', (e) => {
-      this.draggedColIndex = index;
-      if (e.dataTransfer) {
-        e.dataTransfer.effectAllowed = 'move';
-      }
-      th.classList.add('common-table__th--dragging');
-    });
+  private setupResize(th: HTMLElement) {
+    const resizer = document.createElement('div');
+    resizer.className = 'common-table__resizer';
+    resizer.onclick = (e) => e.stopPropagation(); // Prevent sort
+    th.appendChild(resizer);
 
-    th.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      if (e.dataTransfer) {
-        e.dataTransfer.dropEffect = 'move';
-      }
-    });
+    let startX = 0;
+    let startWidth = 0;
 
-    th.addEventListener('drop', (e) => {
-      e.stopPropagation();
-      th.classList.remove('common-table__th--dragging');
-      if (this.draggedColIndex !== null && this.draggedColIndex !== index) {
-        this.events.onColumnReorder(this.draggedColIndex, index);
-      }
-      this.draggedColIndex = null;
-    });
+    const onMouseMove = (e: MouseEvent) => {
+        const width = startWidth + (e.clientX - startX);
+        if (width > 50) {
+            th.style.width = `${width}px`;
+        }
+    };
 
-    th.addEventListener('dragend', () => {
-      th.classList.remove('common-table__th--dragging');
+    const onMouseUp = () => {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+        document.body.style.cursor = '';
+        th.classList.remove('common-table__th--resizing');
+    };
+
+    resizer.addEventListener('mousedown', (e) => {
+        e.stopPropagation(); // Prevent sort
+        startX = e.clientX;
+        startWidth = th.offsetWidth;
+        th.classList.add('common-table__th--resizing');
+        document.body.style.cursor = 'col-resize';
+
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
     });
   }
 }

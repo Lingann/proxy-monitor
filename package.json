@@ -53,6 +53,7 @@
     }
   },
   "dependencies": {
+    "echarts": "^6.0.0",
     "ejs": "^4.0.1",
     "electron-ejs": "^1.2.1",
     "execa": "^9.6.1",

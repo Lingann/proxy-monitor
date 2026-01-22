@@ -1,6 +1,10 @@
 import { t } from '../../../utils/index.js';
 import { CommonTable } from '../../components/common-table/common-table.js';
 import { Column } from '../../components/common-table/common-table-types.js';
+import { initChart } from '../../../utils/echarts-theme.js';
+// @ts-ignore
+const echarts = (window as any).echarts;
+
 
 interface ProcessData {
     pid: number;
@@ -38,6 +42,8 @@ let processCountEl: HTMLDivElement;
 let connectionCountEl: HTMLDivElement;
 let serverCountEl: HTMLDivElement;
 let memoryUsageEl: HTMLDivElement;
+let totalUploadEl: HTMLDivElement;
+let totalDownloadEl: HTMLDivElement;
 
 let processTable: CommonTable<ProcessData>;
 let serverTable: CommonTable<ServerGroupData>;
@@ -52,6 +58,11 @@ let backToMonitorBtn: HTMLElement | null;
 let actionDropdown: HTMLElement | null;
 
 let currentData: any = null;
+let trafficChart: any = null;
+let pollInterval: any = null;
+
+const trafficHistory: { time: string; upload: number; download: number }[] = [];
+const MAX_HISTORY = 60;
 
 function showStatus(message: string, type: 'info' | 'success' | 'error'): void {
     if (!statusEl) return;
@@ -68,11 +79,98 @@ function hideStatus(): void {
 
 function updateStats(data: any): void {
     const totalMemory = data.processes.reduce((sum: number, p: any) => sum + p.memory, 0);
+    
+    // Calculate total speeds
+    const totalDownload = data.processes.reduce((sum: number, p: any) => sum + (p.downloadSpeed || 0), 0);
+    const totalUpload = data.processes.reduce((sum: number, p: any) => sum + (p.uploadSpeed || 0), 0);
 
     if (processCountEl) processCountEl.textContent = data.processes.length.toString();
     if (connectionCountEl) connectionCountEl.textContent = data.connections.length.toString();
     if (serverCountEl) serverCountEl.textContent = data.remoteIPGroups.length.toString();
     if (memoryUsageEl) memoryUsageEl.textContent = `${totalMemory.toFixed(2)} MB`;
+    
+    if (totalUploadEl) totalUploadEl.textContent = formatSpeed(totalUpload);
+    if (totalDownloadEl) totalDownloadEl.textContent = formatSpeed(totalDownload);
+
+    updateChart(totalUpload, totalDownload);
+}
+
+function updateChart(upload: number, download: number) {
+    if (!trafficChart) return;
+
+    const now = new Date();
+    const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+
+    trafficHistory.push({
+        time: timeStr,
+        upload: upload,
+        download: download
+    });
+
+    if (trafficHistory.length > MAX_HISTORY) {
+        trafficHistory.shift();
+    }
+
+    const option = {
+        tooltip: {
+            trigger: 'axis',
+            formatter: (params: any) => {
+                let res = `${params[0].name}<br/>`;
+                params.forEach((item: any) => {
+                    res += `${item.marker} ${item.seriesName}: ${formatSpeed(item.value)}<br/>`;
+                });
+                return res;
+            }
+        },
+        legend: {
+            data: [t('monitor.total_upload'), t('monitor.total_download')],
+            bottom: 0
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: trafficHistory.map(item => item.time)
+        },
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                formatter: (value: number) => {
+                    if (value === 0) return '0';
+                    if (value < 1024) return `${value} B/s`;
+                    if (value < 1024 * 1024) return `${(value / 1024).toFixed(1)} KB/s`;
+                    return `${(value / 1024 / 1024).toFixed(1)} MB/s`;
+                }
+            }
+        },
+        series: [
+            {
+                name: t('monitor.total_upload'),
+                type: 'line',
+                data: trafficHistory.map(item => item.upload),
+                itemStyle: { color: '#e03e3e' },
+                areaStyle: {
+                    color: new (window as any).echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: 'rgba(224, 62, 62, 0.3)' },
+                        { offset: 1, color: 'rgba(224, 62, 62, 0.05)' }
+                    ])
+                }
+            },
+            {
+                name: t('monitor.total_download'),
+                type: 'line',
+                data: trafficHistory.map(item => item.download),
+                itemStyle: { color: '#2eaadc' },
+                areaStyle: {
+                    color: new (window as any).echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: 'rgba(46, 170, 220, 0.3)' },
+                        { offset: 1, color: 'rgba(46, 170, 220, 0.05)' }
+                    ])
+                }
+            }
+        ]
+    };
+
+    trafficChart.setOption(option);
 }
 
 function formatSpeed(bytesPerSec: number): string {
@@ -84,7 +182,8 @@ function formatSpeed(bytesPerSec: number): string {
 
 function updateProcessTable(data: any): void {
     if (!processTable) return;
-    processTable.setData(data.processes);
+    // Use keepPage = true to prevent jumping to page 1
+    processTable.setData(data.processes, true);
     if ((window as any).feather) (window as any).feather.replace();
 }
 
@@ -95,10 +194,12 @@ function getPurpose(ports: number[]): string {
     return t('purpose.unknown');
 }
 
-async function analyzeConnections(): Promise<void> {
+async function analyzeConnections(silent: boolean = false): Promise<void> {
     try {
-        showStatus(t('monitor.status_analyzing'), 'info');
-        if (analyzeBtn) analyzeBtn.disabled = true;
+        if (!silent) {
+            showStatus(t('monitor.status_analyzing'), 'info');
+            if (analyzeBtn) analyzeBtn.disabled = true;
+        }
 
         const data = await (window as any).electronAPI.analyzeConnections();
         currentData = data; // Store for details view
@@ -106,12 +207,35 @@ async function analyzeConnections(): Promise<void> {
         updateStats(data);
         updateProcessTable(data);
 
-        showStatus(t('monitor.status_complete_count', { count: data.connections.length }), 'success');
-        setTimeout(hideStatus, 3000);
+        if (!silent) {
+            showStatus(t('monitor.status_complete_count', { count: data.connections.length }), 'success');
+            setTimeout(hideStatus, 3000);
+        }
     } catch (error) {
-        showStatus(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error');
+        if (!silent) {
+            showStatus(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error');
+        } else {
+            console.error('Polling error:', error);
+        }
     } finally {
-        if (analyzeBtn) analyzeBtn.disabled = false;
+        if (!silent && analyzeBtn) analyzeBtn.disabled = false;
+    }
+}
+
+function startPolling() {
+    if (pollInterval) clearInterval(pollInterval);
+    // Initial call
+    analyzeConnections(true);
+    // Poll every 1 second
+    pollInterval = setInterval(() => {
+        analyzeConnections(true);
+    }, 1000);
+}
+
+function stopPolling() {
+    if (pollInterval) {
+        clearInterval(pollInterval);
+        pollInterval = null;
     }
 }
 
@@ -124,8 +248,17 @@ export function initMonitor() {
     connectionCountEl = document.getElementById('connectionCount') as HTMLDivElement;
     serverCountEl = document.getElementById('serverCount') as HTMLDivElement;
     memoryUsageEl = document.getElementById('memoryUsage') as HTMLDivElement;
+    totalUploadEl = document.getElementById('totalUploadSpeed') as HTMLDivElement;
+    totalDownloadEl = document.getElementById('totalDownloadSpeed') as HTMLDivElement;
     
-    // processTableBody = document.querySelector('#processTable tbody') as HTMLTableSectionElement; // Removed
+    // Initialize Chart
+    const chartContainer = document.getElementById('trafficChart');
+    if (chartContainer) {
+        trafficChart = initChart(chartContainer);
+        window.addEventListener('resize', () => {
+            trafficChart?.resize();
+        });
+    }
 
     // Initialize Process Table
     processTable = new CommonTable<ProcessData>('processTableContainer', {
@@ -157,7 +290,7 @@ export function initMonitor() {
         ],
         rowKey: 'pid',
         pagination: { enable: true, pageSize: 10 },
-        height: 'calc(100vh - 350px)'
+        height: 'calc(100vh - 450px)' // Adjusted height for new header
     });
 
     // Initialize Server Table
@@ -191,8 +324,8 @@ export function initMonitor() {
     actionDropdown = document.getElementById('actionDropdown');
 
     // Event Listeners
-    if (analyzeBtn) analyzeBtn.addEventListener('click', analyzeConnections);
-    if (refreshBtn) refreshBtn.addEventListener('click', analyzeConnections);
+    if (analyzeBtn) analyzeBtn.addEventListener('click', () => analyzeConnections(false));
+    if (refreshBtn) refreshBtn.addEventListener('click', () => analyzeConnections(false));
 
     // Expose functions to window
     (window as any).showDetails = (pid: number) => {
@@ -296,4 +429,7 @@ export function initMonitor() {
             }
         });
     }
+
+    // Start polling when initialized
+    startPolling();
 }
