@@ -13,6 +13,7 @@
     "connections": "连接",
     "servers": "服务器",
     "memory": "内存占用",
+    "cpu": "CPU 占用",
     "status_analyzing": "分析中...",
     "status_complete": "分析完成！",
     "status_complete_count": "分析完成！发现 {count} 个活跃连接。"

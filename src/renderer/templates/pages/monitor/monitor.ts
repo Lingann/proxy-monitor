@@ -1,4 +1,33 @@
 import { t } from '../../../utils/index.js';
+import { CommonTable } from '../../components/common-table/common-table.js';
+import { Column } from '../../components/common-table/common-table-types.js';
+
+interface ProcessData {
+    pid: number;
+    name: string;
+    category: string;
+    memory: number;
+    cpu: number;
+    downloadSpeed: number;
+    uploadSpeed: number;
+    establishedConnections: number;
+    totalConnections: number;
+}
+
+interface ServerGroupData {
+    ip: string;
+    ports: Set<number>;
+    count: number;
+}
+
+interface ConnectionData {
+    localAddress: string;
+    localPort: number;
+    remoteAddress: string;
+    remotePort: number;
+    state: string;
+    processId: number;
+}
 
 // DOM Elements
 let analyzeBtn: HTMLButtonElement;
@@ -10,7 +39,10 @@ let connectionCountEl: HTMLDivElement;
 let serverCountEl: HTMLDivElement;
 let memoryUsageEl: HTMLDivElement;
 
-let processTableBody: HTMLTableSectionElement;
+let processTable: CommonTable<ProcessData>;
+let serverTable: CommonTable<ServerGroupData>;
+let connectionTable: CommonTable<ConnectionData>;
+
 let connectionListEl: HTMLDivElement;
 let analysisContentEl: HTMLDivElement;
 
@@ -51,38 +83,8 @@ function formatSpeed(bytesPerSec: number): string {
 }
 
 function updateProcessTable(data: any): void {
-    if (!processTableBody) return;
-    if (data.processes.length === 0) {
-        processTableBody.innerHTML = `<tr><td colspan="7" class="no-data">${t('table.no_processes')}</td></tr>`;
-        return;
-    }
-
-    processTableBody.innerHTML = data.processes
-        .map((proc: any) => `
-            <tr>
-                <td>${proc.pid}</td>
-                <td>${proc.name}</td>
-                <td>${proc.category || t('category.third_party')}</td>
-                <td>${formatSpeed(proc.downloadSpeed)}</td>
-                <td>${formatSpeed(proc.uploadSpeed)}</td>
-                <td>${proc.establishedConnections} / ${proc.totalConnections}</td>
-                <td>
-                    <div class="action-cell">
-                        <button class="btn-icon" onclick="window.showDetails(${proc.pid})" title="${t('actions.view_details')}">
-                            <i data-feather="info" style="width: 16px; height: 16px;"></i>
-                        </button>
-                        <button class="btn-icon" onclick="window.limitSpeed(${proc.pid})" title="${t('actions.limit_speed')}">
-                            <i data-feather="download" style="width: 16px; height: 16px;"></i>
-                        </button>
-                        <button class="btn-icon" onclick="window.toggleDropdown(event, ${proc.pid})" title="${t('actions.more_actions')}">
-                            <i data-feather="more-horizontal" style="width: 16px; height: 16px;"></i>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-        `).join('');
-    
-    // Re-initialize icons for new elements
+    if (!processTable) return;
+    processTable.setData(data.processes);
     if ((window as any).feather) (window as any).feather.replace();
 }
 
@@ -122,7 +124,65 @@ export function initMonitor() {
     connectionCountEl = document.getElementById('connectionCount') as HTMLDivElement;
     serverCountEl = document.getElementById('serverCount') as HTMLDivElement;
     memoryUsageEl = document.getElementById('memoryUsage') as HTMLDivElement;
-    processTableBody = document.querySelector('#processTable tbody') as HTMLTableSectionElement;
+    
+    // processTableBody = document.querySelector('#processTable tbody') as HTMLTableSectionElement; // Removed
+
+    // Initialize Process Table
+    processTable = new CommonTable<ProcessData>('processTableContainer', {
+        columns: [
+            { key: 'pid', title: t('table.pid'), width: '80px', sortable: true },
+            { key: 'name', title: t('table.name'), sortable: true, filterable: true },
+            { key: 'category', title: t('table.category'), sortable: true, render: (val) => val || t('category.third_party') },
+            { key: 'downloadSpeed', title: t('table.download'), sortable: true, render: (val) => formatSpeed(val) },
+            { key: 'uploadSpeed', title: t('table.upload'), sortable: true, render: (val) => formatSpeed(val) },
+            { key: 'connections', title: t('table.connections'), render: (_, row) => `${row.establishedConnections} / ${row.totalConnections}` },
+            { 
+                key: 'actions', 
+                title: t('table.actions'), 
+                width: '120px',
+                render: (_, row) => `
+                    <div class="action-cell">
+                        <button class="btn-icon" onclick="window.showDetails(${row.pid})" title="${t('actions.view_details')}">
+                            <i data-feather="info" style="width: 16px; height: 16px;"></i>
+                        </button>
+                        <button class="btn-icon" onclick="window.limitSpeed(${row.pid})" title="${t('actions.limit_speed')}">
+                            <i data-feather="download" style="width: 16px; height: 16px;"></i>
+                        </button>
+                        <button class="btn-icon" onclick="window.toggleDropdown(event, ${row.pid})" title="${t('actions.more_actions')}">
+                            <i data-feather="more-horizontal" style="width: 16px; height: 16px;"></i>
+                        </button>
+                    </div>
+                `
+            }
+        ],
+        rowKey: 'pid',
+        pagination: { enable: true, pageSize: 10 },
+        height: 'calc(100vh - 350px)'
+    });
+
+    // Initialize Server Table
+    serverTable = new CommonTable<ServerGroupData>('detailServerTableContainer', {
+        columns: [
+            { key: 'ip', title: t('table.ip_address'), sortable: true },
+            { key: 'ports', title: t('table.ports'), render: (val) => Array.from(val).join(', ') },
+            { key: 'count', title: t('table.count'), sortable: true },
+            { key: 'purpose', title: t('table.purpose'), render: (_, row) => getPurpose(Array.from(row.ports)) }
+        ],
+        rowKey: 'ip',
+        pagination: { enable: true, pageSize: 5 }
+    });
+
+    // Initialize Connection Table
+    connectionTable = new CommonTable<ConnectionData>('detailConnectionTableContainer', {
+        columns: [
+            { key: 'local', title: t('table.local_address'), render: (_, row) => `${row.localAddress}:${row.localPort}` },
+            { key: 'remote', title: t('table.remote_address'), render: (_, row) => `${row.remoteAddress}:${row.remotePort}` },
+            { key: 'state', title: t('table.state'), sortable: true }
+        ],
+        rowKey: 'remoteAddress', // Just a placeholder
+        pagination: { enable: true, pageSize: 10 }
+    });
+
     connectionListEl = document.getElementById('connectionList') as HTMLDivElement;
     analysisContentEl = document.getElementById('analysisContent') as HTMLDivElement;
     monitorListView = document.getElementById('monitor-list-view');
@@ -154,54 +214,27 @@ export function initMonitor() {
         if (cpuEl) cpuEl.textContent = proc.cpu ? proc.cpu.toFixed(1) : '0';
 
         // Fill servers table
-        const serverTableBody = document.querySelector('#detailServerTable tbody');
-        if (serverTableBody) {
-            const conns = currentData.connections.filter((c: any) => c.processId === pid);
-            if (conns.length === 0) {
-                serverTableBody.innerHTML = `<tr><td colspan="4" class="no-data">${t('table.no_active_connections')}</td></tr>`;
-            } else {
-                const groups: Record<string, any> = {};
-                conns.forEach((c: any) => {
-                    if (!groups[c.remoteAddress]) {
-                        groups[c.remoteAddress] = {
-                            ip: c.remoteAddress,
-                            ports: new Set(),
-                            count: 0
-                        };
-                    }
-                    groups[c.remoteAddress].ports.add(c.remotePort);
-                    groups[c.remoteAddress].count++;
-                });
-
-                const sortedGroups = Object.values(groups).sort((a: any, b: any) => b.count - a.count);
-
-                serverTableBody.innerHTML = sortedGroups.map((group: any) => `
-                    <tr>
-                        <td>${group.ip}</td>
-                        <td>${Array.from(group.ports).join(', ')}</td>
-                        <td>${group.count}</td>
-                        <td>${getPurpose(Array.from(group.ports) as number[])}</td>
-                    </tr>
-                `).join('');
+        const conns = currentData.connections.filter((c: any) => c.processId === pid);
+        
+        // Prepare server groups
+        const groups: Record<string, ServerGroupData> = {};
+        conns.forEach((c: any) => {
+            if (!groups[c.remoteAddress]) {
+                groups[c.remoteAddress] = {
+                    ip: c.remoteAddress,
+                    ports: new Set<number>(),
+                    count: 0
+                };
             }
-        }
+            groups[c.remoteAddress].ports.add(c.remotePort);
+            groups[c.remoteAddress].count++;
+        });
+
+        const sortedGroups = Object.values(groups).sort((a, b) => b.count - a.count);
+        if (serverTable) serverTable.setData(sortedGroups);
 
         // Fill connections table
-        const connTableBody = document.querySelector('#detailConnectionTable tbody');
-        if (connTableBody) {
-            const conns = currentData.connections.filter((c: any) => c.processId === pid);
-            if (conns.length === 0) {
-                connTableBody.innerHTML = `<tr><td colspan="3" class="no-data">${t('table.no_active_connections')}</td></tr>`;
-            } else {
-                connTableBody.innerHTML = conns.map((c: any) => `
-                    <tr>
-                        <td>${c.localAddress}:${c.localPort}</td>
-                        <td>${c.remoteAddress}:${c.remotePort}</td>
-                        <td>${c.state}</td>
-                    </tr>
-                `).join('');
-            }
-        }
+        if (connectionTable) connectionTable.setData(conns);
 
         // Switch view
         if (monitorListView) monitorListView!.style.display = 'none';

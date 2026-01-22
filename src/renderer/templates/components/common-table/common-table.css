@@ -1,0 +1,214 @@
+:root {
+  /* Default variables (Light Mode) */
+  --common-table-color-bg: var(--bg-primary, #ffffff);
+  --common-table-color-bg-secondary: var(--bg-secondary, #f5f5f5);
+  --common-table-color-bg-hover: var(--hover-bg, #e6e6e6);
+  --common-table-color-text: var(--text-primary, #333333);
+  --common-table-color-text-secondary: var(--text-secondary, #666666);
+  --common-table-color-border: var(--border-color, #dddddd);
+  --common-table-size-font: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --common-table-color-bg: var(--bg-primary, #1e1e1e);
+    --common-table-color-bg-secondary: var(--bg-secondary, #252526);
+    --common-table-color-bg-hover: var(--hover-bg, #2a2d2e);
+    --common-table-color-text: var(--text-primary, #d4d4d4);
+    --common-table-color-text-secondary: var(--text-secondary, #a0a0a0);
+    --common-table-color-border: var(--border-color, #333333);
+  }
+}
+
+.common-table-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--common-table-color-bg);
+  color: var(--common-table-color-text);
+  border: 1px solid var(--common-table-color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Table Container */
+.common-table-container {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+.common-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: var(--common-table-size-font);
+}
+
+/* Header */
+.common-table__header {
+  background-color: var(--common-table-color-bg-secondary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.common-table__th {
+  padding: 12px 16px;
+  font-weight: 600;
+  color: var(--common-table-color-text-secondary);
+  border-bottom: 1px solid var(--common-table-color-border);
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.common-table__th-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.common-table__th-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.common-table__th--sortable .common-table__th-title {
+  cursor: pointer;
+}
+
+.common-table__th--sortable .common-table__th-title:hover {
+    color: var(--common-table-color-text);
+}
+
+.common-table__th--draggable {
+  cursor: grab;
+}
+
+.common-table__th--dragging {
+  opacity: 0.5;
+  background-color: var(--common-table-color-bg-hover);
+}
+
+.common-table__sort-icon {
+  font-size: 12px;
+}
+
+.common-table__filter-input {
+    margin-left: 8px;
+    padding: 2px 4px;
+    font-size: 12px;
+    border: 1px solid var(--common-table-color-border);
+    border-radius: 3px;
+    width: 60px;
+    background-color: var(--common-table-color-bg);
+    color: var(--common-table-color-text);
+}
+
+/* Body */
+.common-table__body {
+  background-color: var(--common-table-color-bg);
+}
+
+.common-table__row {
+  border-bottom: 1px solid var(--common-table-color-border);
+  transition: background-color 0.2s;
+}
+
+.common-table__row:last-child {
+  border-bottom: none;
+}
+
+.common-table__row--clickable {
+    cursor: pointer;
+}
+
+.common-table__row--clickable:hover {
+  background-color: var(--common-table-color-bg-hover);
+}
+
+.common-table__cell {
+  padding: 10px 16px;
+  color: var(--common-table-color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Empty State */
+.common-table__empty {
+  padding: 40px;
+  text-align: center;
+  color: var(--common-table-color-text-secondary);
+}
+
+/* Pagination */
+.common-table-pagination {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--common-table-color-border);
+  background-color: var(--common-table-color-bg);
+}
+
+.common-table-pagination__info {
+  color: var(--common-table-color-text-secondary);
+  font-size: 13px;
+}
+
+.common-table-pagination__controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.common-table-pagination__btn {
+  padding: 4px 10px;
+  border: 1px solid var(--common-table-color-border);
+  background-color: var(--common-table-color-bg-secondary);
+  color: var(--common-table-color-text);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.common-table-pagination__btn:hover:not(:disabled) {
+  background-color: var(--common-table-color-bg-hover);
+}
+
+.common-table-pagination__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.common-table-pagination__current {
+  padding: 4px 8px;
+  font-weight: 600;
+  color: var(--common-table-color-text);
+}
+
+/* Skeleton Loading */
+.common-table__skeleton-bar {
+    height: 16px;
+    width: 80%;
+    background: linear-gradient(90deg, 
+        var(--common-table-color-bg-secondary) 25%, 
+        var(--common-table-color-bg-hover) 50%, 
+        var(--common-table-color-bg-secondary) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}

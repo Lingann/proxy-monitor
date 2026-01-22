@@ -13,6 +13,7 @@
     "connections": "Connections",
     "servers": "Servers",
     "memory": "Memory Usage",
+    "cpu": "CPU Usage",
     "status_analyzing": "Analyzing...",
     "status_complete": "Analysis complete!",
     "status_complete_count": "Analysis complete! Found {count} active connections."

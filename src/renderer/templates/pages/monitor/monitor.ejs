@@ -37,24 +37,7 @@
     </div>
 
     <h2><%= t('monitor.processes') %></h2>
-    <div class="table-container">
-        <table id="processTable">
-            <thead>
-                <tr>
-                    <th><%= t('table.pid') %></th>
-                    <th><%= t('table.name') %></th>
-                    <th><%= t('table.category') %></th>
-                    <th><%= t('table.download') %></th>
-                    <th><%= t('table.upload') %></th>
-                    <th><%= t('table.connections') %></th>
-                    <th><%= t('table.actions') %></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td colspan="7" class="no-data"><%= t('table.no_data') %></td></tr>
-            </tbody>
-        </table>
-    </div>
+    <div id="processTableContainer"></div>
 </div>
 
 <!-- Details View -->
@@ -72,45 +55,22 @@
             <p><strong><%= t('table.pid') %>:</strong> <span id="detailPid"></span></p>
             <p><strong><%= t('table.category') %>:</strong> <span id="detailCategory"></span></p>
             <p><strong><%= t('monitor.memory') %>:</strong> <span id="detailMemory"></span></p>
-            <p><strong>CPU:</strong> <span id="detailCpu"></span>%</p>
+            <p><strong><%= t('monitor.cpu') %>:</strong> <span id="detailCpu"></span>%</p>
         </div>
 
         <h3><%= t('details.process_servers') %></h3>
-        <div class="table-container">
-            <table id="detailServerTable">
-                <thead>
-                    <tr>
-                        <th><%= t('table.ip_address') %></th>
-                        <th><%= t('table.ports') %></th>
-                        <th><%= t('table.count') %></th>
-                        <th><%= t('table.purpose') %></th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+        <div id="detailServerTableContainer"></div>
 
         <h3><%= t('details.active_connections') %></h3>
-        <div class="table-container">
-            <table id="detailConnectionTable">
-                <thead>
-                    <tr>
-                        <th><%= t('table.local_address') %></th>
-                        <th><%= t('table.remote_address') %></th>
-                        <th><%= t('table.state') %></th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+        <div id="detailConnectionTableContainer"></div>
     </div>
 </div>
 
 <!-- Dropdown Menu Template (Hidden) -->
 <div id="actionDropdown" class="dropdown-menu" style="display: none;">
-    <div class="dropdown-item" data-action="details">View Details</div>
-    <div class="dropdown-item" data-action="limit">Limit Speed</div>
-    <div class="dropdown-item" data-action="end">End Process</div>
-    <div class="dropdown-item" data-action="locate">Locate File</div>
-    <div class="dropdown-item" data-action="properties">Properties</div>
+    <div class="dropdown-item" data-action="details"><%= t('actions.view_details') %></div>
+    <div class="dropdown-item" data-action="limit"><%= t('actions.limit_speed') %></div>
+    <div class="dropdown-item" data-action="end"><%= t('actions.end_process') %></div>
+    <div class="dropdown-item" data-action="locate"><%= t('actions.locate_file') %></div>
+    <div class="dropdown-item" data-action="properties"><%= t('actions.properties') %></div>
 </div>
