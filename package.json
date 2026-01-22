@@ -59,6 +59,7 @@
     "ejs": "^4.0.1",
     "electron-ejs": "^1.2.1",
     "execa": "^9.6.1",
+    "fuse.js": "^7.1.0",
     "systeminformation": "^5.30.5"
   }
 }
