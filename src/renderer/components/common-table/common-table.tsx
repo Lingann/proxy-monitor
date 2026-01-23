@@ -1,96 +1,77 @@
-import { defineComponent, PropType, computed, ref, watch } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { ArrowUp, ArrowDown } from 'lucide-vue-next';
 import CommonTablePagination from '../common-table-pagination/common-table-pagination';
+import { TableColumn, TablePagination } from './types';
+import { useTableConfig } from './composables/use-table-config';
+import { useTableState } from './composables/use-table-state';
+import { useTableData } from './composables/use-table-data';
+import { useTableEvents } from './composables/use-table-events';
 import './common-table.scss';
-
-export interface Column<T = any> {
-  key: string;
-  title: string;
-  width?: string;
-  sortable?: boolean;
-  render?: (value: any, row: T) => any; // Return JSX or string
-}
-
-export interface TableOptions<T> {
-  columns: Column<T>[];
-  data?: T[];
-  loading?: boolean;
-  pagination?: {
-      enable: boolean;
-      pageSize: number;
-  };
-  height?: string;
-}
 
 export default defineComponent({
   name: 'CommonTable',
   props: {
-    columns: { type: Array as PropType<Column[]>, required: true },
+    columns: { type: Array as PropType<TableColumn[]>, required: true },
     data: { type: Array as PropType<any[]>, default: () => [] },
     loading: { type: Boolean, default: false },
-    pagination: { type: Object as PropType<{ enable: boolean; pageSize: number }>, default: () => ({ enable: true, pageSize: 10 }) },
+    pagination: { type: Object as PropType<Partial<TablePagination>>, default: () => ({ enable: true, pageSize: 10 }) },
     height: { type: String, default: 'auto' }
   },
   setup(props) {
     const { t } = useI18n();
-    const currentPage = ref(1);
-    const pageSize = ref(props.pagination.pageSize || 10);
-    const sortKey = ref<string | null>(null);
-    const sortDirection = ref<'asc' | 'desc'>('asc');
 
-    watch(() => props.pagination.pageSize, (val) => {
-        if (val) pageSize.value = val;
-    });
+    /* 1. Configuration */
+    const { mergedConfig } = useTableConfig(props);
 
-    const processedData = computed(() => {
-        let res = [...props.data];
-        
-        // Sort
-        if (sortKey.value) {
-            res.sort((a, b) => {
-                const va = a[sortKey.value!];
-                const vb = b[sortKey.value!];
-                if (va === vb) return 0;
-                const modifier = sortDirection.value === 'asc' ? 1 : -1;
-                return va > vb ? modifier : -modifier;
-            });
-        }
-        
-        return res;
-    });
+    /* 2. State */
+    const { 
+        currentPage, 
+        pageSize, 
+        sortKey, 
+        sortDirection 
+    } = useTableState(mergedConfig);
 
-    const paginatedData = computed(() => {
-        if (!props.pagination.enable) return processedData.value;
-        const start = (currentPage.value - 1) * pageSize.value;
-        return processedData.value.slice(start, start + pageSize.value);
-    });
+    /* 3. Data Processing */
+    const { 
+        processedData, 
+        paginatedData 
+    } = useTableData(
+        mergedConfig, 
+        sortKey, 
+        sortDirection, 
+        currentPage, 
+        pageSize
+    );
 
-    const handleSort = (key: string) => {
-        if (sortKey.value === key) {
-            sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc';
-        } else {
-            sortKey.value = key;
-            sortDirection.value = 'asc';
-        }
-    };
+    /* 4. Events */
+    const { 
+        handleSort, 
+        handlePageChange, 
+        handlePageSizeChange 
+    } = useTableEvents(
+        sortKey, 
+        sortDirection, 
+        currentPage, 
+        pageSize
+    );
 
     return () => (
-      <div class="common-table-wrapper" style={{ height: props.height }}>
+      <div class="common-table-wrapper" style={{ height: mergedConfig.value.height }}>
          <div class="common-table-container">
             <table class="common-table">
                 <thead>
                     <tr>
-                        {props.columns.map(col => (
+                        {mergedConfig.value.columns.map(col => (
                             <th 
                                 style={{ width: col.width }}
                                 onClick={() => col.sortable && handleSort(col.key)}
                                 class={{ 'is-sortable': col.sortable }}
                             >
-                                <div class="th-content">
+                                <div class="common-table__th-content">
                                     {col.title}
                                     {col.sortable && sortKey.value === col.key && (
-                                        <span class="sort-icon">
+                                        <span class="common-table__sort-icon">
                                             {sortDirection.value === 'asc' ? <ArrowUp size={14}/> : <ArrowDown size={14}/>}
                                         </span>
                                     )}
@@ -100,18 +81,18 @@ export default defineComponent({
                     </tr>
                 </thead>
                 <tbody>
-                    {props.loading ? (
+                    {mergedConfig.value.loading ? (
                         <tr>
-                            <td colspan={props.columns.length} class="loading-cell">{t('common.loading')}</td>
+                            <td colspan={mergedConfig.value.columns.length} class="common-table__loading-cell">{t('common.loading')}</td>
                         </tr>
                     ) : paginatedData.value.length === 0 ? (
                         <tr>
-                            <td colspan={props.columns.length} class="empty-cell">{t('table.no_data')}</td>
+                            <td colspan={mergedConfig.value.columns.length} class="common-table__empty-cell">{t('table.no_data')}</td>
                         </tr>
                     ) : (
                         paginatedData.value.map((row, rowIndex) => (
                             <tr key={rowIndex}>
-                                {props.columns.map(col => (
+                                {mergedConfig.value.columns.map(col => (
                                     <td>
                                         {col.render ? col.render(row[col.key], row) : row[col.key]}
                                     </td>
@@ -123,13 +104,13 @@ export default defineComponent({
             </table>
          </div>
          
-         {props.pagination.enable && (
+         {mergedConfig.value.pagination.enable && (
              <CommonTablePagination 
                  total={processedData.value.length}
                  currentPage={currentPage.value}
                  pageSize={pageSize.value}
-                 onUpdateCurrentPage={(val) => currentPage.value = val}
-                 onUpdatePageSize={(val) => pageSize.value = val}
+                 onUpdateCurrentPage={handlePageChange}
+                 onUpdatePageSize={handlePageSizeChange}
              />
          )}
       </div>

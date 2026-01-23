@@ -35,7 +35,6 @@
   overflow: hidden;
 }
 
-/* Table Container */
 .common-table-container {
   flex: 1;
   overflow: auto;
@@ -47,77 +46,66 @@
   border-collapse: collapse;
   text-align: left;
   font-size: var(--common-table-size-font);
-  table-layout: fixed; /* Important for resizing */
-}
+  table-layout: fixed;
 
-/* Header */
-.common-table__header {
-  background-color: var(--common-table-color-bg-secondary);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
+  th {
+    padding: 12px 16px;
+    font-weight: 600;
+    color: var(--common-table-color-text-secondary);
+    border-bottom: 1px solid var(--common-table-color-border);
+    white-space: nowrap;
+    user-select: none;
+    position: sticky;
+    top: 0;
+    background: var(--common-table-color-bg-secondary);
+    z-index: 1;
 
-/* Original css used th, let's target th in common-table */
-.common-table th {
-  padding: 12px 16px;
-  font-weight: 600;
-  color: var(--common-table-color-text-secondary);
-  border-bottom: 1px solid var(--common-table-color-border);
-  white-space: nowrap;
-  user-select: none;
-  position: sticky; /* Make sure it sticks */
-  top: 0;
-  background: var(--common-table-color-bg-secondary);
-  z-index: 1;
-}
+    &.is-sortable {
+      cursor: pointer;
+      &:hover {
+        color: var(--common-table-color-text);
+      }
+    }
+  }
 
-.common-table th.is-sortable {
-    cursor: pointer;
-}
+  tbody tr {
+    border-bottom: 1px solid var(--common-table-color-border);
+    transition: background-color 0.2s;
 
-.common-table th.is-sortable:hover {
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: var(--common-table-color-bg-hover);
+    }
+  }
+
+  td {
+    padding: 10px 16px;
     color: var(--common-table-color-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
-.th-content {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+.common-table__th-content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.sort-icon {
+.common-table__sort-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--common-table-color-primary);
 }
 
-/* Body */
-.common-table tbody tr {
-  border-bottom: 1px solid var(--common-table-color-border);
-  transition: background-color 0.2s;
-}
-
-.common-table tbody tr:last-child {
-  border-bottom: none;
-}
-
-.common-table tbody tr:hover {
-  background-color: var(--common-table-color-bg-hover);
-}
-
-.common-table td {
-  padding: 10px 16px;
-  color: var(--common-table-color-text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Empty / Loading */
-.loading-cell, .empty-cell {
-    text-align: center;
-    padding: 40px;
-    color: var(--common-table-color-text-secondary);
+.common-table__loading-cell,
+.common-table__empty-cell {
+  text-align: center;
+  padding: 40px;
+  color: var(--common-table-color-text-secondary);
 }

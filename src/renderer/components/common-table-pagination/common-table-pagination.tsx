@@ -1,7 +1,10 @@
-import { defineComponent, PropType, computed } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-vue-next';
 import CommonSelect from '../common-select/common-select';
+import { PaginationProps } from './types';
+import { usePaginationState } from './composables/use-pagination-state';
+import { usePaginationEvents } from './composables/use-pagination-events';
 import './common-table-pagination.scss';
 
 export default defineComponent({
@@ -15,21 +18,14 @@ export default defineComponent({
     onUpdatePageSize: Function as PropType<(val: number) => void>,
     onChange: Function as PropType<(page: number, size: number) => void>
   },
-  setup(props) {
+  setup(props: PaginationProps) {
     const { t } = useI18n();
-    const totalPages = computed(() => Math.ceil(props.total / props.pageSize) || 1);
-    
-    const handlePageChange = (page: number) => {
-        if (page < 1 || page > totalPages.value) return;
-        props.onUpdateCurrentPage?.(page);
-        props.onChange?.(page, props.pageSize);
-    };
 
-    const handleSizeChange = (val: any) => {
-        const size = Number(val);
-        props.onUpdatePageSize?.(size);
-        props.onChange?.(1, size); // Reset to page 1
-    };
+    /* 1. 分页状态 */
+    const { totalPages } = usePaginationState(props);
+
+    /* 2. 事件处理 */
+    const { handlePageChange, handleSizeChange } = usePaginationEvents(props, totalPages);
 
     return () => (
       <div class="common-table-pagination">
@@ -39,7 +35,10 @@ export default defineComponent({
          <div class="common-table-pagination__size">
              <CommonSelect 
                config={{
-                   options: props.pageSizeOptions.map(s => ({ label: `${s} / ${t('common.page') || 'page'}`, value: s })),
+                   options: (props.pageSizeOptions || [10, 20, 50, 100]).map(s => ({ 
+                     label: `${s} / ${t('common.page') || 'page'}`, 
+                     value: s 
+                   })),
                    size: 'small',
                    width: 120,
                    clearable: false
