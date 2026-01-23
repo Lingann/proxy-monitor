@@ -1,4 +1,11 @@
 {
+  "common": {
+    "loading": "加载中...",
+    "no_results": "无结果",
+    "please_select": "请选择",
+    "no_options": "无选项",
+    "total": "共"
+  },
   "app": {
     "title": "代理监控"
   },

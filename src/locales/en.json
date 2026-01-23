@@ -1,4 +1,11 @@
 {
+  "common": {
+    "loading": "Loading...",
+    "no_results": "No results",
+    "please_select": "Please select",
+    "no_options": "No options",
+    "total": "Total"
+  },
   "app": {
     "title": "Proxy Monitor"
   },

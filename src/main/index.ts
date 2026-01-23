@@ -8,7 +8,6 @@ import { ConfigManager } from '../core/config-manager.js';
 import { I18nService } from '../core/i18n-service.js';
 import { ModuleManager } from '../core/module-manager.js';
 import { DatabaseService } from '../core/database-service.js';
-import ejs from 'electron-ejs';
 import { ensureElevation } from './elevation.js';
 
 // Ensure admin privileges on Windows
@@ -37,15 +36,6 @@ moduleManager.register(ComponentLibraryModule);
 /* 初始化业务逻辑 */
 const networkMonitor = new NetworkMonitor(configManager.getConfig().processFilters);
 
-/* 设置 EJS 模板引擎 */
-const ejsInstance = new ejs({
-    modules: moduleManager.getModules(),
-    t: (key: string) => i18nService.t(key),
-    translations: i18nService.getTranslations()
-}, {
-    root: path.join(__dirname, '../renderer/templates')
-});
-
 function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: 1400,
@@ -59,11 +49,11 @@ function createWindow(): void {
   });
 
   if (process.env.NODE_ENV === 'development') {
+    mainWindow.loadURL('http://localhost:5173');
     mainWindow.webContents.openDevTools();
+  } else {
+    mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'));
   }
-
-  const templatePath = path.join(__dirname, '../renderer/templates/index.ejs');
-  mainWindow.loadURL(`file://${templatePath}`);
 
   mainWindow.on('closed', () => {
     mainWindow = null;
