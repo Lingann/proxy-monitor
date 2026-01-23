@@ -1,6 +1,5 @@
 ---
-alwaysApply: false
-description: 
+alwaysApply: true
 ---
 @name-rules
 

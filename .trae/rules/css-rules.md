@@ -1,6 +1,5 @@
 ---
-alwaysApply: false
-description: 
+alwaysApply: true
 ---
 @css-rules
 1. 优先使用Grid布局、Flex布局 来实现页面布局，避免使用float、inline-block 等布局方式。
