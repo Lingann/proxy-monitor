@@ -1,10 +1,10 @@
 @code-rules
 
-关键： 在开始写代码之前，始终要先分析可用的skills， 并根据skills 来执行指令，避免揣测。
-skills目录在 .trae/skills 目录下。
+关键： 在开始写代码之前，始终要先分析可用的skills， 并根据skills 来执行指令，避免揣测。skills目录在 .trae/skills 目录下。 其中./trae/skills/code-style-skill 和 ./trae/skills/naming-skill 是必须要有且必须遵守的的。
 
 1. 禁止在代码中过渡使用嵌套，保持代码的可读性和简洁性
 2. 优先使用卫语句（Guard Clauses）来处理边界情况，避免使用嵌套的 if 语句。
+
 3. 使用提前返回（Early Returns）来处理简单的情况，避免使用复杂的嵌套结构。
 4. 避免在循环中使用复杂的逻辑，保持循环的简洁性。
 5. 及时清理不再需要的变量和资源，避免内存泄漏。

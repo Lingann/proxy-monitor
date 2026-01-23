@@ -9,6 +9,11 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [vue(), vueJsx()],
+  css: {
+    modules: {
+      localsConvention: 'camelCase'
+    }
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src/renderer'),

@@ -94,11 +94,10 @@
 }
 
 .common-select__arrow {
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 5px solid var(--select-placeholder);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--select-placeholder);
   transition: transform 0.2s ease;
   transform-origin: center;
 }
