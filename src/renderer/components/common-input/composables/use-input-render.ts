@@ -9,6 +9,7 @@ export function useInputRender(
   errorMessage: Ref<string>,
   slots: SetupContext['slots']
 ) {
+  /* 计算容器类名 */
   const containerClasses = computed(() => [
     'common-input',
     `is-${mergedConfig.value.size}`,

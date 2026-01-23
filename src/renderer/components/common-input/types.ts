@@ -1,4 +1,6 @@
 
+import { Component, VNode } from 'vue';
+
 export type InputSize = 'small' | 'medium' | 'large';
 
 export type ValidateTrigger = 'change' | 'blur' | 'focus';
@@ -14,59 +16,39 @@ export interface InputValidator {
 }
 
 export interface InputConfig {
-  /**
-   * Input size
-   * @default 'medium'
-   */
+  /* 输入框尺寸 */
+  /* @default 'medium' */
   size?: InputSize;
   
-  /**
-   * Input placeholder
-   */
+  /* 输入框占位符 */
   placeholder?: string;
   
-  /**
-   * Input type
-   * @default 'text'
-   */
+  /* 输入框类型 */
+  /* @default 'text' */
   type?: 'text' | 'password' | 'number' | 'email' | 'tel' | 'url';
   
-  /**
-   * Whether the input is disabled
-   * @default false
-   */
+  /* 是否禁用 */
+  /* @default false */
   disabled?: boolean;
   
-  /**
-   * Whether to show a clear button when input has value
-   * @default false
-   */
+  /* 是否显示清除按钮 */
+  /* @default false */
   clearable?: boolean;
 
-  /**
-   * Maximum length of input
-   */
+  /* 最大长度 */
   maxLength?: number;
 
-  /**
-   * Whether to trim whitespace on blur
-   * @default false
-   */
+  /* 失去焦点时是否自动去除首尾空格 */
+  /* @default false */
   trim?: boolean;
   
-  /**
-   * Custom prefix icon (Component or VNode)
-   */
-  prefixIcon?: any;
+  /* 自定义前缀图标 (组件或 VNode) */
+  prefixIcon?: Component | VNode;
   
-  /**
-   * Custom suffix icon (Component or VNode)
-   */
-  suffixIcon?: any;
+  /* 自定义后缀图标 (组件或 VNode) */
+  suffixIcon?: Component | VNode;
   
-  /**
-   * Validator configuration
-   */
+  /* 验证器配置 */
   validator?: InputValidator;
 }
 

@@ -28,13 +28,13 @@ export default defineComponent({
     onClear: Function as PropType<() => void>
   },
   setup(props, { expose, slots }) {
-    // 1. Config & Triggers
+    /* 1. 配置和触发器 */
     const { mergedConfig, triggers } = useInputConfig(props);
 
-    // 2. Component State (Ref & Focus)
+    /* 2. 组件状态 (Ref & Focus) */
     const { inputRef, isFocused, focus, blur } = useInputState();
 
-    // 3. Validation Logic
+    /* 3. 验证逻辑 */
     const { 
       isValid, 
       errorMessage, 
@@ -43,7 +43,7 @@ export default defineComponent({
       clearError 
     } = useInputValidation(() => props.modelValue, mergedConfig);
 
-    // 4. Event Handlers
+    /* 4. 事件处理 */
     const {
       handleInput,
       handleFocus,
@@ -59,7 +59,7 @@ export default defineComponent({
       focusInput: focus
     });
 
-    // 5. Render Logic
+    /* 5. 渲染逻辑 */
     const {
       containerClasses,
       showPrefix,
@@ -68,13 +68,13 @@ export default defineComponent({
       showError
     } = useInputRender(props, mergedConfig, isFocused, isValid, errorMessage, slots);
 
-    // Expose public methods
+    /* 暴露公共方法 */
     expose({ focus, blur, validate, setError, clearError });
 
     return () => (
       <div class={containerClasses.value}>
         <div class="common-input__wrapper">
-          {/* Prefix Icon: Prop or Slot */}
+          {/* 前缀图标: Prop 或 Slot */}
           {showPrefix.value && (
             <div class="common-input__icon common-input__icon--prefix">
               {slots.prefix ? slots.prefix() : renderIcon(mergedConfig.value.prefixIcon)}
@@ -95,14 +95,14 @@ export default defineComponent({
             onKeydown={handleKeydown}
           />
 
-          {/* Clear Button */}
+          {/* 清除按钮 */}
           {showClear.value && (
             <div class="common-input__icon common-input__icon--clear" onClick={handleClear}>
               <X size={14} />
             </div>
           )}
           
-          {/* Suffix Icon: Prop or Slot */}
+          {/* 后缀图标: Prop 或 Slot */}
           {showSuffix.value && (
             <div class="common-input__icon common-input__icon--suffix">
               {slots.suffix ? slots.suffix() : renderIcon(mergedConfig.value.suffixIcon)}
@@ -110,7 +110,7 @@ export default defineComponent({
           )}
         </div>
         
-        {/* Error Message */}
+        {/* 错误消息 */}
         {showError.value && (
           <div class="common-input__error">{errorMessage.value}</div>
         )}

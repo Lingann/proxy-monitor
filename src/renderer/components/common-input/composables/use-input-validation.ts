@@ -9,17 +9,21 @@ export function useInputValidation(
   const errorMessage = ref('');
 
   const validate = async (): Promise<boolean> => {
+    /* 如果没有配置验证器，直接返回 true */
     if (!config.value.validator) {
       return true;
     }
 
     try {
       const result = await config.value.validator.validate(getValue());
+      
       isValid.value = result.isValid;
       errorMessage.value = result.message || '';
+      
       return result.isValid;
     } catch (error) {
       console.error('Validation failed:', error);
+      
       return false;
     }
   };

@@ -51,9 +51,10 @@ export function useInputEvents({
   const handleBlur = (e: FocusEvent) => {
     isFocused.value = false;
     
-    // Handle trim
+    /* 处理 trim */
     if (mergedConfig.value.trim) {
       const trimmed = props.modelValue.trim();
+      
       if (trimmed !== props.modelValue) {
         props.onUpdateModelValue?.(trimmed);
         props.onChange?.(trimmed);
@@ -78,7 +79,7 @@ export function useInputEvents({
     props.onChange?.('');
     props.onClear?.();
     
-    // Focus input after clear
+    /* 清除后聚焦输入框 */
     nextTick(() => {
       focusInput();
     });
