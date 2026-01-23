@@ -1,3 +1,7 @@
+---
+alwaysApply: false
+description: 
+---
 @vue-rules
 
 1. vue组件必须使用tsx语法, 不允许使用vue单文件组件

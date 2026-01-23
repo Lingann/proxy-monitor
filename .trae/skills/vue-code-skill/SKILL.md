@@ -3,34 +3,43 @@ name: vue-code-skill
 description: vue组件创建、开发、编写、优化、修复、改进、完善、重构
 ---
 
-## 命令
+## 技能描述 (Description)
 
-1. vue组件必须使用tsx语法, 不允许使用vue单文件组件
-2. vue组件必须使用vue 3.x版本
-3. 不允许使用render函数
-4. tsx文件使用必须遵循 ./name-rules.md 中的命名规则，不允许使用驼峰命名
-5. 每个组件/页面都有自己的样式文件，并且文件名与组件/页面文件名严格保持一致（使用中划线命名），例如：`component-name.scss` 或 `page-name.scss`（推荐使用 CSS Modules 以避免污染，如 `component-name.module.scss`）。
-6. 每个组件/页面都有自己的入口文件（即 TSX 文件），文件名必须使用中划线命名，禁止驼峰，例如：`component-name.tsx` 或 `page-name.tsx`。
-7. 每个组件/页面的代码包含在自身独立的目录中，目录名必须使用中划线命名，例如：`components/component-name` 或 `views/page-name`，遵循 ./name-rules.md 中的命名规则。
-8. 使用 ES Module 规范（`import`/`export`）来组织代码，在 `component-name.tsx` 中使用 `defineComponent` 或函数式组件编写逻辑；对于异步组件，使用 Vue 3 的 `defineAsyncComponent` 配合动态 `import()` 实现懒加载，禁止使用 `require` 方式引入。
-9. 项目中应该存在公共的样式/全局变量文件，例如：`app-styles.scss`，用于定义全局的样式基准。
-10. 类名严格遵循 BEM（Block-Element-Modifier）命名规范，在 TSX 中建议封装 helper 函数处理 BEM 字符串拼接。
-11. 使用 CSS 变量定义全局的样式变量，参考 ./css-rules.md 中的规则。
-12. 组件/页面必须使用国际化字符串（如 `vue-i18n` 的 composition API `useI18n`），禁止在 `.tsx` 的渲染函数中直接硬编码中文/英文。
-13. 组件/页面目录下都有自己的composables目录，用于存放组件/页面的composition api 代码，例如：`components/component-name/composables` 或 `views/page-name/composables`。
-14. 组件/页面目录下都有自己的utils目录，用于存放组件/页面的工具函数代码，例如：`components/component-name/utils` 或 `views/page-name/utils`。
-15. 组件/页面如果比较复杂，建议将其拆分成多个子组件/页面，每个子组件/页面都有自己的目录，例如：`components/component-name/sub-components` 或 `views/page-name/sub-components`。
-16. composables 禁止使用过于通用的命名，必须按照用途拆分，例如`use-network-monitor.ts` 或 `use-xxx-utils.ts`，必须使用超过2个单词的命名，例如`use-network-monitor.ts` 或 `use-http-client-utils.ts`。
-17. 禁止composables 之间相互调用，只能在组件/页面中调用，禁止在composables 之间调用。
-18. 禁止直接为组件/页面 创建不具备明确含义的composables，例如不允许创建`use-common-input.ts`或 `use-common-button.ts`，必须根据具体用途创建有意义的composables。
-19. 禁止在tsx文件中放入太多的代码逻辑，必须将复杂的逻辑放到composables中，例如：`use-common-input-emitter.ts` 或 `use-common-input-state.ts`。
-20. 代码能用一行就写一行，避免写太多块级代码， 保持代码的高可阅读性， 减少代码嵌套，具体遵循 ./css-rules.md 中的规则。
-21. 不要定义 emits 事件， 所有的事件都通过props来传递， 例如：`onClick`、`onChange`等。更有利于tsx组件的使用。
+本技能定义了基于 Vue 3 + TSX 的组件开发规范。它强调了逻辑与视图的分离（通过 Composables）、组件的模块化结构、以及类型安全的实践。
 
-## 使用场景
+## 核心原则 (Core Principles)
 
-1. 只要涉及到vue组件/页面的开发，都必须遵守上述命令规则
+1.  **TSX First**: 全面使用 TSX 替代 .vue 文件，获得更强的类型支持和灵活性。
+2.  **逻辑抽离 (Logic Extraction)**: 视图层（TSX）应尽可能薄，业务逻辑全部封装在 Composables 中。
+3.  **模块化 (Modularity)**: 组件即目录，包含自身的样式、逻辑、测试和子组件。
+4.  **Props 驱动 (Props Driven)**: 使用 Props 回调替代 Emits，统一数据流向。
 
-## 解释
+## 指南步骤 (Guide)
 
-1. 需要保持整个项目的代码风格一致
+请根据你的具体开发场景，参考下表中的规则文件：
+
+| 场景/类别 | 规则文件 | 关键点 |
+| :--- | :--- | :--- |
+| **项目初始化** | [基础设置规范](rules/basic-setup-rules.md) | TSX、Vue 3、ES Modules |
+| **文件创建** | [命名与结构规范](rules/naming-file-structure.md) | Kebab-case、BEM、独立目录 |
+| **样式编写** | [样式规范](rules/style-rules.md) | CSS Modules、全局变量 |
+| **组件逻辑** | [组件架构规范](rules/component-architecture.md) | i18n、Props 回调、Utils |
+| **状态管理** | [Composables 规范](rules/composables-rules.md) | 逻辑抽离、禁止相互调用、描述性命名 |
+
+## 使用场景举例 (Usage Examples)
+
+| 场景 | 行为 |
+| :--- | :--- |
+| **开发一个新的表单组件** | 创建 `components/my-form` 目录，包含 `my-form.tsx` 和 `my-form.module.scss`。将表单逻辑（验证、提交）提取到 `composables/use-form-logic.ts`。 |
+| **父子组件通信** | 子组件定义 `props.onSubmit` 回调，而不是 `emit('submit')`。父组件通过 `<Child onSubmit={handler} />` 传递逻辑。 |
+| **处理组件样式** | 使用 CSS Modules (`classes.container`)，避免全局样式污染。类名使用 BEM 规范（如 `my-form__submit-btn`）。 |
+| **复用业务逻辑** | 发现两个组件有相似的筛选逻辑，将其提取为 `composables/use-list-filter.ts` 并共享。 |
+
+## 快速检查清单 (Quick Checklist)
+
+- [ ] 我是否使用了 `.tsx` 而不是 `.vue`？
+- [ ] 我是否为组件创建了独立的目录？
+- [ ] 我是否将复杂的逻辑提取到了 `composables/use-xxx.ts` 中？
+- [ ] Composables 的文件名是否至少包含了 3 个单词（如 `use-form-submit`）？
+- [ ] 我是否使用了 `props.onChange` 而不是 `emit('change')`？
+- [ ] 组件类名是否符合 BEM 规范？

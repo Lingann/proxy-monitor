@@ -1,3 +1,7 @@
+---
+alwaysApply: false
+description: 
+---
 @name-rules
 
 1. 所有文件名称必须采用小写字母，单词之间用短横线分隔（kebab-case）。

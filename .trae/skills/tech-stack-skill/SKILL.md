@@ -3,24 +3,37 @@ name: tech-stack-skill
 description: 项目技术栈、依赖管理、版本控制规范
 ---
 
-## 命令
+## 技能描述 (Description)
 
-1. 项目采用 TypeScript + Electron + Node.js + PNPM + EJS 作为技术栈。
-2. 项目可以根据实际需求，安装其他必要的依赖，但必须是主流、现代、支持 TypeScript 和 ES6 等最新特性的库。
-3. 项目中默认包含了以下依赖：
-   - `sqlite3`：用于数据库操作。
-   - `systeminformation`：用于获取系统信息，如CPU、内存、磁盘、网络等。
-   - `execa`: 用于执行系统命令。
-4. 禁止使用老旧的版本，始终使用最新的 LTS 版本的依赖。
-5. 禁止使用npm、yarn 等包管理工具，必须使用 PNPM 来管理依赖。
+本技能定义了项目的技术选型和依赖管理策略。明确的技术栈有助于统一开发环境，减少集成问题；规范的依赖管理能确保项目的长期健康和安全性。
 
-## 使用场景
+## 核心原则 (Core Principles)
 
-1. 安装新依赖时
-2. 初始化项目或配置环境时
-3. 升级依赖版本时
+1.  **现代化 (Modern)**: 坚持使用现代 Web 技术（ES6+, TypeScript）。
+2.  **标准化 (Standardized)**: 统一使用 PNPM，统一核心库（sqlite3, systeminformation, execa）。
+3.  **高质量 (High Quality)**: 只引入维护良好、类型支持完善的第三方库。
 
-## 解释
+## 指南步骤 (Guide)
 
-1. 统一的技术栈和工具链保证项目的一致性
-2. 使用现代库和 LTS 版本保证项目的稳定性和安全性
+请根据你的具体操作，参考下表中的规则文件：
+
+| 场景/类别 | 规则文件 | 关键点 |
+| :--- | :--- | :--- |
+| **了解项目** | [技术栈定义](rules/stack-definition.md) | TS + Electron + PNPM |
+| **安装/升级依赖** | [依赖管理规范](rules/dependency-management.md) | 必须使用 PNPM、优选主流 TS 库 |
+
+## 使用场景举例 (Usage Examples)
+
+| 场景 | 行为 |
+| :--- | :--- |
+| **需要执行系统命令** | 使用 `execa` 库，而不是 `child_process`，以获得更好的跨平台支持和 Promise 接口。 |
+| **需要获取系统信息** | 使用 `systeminformation` 库，而不是自己解析命令行输出。 |
+| **安装新的依赖包** | 运行 `pnpm add <package-name>`，禁止使用 `npm install` 或 `yarn add`。 |
+| **选择数据库方案** | 优先考虑 `sqlite3`，除非有明确的大型数据库需求。 |
+
+## 快速检查清单 (Quick Checklist)
+
+- [ ] 我是否使用了 `pnpm` 而不是 `npm` 或 `yarn`？
+- [ ] 我引入的新库是否支持 TypeScript？
+- [ ] 我引入的新库是否在最近一年内有更新？
+- [ ] 我是否重复引入了功能已由 `execa` 或 `systeminformation` 提供的库？

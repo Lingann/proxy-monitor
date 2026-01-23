@@ -1,3 +1,7 @@
+---
+alwaysApply: false
+description: 
+---
 @focus-rules
 
 1. 在用户没有特别要求的情况下，禁止进行自动测试运行、打包操作

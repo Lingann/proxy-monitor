@@ -1,3 +1,7 @@
+---
+alwaysApply: false
+description: 
+---
 @tech-stack-rules
 
 1. 项目采用 TypeScript + Electron + Node.js + PNPM + EJS 作为技术栈。

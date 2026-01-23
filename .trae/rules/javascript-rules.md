@@ -1,8 +1,7 @@
 ---
 alwaysApply: false
-globs: 
+description: 
 ---
-
 组件/页面模块：
 1. 每个组件/页面都有自己的样式文件，并且文件名与组件/页面文件名相同，例如：component-name.css 或 page-name.css。
 2. 每个组件/页面都有自己的入口文件，例如：component-name.ts 或 page-name.ts。
