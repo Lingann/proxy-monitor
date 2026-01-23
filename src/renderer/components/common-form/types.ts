@@ -10,6 +10,10 @@ export interface FormItemRule {
   trigger?: 'change' | 'blur' | 'focus';
   required?: boolean;
   message?: string;
+  min?: number;
+  max?: number;
+  type?: 'email' | 'string' | 'number' | 'url';
+  pattern?: RegExp | string;
   validator?: (value: any) => ValidationResult | Promise<ValidationResult> | boolean | Promise<boolean>;
 }
 
@@ -71,7 +75,7 @@ export interface FormContext {
   rules: Ref<FormRules | undefined>;
   registerField: (field: FormItemContext) => void;
   unregisterField: (field: FormItemContext) => void;
-  validateField: (prop: string, trigger?: string) => void;
+  validateField: (prop: string, cb?: (isValid: boolean, message?: string) => void) => void;
 }
 
 export const FormContextKey: InjectionKey<FormContext> = Symbol('FormContext');

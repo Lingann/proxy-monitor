@@ -5,7 +5,7 @@
   "type": "module",
   "main": "dist/main/index.js",
   "scripts": {
-    "dev": "concurrently \"vite\" \"cross-env NODE_ENV=development electron .\"",
+    "dev": "tsc && concurrently \"vite\" \"cross-env NODE_ENV=development electron .\"",
     "dev:renderer": "vite",
     "dev:main": "cross-env NODE_ENV=development electron .",
     "build": "tsc && vite build",
@@ -49,9 +49,7 @@
     },
     "files": [
       "dist/**/*",
-      "src/renderer/templates/**/*",
       "src/renderer/app-styles.css",
-      "src/renderer/lib/**/*",
       "src/locales/**/*",
       "package.json"
     ],
@@ -69,6 +67,7 @@
     "electron-ejs": "^1.2.1",
     "execa": "^9.6.1",
     "fuse.js": "^7.1.0",
+    "lucide-vue-next": "^0.562.0",
     "systeminformation": "^5.30.5",
     "vue": "^3.5.27",
     "vue-i18n": "^11.2.8",

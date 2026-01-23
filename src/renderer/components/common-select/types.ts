@@ -34,4 +34,6 @@ export interface SelectConfig {
 export interface CommonSelectProps {
   modelValue: string | number | null;
   config?: SelectConfig;
+  onUpdateModelValue?: (value: string | number | null) => void;
+  onChange?: (value: string | number | null, option: SelectOption) => void;
 }

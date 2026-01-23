@@ -2,6 +2,10 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [vue(), vueJsx()],
@@ -12,11 +16,9 @@ export default defineConfig({
     }
   },
   base: './',
-  root: '.', // We will move index.html to src/renderer but vite expects it in root or we config it.
-  // Better to set root to src/renderer? No, then resolving node_modules is harder.
-  // We will keep root at project root and point input to src/renderer/index.html
+  root: 'src/renderer',
   build: {
-    outDir: 'dist/renderer',
+    outDir: '../../dist/renderer',
     emptyOutDir: true,
     rollupOptions: {
       input: path.resolve(__dirname, 'src/renderer/index.html')

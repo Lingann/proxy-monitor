@@ -1,1 +1,0 @@
-export const SORT_DEFAULT_ICON = `<div style="display:flex;flex-direction:column;line-height:0.5;transform:scale(0.7);opacity:0.3"><svg width="10" height="6" viewBox="0 0 1024 512"><path d="M512 64L128 448h768z" fill="currentColor"/></svg><svg width="10" height="6" viewBox="0 0 1024 512" style="margin-top:2px"><path d="M512 448L128 64h768z" fill="currentColor"/></svg></div>`;

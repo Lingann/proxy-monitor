@@ -8,17 +8,17 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/monitor',
     name: 'Monitor',
-    component: () => import('../views/Monitor'),
+    component: () => import('../views/monitor/index'),
   },
   {
     path: '/settings',
     name: 'Settings',
-    component: () => import('../views/Settings'),
+    component: () => import('../views/settings/index'),
   },
   {
     path: '/components',
     name: 'ComponentLibrary',
-    component: () => import('../views/ComponentLibrary'),
+    component: () => import('../views/component-library/index'),
   }
 ];
 

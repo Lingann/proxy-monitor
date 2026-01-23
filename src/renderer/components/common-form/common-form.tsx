@@ -1,6 +1,6 @@
 
 import { defineComponent, PropType, provide, toRef } from 'vue';
-import { FormContextKey, FormProps, FormRules, FormConfig } from './types';
+import { FormContextKey, FormRules, FormConfig } from './types';
 import { useFormRegistry } from './composables/use-form-registry';
 import { useFormConfig } from './composables/use-form-config';
 import { useFormValidation } from './composables/use-form-validation';
@@ -22,10 +22,17 @@ export default defineComponent({
     config: {
       type: Object as PropType<FormConfig>,
       default: () => ({})
+    },
+    onSubmit: {
+      type: Function as PropType<(e?: Event) => void>,
+      default: undefined
+    },
+    onReset: {
+      type: Function as PropType<(e?: Event) => void>,
+      default: undefined
     }
   },
-  emits: ['submit', 'reset'],
-  setup(props, { slots, emit, expose }) {
+  setup(props, { slots, expose }) {
     
     // 1. Config
     const { config } = useFormConfig(props);
@@ -37,7 +44,7 @@ export default defineComponent({
     const { validate, validateField, clearValidate } = useFormValidation(fields.value);
 
     // 4. Events
-    const { handleSubmit, handleReset } = useFormEvents(validate, fields.value, emit);
+    const { handleSubmit, handleReset } = useFormEvents(validate, fields.value, props.onSubmit, props.onReset);
 
     // 5. Render
     const { formClasses } = useFormRender(config);

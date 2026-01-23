@@ -4,14 +4,15 @@ import { FormItemContext } from '../types';
 export function useFormEvents(
   validate: () => Promise<boolean>,
   fields: FormItemContext[],
-  emit: (event: 'submit' | 'reset', ...args: any[]) => void
+  onSubmit?: (e?: Event) => void,
+  onReset?: (e?: Event) => void
 ) {
   
   const handleSubmit = async (e?: Event) => {
     e?.preventDefault();
     const isValid = await validate();
     if (isValid) {
-      emit('submit');
+      onSubmit?.(e);
     }
   };
 
@@ -20,7 +21,7 @@ export function useFormEvents(
     fields.forEach(field => {
       field.resetField();
     });
-    emit('reset');
+    onReset?.(e);
   };
 
   return {

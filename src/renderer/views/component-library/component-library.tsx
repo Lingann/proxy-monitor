@@ -1,0 +1,92 @@
+import { defineComponent } from 'vue';
+import styles from './component-library.module.scss';
+import { useDemoState } from './composables/use-demo-state';
+import CommonForm from '../../components/common-form/common-form';
+import CommonFormItem from '../../components/common-form/sub-components/common-form-item';
+import CommonInput from '../../components/common-input/common-input';
+import CommonSelect from '../../components/common-select/common-select';
+
+export default defineComponent({
+    name: 'ComponentLibraryView',
+    setup() {
+        const { formData, rules, output, formRef } = useDemoState();
+
+        const handleValidate = async () => {
+            if (!formRef.value) return;
+            try {
+                const valid = await formRef.value.validate();
+                output.value = `Validation result: ${valid ? 'Success' : 'Failed'}`;
+            } catch (e) {
+                output.value = `Validation error: ${e}`;
+            }
+        };
+
+        const handleReset = () => {
+            if (!formRef.value) return;
+            formRef.value.resetFields();
+            output.value = 'Form reset';
+        };
+
+        const handleGetValues = () => {
+            output.value = JSON.stringify(formData, null, 2);
+        };
+
+        const handleSetValues = () => {
+            formData.username = 'admin';
+            formData.email = 'admin@example.com';
+            formData.role = 'admin';
+            output.value = 'Values set to admin defaults';
+        };
+
+        return () => (
+            <div class={styles.container}>
+                <div class={styles.section}>
+                    <h3>Common Form Demo</h3>
+                    <div class={styles.demoForm}>
+                        <CommonForm ref={formRef} model={formData} rules={rules}>
+                            <CommonFormItem prop="username" label="Username">
+                                <CommonInput 
+                                    modelValue={formData.username} 
+                                    onUpdateModelValue={(v: string | number | null) => formData.username = String(v || '')}
+                                    config={{ placeholder: 'Enter username' }}
+                                />
+                            </CommonFormItem>
+                            <CommonFormItem prop="email" label="Email">
+                                <CommonInput 
+                                    modelValue={formData.email} 
+                                    onUpdateModelValue={(v: string | number | null) => formData.email = String(v || '')}
+                                    config={{ placeholder: 'Enter email' }}
+                                />
+                            </CommonFormItem>
+                            <CommonFormItem prop="role" label="Role">
+                                <CommonSelect 
+                                    modelValue={formData.role} 
+                                    onUpdateModelValue={(v: string | number | null) => formData.role = String(v || '')}
+                                    config={{ 
+                                        placeholder: 'Select role',
+                                        options: [
+                                            { label: 'Admin', value: 'admin' },
+                                            { label: 'User', value: 'user' },
+                                            { label: 'Guest', value: 'guest' }
+                                        ]
+                                    }}
+                                />
+                            </CommonFormItem>
+                        </CommonForm>
+                    </div>
+
+                    <div class={styles.actions}>
+                        <button class={[styles.btn, styles.primary]} onClick={handleValidate}>Validate</button>
+                        <button class={styles.btn} onClick={handleReset}>Reset</button>
+                        <button class={styles.btn} onClick={handleGetValues}>Get Values</button>
+                        <button class={styles.btn} onClick={handleSetValues}>Set Values</button>
+                    </div>
+
+                    <div class={styles.output}>
+                        {output.value || '// Output will appear here'}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+});
