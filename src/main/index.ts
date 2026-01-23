@@ -41,10 +41,11 @@ function createWindow(): void {
     width: 1400,
     height: 900,
     webPreferences: {
-      preload: path.join(__dirname, '../preload/index.cjs'),
-      nodeIntegration: false,
-      contextIsolation: true,
-    },
+            preload: path.join(__dirname, '../preload/index.cjs'),
+            nodeIntegration: false,
+            contextIsolation: true,
+            sandbox: false,
+        },
     title: i18nService.t('app.title'),
   });
 

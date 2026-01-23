@@ -30,6 +30,7 @@
   },
   "settings": {
     "title": "Application Settings",
+    "select_language": "Select Language",
     "language": "Language",
     "theme": "Theme",
     "process_filters": "Process Filters",

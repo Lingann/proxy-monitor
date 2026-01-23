@@ -1,6 +1,8 @@
 {
   "common": {
     "loading": "加载中...",
+    "page": "页",
+    "save": "保存",
     "no_results": "无结果",
     "please_select": "请选择",
     "no_options": "无选项",
@@ -15,6 +17,9 @@
     "component_library": "组件库"
   },
   "monitor": {
+    "network_traffic": "网络流量",
+    "process_list": "进程列表",
+    "search_placeholder": "搜索 PID 或名称",
     "analyze": "分析",
     "refresh": "刷新",
     "total_upload": "总上传速度",
@@ -30,6 +35,7 @@
   },
   "settings": {
     "title": "应用设置",
+    "select_language": "选择语言",
     "language": "语言",
     "theme": "主题",
     "process_filters": "进程过滤器",
