@@ -3,43 +3,123 @@ name: vue-code-skill
 description: vue组件创建、开发、编写、优化、修复、改进、完善、重构
 ---
 
-## 技能描述 (Description)
+# Vue 3 TSX & Clean Code Skill
 
-本技能定义了基于 Vue 3 + TSX 的组件开发规范。它强调了逻辑与视图的分离（通过 Composables）、组件的模块化结构、以及类型安全的实践。
+## 1. 核心架构与工程约束 (Core Architecture)
 
-## 核心原则 (Core Principles)
+* **包管理器**：项目采用 PNPM 作为包管理器，严禁使用 Yarn 或 npm。
+* **技术栈限制**：仅限 **Vue 3.x + TSX** + **TypeScript**。严禁使用 `.vue` 单文件组件 (SFC)、`render` 渲染函数及 `any` 类型。
+* **模块规范**：全量采用 **ES Modules**；禁止使用 CommonJS。
+* **独立沙箱模式**：每个组件/页面必须拥有独立目录，包含专属的 `composables/`、`utils/`、`styles/` 和 `sub-components/`。通用功能必须抽离至全局 `shared/` 目录。
+* **导出一致性**：每个目录必须包含 `index.ts` 进行统一导出。禁止重复导出（index.ts 导出后，子模块不再单独导出）。
+* **依赖完整性**：所有资源（变量、函数、样式）必须显式 `import`。严禁隐式全局变量，代码仅适配现代浏览器，无需考虑向后兼容。
+* **代码整洁**：及时清理不再需要的模块、变量、函数，保持代码整洁。
 
-1.  **TSX First**: 全面使用 TSX 替代 .vue 文件，获得更强的类型支持和灵活性。
-2.  **逻辑抽离 (Logic Extraction)**: 视图层（TSX）应尽可能薄，业务逻辑全部封装在 Composables 中。
-3.  **模块化 (Modularity)**: 组件即目录，包含自身的样式、逻辑、测试和子组件。
-4.  **Props 驱动 (Props Driven)**: 使用 Props 回调替代 Emits，统一数据流向。
+## 2. 命名与文件系统 (Naming & Filesystem)
 
-## 指南步骤 (Guide)
+* **全量中划线 (Kebab-case)**：所有目录名、TSX 文件名、样式文件名、Composables 文件名必须使用中划线。严禁使用驼峰命名（CamelCase/PascalCase）。
+* **命名映射法则**：**目录名 = 文件名 = 组件名**（例如：目录 `user-profile/` -> `user-profile.tsx` -> `export const UserProfile = ...`）。
+* **单一职责原则**：**一个文件仅包含一个核心函数或类**。
+* **Composables 命名**：必须具备明确业务含义且长度 >2 个单词（如 `use-network-monitor.ts`），严禁 `use-common.ts` 或 `use-logic.ts` 等模糊命名。
+* **文件名称/目录名称**：必须直观，能够清晰地表达其功能或内容，避免简写或过于概况。
 
-请根据你的具体开发场景，参考下表中的规则文件：
+## 3. 组件开发与交互规范 (Component Patterns)
 
-| 场景/类别 | 规则文件 | 关键点 |
-| :--- | :--- | :--- |
-| **项目初始化** | [基础设置规范](rules/basic-setup-rules.md) | TSX、Vue 3、ES Modules |
-| **文件创建** | [命名与结构规范](rules/naming-file-structure.md) | Kebab-case、BEM、独立目录 |
-| **样式编写** | [样式规范](rules/style-rules.md) | CSS Modules、全局变量 |
-| **组件逻辑** | [组件架构规范](rules/component-architecture.md) | i18n、Props 回调、Utils |
-| **状态管理** | [Composables 规范](rules/composables-rules.md) | 逻辑抽离、禁止相互调用、描述性命名 |
+* **组件定义**：使用 `defineComponent` 或函数式组件，弃用 `emits` 选项。
+* **事件通信**：全量采用 **Props 回调模式**（例如：使用 `props.onClick` 代替 `$emit('click')`）。
+* **交互限制**：禁止使用位移、缩放等改变元素位置的 hover 效果。
+* **交互引导**：优先使用阴影、字体加重、背景颜色变化来实现交互反馈。
+* **国际化 (i18n)**：强制使用 `useI18n`。严禁在 TSX 模版或逻辑中硬编码任何中/英文字符串。
+* **资源清理**：组件逻辑必须包含显式的销毁步骤（如 `onUnmounted` 中清理定时器、监听器等），严防内存泄漏。
 
-## 使用场景举例 (Usage Examples)
+## 4. 逻辑层与 Composables (Logic & State)
 
-| 场景 | 行为 |
-| :--- | :--- |
-| **开发一个新的表单组件** | 创建 `components/my-form` 目录，包含 `my-form.tsx` 和 `my-form.module.scss`。将表单逻辑（验证、提交）提取到 `composables/use-form-logic.ts`。 |
-| **父子组件通信** | 子组件定义 `props.onSubmit` 回调，而不是 `emit('submit')`。父组件通过 `<Child onSubmit={handler} />` 传递逻辑。 |
-| **处理组件样式** | 使用 CSS Modules (`classes.container`)，避免全局样式污染。类名使用 BEM 规范（如 `my-form__submit-btn`）。 |
-| **复用业务逻辑** | 发现两个组件有相似的筛选逻辑，将其提取为 `composables/use-list-filter.ts` 并共享。 |
+* **逻辑下沉**：TSX 仅负责视图组装，严禁在 TSX 顶层编写复杂业务逻辑，必须抽离至 `composables`。
+* **扁平调度**：Composables 之间 **禁止相互调用**。所有逻辑依赖必须由组件层（Component）进行统一调度和数据传递，杜绝深层耦合。
 
-## 快速检查清单 (Quick Checklist)
+## 5. 样式\布局与CSS变量规范 (Styling & Design)
 
-- [ ] 我是否使用了 `.tsx` 而不是 `.vue`？
-- [ ] 我是否为组件创建了独立的目录？
-- [ ] 我是否将复杂的逻辑提取到了 `composables/use-xxx.ts` 中？
-- [ ] Composables 的文件名是否至少包含了 3 个单词（如 `use-form-submit`）？
-- [ ] 我是否使用了 `props.onChange` 而不是 `emit('change')`？
-- [ ] 组件类名是否符合 BEM 规范？
+* **BEM 命名法**：CSS 类名必须严格遵循 **BEM (Block Element Modifier)** 规范。
+* **样式隔离**：组件独立样式文件优先，全局变量仅限引用 `style/global.css` 定义的 CSS Variables。
+* **CSS Variables 命名**：变量命名推荐采用“三段式命名法”（Triptych Notation），格式为：`namespace-value-type-variable-name`:
+  * 必须使用 kebab-case，包含命名空间（全局变量如 system-）。
+  * 必须包含值类型（如 -color-, -font-size-）.
+* **语义化变量**：区分“基于值”（常量范围，如 --system-color-cherry-red）与“基于用途”（接口概念，如 --system-color-text-primary）。
+* **主题适配**：编写样式必须同时考虑浅色与深色模式。
+* **布局原则**：优先使用 Grid 或 Flex 布局，严禁使用 float 或 inline-block。
+
+## 6. 代码风格与排版 (Code Style & Layout)
+
+* **呼吸感排版**：执行 **“一行代码 + 一行空格”** 原则。在函数调用、变量定义、关键执行语句后必须插入空行。
+* **扁平化书写**：代码追求极简嵌套。能单行完成的逻辑（如简单的赋值、if 判断）优先单行书写。
+* **时序原则**：严禁在声明前调用变量或函数。
+* **流程控制**：优先使用 **卫语句 (Guard Clauses)** 和 **提前返回 (Early Returns)**。
+* **禁止深层 `if/else` 嵌套**：避免使用深层 `if/else` 嵌套。
+* **尽量避免 `try-catch` 块**：在可能的情况下，避免使用 `try-catch` 块来处理异常，而是使用更细粒度的错误处理机制。
+* **保持逻辑流的线性同步感**：确保代码的逻辑流是线性的，避免复杂的控制流程。
+* **极简调用规范**：
+  * 对于 nextTick、setTimeout、setInterval 或自定义指令等单个执行语句，严禁强制换行。
+  * 禁止冗余大括号：若逻辑只有单行，优先不使用大括号（如：nextTick(() => doSomething())）。
+  * 拒绝括号换行：即便保留大括号，也必须单行书写，禁止将大括号拆分到多行。
+
+## 7. 注释与文档 (Documentation)
+
+* **格式要求**：统一使用单行块注释 `/* ... */`，严禁使用 `//`。
+* **语言要求**：注释内容必须使用 **中文**。
+* **覆盖要求**：在函数、类、变量、常量定义处应尽可能提供详尽注释，注释必须 **独占一行**，禁止尾随代码。
+
+
+## 8. 最佳实践示例
+按照你的要求，该示例展示了 呼吸感排版、卫语句、极简调用 以及 TSX 极致扁平化 的规范：
+
+```tsx
+/* 引入样式：BEM 命名与中划线文件名 */
+import './styles/user-status-card.css';
+
+/* 引入依赖：显式 import */
+import { defineComponent, nextTick, onUnmounted } from 'vue';
+
+/* 引入业务逻辑：中划线命名且长度 >2 词 */
+import { useUserStatusMonitor } from './composables/use-user-status-monitor';
+
+/* 目录名 = 文件名 = 组件名 (PascalCase 导出) */
+export const UserStatusCard = defineComponent({
+  /* 声明 Props：用于 Props 回调模式 */
+  props: {
+    userId: { type: String, required: true },
+    onStateChange: { type: Function }
+  },
+
+  setup(props) {
+    /* 逻辑下沉至 Composable，组件层负责调度 */
+    const { status, updateTimestamp, clearTimer } = useUserStatusMonitor(props.userId);
+
+    /* 卫语句：处理异常边界 */
+    if (!props.userId) return () =>  <div class="user-status-card" />;
+
+    /* 极简调用：单行书写，不换行，不加冗余大括号 */
+    const handleRefresh = () => nextTick(() => console.log('DOM updated'));
+
+    /* 资源清理：防止内存泄漏 */
+    onUnmounted(() => clearTimer());
+
+    /* 渲染函数：一行代码 + 一行空格，保持呼吸感 */
+    return () => (
+      /* 使用 BEM 命名法 */
+      <div class="user-status-card user-status-card--active">
+        
+        /* 国际化：严禁硬编码中文 */
+        <span class="user-status-card__label">{ t('status.label') }</span>
+
+        /* 呼吸感：关键节点空行 */
+        <div class="user-status-card__value" onClick={handleRefresh}>
+          { status.value }
+        </div>
+
+      </div>
+    );
+  }
+});
+```
+
+

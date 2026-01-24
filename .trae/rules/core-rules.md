@@ -1,7 +1,14 @@
 ---
 alwaysApply: true
 ---
-@focus-rules
+@core-rules
+
+## 技能使用规则
+
+关键： 在开始写代码之前，始终要先分析可用的skills， 并根据skills 来执行指令，避免揣测。skills目录在 .trae/skills 目录下。 其中./trae/skills/code-style-skill 和 ./trae/skills/naming-skill 是必须要有且必须遵守的的。
+
+
+## 核心规则 (Core Rules)
 
 1. 在用户没有特别要求的情况下，禁止进行自动测试运行、打包操作
 2. 禁止过渡考虑，始终专注于解决用户当前遇到的问题，而不是解决其他潜在问题

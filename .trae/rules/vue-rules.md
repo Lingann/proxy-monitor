@@ -3,24 +3,73 @@ alwaysApply: true
 ---
 @vue-rules
 
-1. vue组件必须使用tsx语法, 不允许使用vue单文件组件
-2. vue组件必须使用vue 3.x版本
-3. 不允许使用render函数
-4. tsx文件使用必须遵循 ./name-rules.md 中的命名规则，不允许使用驼峰命名
-5. 每个组件/页面都有自己的样式文件，并且文件名与组件/页面文件名严格保持一致（使用中划线命名），例如：`component-name.scss` 或 `page-name.scss`（推荐使用 CSS Modules 以避免污染，如 `component-name.module.scss`）。
-6. 每个组件/页面都有自己的入口文件（即 TSX 文件），文件名必须使用中划线命名，禁止驼峰，例如：`component-name.tsx` 或 `page-name.tsx`。
-7. 每个组件/页面的代码包含在自身独立的目录中，目录名必须使用中划线命名，例如：`components/component-name` 或 `views/page-name`，遵循 ./name-rules.md 中的命名规则。
-8. 使用 ES Module 规范（`import`/`export`）来组织代码，在 `component-name.tsx` 中使用 `defineComponent` 或函数式组件编写逻辑；对于异步组件，使用 Vue 3 的 `defineAsyncComponent` 配合动态 `import()` 实现懒加载，禁止使用 `require` 方式引入。
-9. 项目中应该存在公共的样式/全局变量文件，例如：`app-styles.scss`，用于定义全局的样式基准。
-10. 类名严格遵循 BEM（Block-Element-Modifier）命名规范，在 TSX 中建议封装 helper 函数处理 BEM 字符串拼接。
-11. 使用 CSS 变量定义全局的样式变量，参考 ./css-rules.md 中的规则。
-12. 组件/页面必须使用国际化字符串（如 `vue-i18n` 的 composition API `useI18n`），禁止在 `.tsx` 的渲染函数中直接硬编码中文/英文。
-13. 组件/页面目录下都有自己的composables目录，用于存放组件/页面的composition api 代码，例如：`components/component-name/composables` 或 `views/page-name/composables`。
-14. 组件/页面目录下都有自己的utils目录，用于存放组件/页面的工具函数代码，例如：`components/component-name/utils` 或 `views/page-name/utils`。
-15. 组件/页面如果比较复杂，建议将其拆分成多个子组件/页面，每个子组件/页面都有自己的目录，例如：`components/component-name/sub-components` 或 `views/page-name/sub-components`。
-16. composables 禁止使用过于通用的命名，必须按照用途拆分，例如`use-network-monitor.ts` 或 `use-xxx-utils.ts`，必须使用超过2个单词的命名，例如`use-network-monitor.ts` 或 `use-http-client-utils.ts`。
-17. 禁止composables 之间相互调用，只能在组件/页面中调用，禁止在composables 之间调用。
-18. 禁止直接为组件/页面 创建不具备明确含义的composables，例如不允许创建`use-common-input.ts`或 `use-common-button.ts`，必须根据具体用途创建有意义的composables。
-19. 禁止在tsx文件中放入太多的代码逻辑，必须将复杂的逻辑放到composables中，例如：`use-common-input-emitter.ts` 或 `use-common-input-state.ts`。
-20. 代码能用一行就写一行，避免写太多块级代码， 保持代码的高可阅读性， 减少代码嵌套，具体遵循 ./css-rules.md 中的规则。
-21. 不要定义 emits 事件， 所有的事件都通过props来传递， 例如：`onClick`、`onChange`等。更有利于tsx组件的使用。
+## Vue 3 TSX 项目开发规范 (Strict Mode)
+
+### 1. 核心架构与工程约束 (Core Architecture)
+
+* **包管理器**：项目采用 PNPM 作为包管理器，严禁使用 Yarn 或 npm。
+* **技术栈限制**：仅限 **Vue 3.x + TSX** + **TypeScript**。严禁使用 `.vue` 单文件组件 (SFC)、`render` 渲染函数及 `any` 类型。
+* **模块规范**：全量采用 **ES Modules**；禁止使用 CommonJS。
+* **独立沙箱模式**：每个组件/页面必须拥有独立目录，包含专属的 `composables/`、`utils/`、`styles/` 和 `sub-components/`。通用功能必须抽离至全局 `shared/` 目录。
+* **导出一致性**：每个目录必须包含 `index.ts` 进行统一导出。禁止重复导出（index.ts 导出后，子模块不再单独导出）。
+* **依赖完整性**：所有资源（变量、函数、样式）必须显式 `import`。严禁隐式全局变量，代码仅适配现代浏览器，无需考虑向后兼容。
+* **代码整洁**：及时清理不再需要的模块、变量、函数，保持代码整洁。
+
+### 2. 命名与文件系统 (Naming & Filesystem)
+
+* **全量中划线 (Kebab-case)**：所有目录名、TSX 文件名、样式文件名、Composables 文件名必须使用中划线。严禁使用驼峰命名（CamelCase/PascalCase）。
+* **命名映射法则**：**目录名 = 文件名 = 组件名**（例如：目录 `user-profile/` -> `user-profile.tsx` -> `export const UserProfile = ...`）。
+* **单一职责原则**：**一个文件仅包含一个核心函数或类**。
+* **Composables 命名**：必须具备明确业务含义且长度 >2 个单词（如 `use-network-monitor.ts`），严禁 `use-common.ts` 或 `use-logic.ts` 等模糊命名。
+* **文件名称/目录名称**：必须直观，能够清晰地表达其功能或内容，避免简写或过于概况。
+
+### 3. 组件开发与交互规范 (Component Patterns)
+
+* **组件定义**：使用 `defineComponent` 或函数式组件，弃用 `emits` 选项。
+* **事件通信**：全量采用 **Props 回调模式**（例如：使用 `props.onClick` 代替 `$emit('click')`）。
+* **交互限制**：禁止使用位移、缩放等改变元素位置的 hover 效果。
+* **交互引导**：优先使用阴影、字体加重、背景颜色变化来实现交互反馈。
+* **国际化 (i18n)**：强制使用 `useI18n`。严禁在 TSX 模版或逻辑中硬编码任何中/英文字符串。
+* **资源清理**：组件逻辑必须包含显式的销毁步骤（如 `onUnmounted` 中清理定时器、监听器等），严防内存泄漏。
+
+### 4. 逻辑层与 Composables (Logic & State)
+
+* **逻辑下沉**：TSX 仅负责视图组装，严禁在 TSX 顶层编写复杂业务逻辑，必须抽离至 `composables`。
+* **扁平调度**：Composables 之间 **禁止相互调用**。所有逻辑依赖必须由组件层（Component）进行统一调度和数据传递，杜绝深层耦合。
+
+### 5. 样式\布局与CSS变量规范 (Styling & Design)
+
+* **BEM 命名法**：CSS 类名必须严格遵循 **BEM (Block Element Modifier)** 规范。
+* **样式隔离**：组件独立样式文件优先，全局变量仅限引用 `style/global.css` 定义的 CSS Variables。
+* **CSS Variables 命名**：变量命名推荐采用“三段式命名法”（Triptych Notation），格式为：`namespace-value-type-variable-name`:
+  * 必须使用 kebab-case，包含命名空间（全局变量如 system-）。
+  * 必须包含值类型（如 -color-, -font-size-）.
+* **语义化变量**：区分“基于值”（常量范围，如 --system-color-cherry-red）与“基于用途”（接口概念，如 --system-color-text-primary）。
+* **主题适配**：编写样式必须同时考虑浅色与深色模式。
+* **布局原则**：优先使用 Grid 或 Flex 布局，严禁使用 float 或 inline-block。
+
+### 6. 代码风格与排版 (Code Style & Layout)
+
+* **呼吸感排版**：执行 **“一行代码 + 一行空格”** 原则。在函数调用、变量定义、关键执行语句后必须插入空行。
+* **扁平化书写**：代码追求极简嵌套。能单行完成的逻辑（如简单的赋值、if 判断）优先单行书写。
+* **时序原则**：严禁在声明前调用变量或函数。
+* **流程控制**：优先使用 **卫语句 (Guard Clauses)** 和 **提前返回 (Early Returns)**。
+* **禁止深层 `if/else` 嵌套**：避免使用深层 `if/else` 嵌套。
+* **尽量避免 `try-catch` 块**：在可能的情况下，避免使用 `try-catch` 块来处理异常，而是使用更细粒度的错误处理机制。
+* **保持逻辑流的线性同步感**：确保代码的逻辑流是线性的，避免复杂的控制流程。
+* **极简调用规范**：
+  * 对于 nextTick、setTimeout、setInterval 或自定义指令等单个执行语句，严禁强制换行。
+  * 禁止冗余大括号：若逻辑只有单行，优先不使用大括号（如：nextTick(() => doSomething())）。
+  * 拒绝括号换行：即便保留大括号，也必须单行书写，禁止将大括号拆分到多行。
+
+### 7. 注释与文档 (Documentation)
+
+* **格式要求**：统一使用单行块注释 `/* ... */`，严禁使用 `//`。
+* **语言要求**：注释内容必须使用 **中文**。
+* **覆盖要求**：在函数、类、变量、常量定义处应尽可能提供详尽注释，注释必须 **独占一行**，禁止尾随代码。
+
+
+
+
+
+
