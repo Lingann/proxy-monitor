@@ -2,6 +2,7 @@ import { defineComponent } from 'vue';
 import { RouterView, RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { Activity, Settings, Package } from 'lucide-vue-next';
+import './style/normalize.css'
 import './style/reset.scss';
 
 export default defineComponent({
