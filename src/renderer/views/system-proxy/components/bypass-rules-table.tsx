@@ -2,7 +2,7 @@ import { defineComponent, ref, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { ProxyBypassRule } from '../../../../shared/common-types';
 import CommonTable from '../../../components/common-table/common-table';
-import CommonInput from '../../../components/common-input/common-input';
+import { BnInput } from '../../../components/input';
 import { TableColumn } from '../../../components/common-table/types';
 import Icon from '../../../components/icon/icon';
 import styles from './bypass-rules-table.module.scss';
@@ -87,10 +87,11 @@ export default defineComponent({
         render: (_, row) => {
           if (editingId.value === row.id) {
             return (
-              <CommonInput
+              <BnInput
                 modelValue={editAddress.value}
-                onUpdateModelValue={(val: string) => (editAddress.value = val)}
-                config={{ placeholder: t('proxy.address') }}
+                onUpdate:modelValue={(val: string) => (editAddress.value = val)}
+                placeholder={t('proxy.address')}
+                block
               />
             );
           }
@@ -103,10 +104,11 @@ export default defineComponent({
         render: (_, row) => {
           if (editingId.value === row.id) {
             return (
-              <CommonInput
+              <BnInput
                 modelValue={editDescription.value}
-                onUpdateModelValue={(val: string) => (editDescription.value = val)}
-                config={{ placeholder: t('proxy.description') }}
+                onUpdate:modelValue={(val: string) => (editDescription.value = val)}
+                placeholder={t('proxy.description')}
+                block
               />
             );
           }
@@ -168,17 +170,19 @@ export default defineComponent({
       <div class={styles.container}>
         <div class={styles.addSection}>
           <div class={styles.inputGroup}>
-            <CommonInput
+            <BnInput
               modelValue={newAddress.value}
-              onUpdateModelValue={(val: string) => (newAddress.value = val)}
-              config={{ placeholder: t('proxy.bypass_placeholder') }}
+              onUpdate:modelValue={(val: string) => (newAddress.value = val)}
+              placeholder={t('proxy.bypass_placeholder')}
+              block
             />
           </div>
           <div class={styles.inputGroup}>
-            <CommonInput
+            <BnInput
               modelValue={newDescription.value}
-              onUpdateModelValue={(val: string) => (newDescription.value = val)}
-              config={{ placeholder: t('proxy.description') }}
+              onUpdate:modelValue={(val: string) => (newDescription.value = val)}
+              placeholder={t('proxy.description')}
+              block
             />
           </div>
           <button class={styles.addButton} onClick={handleAdd}>

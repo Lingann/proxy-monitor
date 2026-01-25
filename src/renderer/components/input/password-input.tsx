@@ -7,7 +7,7 @@
  * ******************************************************
  */
 
-import { EyeInvisibleOutlined, EyeOutlined, LockOutlined } from '@ant-design/icons-vue'
+import { Eye, EyeOff, Lock } from 'lucide-vue-next'
 import { computed, defineComponent, h, ref } from 'vue'
 
 import { useInputEvent } from './composables/use-input-event'
@@ -47,7 +47,7 @@ export const BnPasswordInput = defineComponent({
     // 渲染函数
     const renderPrefixIcon = () => (
       <span class="bn-input__prefix">
-        {h(LockOutlined)}
+        {h(Lock, { size: 16 })}
       </span>
     )
 
@@ -57,15 +57,17 @@ export const BnPasswordInput = defineComponent({
       return (
         <span class="bn-input__suffix">
           {visible.value ? (
-            <EyeOutlined
-              class="bn-input__visibility-icon"
-              onClick={toggleVisibility}
-            />
+            h(Eye, {
+              size: 16,
+              class: 'bn-input__visibility-icon',
+              onClick: toggleVisibility
+            })
           ) : (
-            <EyeInvisibleOutlined
-              class="bn-input__visibility-icon"
-              onClick={toggleVisibility}
-            />
+            h(EyeOff, {
+              size: 16,
+              class: 'bn-input__visibility-icon',
+              onClick: toggleVisibility
+            })
           )}
         </span>
       )

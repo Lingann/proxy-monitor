@@ -7,7 +7,7 @@
  * ******************************************************
  */
 
-import { createVueProps } from '@blanc-nova/vue-utils'
+import { createVueProps } from '../../../utils/create-vue-props'
 import type { ExtractPropTypes, PropType } from 'vue'
 
 import type { DividerOrientation, DividerStyle, DividerType } from '../types'

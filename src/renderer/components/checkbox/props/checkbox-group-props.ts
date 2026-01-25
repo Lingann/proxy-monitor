@@ -7,7 +7,7 @@
  * ******************************************************
  */
 
-import { createVueProps } from '@blanc-nova/vue-utils'
+import { createVueProps } from '../../../utils/create-vue-props'
 import type { ExtractPropTypes } from 'vue'
 
 import type { CheckboxOptionType, CheckboxSize, CheckboxValueType } from '../types'

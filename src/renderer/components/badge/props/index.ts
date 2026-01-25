@@ -7,7 +7,7 @@
  * ******************************************************
  */
 
-import { createVueProps } from '@blanc-nova/vue-utils'
+import { createVueProps } from '../../../utils/create-vue-props'
 import type { ExtractPropTypes, PropType } from 'vue'
 
 import type { BadgeColor, BadgePreset, BadgeShape, BadgeSize, BadgeStatus } from '../types'

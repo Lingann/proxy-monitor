@@ -32,9 +32,14 @@ export const BnInput = defineComponent({
       handleInput,
       handleChange,
       handleFocus,
-      handleBlur,
+      handleBlur: baseHandleBlur,
       handleClear
     } = useInputEvent(emit, props.maxLength)
+
+    // 包装 blur 事件处理以支持 trim
+    const handleBlur = (event: FocusEvent) => {
+      baseHandleBlur(event, props.trim, props.modelValue)
+    }
 
     // 过滤掉class属性，避免传递到input元素
     const { class: _, ...inputAttrs } = attrs

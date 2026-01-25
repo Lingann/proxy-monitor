@@ -3,7 +3,7 @@ import styles from './component-library.module.scss';
 import { useDemoState } from './composables/use-demo-state';
 import CommonForm from '../../components/common-form/common-form';
 import CommonFormItem from '../../components/common-form/sub-components/common-form-item';
-import CommonInput from '../../components/common-input/common-input';
+import { BnInput } from '../../components/input';
 import CommonSelect from '../../components/common-select/common-select';
 
 export default defineComponent({
@@ -45,24 +45,26 @@ export default defineComponent({
                     <div class={styles.demoForm}>
                         <CommonForm ref={formRef} model={formData} rules={rules}>
                             <CommonFormItem prop="username" label="Username">
-                                <CommonInput 
-                                    modelValue={formData.username} 
-                                    onUpdateModelValue={(v: string | number | null) => formData.username = String(v || '')}
-                                    config={{ placeholder: 'Enter username' }}
+                                <BnInput
+                                    modelValue={formData.username}
+                                    onUpdate:modelValue={(v: string | number | null) => formData.username = String(v || '')}
+                                    placeholder="Enter username"
+                                    block
                                 />
                             </CommonFormItem>
                             <CommonFormItem prop="email" label="Email">
-                                <CommonInput 
-                                    modelValue={formData.email} 
-                                    onUpdateModelValue={(v: string | number | null) => formData.email = String(v || '')}
-                                    config={{ placeholder: 'Enter email' }}
+                                <BnInput
+                                    modelValue={formData.email}
+                                    onUpdate:modelValue={(v: string | number | null) => formData.email = String(v || '')}
+                                    placeholder="Enter email"
+                                    block
                                 />
                             </CommonFormItem>
                             <CommonFormItem prop="role" label="Role">
-                                <CommonSelect 
-                                    modelValue={formData.role} 
+                                <CommonSelect
+                                    modelValue={formData.role}
                                     onUpdateModelValue={(v: string | number | null) => formData.role = String(v || '')}
-                                    config={{ 
+                                    config={{
                                         placeholder: 'Select role',
                                         options: [
                                             { label: 'Admin', value: 'admin' },

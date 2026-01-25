@@ -53,7 +53,7 @@ export interface ButtonEmits {
 
 ```typescript
 // props/button.ts
-import { createVueProps } from '@blanc-nova/vue-utils'
+import { createVueProps } from '../../../utils/create-vue-props'
 import type { PropType } from 'vue'
 
 import type { ButtonColor, ButtonSize, ButtonVariant } from '../types'

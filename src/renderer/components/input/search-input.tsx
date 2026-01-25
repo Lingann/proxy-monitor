@@ -7,7 +7,7 @@
  * ******************************************************
  */
 
-import { SearchOutlined } from '@ant-design/icons-vue'
+import { Search } from 'lucide-vue-next'
 import { defineComponent, h } from 'vue'
 
 import { useInputEvent } from './composables/use-input-event'
@@ -51,7 +51,7 @@ export const BnSearchInput = defineComponent({
     // 渲染函数
     const renderPrefixIcon = () => (
       <span class="bn-input__prefix">
-        {h(SearchOutlined)}
+        {h(Search, { size: 16 })}
       </span>
     )
 

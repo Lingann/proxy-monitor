@@ -7,7 +7,7 @@
  * ******************************************************
  */
 
-import { createVueProps } from '@blanc-nova/vue-utils'
+import { createVueProps } from '../../../utils/create-vue-props'
 import type { Component, ExtractPropTypes } from 'vue'
 
 import type { InputSize, InputType } from '../types'
@@ -59,7 +59,7 @@ export const inputProps = createVueProps('input', {
   },
   clearable: {
     type: Boolean,
-    default: true
+    default: false
   },
   prefixIcon: {
     type: Object as () => Component,
@@ -76,6 +76,10 @@ export const inputProps = createVueProps('input', {
   maxLength: {
     type: Number,
     default: undefined
+  },
+  trim: {
+    type: Boolean,
+    default: false
   }
 })
 

@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 import styles from './system-proxy.module.scss';
 import { useExtendedProxyState } from './composables/use-extended-proxy-state';
-import CommonInput from '../../components/common-input/common-input';
+import { BnInput } from '../../components/input';
 import BypassRulesTable from './components/bypass-rules-table';
 
 export default defineComponent({
@@ -63,13 +63,12 @@ export default defineComponent({
               <div class={styles.formGroup}>
                 <label>{t('proxy.server')}</label>
 
-                <CommonInput
+                <BnInput
                   modelValue={server.value}
-                  onUpdateModelValue={(val: string) => (server.value = val)}
-                  config={{
-                    placeholder: t('proxy.server_placeholder'),
-                    disabled: saving.value
-                  }}
+                  onUpdate:modelValue={(val: string) => (server.value = val)}
+                  placeholder={t('proxy.server_placeholder')}
+                  disabled={saving.value}
+                  block
                 />
 
                 <div class={styles.hint}>{t('proxy.server_hint')}</div>

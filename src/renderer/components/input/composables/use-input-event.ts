@@ -82,9 +82,21 @@ export const useInputEvent = (
   /**
    * 处理失焦事件
    * @param event - 「失焦事件对象」原生blur事件
+   * @param trim - 「是否去除首尾空格」是否在失焦时自动去除首尾空格
+   * @param currentValue - 「当前值」输入框的当前值
    */
-  const handleBlur = (event: FocusEvent) => {
+  const handleBlur = (event: FocusEvent, trim?: boolean, currentValue?: string) => {
     focused.value = false
+
+    // 如果启用trim，则在失去焦点时去除首尾空格
+    if (trim && currentValue) {
+      const trimmedValue = currentValue.trim()
+      if (trimmedValue !== currentValue) {
+        emit('update:modelValue', trimmedValue)
+        emit('change', event)
+      }
+    }
+
     emit('blur', event)
   }
 
