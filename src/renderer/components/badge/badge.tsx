@@ -26,47 +26,44 @@ export const BnBadge = defineComponent<BadgeProps>({
     offset: ['50%', '-50%'] as [string, string],
     shape: 'circle'
   }),
-  emits: ['click', 'mouseenter', 'mouseleave'],
-  setup(props, { slots, emit }) {
+  setup(props, { slots }) {
     // ==================================================
     // #region 组合式函数
     // ==================================================
 
-    // 处理预设配置
+    /* 处理预设配置 */
     const { config, displayCount } = useBadgePreset(props)
 
-    // 处理类名
+    /* 处理类名 */
     const { badgeClass, badgeContentClass, badgeSupClass } = useBadgeClass(config)
 
-    // 处理事件
-    const { handleClick, handleMouseEnter, handleMouseLeave } = useBadgeEvent(config, emit)
+    /* 处理事件 */
+    const { handleClick, handleMouseEnter, handleMouseLeave } = useBadgeEvent(config)
 
-    // 处理徽章偏移量样式
+    /* 处理徽章偏移量样式 */
     const badgeSupStyle = computed(() => {
-      // 获取偏移量
+      /* 获取偏移量 */
       const offset = config.value.offset || props.offset
 
-      // 防御式编程：验证offset参数是否合法
-      if (!offset || !Array.isArray(offset) || offset.length < 2) {
-        return {}
-      }
+      /* 防御式编程：验证offset参数是否合法 */
+      if (!offset || !Array.isArray(offset) || offset.length < 2) return {}
 
-      // 确保offset是[x, y]形式的二元组
+      /* 确保offset是[x, y]形式的二元组 */
       const [offsetXValue, offsetYValue] = offset as [number | string, number | string]
 
-      // 处理偏移量值，如果是数字则添加px单位，如果是字符串则直接使用
+      /* 处理偏移量值，如果是数字则添加px单位，如果是字符串则直接使用 */
       const offsetX = typeof offsetXValue === 'number' ? `${offsetXValue}px` : offsetXValue
       const offsetY = typeof offsetYValue === 'number' ? `${offsetYValue}px` : offsetYValue
 
-      // 根据徽章类型设置不同的CSS变量
+      /* 根据徽章类型设置不同的CSS变量 */
       if (props.dot) {
-        // 点模式使用dot-offset变量，需要更新为与mixins.scss一致的变量名
+        /* 点模式使用dot-offset变量 */
         return {
           '--bn-badge-dot-offset-x': offsetX,
           '--bn-badge-dot-offset-y': offsetY
         }
       } else {
-        // 普通徽章使用offset变量，需要更新为与mixins.scss一致的变量名
+        /* 普通徽章使用offset变量 */
         return {
           '--bn-badge-offset-x': offsetX,
           '--bn-badge-offset-y': offsetY
@@ -74,21 +71,21 @@ export const BnBadge = defineComponent<BadgeProps>({
       }
     })
 
-    // 判断是否为独立的状态点
+    /* 判断是否为独立的状态点 */
     const isStandalone = computed(() => {
       return !slots.default && (!!props.status || displayCount.value !== null)
     })
 
-    // #endregion
+    /* #endregion */
     // ==================================================
 
     // ==================================================
-    // #region 渲染函数
+    /* #region 渲染函数 */
     // ==================================================
 
-    // 渲染状态点
+    /* 渲染状态点 */
     const renderStatusDot = () => {
-      // 防御式渲染：确保status存在
+      /* 防御式渲染：确保status存在 */
       if (!props.status) return null
 
       return (
@@ -98,22 +95,20 @@ export const BnBadge = defineComponent<BadgeProps>({
       )
     }
 
-    // 渲染文本
+    /* 渲染文本 */
     const renderText = () => {
-      // 防御式渲染：确保text存在
+      /* 防御式渲染：确保text存在 */
       if (!props.text) return null
 
       return <span class="bn-badge__text">{props.text}</span>
     }
 
-    // 渲染徽章计数
+    /* 渲染徽章计数 */
     const renderBadgeCount = () => {
-      // 防御式渲染：没有计数且不是点模式和状态模式时不渲染
-      if (displayCount.value === null && !props.dot && !props.status) {
-        return null
-      }
+      /* 防御式渲染：没有计数且不是点模式和状态模式时不渲染 */
+      if (displayCount.value === null && !props.dot && !props.status) return null
 
-      // 渲染徽章内容
+      /* 渲染徽章内容 */
       return (
         <sup class={badgeSupClass.value} style={badgeSupStyle.value}>
           {/* 仅在非点模式且有显示计数时才渲染数字 */}
@@ -122,7 +117,7 @@ export const BnBadge = defineComponent<BadgeProps>({
       )
     }
 
-    // 渲染独立徽章
+    /* 渲染独立徽章 */
     const renderStandalone = () => {
       return (
         <span
@@ -138,7 +133,7 @@ export const BnBadge = defineComponent<BadgeProps>({
       )
     }
 
-    // 渲染带内容的徽章
+    /* 渲染带内容的徽章 */
     const renderWithContent = () => {
       return (
         <span
@@ -157,11 +152,11 @@ export const BnBadge = defineComponent<BadgeProps>({
     }
 
     return () => {
-      // 根据是否有内容决定渲染模式
+      /* 根据是否有内容决定渲染模式 */
       return isStandalone.value ? renderStandalone() : renderWithContent()
     }
 
-    // #endregion
+    /* #endregion */
     // ==================================================
   }
 })

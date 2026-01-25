@@ -22,16 +22,14 @@ export const BnCheckboxGroup = defineComponent({
 
   props: checkboxGroupProps(),
 
-  emits: ['update:modelValue', 'change'],
-
-  setup(props, { emit, slots }) {
-    // 使用复选框组逻辑
+  setup(props, { slots }) {
+    /* 使用复选框组逻辑 */
     const {
       checkedValue,
       isDisabled,
       normalizedOptions,
       checkboxGroupClass
-    } = useCheckboxGroup(props, emit)
+    } = useCheckboxGroup(props)
 
     return () => (
       <div class={checkboxGroupClass.value}>

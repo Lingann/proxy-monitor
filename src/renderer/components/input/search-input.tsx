@@ -22,33 +22,32 @@ export const BnSearchInput = defineComponent({
   name: 'BnSearchInput',
   inheritAttrs: false,
   props: searchInputProps(),
-  emits: ['update:modelValue', 'input', 'change', 'focus', 'blur', 'clear', 'search'],
-  setup(props, { emit, attrs }) {
-    // 使用基础事件处理
+  setup(props, { attrs }) {
+    /* 使用基础事件处理 */
     const {
       handleInput: baseHandleInput,
       handleChange,
       handleFocus,
       handleBlur,
       handleClear
-    } = useInputEvent(emit)
+    } = useInputEvent(props)
 
-    // 扩展输入处理，增加搜索功能
+    /* 扩展输入处理，增加搜索功能 */
     const handleInput = (value: string) => {
       baseHandleInput(value)
 
-      // 如果启用了输入时搜索，则触发搜索事件
+      /* 如果启用了输入时搜索，则触发搜索事件 */
       if (props.searchOnInput) {
-        emit('search', value)
+        props.onSearch?.(value)
       }
     }
 
-    // 处理搜索按钮点击
+    /* 处理搜索按钮点击 */
     const handleSearch = () => {
-      emit('search', props.modelValue)
+      props.onSearch?.(props.modelValue || '')
     }
 
-    // 渲染函数
+    /* 渲染函数 */
     const renderPrefixIcon = () => (
       <span class="bn-input__prefix">
         {h(Search, { size: 16 })}

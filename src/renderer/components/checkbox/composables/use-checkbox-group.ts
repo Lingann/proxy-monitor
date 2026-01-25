@@ -32,19 +32,17 @@ export interface CheckboxGroupContext {
 /**
  * 使用复选框组状态和事件处理
  * @param props - 「复选框组属性」复选框组组件属性
- * @param emit - 「事件发射器」组件事件
  * @returns 「复选框组状态和处理器」包含复选框组状态和处理方法
  */
 export function useCheckboxGroup(
-  props: CheckboxGroupProps,
-  emit: (e: 'update:modelValue' | 'change', value: CheckboxValueType[]) => void
+  props: CheckboxGroupProps
 ) {
-  // 内部选中值
+  /* 内部选中值 */
   const innerValue: Ref<CheckboxValueType[]> = ref(
     props.modelValue !== undefined ? [...props.modelValue] : [...(props.defaultValue || [])]
   )
 
-  // 监听属性变化更新内部状态
+  /* 监听属性变化更新内部状态 */
   watch(
     () => props.modelValue,
     (val) => {
@@ -55,13 +53,13 @@ export function useCheckboxGroup(
     { deep: true }
   )
 
-  // 计算选中的值
+  /* 计算选中的值 */
   const checkedValue = computed(() => innerValue.value)
 
-  // 计算是否禁用
+  /* 计算是否禁用 */
   const isDisabled = computed(() => !!props.disabled)
 
-  // 格式化选项
+  /* 格式化选项 */
   const normalizedOptions = computed(() => {
     if (!props.options) return []
 
@@ -76,33 +74,34 @@ export function useCheckboxGroup(
     })
   })
 
-  // 处理选中值变化
+  /* 处理选中值变化 */
   const handleChange = (value: CheckboxValueType, checked: boolean) => {
-    // 复制当前值以避免直接修改
+    /* 复制当前值以避免直接修改 */
     const currentValue = [...innerValue.value]
 
     if (checked) {
-      // 添加值（如果不存在）
+      /* 添加值（如果不存在） */
       if (!currentValue.includes(value)) {
         currentValue.push(value)
       }
     } else {
-      // 移除值（如果存在）
+      /* 移除值（如果存在） */
       const index = currentValue.indexOf(value)
+
       if (index !== -1) {
         currentValue.splice(index, 1)
       }
     }
 
-    // 更新内部状态
+    /* 更新内部状态 */
     innerValue.value = currentValue
 
-    // 发射事件
-    emit('update:modelValue', currentValue)
-    emit('change', currentValue)
+    /* 调用 Props 中的回调函数 */
+    props.onUpdateModelValue?.(currentValue)
+    props.onChange?.(currentValue)
   }
 
-  // 计算复选框组样式类
+  /* 计算复选框组样式类 */
   const checkboxGroupClass = computed(() => {
     return [
       'bn-checkbox-group',
@@ -111,7 +110,7 @@ export function useCheckboxGroup(
     ]
   })
 
-  // 提供上下文给子组件
+  /* 提供上下文给子组件 */
   provide(CHECKBOX_GROUP_KEY, {
     name: props.name,
     checkedValue,

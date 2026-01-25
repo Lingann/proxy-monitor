@@ -62,7 +62,10 @@ export const createDividerProps = createVueProps('divider', {
   dash: {
     type: Boolean,
     default: false
-  }
+  },
+
+  /* 事件回调：点击事件 */
+  onClick: Function as PropType<(event: MouseEvent) => void>
 
 } as const)
 

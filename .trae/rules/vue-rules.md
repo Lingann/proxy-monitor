@@ -25,8 +25,12 @@ alwaysApply: true
 
 ### 3. 组件开发与交互规范 (Component Patterns)
 
-* **组件定义**：使用 `defineComponent` 或函数式组件，弃用 `emits` 选项。
-* **事件通信**：全量采用 **Props 回调模式**（例如：使用 `props.onClick` 代替 `$emit('click')`）。
+* **组件定义**：使用 `defineComponent` 或函数式组件，**严禁使用 `emits` 选项**。
+* **事件通信**：全量采用 **Props 回调模式**（例如：使用 `props.onClick` 代替 `emit('click')`）。
+  * **禁止使用 `emits` 和 `emit`**：在 TSX 组件中，不符合 React/TSX 的语法规范和开发习惯。
+  * **Props 事件命名**：事件回调必须以 `on` 开头（如 `onClick`、`onChange`、`onUpdateModelValue`）。
+  * **类型定义**：使用 `PropType<(params) => void>` 明确事件回调的参数类型。
+  * **v-model 双向绑定**：使用 `onUpdateModelValue` 替代 `emit('update:modelValue')`。
 * **交互限制**：禁止使用位移、缩放等改变元素位置的 hover 效果。
 * **交互引导**：优先使用阴影、字体加重、背景颜色变化来实现交互反馈。
 * **国际化 (i18n)**：强制使用 `useI18n`。严禁在 TSX 模版或逻辑中硬编码任何中/英文字符串。

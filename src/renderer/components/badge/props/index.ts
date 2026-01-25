@@ -92,7 +92,16 @@ export const createBadgeProps = createVueProps('badge', {
   show: {
     type: Boolean,
     default: true
-  }
+  },
+
+  /* 事件回调：点击事件 */
+  onClick: Function as PropType<(event: MouseEvent) => void>,
+
+  /* 事件回调：鼠标进入事件 */
+  onMouseenter: Function as PropType<(event: MouseEvent) => void>,
+
+  /* 事件回调：鼠标离开事件 */
+  onMouseleave: Function as PropType<(event: MouseEvent) => void>
 
 } as const)
 

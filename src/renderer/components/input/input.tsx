@@ -22,11 +22,10 @@ export const BnInput = defineComponent({
   name: 'BnInput',
   inheritAttrs: false,
   props: inputProps(),
-  emits: ['update:modelValue', 'input', 'change', 'focus', 'blur', 'clear'],
-  setup(props, { emit, attrs, slots }) {
+  setup(props, { attrs, slots }) {
     const type = computed(() => props.type)
 
-    // 使用事件处理组合式函数
+    /* 使用事件处理组合式函数 */
     const {
       focused,
       handleInput,
@@ -34,26 +33,27 @@ export const BnInput = defineComponent({
       handleFocus,
       handleBlur: baseHandleBlur,
       handleClear
-    } = useInputEvent(emit, props.maxLength)
+    } = useInputEvent(props, props.maxLength)
 
-    // 包装 blur 事件处理以支持 trim
+    /* 包装 blur 事件处理以支持 trim */
     const handleBlur = (event: FocusEvent) => {
       baseHandleBlur(event, props.trim, props.modelValue)
     }
 
-    // 过滤掉class属性，避免传递到input元素
+    /* 过滤掉class属性，避免传递到input元素 */
     const { class: _, ...inputAttrs } = attrs
 
-    // 计算当前字数
+    /* 计算当前字数 */
     const currentLength = computed(() => props.modelValue?.length ?? 0)
 
-    // 计算是否超出最大长度
+    /* 计算是否超出最大长度 */
     const isExceeded = computed(() => {
       if (!props.maxLength) return false
+
       return currentLength.value > props.maxLength
     })
 
-    // 渲染函数
+    /* 渲染函数 */
     return () => (
       <div
         class={[

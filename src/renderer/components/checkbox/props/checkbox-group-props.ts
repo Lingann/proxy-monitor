@@ -8,7 +8,7 @@
  */
 
 import { createVueProps } from '../../../utils/create-vue-props'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 
 import type { CheckboxOptionType, CheckboxSize, CheckboxValueType } from '../types'
 
@@ -50,7 +50,13 @@ export const checkboxGroupProps = createVueProps('checkbox-group', {
   name: {
     type: String,
     default: undefined
-  }
+  },
+
+  /* 事件回调：v-model 更新事件 */
+  onUpdateModelValue: Function as PropType<(value: CheckboxValueType[]) => void>,
+
+  /* 事件回调：变更事件 */
+  onChange: Function as PropType<(value: CheckboxValueType[]) => void>
 })
 
 // #endregion

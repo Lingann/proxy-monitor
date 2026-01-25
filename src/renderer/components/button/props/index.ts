@@ -12,6 +12,11 @@ import type { ExtractPropTypes, PropType } from 'vue'
 
 import type { ButtonColor, ButtonPreset, ButtonShape, ButtonSize, ButtonType, ButtonVariant } from '../types'
 
+/* 按钮事件回调类型定义 */
+export interface ButtonEventCallbacks {
+  onClick?: (event: MouseEvent) => void
+}
+
 // ==================================================
 // #region Props 工厂函数
 // ==================================================
@@ -98,7 +103,10 @@ export const createButtonProps = createVueProps('button', {
   role: {
     type: String,
     default: 'button'
-  }
+  },
+
+  /* 事件回调：点击事件 */
+  onClick: Function as PropType<(event: MouseEvent) => void>
 } as const)
 
 // #endregion

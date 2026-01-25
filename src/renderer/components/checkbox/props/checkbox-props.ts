@@ -8,9 +8,9 @@
  */
 
 import { createVueProps } from '../../../utils/create-vue-props'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 
-import type { CheckboxSize, CheckboxValueType } from '../types'
+import type { CheckboxChangeEvent, CheckboxSize, CheckboxValueType } from '../types'
 
 // ==================================================
 // #region 基础属性定义
@@ -56,11 +56,23 @@ export const checkboxProps = createVueProps('checkbox', {
     type: Boolean,
     default: undefined
   },
-  // 自动获取焦点
+  /* 自动获取焦点 */
   autoFocus: {
     type: Boolean,
     default: false
-  }
+  },
+
+  /* 事件回调：v-model 更新事件 */
+  onUpdateModelValue: Function as PropType<(value: boolean) => void>,
+
+  /* 事件回调：变更事件 */
+  onChange: Function as PropType<(event: CheckboxChangeEvent) => void>,
+
+  /* 事件回调：获得焦点事件 */
+  onFocus: Function as PropType<(event: FocusEvent) => void>,
+
+  /* 事件回调：失去焦点事件 */
+  onBlur: Function as PropType<(event: FocusEvent) => void>
 })
 
 // #endregion

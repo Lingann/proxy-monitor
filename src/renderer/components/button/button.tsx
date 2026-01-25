@@ -23,28 +23,27 @@ import { createButtonProps } from './props'
 export const BnButton = defineComponent({
   name: 'BnButton',
   props: createButtonProps(),
-  emits: ['click'],
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
     // ==================================================
     // #region 组合式函数
     // ==================================================
 
-    // 处理预设配置
+    /* 处理预设配置 */
     const { config } = useButtonPreset(props)
 
     const { buttonClass } = useButtonClass(config)
 
-    const { handleClick, emitter } = useButtonEvent(config, emit)
+    const { handleClick, emitter } = useButtonEvent(config)
 
     const { EffectComponent } = useButtonEffect(config)
 
     const buttonRef = ref<HTMLElement | null>(null)
 
-    // #endregion
+    /* #endregion */
     // ==================================================
 
     // ==================================================
-    // #region 渲染函数
+    /* #region 渲染函数 */
     // ==================================================
 
     return () => (
@@ -91,7 +90,7 @@ export const BnButton = defineComponent({
       </button>
     )
 
-    // #endregion
+    /* #endregion */
     // ==================================================
   }
 })

@@ -8,7 +8,7 @@
  */
 
 import { createVueProps } from '../../../utils/create-vue-props'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 
 import { inputProps } from './input-props'
 
@@ -33,7 +33,10 @@ export const searchInputProps = createVueProps('search-input', {
   searchOnInput: {
     type: Boolean,
     default: false
-  }
+  },
+
+  /* 事件回调：搜索事件 */
+  onSearch: Function as PropType<(value: string) => void>
 })
 
 // #endregion

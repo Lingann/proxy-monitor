@@ -16,12 +16,10 @@ import type { DividerProps } from '../props'
 /**
  * 使用分割线事件
  * @param props - 「分割线Props」组件属性
- * @param emit - 「事件触发函数」组件emit函数
  * @returns 「事件处理函数」组件事件处理函数集合
  */
 export function useDividerEvent(
-  props: DividerProps,
-  emit: (event: 'click', e: MouseEvent) => void
+  props: DividerProps
 ) {
 
   /**
@@ -29,7 +27,7 @@ export function useDividerEvent(
    * @param e - 「鼠标事件」原生事件对象
    */
   const handleClick = (e: MouseEvent) => {
-    emit('click', e)
+    props.onClick?.(e)
   }
 
   return {

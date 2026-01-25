@@ -22,29 +22,28 @@ export const BnPasswordInput = defineComponent({
   name: 'BnPasswordInput',
   inheritAttrs: false,
   props: passwordInputProps(),
-  emits: ['update:modelValue', 'input', 'change', 'focus', 'blur', 'clear'],
-  setup(props, { emit, attrs }) {
-    // 内部状态
+  setup(props, { attrs }) {
+    /* 内部状态 */
     const visible = ref(false)
 
-    // 计算属性
+    /* 计算属性 */
     const inputType = computed(() => visible.value ? 'text' : 'password')
 
-    // 使用基础事件处理
+    /* 使用基础事件处理 */
     const {
       handleInput,
       handleChange,
       handleFocus,
       handleBlur,
       handleClear
-    } = useInputEvent(emit)
+    } = useInputEvent(props)
 
-    // 切换密码可见性
+    /* 切换密码可见性 */
     const toggleVisibility = () => {
       visible.value = !visible.value
     }
 
-    // 渲染函数
+    /* 渲染函数 */
     const renderPrefixIcon = () => (
       <span class="bn-input__prefix">
         {h(Lock, { size: 16 })}

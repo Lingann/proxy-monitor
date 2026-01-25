@@ -7,7 +7,7 @@
  * ******************************************************
  */
 
-import type { createEmitter } from '@blanc-nova/emitter-utils'
+import type { createEmitter } from '../../../utils/create-emitter'
 
 // ==================================================
 // #region 基础类型定义

@@ -8,7 +8,7 @@
  */
 
 import { createVueProps } from '../../../utils/create-vue-props'
-import type { Component, ExtractPropTypes } from 'vue'
+import type { Component, ExtractPropTypes, PropType } from 'vue'
 
 import type { InputSize, InputType } from '../types'
 
@@ -80,7 +80,25 @@ export const inputProps = createVueProps('input', {
   trim: {
     type: Boolean,
     default: false
-  }
+  },
+
+  /* 事件回调：v-model 更新事件 */
+  onUpdateModelValue: Function as PropType<(value: string) => void>,
+
+  /* 事件回调：输入事件 */
+  onInput: Function as PropType<(value: string) => void>,
+
+  /* 事件回调：变更事件 */
+  onChange: Function as PropType<(event: Event) => void>,
+
+  /* 事件回调：获得焦点事件 */
+  onFocus: Function as PropType<(event: FocusEvent) => void>,
+
+  /* 事件回调：失去焦点事件 */
+  onBlur: Function as PropType<(event: FocusEvent) => void>,
+
+  /* 事件回调：清除事件 */
+  onClear: Function as PropType<() => void>
 })
 
 // #endregion
