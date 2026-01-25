@@ -1,0 +1,124 @@
+@use './variables' as *;
+
+// ======================================================
+// 按钮形状样式
+// ======================================================
+
+// 胶囊按钮变量
+@mixin button-capsule-variables {
+  // 胶囊按钮变量
+  --bn-btn-capsule-border-radius: var(--bn-border-radius-full);
+}
+
+// 圆形按钮变量
+@mixin button-circle-variables {
+  // 圆形按钮变量
+  --bn-btn-circle-border-radius: var(--bn-border-radius-full);
+  --bn-btn-circle-width-sm: var(--bn-btn-height-sm);
+  --bn-btn-circle-width-md: var(--bn-btn-height-md);
+  --bn-btn-circle-width-lg: var(--bn-btn-height-lg);
+}
+
+// 方形按钮变量
+@mixin button-square-variables {
+  // 方形按钮变量
+  --bn-btn-square-width-sm: var(--bn-btn-height-xs);
+  --bn-btn-square-width-md: var(--bn-btn-height-sm);
+  --bn-btn-square-width-lg: var(--bn-btn-height-md);
+}
+
+// 按钮变量混入
+@mixin button-shape-variables {
+  @include button-capsule-variables;
+  @include button-circle-variables;
+  @include button-square-variables;
+}
+
+// ======================================================
+// 按钮样式混入
+// ======================================================
+
+// 按钮胶囊样式
+@mixin button-capsule-style {
+  .#{$button-prefix}.#{$button-prefix}-shape-capsule {
+    border-radius: var(--bn-btn-capsule-border-radius);
+  }
+}
+
+// 按钮圆形样式
+@mixin button-circle-style {
+  .#{$button-prefix}.#{$button-prefix}-shape-circle {
+    width: var(--bn-btn-circle-width-md);
+    height: var(--bn-btn-circle-width-md);
+    padding: 0;
+    font-size: var(--bn-btn-font-size-sm);
+    border-radius: var(--bn-border-radius-full);
+  }
+
+  .#{$button-prefix}.#{$button-prefix}-shape-circle.#{$button-prefix}-size-small {
+    width: var(--bn-btn-circle-width-sm);
+    height: var(--bn-btn-circle-width-sm);
+    padding: var(--bn-btn-padding-horizontal-sm);
+    font-size: var(--bn-btn-font-size-xs);
+    border-radius: var(--bn-border-radius-full);
+  }
+
+  .#{$button-prefix}.#{$button-prefix}-shape-circle.#{$button-prefix}-size-medium {
+    width: var(--bn-btn-circle-width-md);
+    height: var(--bn-btn-circle-width-md);
+    padding: var(--bn-btn-padding-horizontal-md);
+    font-size: var(--bn-btn-font-size-sm);
+    border-radius: var(--bn-border-radius-full);
+  }
+
+  .#{$button-prefix}.#{$button-prefix}-shape-circle.#{$button-prefix}-size-large {
+    width: var(--bn-btn-circle-width-lg);
+    height: var(--bn-btn-circle-width-lg);
+    padding: var(--bn-btn-padding-horizontal-md);
+    font-size: var(--bn-btn-font-size-sm);
+    border-radius: var(--bn-border-radius-full);
+  }
+}
+
+// 按钮方形样式
+@mixin button-square-style {
+  .#{$button-prefix}.#{$button-prefix}-shape-square {
+    width: var(--bn-btn-square-width-md);
+    height: var(--bn-btn-square-width-md);
+    padding: var(--bn-btn-padding-horizontal-md);
+    overflow: hidden;
+    font-size: var(--bn-btn-font-size-sm);
+  }
+
+  .#{$button-prefix}.#{$button-prefix}-shape-square.#{$button-prefix}-size-small {
+    width: var(--bn-btn-square-width-sm);
+    height: var(--bn-btn-square-width-sm);
+    padding: var(--bn-btn-padding-horizontal-sm);
+    overflow: hidden;
+    font-size: var(--bn-btn-font-size-xs);
+  }
+
+  .#{$button-prefix}.#{$button-prefix}-shape-square.#{$button-prefix}-size-medium {
+    width: var(--bn-btn-square-width-md);
+    height: var(--bn-btn-square-width-md);
+    padding: var(--bn-btn-padding-horizontal-md);
+    overflow: hidden;
+    font-size: var(--bn-btn-font-size-sm);
+  }
+
+  .#{$button-prefix}.#{$button-prefix}-shape-square.#{$button-prefix}-size-large {
+    width: var(--bn-btn-square-width-lg);
+    height: var(--bn-btn-square-width-lg);
+    padding: var(--bn-btn-padding-horizontal-md);
+    overflow: hidden;
+    font-size: var(--bn-btn-font-size-sm);
+  }
+}
+
+
+// 按钮形状样式
+@mixin button-shape-style {
+  @include button-capsule-style;
+  @include button-circle-style;
+  @include button-square-style;
+}

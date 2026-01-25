@@ -1,0 +1,40 @@
+@use './variables' as *;
+// ======================================================
+// 文本选择样式混入
+// ======================================================
+
+// 文本选择基础样式
+@mixin selection-base-style {
+  // 全局文本选择样式
+  ::selection {
+    color: var(--bn-selection-text-color);
+    background-color: var(--bn-selection-background-color);
+  }
+
+  // 特定区域文本选择样式
+  pre::selection,
+  pre *::selection {
+    background-color: var(--bn-selection-pre-background-color);
+  }
+
+  code::selection,
+  code *::selection {
+    background-color: var(--bn-selection-code-background-color);
+  }
+
+  a::selection,
+  a *::selection {
+    background-color: var(--bn-selection-a-background-color);
+  }
+}
+
+// 暗色模式文本选择样式
+@mixin selection-dark-style {
+  .dark-mode,
+  [data-theme='dark'] {
+    ::selection {
+      color: var(--bn-selection-text-color-dark);
+      background-color: var(--bn-selection-background-color-dark);
+    }
+  }
+}

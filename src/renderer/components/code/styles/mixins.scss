@@ -1,0 +1,169 @@
+@use './variables' as *;
+// ======================================================
+// 代码文本样式混入
+// ======================================================
+
+$code-prefix: bn-code;
+$pre-prefix: bn-pre;
+
+// 代码文本基础样式
+@mixin code-base-style {
+  // 内联代码样式
+  code:not([class*='language-']) {
+    padding: var(--bn-code-padding);
+    font-family: var(--bn-code-font-family);
+    font-size: var(--bn-code-font-size);
+    line-height: var(--bn-code-line-height);
+    color: var(--bn-code-color);
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    background-color: var(--bn-code-background-color);
+    border-radius: var(--bn-code-border-radius);
+  }
+
+  // 代码块内的代码不需要背景和内边距
+  pre code:not([class*='language-']) {
+    padding: 0;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  // 代码块基础样式
+  pre:not([class*='language-']) {
+    max-height: var(--bn-pre-max-height);
+    padding: var(--bn-pre-padding);
+    overflow: auto;
+    font-family: var(--bn-code-font-family);
+    line-height: var(--bn-pre-line-height);
+    color: var(--bn-pre-color);
+    overflow-wrap: normal;
+    white-space: pre;
+    background-color: var(--bn-pre-background-color);
+    border: var(--bn-pre-border-width) var(--bn-pre-border-style) var(--bn-pre-border-color);
+    border-radius: var(--bn-pre-border-radius);
+  }
+}
+
+// 代码暗色模式样式
+@mixin code-dark-style {
+  .dark-mode,
+  [data-theme='dark'] {
+    code:not([class*='language-']) {
+      color: var(--bn-code-color-dark);
+      background-color: var(--bn-code-background-color-dark);
+    }
+
+    pre:not([class*='language-']) {
+      color: var(--bn-pre-color-dark);
+      background-color: var(--bn-pre-background-color-dark);
+      border-color: var(--bn-pre-border-color-dark);
+    }
+  }
+}
+
+// 代码可扩展样式
+@mixin code-expandable-style {
+  .#{$pre-prefix}-expandable {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      height: 40px;
+      pointer-events: none;
+      content: '';
+      background: linear-gradient(
+        to bottom,
+        rgb(255 255 255 / 0%) 0%,
+        var(--bn-pre-background-color) 100%
+      );
+    }
+
+    &.#{$pre-prefix}-expanded::after {
+      display: none;
+    }
+
+    .#{$pre-prefix}-expand-button {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      z-index: 1;
+      padding: var(--bn-padding-xs) var(--bn-padding-sm);
+      font-size: var(--bn-font-size-sm);
+      color: var(--bn-text-color-secondary);
+      cursor: pointer;
+      background-color: var(--bn-bg-color-component);
+      border: var(--bn-border-width-sm) solid var(--bn-border-color-base);
+      border-radius: var(--bn-border-radius-md);
+      transform: translateX(-50%);
+    }
+  }
+
+  .dark-mode,
+  [data-theme='dark'] {
+    .#{$pre-prefix}-expandable::after {
+      background: linear-gradient(
+        to bottom,
+        rgb(0 0 0 / 0%) 0%,
+        var(--bn-pre-background-color-dark) 100%
+      );
+    }
+
+    .#{$pre-prefix}-expand-button {
+      color: var(--bn-text-color-secondary-dark);
+      background-color: var(--bn-bg-color-component-dark);
+      border-color: var(--bn-border-color-base-dark);
+    }
+  }
+}
+
+// 代码行号样式
+@mixin code-line-numbers-style {
+  .#{$pre-prefix}-line-numbers {
+    position: relative;
+    padding-left: 3.5em;
+    counter-reset: line;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 2.5em;
+      width: 1px;
+      content: '';
+      background-color: var(--bn-border-color-light);
+    }
+
+    .#{$code-prefix}-line::before {
+      position: absolute;
+      left: 0;
+      display: inline-block;
+      width: 2em;
+      margin-right: 1.5em;
+      color: var(--bn-text-color-disabled);
+      text-align: right;
+      content: counter(line);
+      counter-increment: line;
+    }
+
+    .#{$code-prefix}-line {
+      position: relative;
+      display: block;
+    }
+  }
+
+  .dark-mode,
+  [data-theme='dark'] {
+    .#{$pre-prefix}-line-numbers::before {
+      background-color: var(--bn-border-color-light-dark);
+    }
+
+    .#{$pre-prefix}-line-numbers .#{$code-prefix}-line::before {
+      color: var(--bn-text-color-disabled-dark);
+    }
+  }
+}

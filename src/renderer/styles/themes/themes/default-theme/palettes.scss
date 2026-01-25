@@ -1,0 +1,127 @@
+@use '../../common/palettes' as *;
+@use '../../palettes/primary' as primary;
+@use '../../palettes/neutral' as neutral;
+@use '../../palettes/success' as success;
+@use '../../palettes/warning' as warning;
+@use '../../palettes/danger' as danger;
+@use '../../palettes/info' as info;
+@use '../../functions/color' as color-funcs;
+@use '../../functions/palette-functions' as palette-funcs;
+@use '../../mixins/palette-mixins' as palette-mixins;
+
+// 默认主题中的选择器
+:root {
+  // 1. 内部变量 --bn-primary-inner-{1-9}
+  @include palette-mixins.generate-inner-vars('primary', primary.$primary-palette);
+
+  // 2. 色板变量 --bn-primary-color-{1-9}
+  @include palette-mixins.generate-color-vars('primary', primary.$primary-palette);
+
+  // 3. 语义变量 --bn-primary-color-{bg|border|subdued|base|hover|active|emphasis|disabled|focus}
+  @include palette-mixins.generate-semantic-vars('primary', primary.$primary-semantic-colors);
+
+  // 4. Ghost变量 --bn-primary-color-{ghost-bg|ghost-border|ghost-text}
+  @include palette-mixins.generate-semantic-vars('primary', primary.$primary-ghost-colors);
+
+  // 5. 渐变变量 --bn-primary-gradient-{方向}-{类型}
+  @include palette-mixins.generate-gradient-vars('primary', primary.$primary-gradient-colors);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-primary-inner-1: 18, 29, 44;
+
+  // 1. 内部变量 --bn-danger-inner-{1-9}
+  @include palette-mixins.generate-inner-vars('danger', danger.$danger-palette);
+
+  // 2. 色板变量 --bn-danger-color-{1-9}
+  @include palette-mixins.generate-color-vars('danger', danger.$danger-palette);
+
+  // 3. 语义变量 --bn-danger-color-{bg|border|subdued|base|hover|active|emphasis|disabled|focus}
+  @include palette-mixins.generate-semantic-vars('danger', danger.$danger-semantic-colors);
+
+  // 4. Ghost变量 --bn-danger-color-{ghost-bg|ghost-border|ghost-text}
+  @include palette-mixins.generate-semantic-vars('danger', danger.$danger-ghost-colors);
+
+  // 5. 渐变变量 --bn-danger-gradient-{方向}-{类型}
+  @include palette-mixins.generate-gradient-vars('danger', danger.$danger-gradient-colors);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-danger-inner-1: 18, 29, 44;
+
+  // 1. 内部变量 --bn-warning-inner-{1-9}
+  @include palette-mixins.generate-inner-vars('warning', warning.$warning-palette);
+
+  // 2. 色板变量 --bn-warning-color-{1-9}
+  @include palette-mixins.generate-color-vars('warning', warning.$warning-palette);
+
+  // 3. 语义变量 --bn-warning-color-{bg|border|subdued|base|hover|active|emphasis|disabled|focus}
+  @include palette-mixins.generate-semantic-vars('warning', warning.$warning-semantic-colors);
+
+  // 4. Ghost变量 --bn-warning-color-{ghost-bg|ghost-border|ghost-text}
+  @include palette-mixins.generate-semantic-vars('warning', warning.$warning-ghost-colors);
+
+  // 5. 渐变变量 --bn-warning-gradient-{方向}-{类型}
+  @include palette-mixins.generate-gradient-vars('warning', warning.$warning-gradient-colors);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-warning-inner-1: 18, 29, 44;
+
+  // 1. 内部变量 --bn-success-inner-{1-9}
+  @include palette-mixins.generate-inner-vars('success', success.$success-palette);
+
+  // 2. 色板变量 --bn-success-color-{1-9}
+  @include palette-mixins.generate-color-vars('success', success.$success-palette);
+
+  // 3. 语义变量 --bn-success-color-{bg|border|subdued|base|hover|active|emphasis|disabled|focus}
+  @include palette-mixins.generate-semantic-vars('success', success.$success-semantic-colors);
+
+  // 4. Ghost变量 --bn-success-color-{ghost-bg|ghost-border|ghost-text}
+  @include palette-mixins.generate-semantic-vars('success', success.$success-ghost-colors);
+
+  // 5. 渐变变量 --bn-success-gradient-{方向}-{类型}
+  @include palette-mixins.generate-gradient-vars('success', success.$success-gradient-colors);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-success-inner-1: 18, 29, 44;
+
+  // 1. 内部变量 --bn-info-inner-{1-9}
+  @include palette-mixins.generate-inner-vars('info', info.$info-palette);
+
+  // 2. 色板变量 --bn-info-color-{1-9}
+  @include palette-mixins.generate-color-vars('info', info.$info-palette);
+
+  // 3. 语义变量 --bn-info-color-{bg|border|subdued|base|hover|active|emphasis|disabled|focus}
+  @include palette-mixins.generate-semantic-vars('info', info.$info-semantic-colors);
+
+  // 4. Ghost变量 --bn-info-color-{ghost-bg|ghost-border|ghost-text}
+  @include palette-mixins.generate-semantic-vars('info', info.$info-ghost-colors);
+
+  // 5. 渐变变量 --bn-info-gradient-{方向}-{类型}
+  @include palette-mixins.generate-gradient-vars('info', info.$info-gradient-colors);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-info-inner-1: 18, 29, 44;
+
+  // 1. 内部变量 --bn-neutral-inner-{1-9}
+  @include palette-mixins.generate-inner-vars('neutral', neutral.$neutral-palette);
+
+  // 2. 色板变量 --bn-neutral-color-{1-9}
+  @include palette-mixins.generate-color-vars('neutral', neutral.$neutral-palette);
+
+  // 3. 语义变量 --bn-neutral-color-{bg|border|subdued|base|hover|active|emphasis|disabled|focus}
+  @include palette-mixins.generate-semantic-vars('neutral', neutral.$neutral-semantic-colors);
+
+  // 4. Ghost变量 --bn-neutral-color-{ghost-bg|ghost-border|ghost-text}
+  @include palette-mixins.generate-semantic-vars('neutral', neutral.$neutral-ghost-colors);
+
+  // 5. 渐变变量 --bn-neutral-gradient-{方向}-{类型}
+  @include palette-mixins.generate-gradient-vars('neutral', neutral.$neutral-gradient-colors);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-neutral-inner-1: 18, 29, 44;
+}

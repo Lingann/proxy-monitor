@@ -1,0 +1,104 @@
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             「输入框组件变量定义」
+ * 定义输入框组件的基础CSS变量
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+// ==================================================
+// #region 基础前缀定义
+// ==================================================
+$input-prefix: bn-input;
+// #endregion
+// ==================================================
+
+// 不直接修改:root，改为使用mixin便于组合
+@mixin input-variables {
+  // ==================================================
+  // #region 尺寸变量
+  // ==================================================
+  --#{$input-prefix}-height-small: 24px;
+  --#{$input-prefix}-height-medium: 32px;
+  --#{$input-prefix}-height-large: 40px;
+  // #endregion
+  // ==================================================
+
+  // ==================================================
+  // #region 内边距变量
+  // ==================================================
+  --#{$input-prefix}-padding-small: 0px 7px;
+  --#{$input-prefix}-padding-medium: 0px 11px;
+  --#{$input-prefix}-padding-large: 0px 15px;
+  // #endregion
+  // ==================================================
+
+  // ==================================================
+  // #region 字体变量
+  // ==================================================
+  --#{$input-prefix}-font-size-small: 14px;
+  --#{$input-prefix}-font-size-medium: 14px;
+  --#{$input-prefix}-font-size-large: 16px;
+  // #endregion
+  // ==================================================
+
+  // ==================================================
+  // #region 边框和过渡变量
+  // ==================================================
+  --#{$input-prefix}-border-radius: 6px;
+  --#{$input-prefix}-transition-duration: 0.2s;
+  --#{$input-prefix}-border-width: 1px;
+  --#{$input-prefix}-outline-width: 2px;
+  // #endregion
+  // ==================================================
+
+  // ==================================================
+  // #region 宽度变量
+  // ==================================================
+  --#{$input-prefix}-default-width: 240px;
+  // #endregion
+  // ==================================================
+
+  // ==================================================
+  // #region 图标变量
+  // ==================================================
+  --#{$input-prefix}-icon-size-small: 14px;
+  --#{$input-prefix}-icon-size-medium: 16px;
+  --#{$input-prefix}-icon-size-large: 18px;
+  --#{$input-prefix}-icon-gap: 4px;
+  --#{$input-prefix}-affix-gap: 12px;
+  --#{$input-prefix}-icon-hover-opacity: 0.65;
+  // #endregion
+  // ==================================================
+
+  // ==================================================
+  // #region 字数统计变量
+  // ==================================================
+  --#{$input-prefix}-count-font-size: 12px;
+  --#{$input-prefix}-count-color: var(--bn-text-color-secondary, rgb(0 0 0 / 45%));
+  --#{$input-prefix}-count-color-error: var(--bn-error-color-base, #ff4d4f);
+  --#{$input-prefix}-count-margin-top: 4px;
+  // #endregion
+  // ==================================================
+
+  // ==================================================
+  // #region 颜色变量兜底 (防御式编程)
+  // ==================================================
+  --bn-text-color-base: rgb(0 0 0 / 88%);
+  --bn-text-color-secondary: rgb(0 0 0 / 45%);
+  --bn-text-color-quaternary: rgb(0 0 0 / 25%);
+  --bn-text-color-placeholder: rgb(0 0 0 / 25%);
+  --bn-text-color-disabled: rgb(0 0 0 / 25%);
+  --bn-bg-color-base: #fff;
+  --bn-bg-color-disabled: #f5f5f5;
+  --bn-bg-color-active: rgb(0 0 0 / 8%);
+  --bn-border-color-base: #d9d9d9;
+  --bn-border-color-disabled: #d9d9d9;
+  --bn-primary-color-base: #1677ff;
+  --bn-primary-color-hover: #4096ff;
+  --bn-error-color-base: #ff4d4f;
+  --bn-error-color-hover: #ff7875;
+  // #endregion
+  // ==================================================
+}

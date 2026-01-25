@@ -1,0 +1,138 @@
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             「输入框基础样式混入」
+ * 定义输入框组件的基础布局和结构样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+// ==================================================
+// #region 输入框基础样式混入
+// ==================================================
+@mixin input-base-style {
+  .#{$input-prefix} {
+    position: relative;
+    display: inline-flex;
+    align-items: flex-start;
+    width: var(--#{$input-prefix}-default-width);
+    transition: all var(--#{$input-prefix}-transition-duration);
+
+    // 块级模式
+    &--block {
+      width: 100%;
+    }
+  }
+}
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 输入框包装器样式混入
+// ==================================================
+@mixin input-wrapper-style {
+  .#{$input-prefix}__wrapper {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: stretch;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--bn-bg-color-base, #fff);
+    border: var(--#{$input-prefix}-border-width) solid var(--bn-border-color-base, #d9d9d9);
+    border-radius: var(--#{$input-prefix}-border-radius);
+    transition: all var(--#{$input-prefix}-transition-duration);
+  }
+}
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 输入框内部输入元素样式混入
+// ==================================================
+@mixin input-inner-style {
+  .#{$input-prefix}__inner {
+    box-sizing: border-box;
+    flex: 1;
+    min-width: 0;
+    height: var(--#{$input-prefix}-height-medium);
+    padding: var(--#{$input-prefix}-padding-medium);
+    font-size: var(--#{$input-prefix}-font-size-medium);
+    line-height: 1.5715;
+    color: var(--bn-text-color-base, rgb(0 0 0 / 88%));
+    outline: none;
+    background: transparent;
+    border: none;
+    transition: all var(--#{$input-prefix}-transition-duration);
+
+    &::placeholder {
+      color: var(--bn-text-color-placeholder, rgb(0 0 0 / 25%));
+    }
+  }
+}
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 输入框前缀后缀样式混入
+// ==================================================
+@mixin input-affix-style {
+  .#{$input-prefix}__prefix,
+  .#{$input-prefix}__suffix {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    color: var(--bn-text-color-secondary, rgb(0 0 0 / 45%));
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .#{$input-prefix}__prefix {
+    padding-left: 11px;
+  }
+
+  .#{$input-prefix}__suffix {
+    padding-right: 11px;
+  }
+}
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 输入框错误信息样式混入
+// ==================================================
+@mixin input-error-message-style {
+  .#{$input-prefix}__error-message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.5715;
+    color: var(--bn-error-color-base, #ff4d4f);
+  }
+}
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 字数统计样式混入
+// ==================================================
+@mixin input-count-style {
+  .#{$input-prefix}__count {
+    position: absolute;
+    right: 0;
+    bottom: calc(-1 * var(--#{$input-prefix}-count-margin-top) - var(--#{$input-prefix}-count-font-size));
+    font-size: var(--#{$input-prefix}-count-font-size);
+    color: var(--#{$input-prefix}-count-color);
+    transition: color var(--#{$input-prefix}-transition-duration);
+
+    &--exceeded {
+      color: var(--#{$input-prefix}-count-color-error);
+    }
+  }
+}
+// #endregion
+// ==================================================

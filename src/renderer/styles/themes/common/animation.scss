@@ -1,0 +1,40 @@
+// ======================================================
+// 动画变量
+// ======================================================
+
+// 动画变量混入
+// @mixin animation-variables - 定义所有动画相关的CSS变量
+@mixin animation-variables {
+  // 动画持续时间变量
+  --bn-animation-duration-fast: 0.3s;
+  --bn-animation-duration-normal: 0.5s;
+  --bn-animation-duration-slow: 0.8s;
+
+  // 动画缓动函数变量
+  --bn-animation-timing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --bn-animation-timing-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --bn-animation-timing-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  // 动画延迟变量
+  --bn-animation-delay-none: 0s;
+  --bn-animation-delay-short: 0.1s;
+  --bn-animation-delay-medium: 0.3s;
+  --bn-animation-delay-long: 0.5s;
+
+  // 常用动画预设
+  --bn-animation-fade-in: bn-fade-in var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-fade-out: bn-fade-out var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-scale-in: bn-scale-in var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-scale-out: bn-scale-out var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-slide-in-up: bn-slide-in-up var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-slide-in-down: bn-slide-in-down var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-slide-in-left: bn-slide-in-left var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-slide-in-right: bn-slide-in-right var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-slide-out-up: bn-slide-out-up var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-slide-out-down: bn-slide-out-down var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-slide-out-left: bn-slide-out-left var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-slide-out-right: bn-slide-out-right var(--bn-animation-duration-normal) var(--bn-animation-timing-default);
+  --bn-animation-spin: bn-spin var(--bn-animation-duration-normal) linear infinite;
+  --bn-animation-pulse: bn-pulse var(--bn-animation-duration-normal) cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --bn-animation-bounce: bn-bounce var(--bn-animation-duration-slow) var(--bn-animation-timing-bounce) infinite;
+}

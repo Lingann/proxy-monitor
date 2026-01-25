@@ -1,0 +1,164 @@
+/**
+ * ******************************************************
+ * @file                     styles/mixins.scss
+ * @description             「复选框样式混合」
+ * 复选框组件的所有样式混合定义
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+// ==================================================
+// #region 复选框样式混合
+// ==================================================
+
+/**
+ * 设置复选框基础样式
+ */
+@mixin checkbox-base {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--bn-checkbox-font-size, 14px);
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+/**
+ * 设置复选框尺寸
+ */
+@mixin checkbox-size-variant($size) {
+  @if $size == 'small' {
+    font-size: var(--bn-checkbox-font-size-sm, 12px);
+
+    .#{$checkbox-prefix}__inner {
+      width: var(--bn-checkbox-size-sm, 14px);
+      height: var(--bn-checkbox-size-sm, 14px);
+    }
+  } @else if $size == 'large' {
+    font-size: var(--bn-checkbox-font-size-lg, 16px);
+
+    .#{$checkbox-prefix}__inner {
+      width: var(--bn-checkbox-size-lg, 18px);
+      height: var(--bn-checkbox-size-lg, 18px);
+    }
+  } @else {
+    font-size: var(--bn-checkbox-font-size, 14px);
+
+    .#{$checkbox-prefix}__inner {
+      width: var(--bn-checkbox-size, 16px);
+      height: var(--bn-checkbox-size, 16px);
+    }
+  }
+}
+
+/**
+ * 设置复选框状态样式
+ */
+@mixin checkbox-state-variant($state) {
+  @if $state == 'checked' {
+    .#{$checkbox-prefix}__inner {
+      background-color: var(--bn-checkbox-checked-bg, #1677ff);
+      border-color: var(--bn-checkbox-checked-border, #1677ff);
+
+      &::after {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(45deg) scale(1);
+      }
+    }
+  } @else if $state == 'indeterminate' {
+    .#{$checkbox-prefix}__inner {
+      background-color: var(--bn-checkbox-checked-bg, #1677ff);
+      border-color: var(--bn-checkbox-checked-border, #1677ff);
+
+      &::after {
+        top: 50%;
+        left: 50%;
+        width: var(--bn-checkbox-indeterminate-width, 8px);
+        height: var(--bn-checkbox-indeterminate-height, 2px);
+        background-color: var(--bn-checkbox-check-color, #fff);
+        border: 0;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  } @else if $state == 'disabled' {
+    cursor: not-allowed;
+
+    .#{$checkbox-prefix}__inner {
+      background-color: var(--bn-checkbox-disabled-bg, #f5f5f5);
+      border-color: var(--bn-checkbox-disabled-border, #d9d9d9);
+
+      &::after {
+        border-color: var(--bn-checkbox-disabled-check-color, rgb(0 0 0 / 25%));
+      }
+    }
+
+    .#{$checkbox-prefix}__label {
+      color: var(--bn-checkbox-disabled-text-color, rgb(0 0 0 / 25%));
+    }
+
+    &.#{$checkbox-prefix}--checked {
+      .#{$checkbox-prefix}__inner {
+        background-color: var(--bn-checkbox-disabled-checked-bg, #d9d9d9);
+        border-color: var(--bn-checkbox-disabled-checked-border, #d9d9d9);
+      }
+    }
+  }
+}
+
+/**
+ * 设置复选框内部样式
+ */
+@mixin checkbox-inner {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  width: var(--bn-checkbox-size, 16px);
+  height: var(--bn-checkbox-size, 16px);
+  background-color: var(--bn-checkbox-bg, #fff);
+  border: 1px solid var(--bn-checkbox-border-color, #d9d9d9);
+  border-radius: var(--bn-checkbox-border-radius, 2px);
+  transition: all 0.3s;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: table;
+    width: var(--bn-checkbox-check-width, 5px);
+    height: var(--bn-checkbox-check-height, 9px);
+    content: '';
+    border: 2px solid var(--bn-checkbox-check-color, #fff);
+    border-top: 0;
+    border-left: 0;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  }
+}
+
+/**
+ * 设置复选框组基础样式
+ */
+@mixin checkbox-group-base {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/**
+ * 设置复选框组尺寸
+ */
+@mixin checkbox-group-size-variant($size) {
+  @if $size == 'small' {
+    gap: 6px;
+  } @else if $size == 'large' {
+    gap: 10px;
+  } @else {
+    gap: 8px;
+  }
+}
+
+// #endregion
+// ==================================================

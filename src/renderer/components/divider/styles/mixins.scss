@@ -1,0 +1,147 @@
+@use './variables' as *;
+
+// ==================================================
+// #region 基础变量混入
+// ==================================================
+
+/**
+ * 分割线基础变量
+ */
+@mixin divider-base-variables {
+  // 基础CSS变量
+  --#{$divider-prefix}-border-style: solid;
+  --#{$divider-prefix}-border-width: var(--bn-border-width-md, 1px);
+  --#{$divider-prefix}-margin: var(--bn-margin-md, 16px 0);
+  --#{$divider-prefix}-color: var(--bn-border-color, rgb(5 5 5 / 6%));
+  --#{$divider-prefix}-orientation-margin: var(--bn-spacing-md, 16px);
+  --#{$divider-prefix}-text-padding: var(--bn-padding-sm, 0 16px);
+  --#{$divider-prefix}-text-color: var(--bn-text-color-secondary, rgb(0 0 0 / 45%));
+  --#{$divider-prefix}-plain-text-font-weight: var(--bn-font-weight-normal, 400);
+  --#{$divider-prefix}-text-font-weight: var(--bn-font-weight-medium, 500);
+  --#{$divider-prefix}-vertical-height: var(--bn-size-md, 1em);
+  --#{$divider-prefix}-vertical-margin: var(--bn-margin-sm, 0 8px);
+}
+
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 样式混入
+// ==================================================
+
+/**
+ * 分割线基础样式
+ */
+@mixin divider-base-style {
+  // 基础样式
+  .#{$divider-prefix} {
+    box-sizing: border-box;
+    margin: var(--#{$divider-prefix}-margin);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    color: var(--#{$divider-prefix}-text-color);
+    list-style: none;
+    border-top: var(--#{$divider-prefix}-border-width) var(--#{$divider-prefix}-border-style) var(--#{$divider-prefix}-color);
+
+    // 水平分割线
+    &--horizontal {
+      clear: both;
+      display: flex;
+      width: 100%;
+      min-width: 100%;
+    }
+
+    // 垂直分割线
+    &--vertical {
+      position: relative;
+      top: -0.06em;
+      display: inline-block;
+      height: var(--#{$divider-prefix}-vertical-height);
+      margin: var(--#{$divider-prefix}-vertical-margin);
+      vertical-align: middle;
+      border-top: 0;
+      border-left: var(--#{$divider-prefix}-border-width) var(--#{$divider-prefix}-border-style) var(--#{$divider-prefix}-color);
+    }
+
+    // 虚线样式
+    &--dashed {
+      border-top-style: dashed;
+
+      &.#{$divider-prefix}--vertical {
+        border-top: 0;
+        border-left-style: dashed;
+      }
+    }
+
+    // 点线样式
+    &--dotted {
+      border-top-style: dotted;
+
+      &.#{$divider-prefix}--vertical {
+        border-top: 0;
+        border-left-style: dotted;
+      }
+    }
+
+    // 带文字的分割线样式
+    &--left,
+    &--right,
+    &--center {
+      display: flex;
+      align-items: center;
+
+      &::before,
+      &::after {
+        flex: 1 1 auto;
+        content: '';
+        border-top: var(--#{$divider-prefix}-border-width) var(--#{$divider-prefix}-border-style) var(--#{$divider-prefix}-color);
+      }
+
+      &.#{$divider-prefix}--dashed {
+        &::before,
+        &::after {
+          border-top-style: dashed;
+        }
+      }
+
+      &.#{$divider-prefix}--dotted {
+        &::before,
+        &::after {
+          border-top-style: dotted;
+        }
+      }
+    }
+
+    // 左侧文字
+    &--left {
+      &::before {
+        max-width: var(--#{$divider-prefix}-orientation-left-width, 10%);
+      }
+    }
+
+    // 右侧文字
+    &--right {
+      &::after {
+        max-width: var(--#{$divider-prefix}-orientation-right-width, 10%);
+      }
+    }
+
+    // 内容样式
+    &__inner {
+      display: inline-block;
+      padding: var(--#{$divider-prefix}-text-padding);
+      font-weight: var(--#{$divider-prefix}-text-font-weight);
+    }
+
+    // 普通文本样式
+    &--plain {
+      .#{$divider-prefix}__inner {
+        font-weight: var(--#{$divider-prefix}-plain-text-font-weight);
+      }
+    }
+  }
+}
+
+// #endregion
+// ==================================================

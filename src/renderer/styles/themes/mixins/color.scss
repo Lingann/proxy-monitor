@@ -1,0 +1,196 @@
+// ======================================================
+// 颜色相关混合宏
+// ======================================================
+
+@import '../functions/color';
+
+// 设置文本颜色和悬停颜色
+// @param {Color} $color - 基本文本颜色
+// @param {Color} $hover-color - 悬停状态的文本颜色
+@mixin text-color($color, $hover-color: null) {
+  color: $color;
+
+  @if $hover-color {
+    &:hover {
+      color: $hover-color;
+    }
+  }
+}
+
+// 设置背景颜色和悬停背景色
+// @param {Color} $bg-color - 基本背景颜色
+// @param {Color} $hover-bg-color - 悬停状态的背景颜色
+@mixin bg-color($bg-color, $hover-bg-color: null) {
+  background-color: $bg-color;
+
+  @if $hover-bg-color {
+    &:hover {
+      background-color: $hover-bg-color;
+    }
+  }
+}
+
+// 设置边框颜色和悬停边框色
+// @param {Color} $border-color - 基本边框颜色
+// @param {Color} $hover-border-color - 悬停状态的边框颜色
+@mixin border-color($border-color, $hover-border-color: null) {
+  border-color: $border-color;
+
+  @if $hover-border-color {
+    &:hover {
+      border-color: $hover-border-color;
+    }
+  }
+}
+
+// 设置链接颜色及状态
+// @param {Color} $color - 基本颜色
+// @param {Color} $hover-color - 悬停状态的颜色
+// @param {Color} $active-color - 激活状态的颜色
+// @param {Color} $visited-color - 访问后的颜色
+@mixin link-colors($color, $hover-color: null, $active-color: null, $visited-color: null) {
+  color: $color;
+
+  @if $hover-color {
+    &:hover,
+    &:focus {
+      color: $hover-color;
+    }
+  }
+
+  @if $active-color {
+    &:active {
+      color: $active-color;
+    }
+  }
+
+  @if $visited-color {
+    &:visited {
+      color: $visited-color;
+    }
+  }
+}
+
+// 创建颜色变体（文本、背景、边框）
+// @param {String} $name - 变体名称
+// @param {Color} $color - 基本颜色
+@mixin color-variant($name, $color) {
+  .text-#{$name} {
+    color: $color !important;
+  }
+
+  .bg-#{$name} {
+    background-color: $color !important;
+  }
+
+  .border-#{$name} {
+    border-color: $color !important;
+  }
+}
+
+// 创建主题颜色变体
+// @param {String} $name - 变体名称
+// @param {Color} $color - 基本颜色
+// @param {Color} $text-color - 文本颜色
+@mixin theme-variant($name, $color, $text-color: #fff) {
+  $hover-color: hover-color($color);
+  $active-color: active-color($color);
+  $bg-color: bg-color($color);
+  $border-color: border-color($color);
+
+  .btn-#{$name} {
+    color: $text-color;
+    background-color: $color;
+    border-color: $color;
+
+    &:hover,
+    &:focus {
+      color: $text-color;
+      background-color: $hover-color;
+      border-color: $hover-color;
+    }
+
+    &:active {
+      color: $text-color;
+      background-color: $active-color;
+      border-color: $active-color;
+    }
+
+    &.disabled,
+    &:disabled {
+      background-color: disabled-color($color);
+      border-color: disabled-color($color);
+    }
+  }
+
+  .btn-outline-#{$name} {
+    color: $color;
+    background-color: transparent;
+    border-color: $color;
+
+    &:hover,
+    &:focus {
+      color: $text-color;
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &:active {
+      color: $text-color;
+      background-color: $active-color;
+      border-color: $active-color;
+    }
+
+    &.disabled,
+    &:disabled {
+      color: disabled-color($color);
+      border-color: disabled-color($color);
+    }
+  }
+
+  .alert-#{$name} {
+    color: darken-color($color, 0.3);
+    background-color: $bg-color;
+    border-color: $border-color;
+  }
+
+  @include color-variant($name, $color);
+}
+
+// 创建渐变背景
+// @param {Color} $start-color - 起始颜色
+// @param {Color} $end-color - 结束颜色
+// @param {String} $direction - 方向
+@mixin gradient-bg($start-color, $end-color, $direction: 'to bottom') {
+  background-image: linear-gradient(#{$direction}, $start-color, $end-color);
+  background-repeat: no-repeat;
+}
+
+// 创建水平渐变背景
+// @param {Color} $start-color - 起始颜色
+// @param {Color} $end-color - 结束颜色
+@mixin gradient-x($start-color, $end-color) {
+  @include gradient-bg($start-color, $end-color, 'to right');
+}
+
+// 创建垂直渐变背景
+// @param {Color} $start-color - 起始颜色
+// @param {Color} $end-color - 结束颜色
+@mixin gradient-y($start-color, $end-color) {
+  @include gradient-bg($start-color, $end-color, 'to bottom');
+}
+
+// 创建对角线渐变背景
+// @param {Color} $start-color - 起始颜色
+// @param {Color} $end-color - 结束颜色
+@mixin gradient-diagonal($start-color, $end-color) {
+  @include gradient-bg($start-color, $end-color, 'to bottom right');
+}
+
+// 创建径向渐变背景
+// @param {Color} $inner-color - 内部颜色
+// @param {Color} $outer-color - 外部颜色
+@mixin gradient-radial($inner-color, $outer-color) {
+  background-image: radial-gradient(circle, $inner-color, $outer-color);
+  background-repeat: no-repeat;
+}

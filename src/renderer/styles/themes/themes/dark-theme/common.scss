@@ -1,0 +1,25 @@
+@use '../../common/background.scss' as *;
+@use '../../common/border.scss' as *;
+@use '../../common/text.scss' as *;
+@use '../../common/shadow.scss' as *;
+@use '../../common/ripple.scss' as *;
+
+// CSS变量定义
+.dark,
+.dark-mode,
+html[data-theme='dark'] {
+  // 背景变量
+  @include background-variables-dark;
+
+  // 边框变量
+  @include border-variables-dark;
+
+  // 文本变量
+  @include text-variables-dark;
+
+  // 阴影变量
+  @include shadow-variables-dark;
+
+  // 波纹变量
+  @include ripple-variables-dark;
+}

@@ -1,0 +1,63 @@
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             「波纹效果样式」
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+// ==================================================
+// #region 变量定义
+// ==================================================
+
+// 波纹效果变量
+:root {
+  --wave-color: rgb(181 28 28 / 35%);
+  --wave-opacity-max: 0.6;
+  --wave-opacity-min: 0;
+}
+
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 波纹效果样式
+// ==================================================
+
+.bn-ripple-wave {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bn-ripple-wave__circle {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: bn-ripple-animation 0.6s linear;
+}
+
+@keyframes bn-ripple-animation {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  20% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+  }
+}
+
+// #endregion
+// ==================================================

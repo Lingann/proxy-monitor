@@ -1,0 +1,19 @@
+// ======================================================
+// 文本选择变量混入
+// ======================================================
+
+// 文本选择颜色变量
+@mixin selection-color-variables {
+  // 文本选择基础颜色
+  --bn-selection-background-color: rgba(var(--bn-primary-color-inner-3), 0.4);
+  --bn-selection-text-color: var(--bn-text-color-base);
+
+  // 特定区域文本选择颜色
+  --bn-selection-pre-background-color: rgba(var(--bn-neutral-color-inner-3), 0.4);
+  --bn-selection-code-background-color: rgba(var(--bn-primary-color-inner-3), 0.4);
+  --bn-selection-a-background-color: rgba(var(--bn-primary-color-inner-4), 0.4);
+
+  // 暗色模式下文本选择颜色
+  --bn-selection-background-color-dark: rgba(var(--bn-primary-color-inner-8), 0.4);
+  --bn-selection-text-color-dark: var(--bn-text-color-base-dark);
+}

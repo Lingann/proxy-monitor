@@ -1,0 +1,27 @@
+// ======================================================
+// 主色板 Primary
+// ======================================================
+@use '../functions/palette-functions' as palette;
+
+// 主色板 - 基础色
+$primary-5: #1890ff !default;
+
+// 自定义梯度（可选）
+$primary-custom-colors: () !default;
+
+// 暗色模式基础色
+$primary-5-dark: #177ddc !default;
+
+// 自定义暗色梯度（可选）
+$primary-dark-custom-colors: () !default;
+
+// 色板计算
+$primary-palette: palette.create-palette('primary', $primary-5, $primary-custom-colors);
+$primary-semantic-colors: palette.create-semantic-colors($primary-5);
+$primary-gradient-colors: palette.create-gradient-colors('primary', $primary-palette);
+$primary-ghost-colors: palette.create-ghost-colors($primary-5);
+
+$primary-palette-dark: palette.create-palette('primary', $primary-5-dark, $primary-dark-custom-colors);
+$primary-semantic-colors-dark: palette.create-semantic-colors($primary-5-dark);
+$primary-gradient-colors-dark: palette.create-gradient-colors('primary', $primary-palette-dark);
+$primary-ghost-colors-dark: palette.create-ghost-colors($primary-5-dark);

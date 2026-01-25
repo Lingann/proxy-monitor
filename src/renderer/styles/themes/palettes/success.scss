@@ -1,0 +1,27 @@
+// ======================================================
+// 成功色板 Success
+// ======================================================
+@use '../functions/palette-functions' as palette;
+
+// 成功色板 - 基础色
+$success-5: #52c41a !default;
+
+// 自定义梯度（可选）
+$success-custom-colors: () !default;
+
+// 暗色模式基础色
+$success-5-dark: #49aa19 !default;
+
+// 自定义暗色梯度（可选）
+$success-dark-custom-colors: () !default;
+
+// 色板计算
+$success-palette: palette.create-palette('success', $success-5, $success-custom-colors);
+$success-semantic-colors: palette.create-semantic-colors($success-5);
+$success-gradient-colors: palette.create-gradient-colors('success', $success-palette);
+$success-ghost-colors: palette.create-ghost-colors($success-5);
+
+$success-palette-dark: palette.create-palette('success', $success-5-dark, $success-dark-custom-colors);
+$success-semantic-colors-dark: palette.create-semantic-colors($success-5-dark);
+$success-gradient-colors-dark: palette.create-gradient-colors('success', $success-palette-dark);
+$success-ghost-colors-dark: palette.create-ghost-colors($success-5-dark);

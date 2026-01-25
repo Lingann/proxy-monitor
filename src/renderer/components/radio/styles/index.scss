@@ -1,0 +1,474 @@
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             「单选框组件样式」
+ * 定义标准单选框和单选按钮的样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+// ==================================================
+// #region 导入所有 Radio 相关样式模块
+// ==================================================
+@use 'sass:math';
+@use './variables' as *;
+@use './mixin' as *;
+@use './radio';
+@use './radio-button';
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 应用 Radio Group 样式
+// ==================================================
+@include radio-group-style;
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region CSS 变量定义 (可选，如果需要主题化)
+// ==================================================
+// 可以将 SCSS 变量映射到 CSS 变量，放在 :root 或特定组件根元素上
+// 例如:
+// .#{$radio-group-prefix} {
+//   --bn-radio-primary-color: #{$radio-color};
+//   --bn-radio-border-color: #{$radio-border-color};
+//   // ... 其他变量
+// }
+// 然后在 Mixin 中使用 var(--bn-radio-primary-color) 等
+// 这里暂时保持使用 SCSS 变量
+// ==================================================
+
+// ==================================================
+// #region 标准单选框样式
+// ==================================================
+.#{$radio-prefix} {
+  // --- 基础样式 ---
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1;
+  color: $radio-text-color;
+  cursor: pointer;
+  transition: $radio-transition;
+
+  // --- 无障碍支持 ---
+  &:focus-within {
+    // 移除轮廓样式，保持简洁美观
+    // outline: 2px solid;
+    // outline-color: $radio-color;
+    // outline-offset: 1px;
+  }
+
+  // --- 内部元素 ---
+  &__inner {
+    position: relative;
+    display: inline-block;
+    width: $radio-size-md;
+    height: $radio-size-md;
+    background-color: $radio-bg;
+    border: $radio-border-width solid $radio-border-color;
+    border-radius: $radio-border-radius;
+    transition: $radio-transition;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: $radio-dot-size-md;
+      height: $radio-dot-size-md;
+      margin-top: math.div(-$radio-dot-size-md, 2);
+      margin-left: math.div(-$radio-dot-size-md, 2);
+      content: '';
+      background-color: $radio-dot-color;
+      border-radius: $radio-border-radius;
+      transform: scale(0);
+      transition: $radio-transition;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  &__label {
+    padding-left: $radio-label-padding-left-md;
+    line-height: 1;
+  }
+
+  // --- Hover 状态 ---
+  &:hover:not(&--disabled) &__inner {
+    border-color: $radio-hover-border-color;
+  }
+
+  // --- 选中状态 ---
+  &--checked &__inner {
+    border-color: $radio-color;
+
+    &::after {
+      transform: scale(1);
+      transition: transform 0.2s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+    }
+  }
+
+  // --- 尺寸变体 ---
+  &--small &__inner {
+    width: $radio-size-sm;
+    height: $radio-size-sm;
+
+    &::after {
+      width: $radio-dot-size-sm;
+      height: $radio-dot-size-sm;
+      margin-top: math.div(-$radio-dot-size-sm, 2);
+      margin-left: math.div(-$radio-dot-size-sm, 2);
+    }
+  }
+
+  &--small &__label {
+    padding-left: $radio-label-padding-left-sm;
+  }
+
+  &--large &__inner {
+    width: $radio-size-lg;
+    height: $radio-size-lg;
+
+    &::after {
+      width: $radio-dot-size-lg;
+      height: $radio-dot-size-lg;
+      margin-top: math.div(-$radio-dot-size-lg, 2);
+      margin-left: math.div(-$radio-dot-size-lg, 2);
+    }
+  }
+
+  &--large &__label {
+    padding-left: $radio-label-padding-left-lg;
+  }
+
+  // --- 禁用状态 ---
+  &--disabled {
+    color: $radio-disabled-text-color;
+    cursor: not-allowed;
+
+    .#{$radio-prefix}__inner {
+      background-color: $radio-disabled-bg;
+      border-color: $radio-disabled-border-color;
+
+      &::after {
+        background-color: $radio-disabled-dot-color;
+      }
+    }
+
+    .#{$radio-prefix}__input {
+      cursor: not-allowed;
+    }
+  }
+
+  // --- 错误状态 ---
+  &--has-error {
+    .#{$radio-prefix}__inner {
+      border-color: $radio-error-border-color;
+
+      &::after {
+        background-color: $radio-error-color;
+      }
+    }
+
+    &:hover:not(&--disabled) .#{$radio-prefix}__inner {
+      border-color: $radio-error-hover-border-color;
+    }
+
+    &.#{$radio-prefix}--checked .#{$radio-prefix}__inner {
+      border-color: $radio-error-color;
+    }
+  }
+
+  &__error-message {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    z-index: 2;
+    padding: $radio-error-message-padding;
+    font-size: $radio-error-message-font-size;
+    line-height: $radio-error-message-line-height;
+    color: $radio-error-text-color;
+    background-color: $radio-error-bg;
+    border-radius: 2px;
+  }
+
+  &__error {
+    font-size: 12px;
+    color: $radio-error-text-color;
+  }
+
+  // --- 降级渲染 ---
+  &--fallback {
+    display: inline-block;
+    padding: 8px;
+    font-size: 12px;
+    color: $radio-error-text-color;
+    border: 1px dashed;
+    border-color: $radio-error-border-color;
+    border-radius: 4px;
+  }
+}
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 单选按钮样式
+// ==================================================
+.#{$radio-prefix}-button {
+  // --- 基础样式 ---
+  position: relative;
+  display: inline-block;
+  padding: $radio-button-padding-y-md $radio-button-padding-x-md;
+  margin: 0; // 确保没有外边距
+  line-height: 1;
+  color: $radio-button-color;
+  cursor: pointer;
+  background-color: $radio-button-bg;
+  border: $radio-border-width solid $radio-button-border-color;
+  border-radius: 0;
+  transition: $radio-transition;
+
+  // --- 无障碍支持 ---
+  &:focus-within {
+    z-index: 2;
+    // 移除轮廓样式，保持简洁美观
+    // outline: 2px solid;
+    // outline-color: $radio-color;
+  }
+
+  // 第一个按钮圆角
+  &:first-child {
+    border-top-left-radius: $radio-button-border-radius;
+    border-bottom-left-radius: $radio-button-border-radius;
+  }
+
+  // 最后一个按钮圆角
+  &:last-child {
+    border-top-right-radius: $radio-button-border-radius;
+    border-bottom-right-radius: $radio-button-border-radius;
+  }
+
+  // 相邻按钮边框合并
+  &:not(:first-child) {
+    margin-left: -$radio-border-width;
+  }
+
+  // --- 内部元素 ---
+  &__input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  &__label {
+    position: relative;
+    z-index: 0;
+  }
+
+  // --- Hover 状态 ---
+  &:hover:not(&--disabled) {
+    z-index: 1;
+    color: $radio-button-hover-color;
+    border-color: $radio-button-hover-border-color;
+  }
+
+  // --- 选中状态 (Outline 样式) ---
+  &--checked:not(&--style-solid) {
+    z-index: 1;
+    color: $radio-button-checked-color;
+    background-color: $radio-button-checked-bg;
+    border-color: $radio-button-checked-border-color;
+
+    &:hover {
+      color: $radio-button-checked-hover-color;
+      background-color: $radio-button-checked-hover-bg;
+      border-color: $radio-button-checked-hover-border-color;
+    }
+  }
+
+  // --- 选中状态 (Solid 样式) ---
+  &--style-solid.#{$radio-prefix}-button--checked {
+    z-index: 1;
+    color: $radio-button-solid-checked-color;
+    background-color: $radio-button-solid-checked-bg;
+    border-color: $radio-button-solid-checked-border-color;
+
+    &:hover {
+      color: $radio-button-solid-checked-color;
+      background-color: $radio-button-solid-checked-hover-bg;
+      border-color: $radio-button-solid-checked-hover-border-color;
+    }
+  }
+
+  // --- 尺寸变体 ---
+  &--small {
+    padding: $radio-button-padding-y-sm $radio-button-padding-x-sm;
+    font-size: 12px;
+  }
+
+  &--large {
+    padding: $radio-button-padding-y-lg $radio-button-padding-x-lg;
+    font-size: 16px;
+  }
+
+  // --- 禁用状态 ---
+  &--disabled {
+    color: $radio-button-disabled-color;
+    cursor: not-allowed;
+    background-color: $radio-button-disabled-bg;
+    border-color: $radio-button-disabled-border-color;
+
+    &.#{$radio-prefix}-button--checked {
+      color: $radio-button-checked-disabled-color;
+      background-color: $radio-button-checked-disabled-bg;
+      border-color: $radio-button-checked-disabled-border-color;
+    }
+
+    .#{$radio-prefix}-button__input {
+      cursor: not-allowed;
+    }
+  }
+
+  // --- 错误状态 ---
+  &--has-error {
+    color: $radio-error-color;
+    border-color: $radio-error-border-color;
+
+    &:hover:not(&--disabled) {
+      color: $radio-error-hover-color;
+      border-color: $radio-error-hover-border-color;
+    }
+
+    &.#{$radio-prefix}-button--checked {
+      color: $radio-error-color;
+      background-color: $radio-error-bg;
+      border-color: $radio-error-border-color;
+
+      &:hover:not(&--disabled) {
+        color: $radio-error-hover-color;
+        border-color: $radio-error-hover-border-color;
+      }
+    }
+  }
+
+  &__error-message {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    z-index: 2;
+    padding: $radio-error-message-padding;
+    font-size: $radio-error-message-font-size;
+    line-height: $radio-error-message-line-height;
+    color: $radio-error-text-color;
+    background-color: $radio-error-bg;
+    border-radius: 2px;
+  }
+
+  &__error {
+    font-size: 12px;
+    color: $radio-error-text-color;
+  }
+
+  // --- 降级渲染 ---
+  &--fallback {
+    display: inline-block;
+    padding: 8px;
+    font-size: 12px;
+    color: $radio-error-text-color;
+    border: 1px dashed;
+    border-color: $radio-error-border-color;
+    border-radius: 4px;
+  }
+}
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region Radio Group 样式
+// ==================================================
+.#{$radio-group-prefix} {
+  display: inline-block;
+  font-size: 0; // 避免按钮之间的间隙
+
+  // --- 无障碍支持 ---
+  &:focus-within {
+    // 移除轮廓样式，保持简洁美观
+    // outline: 2px solid;
+    // outline-color: $radio-color;
+    // outline-offset: 1px;
+  }
+
+  // Button 模式
+  &--button {
+    // 继承自上面的按钮样式
+    display: inline-flex; // 使用 flex 布局确保紧凑排列
+
+    // 修复按钮间距问题
+    .#{$radio-prefix}-button {
+      margin: 0; // 清除所有外边距
+    }
+  }
+
+  // 按钮占满容器宽度
+  &--block {
+    display: flex;
+    width: 100%;
+
+    .#{$radio-prefix}-button {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  // 禁用状态
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  // --- 错误状态 ---
+  &--has-error {
+    // 单选组错误样式
+  }
+
+  &__error {
+    padding: 4px 8px;
+    margin: 4px 0;
+    font-size: 12px;
+    color: $radio-error-text-color;
+    background-color: $radio-error-bg;
+    border: 1px solid;
+    border-color: $radio-error-border-color;
+    border-radius: 4px;
+  }
+
+  &__error-message {
+    padding: $radio-error-message-padding;
+    margin: $radio-error-message-margin-top 0 8px;
+    font-size: $radio-error-message-font-size;
+    line-height: $radio-error-message-line-height;
+    color: $radio-error-text-color;
+    background-color: $radio-error-bg;
+    border: 1px solid;
+    border-color: $radio-error-border-color;
+    border-radius: 4px;
+  }
+}
+// #endregion
+// ==================================================

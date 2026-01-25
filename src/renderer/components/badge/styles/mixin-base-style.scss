@@ -1,0 +1,84 @@
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             「徽章基础样式混入」
+ * 定义徽章组件的基础样式结构
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+// ==================================================
+// #region 徽章基础样式
+// ==================================================
+
+/**
+ * 徽章基础样式混入
+ * 定义徽章的基本结构和布局
+ */
+@mixin badge-base-style {
+  .#{$badge-prefix} {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .#{$badge-prefix}__content {
+    position: relative;
+    display: inline-block;
+  }
+
+  .#{$badge-prefix}__sup {
+    position: absolute;
+    top: var(--#{$badge-prefix}-position-top, 0);
+    right: var(--#{$badge-prefix}-position-right, 0);
+    z-index: var(--#{$badge-prefix}-position-z-index, 10);
+    min-width: var(--#{$badge-prefix}-min-width-md, 20px);
+    height: var(--#{$badge-prefix}-height-md, 20px);
+    padding: var(--#{$badge-prefix}-padding-md, 0 6px);
+    font-size: var(--#{$badge-prefix}-font-size-md, 12px);
+    font-weight: var(--bn-font-weight-normal, normal);
+    line-height: var(--#{$badge-prefix}-line-height-md, 20px);
+    color: var(--#{$badge-prefix}-color, #fff);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--#{$badge-prefix}-bg-color, #d9d9d9);
+    border: var(--#{$badge-prefix}-border-width, 0) var(--#{$badge-prefix}-border-style, solid) var(--#{$badge-prefix}-border-color, transparent);
+    border-radius: var(--#{$badge-prefix}-border-radius-md, 10px);
+    box-shadow: var(--#{$badge-prefix}-box-shadow, 0 0 0 1px #fff);
+    transform: translate(var(--bn-badge-offset-x, 100%), var(--bn-badge-offset-y, 0));
+    transform-origin: 100% 0%;
+    transition: all 0.2s ease-in-out;
+  }
+
+  // 文本样式
+  .#{$badge-prefix}__text {
+    margin-left: var(--#{$badge-prefix}-text-margin, 8px);
+    font-size: var(--#{$badge-prefix}-text-font-size, 14px);
+    color: var(--#{$badge-prefix}-text-color, rgb(0 0 0 / 85%));
+  }
+
+  // 独立状态点样式
+  .#{$badge-prefix}--status {
+    line-height: inherit;
+    vertical-align: baseline;
+
+    .#{$badge-prefix}__sup {
+      position: relative;
+      top: -1px;
+      display: inline-block;
+      transform: none;
+      transform-origin: center;
+    }
+  }
+
+  // 隐藏徽章
+  .#{$badge-prefix}__sup--hidden {
+    display: none;
+  }
+}
+
+// #endregion
+// ==================================================

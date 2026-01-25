@@ -1,0 +1,103 @@
+// ==================================================
+// #region 基本变量
+// ==================================================
+$radio-prefix: 'bn-radio' !default;
+$radio-group-prefix: 'bn-radio-group' !default;
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 尺寸变量 (示例，可从全局设计 Token 继承)
+// ==================================================
+$radio-size-sm: 14px !default;
+$radio-size-md: 16px !default; // 对应 antd 默认尺寸
+$radio-size-lg: 18px !default;
+
+$radio-dot-size-sm: 6px !default;
+$radio-dot-size-md: 8px !default;
+$radio-dot-size-lg: 10px !default;
+
+$radio-label-padding-left-sm: 6px !default;
+$radio-label-padding-left-md: 8px !default;
+$radio-label-padding-left-lg: 10px !default;
+
+$radio-button-padding-y-sm: 2px !default;
+$radio-button-padding-x-sm: 10px !default;
+$radio-button-padding-y-md: 4px !default;
+$radio-button-padding-x-md: 15px !default;
+$radio-button-padding-y-lg: 6px !default;
+$radio-button-padding-x-lg: 20px !default;
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 颜色变量 (示例，可从全局设计 Token 继承)
+// ==================================================
+// --- Default Radio ---
+$radio-color: var(--bn-color-primary, #1677ff) !default; // antd 主色调
+$radio-border-color: var(--bn-color-border, #d9d9d9) !default;
+$radio-bg: var(--bn-color-bg-container, #fff) !default;
+$radio-dot-color: var(--bn-color-primary, #1677ff) !default;
+$radio-text-color: var(--bn-color-text, rgb(0 0 0 / 88%)) !default;
+$radio-hover-border-color: var(--bn-color-primary, #1677ff) !default;
+$radio-disabled-border-color: var(--bn-color-border, #d9d9d9) !default;
+$radio-disabled-bg: var(--bn-color-bg-container-disabled, rgb(0 0 0 / 4%)) !default;
+$radio-disabled-dot-color: var(--bn-color-text-disabled, rgb(0 0 0 / 25%)) !default;
+$radio-disabled-text-color: var(--bn-color-text-disabled, rgb(0 0 0 / 25%)) !default;
+
+// --- Radio Button (Outline) ---
+$radio-button-color: var(--bn-color-text, rgb(0 0 0 / 88%)) !default;
+$radio-button-bg: var(--bn-color-bg-container, #fff) !default;
+$radio-button-border-color: var(--bn-color-border, #d9d9d9) !default;
+$radio-button-hover-color: var(--bn-color-primary-hover, #4096ff) !default;
+$radio-button-hover-border-color: var(--bn-color-primary-hover, #4096ff) !default;
+$radio-button-active-color: var(--bn-color-primary-active, #0958d9) !default;
+$radio-button-active-border-color: var(--bn-color-primary-active, #0958d9) !default;
+$radio-button-checked-color: var(--bn-color-primary, #1677ff) !default;
+$radio-button-checked-bg: var(--bn-color-primary-bg, #e6f4ff) !default; // antd primary-1
+$radio-button-checked-border-color: var(--bn-color-primary, #1677ff) !default;
+$radio-button-checked-hover-color: var(--bn-color-primary-hover, #4096ff) !default;
+$radio-button-checked-hover-bg: var(--bn-color-primary-bg-hover, #bae0ff) !default; // antd primary-2
+$radio-button-checked-hover-border-color: var(--bn-color-primary-hover, #4096ff) !default;
+$radio-button-disabled-color: var(--bn-color-text-disabled, rgb(0 0 0 / 25%)) !default;
+$radio-button-disabled-bg: var(--bn-color-bg-container-disabled, rgb(0 0 0 / 4%)) !default;
+$radio-button-disabled-border-color: var(--bn-color-border, #d9d9d9) !default;
+$radio-button-checked-disabled-color: var(--bn-color-text-disabled, rgb(0 0 0 / 25%)) !default;
+$radio-button-checked-disabled-bg: var(--bn-color-primary-bg-disabled, rgb(0 0 0 / 15%)) !default; // antd grey-4
+$radio-button-checked-disabled-border-color: var(--bn-color-border, #d9d9d9) !default;
+
+// --- Radio Button (Solid) ---
+$radio-button-solid-checked-color: var(--bn-color-bg-container, #fff) !default;
+$radio-button-solid-checked-bg: var(--bn-color-primary, #1677ff) !default;
+$radio-button-solid-checked-border-color: var(--bn-color-primary, #1677ff) !default;
+$radio-button-solid-checked-hover-bg: var(--bn-color-primary-hover, #4096ff) !default;
+$radio-button-solid-checked-hover-border-color: var(--bn-color-primary-hover, #4096ff) !default;
+$radio-button-solid-checked-active-bg: var(--bn-color-primary-active, #0958d9) !default;
+$radio-button-solid-checked-active-border-color: var(--bn-color-primary-active, #0958d9) !default;
+// (Solid disabled/unchecked states usually same as outline)
+
+// --- 错误状态样式 ---
+$radio-error-color: var(--bn-color-error, #ff4d4f) !default;
+$radio-error-hover-color: var(--bn-color-error-hover, #ff7875) !default;
+$radio-error-border-color: var(--bn-color-error, #ff4d4f) !default;
+$radio-error-hover-border-color: var(--bn-color-error-hover, #ff7875) !default;
+$radio-error-bg: var(--bn-color-error-bg, #fff2f0) !default;
+$radio-error-text-color: var(--bn-color-error-text, #ff4d4f) !default;
+
+// --- 错误消息样式 ---
+$radio-error-message-font-size: 12px !default;
+$radio-error-message-line-height: 1.5 !default;
+$radio-error-message-padding: 2px 4px !default;
+$radio-error-message-margin-top: 2px !default;
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 其他变量
+// ==================================================
+$radio-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !default;
+$radio-border-width: 1px !default;
+$radio-border-radius: 50% !default; // Default radio is circular
+$radio-button-border-radius: var(--bn-border-radius-md, 6px) !default; // antd default radius
+// #endregion
+// ==================================================

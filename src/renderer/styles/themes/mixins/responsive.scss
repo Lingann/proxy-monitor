@@ -1,0 +1,169 @@
+// ======================================================
+// 响应式混合宏
+// ======================================================
+
+@import '../utils/config';
+
+// 媒体查询混合宏-最小宽度
+// @param {String} $breakpoint - 断点名称
+// @content - 内容代码块
+@mixin min-width($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $min-width: map-get($breakpoints, $breakpoint);
+
+    @media screen and (min-width: $min-width) {
+      @content;
+    }
+  } @else {
+    @error "断点 `#{$breakpoint}` 未定义。可用的断点有: #{map-keys($breakpoints)}";
+  }
+}
+
+// 媒体查询混合宏-最大宽度
+// @param {String} $breakpoint - 断点名称
+// @content - 内容代码块
+@mixin max-width($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $max-width: map-get($breakpoints, $breakpoint) - 1px;
+
+    @media screen and (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @error "断点 `#{$breakpoint}` 未定义。可用的断点有: #{map-keys($breakpoints)}";
+  }
+}
+
+// 媒体查询混合宏-在两个断点之间
+// @param {String} $min-breakpoint - 最小断点名称
+// @param {String} $max-breakpoint - 最大断点名称
+// @content - 内容代码块
+@mixin between($min-breakpoint, $max-breakpoint) {
+  @if map-has-key($breakpoints, $min-breakpoint) and map-has-key($breakpoints, $max-breakpoint) {
+    $min-width: map-get($breakpoints, $min-breakpoint);
+    $max-width: map-get($breakpoints, $max-breakpoint) - 1px;
+
+    @if $min-width >= $max-width {
+      @error "最小断点 `#{$min-breakpoint}` 必须小于最大断点 `#{$max-breakpoint}`";
+    }
+
+    @media screen and (min-width: $min-width) and (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @error "断点未定义。可用的断点有: #{map-keys($breakpoints)}";
+  }
+}
+
+// 响应式断点混合宏-针对特定断点
+// 移动优先，xs开始，向上逐级增加
+// @content - 内容代码块
+@mixin xs {
+  @content;
+}
+
+@mixin sm {
+  @include min-width('sm') {
+    @content;
+  }
+}
+
+@mixin md {
+  @include min-width('md') {
+    @content;
+  }
+}
+
+@mixin lg {
+  @include min-width('lg') {
+    @content;
+  }
+}
+
+@mixin xl {
+  @include min-width('xl') {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @include min-width('xxl') {
+    @content;
+  }
+}
+
+// 仅在特定断点范围内应用样式
+@mixin xs-only {
+  @include max-width('sm') {
+    @content;
+  }
+}
+
+@mixin sm-only {
+  @include between('sm', 'md') {
+    @content;
+  }
+}
+
+@mixin md-only {
+  @include between('md', 'lg') {
+    @content;
+  }
+}
+
+@mixin lg-only {
+  @include between('lg', 'xl') {
+    @content;
+  }
+}
+
+@mixin xl-only {
+  @include between('xl', 'xxl') {
+    @content;
+  }
+}
+
+// 隐藏元素在特定断点
+@mixin hide-on($breakpoint) {
+  @include min-width($breakpoint) {
+    display: none !important;
+  }
+}
+
+// 显示元素在特定断点
+@mixin show-on($breakpoint) {
+  display: none !important;
+
+  @include min-width($breakpoint) {
+    display: block !important;
+  }
+}
+
+// 响应式容器
+@mixin container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include sm {
+    max-width: 540px;
+  }
+
+  @include md {
+    max-width: 720px;
+  }
+
+  @include lg {
+    max-width: 960px;
+  }
+
+  @include xl {
+    max-width: 1140px;
+  }
+
+  @include xxl {
+    max-width: 1320px;
+  }
+}

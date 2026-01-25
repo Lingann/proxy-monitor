@@ -1,0 +1,96 @@
+/**
+ * ******************************************************
+ * @file                     styles/variables.scss
+ * @description             「复选框样式变量」
+ * 复选框组件的所有样式变量定义
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+// ==================================================
+// #region 复选框样式变量
+// ==================================================
+
+// 组件前缀
+$checkbox-prefix: bn-checkbox;
+
+// 尺寸相关变量
+:root {
+  // 基础尺寸
+  --bn-checkbox-size: 16px;
+  --bn-checkbox-font-size: 14px;
+
+  // 小尺寸
+  --bn-checkbox-size-sm: 14px;
+  --bn-checkbox-font-size-sm: 12px;
+
+  // 大尺寸
+  --bn-checkbox-size-lg: 18px;
+  --bn-checkbox-font-size-lg: 16px;
+
+  // 选中标记尺寸
+  --bn-checkbox-check-width: 4px;
+  --bn-checkbox-check-height: 8px;
+
+  // 半选标记尺寸
+  --bn-checkbox-indeterminate-width: 8px;
+  --bn-checkbox-indeterminate-height: 2px;
+
+  // 边框圆角
+  --bn-checkbox-border-radius: 2px;
+
+  // 默认状态颜色
+  --bn-checkbox-bg: #fff;
+  --bn-checkbox-border-color: #d9d9d9;
+  --bn-checkbox-text-color: rgb(0 0 0 / 88%);
+
+  // 选中状态颜色
+  --bn-checkbox-checked-bg: #1677ff;
+  --bn-checkbox-checked-border: #1677ff;
+  --bn-checkbox-check-color: #fff;
+
+  // 悬停状态颜色
+  --bn-checkbox-hover-border: #1677ff;
+
+  // 聚焦状态颜色
+  --bn-checkbox-focus-border: #1677ff;
+  --bn-checkbox-focus-shadow: rgb(22 119 255 / 20%);
+
+  // 禁用状态颜色
+  --bn-checkbox-disabled-bg: #f5f5f5;
+  --bn-checkbox-disabled-border: #d9d9d9;
+  --bn-checkbox-disabled-text-color: rgb(0 0 0 / 25%);
+  --bn-checkbox-disabled-check-color: rgb(0 0 0 / 25%);
+  --bn-checkbox-disabled-checked-bg: #d9d9d9;
+  --bn-checkbox-disabled-checked-border: #d9d9d9;
+}
+
+// 暗色主题
+[data-theme="dark"] {
+  // 默认状态颜色
+  --bn-checkbox-bg: rgb(255 255 255 / 8%);
+  --bn-checkbox-border-color: #424242;
+  --bn-checkbox-text-color: rgb(255 255 255 / 85%);
+
+  // 选中状态颜色
+  --bn-checkbox-checked-bg: #1668dc;
+  --bn-checkbox-checked-border: #1668dc;
+
+  // 悬停状态颜色
+  --bn-checkbox-hover-border: #1668dc;
+
+  // 聚焦状态颜色
+  --bn-checkbox-focus-border: #1668dc;
+  --bn-checkbox-focus-shadow: rgb(22 104 220 / 20%);
+
+  // 禁用状态颜色
+  --bn-checkbox-disabled-bg: rgb(255 255 255 / 8%);
+  --bn-checkbox-disabled-border: #424242;
+  --bn-checkbox-disabled-text-color: rgb(255 255 255 / 30%);
+  --bn-checkbox-disabled-check-color: rgb(255 255 255 / 30%);
+  --bn-checkbox-disabled-checked-bg: #424242;
+  --bn-checkbox-disabled-checked-border: #424242;
+}
+
+// #endregion
+// ==================================================

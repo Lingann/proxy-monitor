@@ -1,0 +1,172 @@
+// ======================================================
+// 排版相关混合宏
+// ======================================================
+
+// 基本文本样式
+// @param {String} $font-size - 字体大小
+// @param {String} $line-height - 行高
+// @param {String} $font-weight - 字重
+// @param {String} $color - 文本颜色
+@mixin text-style($font-size, $line-height, $font-weight: normal, $color: inherit) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  color: $color;
+}
+
+// 设置标题样式
+// @param {String} $font-size - 字体大小
+// @param {String} $line-height - 行高
+// @param {String} $font-weight - 字重
+// @param {String} $color - 文本颜色
+// @param {String} $margin - 外边距
+@mixin heading-style(
+  $font-size,
+  $line-height,
+  $font-weight: bold,
+  $color: inherit,
+  $margin: 0 0 0.5em 0
+) {
+  margin: $margin;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  color: $color;
+}
+
+// 文本截断（单行）
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行文本截断
+// @param {Number} $lines - 显示的行数
+@mixin text-truncate-multi($lines) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+// 设置字体平滑
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 文本占位符样式
+// @param {String} $color - 占位符颜色
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $color;
+    opacity: 1;
+  }
+
+  &:input-placeholder {
+    color: $color;
+  }
+
+  &::input-placeholder {
+    color: $color;
+  }
+}
+
+// 预设文本尺寸
+@mixin text-xs {
+  @include text-style(12px, 1.25);
+}
+
+@mixin text-sm {
+  @include text-style(14px, 1.25);
+}
+
+@mixin text-base {
+  @include text-style(16px, 1.5);
+}
+
+@mixin text-lg {
+  @include text-style(18px, 1.5);
+}
+
+@mixin text-xl {
+  @include text-style(20px, 1.5);
+}
+
+// 预设标题尺寸
+@mixin h1 {
+  @include heading-style(30px, 1.25, 600);
+}
+
+@mixin h2 {
+  @include heading-style(24px, 1.25, 600);
+}
+
+@mixin h3 {
+  @include heading-style(20px, 1.5, 600);
+}
+
+@mixin h4 {
+  @include heading-style(18px, 1.5, 600);
+}
+
+@mixin h5 {
+  @include heading-style(16px, 1.5, 600);
+}
+
+@mixin h6 {
+  @include heading-style(14px, 1.5, 600);
+}
+
+// 文本对齐
+@mixin text-left {
+  text-align: left;
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+@mixin text-right {
+  text-align: right;
+}
+
+@mixin text-justify {
+  text-align: justify;
+}
+
+// 文本变换
+@mixin text-uppercase {
+  text-transform: uppercase;
+}
+
+@mixin text-lowercase {
+  text-transform: lowercase;
+}
+
+@mixin text-capitalize {
+  text-transform: capitalize;
+}
+
+// 字重设置
+@mixin font-light {
+  font-weight: 300;
+}
+
+@mixin font-normal {
+  font-weight: 400;
+}
+
+@mixin font-medium {
+  font-weight: 500;
+}
+
+@mixin font-semibold {
+  font-weight: 600;
+}
+
+@mixin font-bold {
+  font-weight: 700;
+}

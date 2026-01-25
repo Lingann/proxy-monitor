@@ -1,0 +1,58 @@
+@use '../../common/background.scss' as *;
+@use '../../common/border.scss' as *;
+@use '../../common/font.scss' as *;
+@use '../../common/filter.scss' as *;
+@use '../../common/shadow.scss' as *;
+@use '../../common/sizing.scss' as *;
+@use '../../common/spacing.scss' as *;
+@use '../../common/text.scss' as *;
+@use '../../common/transition.scss' as *;
+@use '../../common/animation.scss' as *;
+@use '../../common/responsive.scss' as *;
+@use '../../common/grid.scss' as *;
+@use '../../common/line-height.scss' as *;
+@use '../../common/ripple.scss' as *;
+// CSS变量定义
+:root {
+  // 背景变量
+  @include background-variables;
+
+  // 边框变量
+  @include border-variables;
+
+  // 字体变量
+  @include font-variables;
+
+  // 滤镜变量
+  @include filter-variables;
+
+  // 阴影变量
+  @include shadow-variables;
+
+  // 尺寸变量
+  @include sizing-variables;
+
+  // 间距变量
+  @include spacing-variables;
+
+  // 文本变量
+  @include text-variables;
+
+  // 过渡变量
+  @include transition-variables;
+
+  // 动画变量
+  @include animation-variables;
+
+  // 响应式变量
+  @include responsive-variables;
+
+  // 网格变量
+  @include grid-variables;
+
+  // 行高变量
+  @include line-height-variables;
+
+  // 波纹变量
+  @include ripple-variables;
+}

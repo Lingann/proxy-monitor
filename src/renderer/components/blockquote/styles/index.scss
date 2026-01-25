@@ -1,0 +1,20 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+// 块引用基础样式
+@include blockquote-base-style;
+
+// 块引用暗色模式样式
+@include blockquote-dark-style;
+
+// 块引用引用样式
+@include blockquote-quote-style;
+
+// 块引用引用暗色模式样式
+@include blockquote-quote-dark-style;
+
+// 块引用引用类型样式
+@include blockquote-quote-type-style;
+
+// 块引用引用样式变体
+@include blockquote-quote-variant-style;

@@ -1,0 +1,48 @@
+// ======================================================
+// 根变量混入
+// ======================================================
+
+// 混入所有公共变量到:root中
+// @mixin root-variables - 将所有公共变量混入到:root选择器中
+@mixin root-variables {
+  :root {
+    // 背景变量
+    @include background-variables;
+
+    // 文本变量
+    @include text-variables;
+
+    // 边框变量
+    @include border-variables;
+
+    // 阴影变量
+    @include shadow-variables;
+
+    // 间距变量
+    @include spacing-variables;
+
+    // 尺寸变量
+    @include sizing-variables;
+
+    // 网格变量
+    @include grid-variables;
+
+    // 字体变量
+    @include font-variables;
+
+    // 过渡变量
+    @include transition-variables;
+
+    // 动画变量
+    @include animation-variables;
+
+    // 滤镜变量
+    @include filter-variables;
+
+    // 响应式变量
+    @include responsive-variables;
+
+    // 波纹变量
+    @include ripple-variables;
+  }
+}

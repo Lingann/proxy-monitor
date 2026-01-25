@@ -1,0 +1,98 @@
+// ======================================================
+// 文本变量
+// ======================================================
+
+@use '../functions/color' as color-funcs;
+
+// 文本变量混入
+// @mixin text-variables - 定义所有文本相关的CSS变量
+@mixin text-variables {
+  // 基础文本色
+  --bn-text-color-base: #666;
+  --bn-text-color-secondary: #999;
+  --bn-text-color-tertiary: #ccc;
+  --bn-text-color-quaternary: #ddd;
+
+  // 功能 主色
+  --bn-text-color-primary-base: var(--bn-primary-color-base);
+  --bn-text-color-primary-hover: var(--bn-primary-color-hover);
+  --bn-text-color-primary-active: var(--bn-primary-color-active);
+  --bn-text-color-primary-disabled: var(--bn-primary-color-disabled);
+
+  // 功能 成功色
+  --bn-text-color-success-base: var(--bn-success-color-base);
+  --bn-text-color-success-hover: var(--bn-success-color-hover);
+  --bn-text-color-success-active: var(--bn-success-color-active);
+  --bn-text-color-success-disabled: var(--bn-success-color-disabled);
+
+  // 功能 警告色
+  --bn-text-color-warning-base: var(--bn-warning-color-base);
+  --bn-text-color-warning-hover: var(--bn-warning-color-hover);
+  --bn-text-color-warning-active: var(--bn-warning-color-active);
+  --bn-text-color-warning-disabled: var(--bn-warning-color-disabled);
+
+  // 功能 危险色
+  --bn-text-color-danger-base: var(--bn-danger-color-base);
+  --bn-text-color-danger-hover: var(--bn-danger-color-hover);
+  --bn-text-color-danger-active: var(--bn-danger-color-active);
+  --bn-text-color-danger-disabled: var(--bn-danger-color-disabled);
+
+  // 功能 信息色
+  --bn-text-color-info-base: var(--bn-info-color-base);
+  --bn-text-color-info-hover: var(--bn-info-color-hover);
+  --bn-text-color-info-active: var(--bn-info-color-active);
+  --bn-text-color-info-disabled: var(--bn-info-color-disabled);
+
+  // 状态文本色
+  --bn-text-color-disabled: rgb(0 0 0 / 25%);
+  --bn-text-color-inverse: rgb(255 255 255 / 85%);
+  --bn-text-color-inverse-secondary: rgb(255 255 255 / 65%);
+  --bn-text-color-inverse-tertiary: rgb(255 255 255 / 45%);
+  --bn-text-color-inverse-quaternary: rgb(255 255 255 / 25%);
+  --bn-text-color-link: var(--bn-primary-color-base);
+  --bn-text-color-link-hover: var(--bn-primary-color-hover);
+  --bn-text-color-link-active: var(--bn-primary-color-active);
+  --bn-text-color-link-disabled: var(--bn-primary-color-disabled);
+  --bn-text-color-placeholder: rgb(0 0 0 / 25%);
+
+  // 特殊文本色
+  --bn-text-color-title: rgb(0 0 0 / 85%);
+  --bn-text-color-subtitle: rgb(0 0 0 / 65%);
+  --bn-text-color-caption: rgb(0 0 0 / 45%);
+  --bn-text-color-overline: rgb(0 0 0 / 45%);
+
+  // 强调文本色
+  --bn-text-color-emphasis: rgb(0 0 0 / 95%);
+  --bn-text-color-primary-emphasis: var(--bn-primary-color-7);
+  --bn-text-color-success-emphasis: var(--bn-success-color-7);
+  --bn-text-color-warning-emphasis: var(--bn-warning-color-7);
+  --bn-text-color-danger-emphasis: var(--bn-danger-color-7);
+  --bn-text-color-info-emphasis: var(--bn-info-color-7);
+}
+
+// 暗色模式文本变量混入
+// @mixin text-variables-dark - 定义所有暗色模式下需要变化的文本相关CSS变量
+@mixin text-variables-dark {
+  // 基础文本色
+  --bn-text-color-base: rgb(255 255 255 / 85%);
+  --bn-text-color-secondary: rgb(255 255 255 / 65%);
+  --bn-text-color-tertiary: rgb(255 255 255 / 45%);
+  --bn-text-color-quaternary: rgb(255 255 255 / 25%);
+
+  // 状态文本色
+  --bn-text-color-disabled: rgb(255 255 255 / 30%);
+  --bn-text-color-inverse: rgb(0 0 0 / 85%);
+  --bn-text-color-inverse-secondary: rgb(0 0 0 / 65%);
+  --bn-text-color-inverse-tertiary: rgb(0 0 0 / 45%);
+  --bn-text-color-inverse-quaternary: rgb(0 0 0 / 25%);
+  --bn-text-color-placeholder: rgb(255 255 255 / 30%);
+
+  // 特殊文本色
+  --bn-text-color-title: rgb(255 255 255 / 85%);
+  --bn-text-color-subtitle: rgb(255 255 255 / 65%);
+  --bn-text-color-caption: rgb(255 255 255 / 45%);
+  --bn-text-color-overline: rgb(255 255 255 / 45%);
+
+  // 强调文本色
+  --bn-text-color-emphasis: rgb(255 255 255 / 95%);
+}

@@ -1,0 +1,274 @@
+@use './variables' as *;
+// ======================================================
+// 标题样式混入
+// ======================================================
+
+$heading-prefix: bn-heading;
+
+// 标题基础样式
+@mixin heading-base-style {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .#{$heading-prefix}-h1,
+  .#{$heading-prefix}-h2,
+  .#{$heading-prefix}-h3,
+  .#{$heading-prefix}-h4,
+  .#{$heading-prefix}-h5,
+  .#{$heading-prefix}-h6 {
+    padding: 0;
+    margin: 0;
+    font-family: var(--bn-heading-font-family);
+  }
+
+  h1,
+  .#{$heading-prefix}-h1 {
+    margin-top: var(--bn-h1-margin-top);
+    margin-bottom: var(--bn-h1-margin-bottom);
+    font-size: var(--bn-h1-font-size);
+    font-weight: var(--bn-h1-font-weight);
+    line-height: var(--bn-h1-line-height);
+    color: var(--bn-h1-color);
+    text-transform: var(--bn-h1-text-transform);
+    letter-spacing: var(--bn-h1-letter-spacing);
+  }
+
+  h2,
+  .#{$heading-prefix}-h2 {
+    margin-top: var(--bn-h2-margin-top);
+    margin-bottom: var(--bn-h2-margin-bottom);
+    font-size: var(--bn-h2-font-size);
+    font-weight: var(--bn-h2-font-weight);
+    line-height: var(--bn-h2-line-height);
+    color: var(--bn-h2-color);
+    text-transform: var(--bn-h2-text-transform);
+    letter-spacing: var(--bn-h2-letter-spacing);
+  }
+
+  h3,
+  .#{$heading-prefix}-h3 {
+    margin-top: var(--bn-h3-margin-top);
+    margin-bottom: var(--bn-h3-margin-bottom);
+    font-size: var(--bn-h3-font-size);
+    font-weight: var(--bn-h3-font-weight);
+    line-height: var(--bn-h3-line-height);
+    color: var(--bn-h3-color);
+    text-transform: var(--bn-h3-text-transform);
+    letter-spacing: var(--bn-h3-letter-spacing);
+  }
+
+  h4,
+  .#{$heading-prefix}-h4 {
+    margin-top: var(--bn-h4-margin-top);
+    margin-bottom: var(--bn-h4-margin-bottom);
+    font-size: var(--bn-h4-font-size);
+    font-weight: var(--bn-h4-font-weight);
+    line-height: var(--bn-h4-line-height);
+    color: var(--bn-h4-color);
+    text-transform: var(--bn-h4-text-transform);
+    letter-spacing: var(--bn-h4-letter-spacing);
+  }
+
+  h5,
+  .#{$heading-prefix}-h5 {
+    margin-top: var(--bn-h5-margin-top);
+    margin-bottom: var(--bn-h5-margin-bottom);
+    font-size: var(--bn-h5-font-size);
+    font-weight: var(--bn-h5-font-weight);
+    line-height: var(--bn-h5-line-height);
+    color: var(--bn-h5-color);
+    text-transform: var(--bn-h5-text-transform);
+    letter-spacing: var(--bn-h5-letter-spacing);
+  }
+
+  h6,
+  .#{$heading-prefix}-h6 {
+    margin-top: var(--bn-h6-margin-top);
+    margin-bottom: var(--bn-h6-margin-bottom);
+    font-size: var(--bn-h6-font-size);
+    font-weight: var(--bn-h6-font-weight);
+    line-height: var(--bn-h6-line-height);
+    color: var(--bn-h6-color);
+    text-transform: var(--bn-h6-text-transform);
+    letter-spacing: var(--bn-h6-letter-spacing);
+  }
+}
+
+// 标题暗色模式样式
+@mixin heading-dark-style {
+  .dark-mode,
+  [data-theme='dark'] {
+    h1,
+    .#{$heading-prefix}-h1 {
+      color: var(--bn-h1-color-dark);
+    }
+    h2,
+    .#{$heading-prefix}-h2 {
+      color: var(--bn-h2-color-dark);
+    }
+    h3,
+    .#{$heading-prefix}-h3 {
+      color: var(--bn-h3-color-dark);
+    }
+    h4,
+    .#{$heading-prefix}-h4 {
+      color: var(--bn-h4-color-dark);
+    }
+    h5,
+    .#{$heading-prefix}-h5 {
+      color: var(--bn-h5-color-dark);
+    }
+    h6,
+    .#{$heading-prefix}-h6 {
+      color: var(--bn-h6-color-dark);
+    }
+  }
+}
+
+// 标题响应式样式
+@mixin heading-responsive-style {
+  // 移动端
+  @media (width <= 576px) {
+    h1,
+    .#{$heading-prefix}-h1 {
+      font-size: calc(var(--bn-h1-font-size) * var(--bn-heading-mobile-scale));
+    }
+    h2,
+    .#{$heading-prefix}-h2 {
+      font-size: calc(var(--bn-h2-font-size) * var(--bn-heading-mobile-scale));
+    }
+    h3,
+    .#{$heading-prefix}-h3 {
+      font-size: calc(var(--bn-h3-font-size) * var(--bn-heading-mobile-scale));
+    }
+    h4,
+    .#{$heading-prefix}-h4 {
+      font-size: calc(var(--bn-h4-font-size) * var(--bn-heading-mobile-scale));
+    }
+    h5,
+    .#{$heading-prefix}-h5 {
+      font-size: calc(var(--bn-h5-font-size) * var(--bn-heading-mobile-scale));
+    }
+    h6,
+    .#{$heading-prefix}-h6 {
+      font-size: calc(var(--bn-h6-font-size) * var(--bn-heading-mobile-scale));
+    }
+  }
+
+  // 平板
+  @media (width >= 577px) and (width <= 992px) {
+    h1,
+    .#{$heading-prefix}-h1 {
+      font-size: calc(var(--bn-h1-font-size) * var(--bn-heading-tablet-scale));
+    }
+    h2,
+    .#{$heading-prefix}-h2 {
+      font-size: calc(var(--bn-h2-font-size) * var(--bn-heading-tablet-scale));
+    }
+    h3,
+    .#{$heading-prefix}-h3 {
+      font-size: calc(var(--bn-h3-font-size) * var(--bn-heading-tablet-scale));
+    }
+    h4,
+    .#{$heading-prefix}-h4 {
+      font-size: calc(var(--bn-h4-font-size) * var(--bn-heading-tablet-scale));
+    }
+    h5,
+    .#{$heading-prefix}-h5 {
+      font-size: calc(var(--bn-h5-font-size) * var(--bn-heading-tablet-scale));
+    }
+    h6,
+    .#{$heading-prefix}-h6 {
+      font-size: calc(var(--bn-h6-font-size) * var(--bn-heading-tablet-scale));
+    }
+  }
+}
+
+// 标题装饰样式
+@mixin heading-decoration-style {
+  // 带下边框的标题
+  .#{$heading-prefix}-border {
+    padding-bottom: var(--bn-heading-with-border-padding-bottom);
+    margin-bottom: var(--bn-heading-with-border-margin-bottom);
+    border-bottom: var(--bn-heading-border-bottom-width) var(--bn-heading-border-bottom-style) var(--bn-heading-border-bottom-color);
+  }
+
+  // 带徽章的标题
+  .#{$heading-prefix}-badge {
+    display: inline-flex;
+    align-items: center;
+
+    &::after {
+      display: inline-block;
+      padding: var(--bn-heading-badge-padding);
+      margin-left: var(--bn-heading-badge-margin-left);
+      font-size: var(--bn-heading-badge-font-size);
+      font-weight: var(--bn-font-weight-normal);
+      line-height: 1;
+      color: var(--bn-heading-badge-color);
+      content: attr(data-badge);
+      background-color: var(--bn-heading-badge-background);
+      border-radius: var(--bn-heading-badge-border-radius);
+    }
+  }
+
+  .dark-mode,
+  [data-theme='dark'] {
+    .#{$heading-prefix}-border {
+      border-bottom-color: var(--bn-heading-border-bottom-color-dark);
+    }
+
+    .#{$heading-prefix}-badge::after {
+      color: var(--bn-heading-badge-color-dark);
+      background-color: var(--bn-heading-badge-background-dark);
+    }
+  }
+}
+
+// 标题交互样式
+@mixin heading-interactive-style {
+  // 可点击标题
+  .#{$heading-prefix}-clickable {
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--bn-heading-hover-color);
+    }
+  }
+
+  // 带锚点的标题
+  .#{$heading-prefix}-anchor {
+    position: relative;
+
+    &:hover .#{$heading-prefix}-anchor-link {
+      opacity: 1;
+    }
+
+    .#{$heading-prefix}-anchor-link {
+      position: absolute;
+      top: 50%;
+      left: -1.2em;
+      width: 1em;
+      height: 1em;
+      color: var(--bn-text-color-tertiary);
+      opacity: 0;
+      transform: translateY(-50%);
+      transition: opacity 0.3s;
+
+      &:hover {
+        color: var(--bn-primary-color-base);
+      }
+    }
+  }
+
+  .dark-mode,
+  [data-theme='dark'] {
+    .#{$heading-prefix}-clickable:hover {
+      color: var(--bn-heading-hover-color-dark);
+    }
+  }
+}
