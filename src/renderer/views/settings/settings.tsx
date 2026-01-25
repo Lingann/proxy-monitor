@@ -8,11 +8,17 @@ export default defineComponent({
     name: 'SettingsView',
     setup() {
         const { t } = useI18n();
-        const { currentLocale, saving, message, saveSettings } = useSettingsState();
+
+        const { currentLocale, currentTheme, saving, message, saveSettings } = useSettingsState();
 
         const languageOptions = [
             { label: 'English', value: 'en' },
             { label: '中文', value: 'zh' }
+        ];
+
+        const themeOptions = [
+            { label: t('settings.theme_light'), value: 'light' },
+            { label: t('settings.theme_dark'), value: 'dark' }
         ];
 
         return () => (
@@ -35,6 +41,20 @@ export default defineComponent({
                                 config={{
                                     options: languageOptions,
                                     placeholder: t('settings.select_language') || 'Select Language'
+                                }}
+                            />
+                        </div>
+                    </div>
+
+                    <div class={styles.formGroup}>
+                        <label>{t('settings.theme')}</label>
+                        <div style={{ width: '200px' }}>
+                            <CommonSelect
+                                modelValue={currentTheme.value}
+                                onUpdateModelValue={(val: string | number | null) => currentTheme.value = val as 'light' | 'dark'}
+                                config={{
+                                    options: themeOptions,
+                                    placeholder: t('settings.select_theme') || 'Select Theme'
                                 }}
                             />
                         </div>

@@ -13,7 +13,7 @@
   },
   "modules": {
     "network_monitor": "Network Monitor",
-    "settings": "Settings",
+    "settings": "Application Settings",
     "component_library": "Component Library",
     "system_proxy": "System Proxy"
   },
@@ -36,6 +36,9 @@
     "select_language": "Select Language",
     "language": "Language",
     "theme": "Theme",
+    "theme_light": "Light",
+    "theme_dark": "Dark",
+    "select_theme": "Select Theme",
     "process_filters": "Process Filters",
     "save": "Save Settings",
     "saved": "Settings saved!"

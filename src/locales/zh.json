@@ -14,7 +14,7 @@
   },
   "modules": {
     "network_monitor": "网络监控",
-    "settings": "设置",
+    "settings": "应用设置",
     "component_library": "组件库",
     "system_proxy": "系统代理"
   },
@@ -40,6 +40,9 @@
     "select_language": "选择语言",
     "language": "语言",
     "theme": "主题",
+    "theme_light": "亮色",
+    "theme_dark": "暗色",
+    "select_theme": "选择主题",
     "process_filters": "进程过滤器",
     "save": "保存设置",
     "saved": "设置已保存！"
