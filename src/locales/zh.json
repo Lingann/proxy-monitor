@@ -3,6 +3,7 @@
     "loading": "加载中...",
     "page": "页",
     "save": "保存",
+    "saving": "保存中...",
     "no_results": "无结果",
     "please_select": "请选择",
     "no_options": "无选项",
@@ -14,7 +15,8 @@
   "modules": {
     "network_monitor": "网络监控",
     "settings": "设置",
-    "component_library": "组件库"
+    "component_library": "组件库",
+    "system_proxy": "系统代理"
   },
   "monitor": {
     "network_traffic": "网络流量",
@@ -89,6 +91,42 @@
     "limit_speed_unavailable": "限制网速功能暂不可用（需系统驱动）",
     "confirm_end_process": "确定要结束进程 {pid} 吗？",
     "locating_file": "正在定位进程 {pid} 的文件...",
-    "properties_for": "进程 {pid} 的属性..."
+    "properties_for": "进程 {pid} 的属性...",
+    "save_success": "保存成功",
+    "save_error": "保存失败",
+    "no_addresses_found": "未找到该进程的网络地址",
+    "added_to_bypass": "已添加 {count} 个地址到绕过列表",
+    "add_to_bypass_error": "添加到绕过列表失败",
+    "remove_from_bypass_unavailable": "从绕过列表移除功能开发中"
+  },
+  "proxy": {
+    "status": "代理状态",
+    "enabled_status": "已启用",
+    "disabled_status": "已禁用",
+    "enable": "启用代理",
+    "disable": "禁用代理",
+    "server": "代理服务器",
+    "server_placeholder": "例如: 127.0.0.1:7890",
+    "server_hint": "格式: IP地址:端口 或 域名:端口，支持HTTP和HTTPS代理",
+    "bypass": "不使用代理的地址",
+    "bypass_placeholder": "例如: localhost;127.*;192.168.*",
+    "bypass_hint": "多个地址用分号分隔，支持通配符 *",
+    "bypass_rules": "绕过规则列表",
+    "add_rule": "添加规则",
+    "address": "地址",
+    "description": "描述",
+    "rule_enabled": "启用",
+    "created_at": "创建时间",
+    "edit": "编辑",
+    "delete": "删除",
+    "confirm_delete": "确定要删除此规则吗？",
+    "load_error": "加载代理配置失败",
+    "save_success": "代理配置已保存",
+    "save_error": "保存代理配置失败",
+    "proxy_enabled": "代理已启用",
+    "proxy_disabled": "代理已禁用",
+    "toggle_error": "切换代理状态失败",
+    "add_to_bypass": "添加到绕过列表",
+    "remove_from_bypass": "从绕过列表移除"
   }
 }

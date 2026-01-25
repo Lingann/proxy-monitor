@@ -14,9 +14,9 @@ export default defineComponent({
         const { t } = useI18n();
         const { currentData, trafficHistory, isAnalyzing } = useMonitorData();
         const chartContainer = ref<HTMLElement | null>(null);
-        
+
         useMonitorChart(chartContainer, trafficHistory);
-        
+
         const viewMode = ref<'list' | 'details'>('list');
         const selectedPid = ref<number | null>(null);
 
@@ -29,11 +29,36 @@ export default defineComponent({
             alert(t('messages.limit_speed_unavailable', { pid }));
         };
 
+        const handleAddToBypass = async (pid: number) => {
+            try {
+                const addresses = await window.electronAPI.getProcessAddresses(pid);
+                if (addresses.length === 0) {
+                    alert(t('messages.no_addresses_found'));
+                    return;
+                }
+
+                const process = currentData.value?.processes.find((p: any) => p.pid === pid);
+                const description = process ? `Process: ${process.name} (PID: ${pid})` : `PID: ${pid}`;
+
+                await window.electronAPI.addAddressesToBypass(addresses, description);
+                alert(t('messages.added_to_bypass', { count: addresses.length }));
+            } catch (error) {
+                console.error('Failed to add addresses to bypass:', error);
+                alert(t('messages.add_to_bypass_error'));
+            }
+        };
+
+        const handleRemoveFromBypass = async (pid: number) => {
+            alert(t('messages.remove_from_bypass_unavailable'));
+        };
+
         const { searchQuery, filteredProcesses, columns } = useMonitorTable(
-            computed(() => currentData.value?.processes), 
+            computed(() => currentData.value?.processes),
             {
                 onShowDetails: handleShowDetails,
-                onLimitSpeed: handleLimitSpeed
+                onLimitSpeed: handleLimitSpeed,
+                onAddToBypass: handleAddToBypass,
+                onRemoveFromBypass: handleRemoveFromBypass
             }
         );
 

@@ -49,3 +49,26 @@ export interface AnalysisConfig {
   autoRefresh: boolean;
   refreshInterval: number;
 }
+
+/* 系统代理配置接口 */
+export interface SystemProxyConfig {
+  enabled: boolean;
+  server: string;
+  bypass: string;
+}
+
+/* 代理绕过规则项 */
+export interface ProxyBypassRule {
+  id: string;
+  address: string;
+  description?: string;
+  enabled: boolean;
+  createdAt: number;
+}
+
+/* 扩展的系统代理配置（用于前端） */
+export interface ExtendedProxyConfig {
+  enabled: boolean;
+  server: string;
+  bypassRules: ProxyBypassRule[];
+}

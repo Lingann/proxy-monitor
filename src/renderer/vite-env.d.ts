@@ -14,8 +14,20 @@ interface ElectronAPI {
   saveSettings: (settings: any) => Promise<boolean>;
   getSettings: () => Promise<any>;
   getRecentTraffic: () => Promise<any[]>;
+  getProxyConfig: () => Promise<any>;
+  getExtendedProxyConfig: () => Promise<any>;
+  setProxyConfig: (config: any) => Promise<void>;
+  setExtendedProxyConfig: (config: any) => Promise<void>;
+  enableProxy: () => Promise<void>;
+  disableProxy: () => Promise<void>;
+  addBypassRule: (address: string, description?: string) => Promise<void>;
+  removeBypassRule: (ruleId: string) => Promise<void>;
+  updateBypassRule: (ruleId: string, updates: any) => Promise<void>;
+  addAddressesToBypass: (addresses: string[], description?: string) => Promise<void>;
+  getProcessAddresses: (pid: number) => Promise<string[]>;
 }
 
 interface Window {
   electronAPI: ElectronAPI;
 }
+

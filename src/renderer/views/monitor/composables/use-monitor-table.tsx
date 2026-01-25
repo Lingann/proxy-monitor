@@ -2,13 +2,15 @@ import { ref, computed, Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { ProcessData } from '../types';
 import { TableColumn } from '../../../components/common-table/types';
-import Icon from '../../../components/icon/icon'; // Assuming Icon component exists
+import Icon from '../../../components/icon/icon';
 
 export function useMonitorTable(
     processes: Ref<ProcessData[] | undefined>,
     callbacks: {
         onShowDetails: (pid: number) => void;
         onLimitSpeed: (pid: number) => void;
+        onAddToBypass: (pid: number) => void;
+        onRemoveFromBypass: (pid: number) => void;
     }
 ) {
     const { t } = useI18n();
@@ -25,8 +27,8 @@ export function useMonitorTable(
         let data = processes.value || [];
         if (searchQuery.value) {
             const term = searchQuery.value.toLowerCase();
-            data = data.filter(p => 
-                (p.name && p.name.toLowerCase().includes(term)) || 
+            data = data.filter(p =>
+                (p.name && p.name.toLowerCase().includes(term)) ||
                 (p.pid && p.pid.toString().includes(term))
             );
         }
@@ -40,10 +42,10 @@ export function useMonitorTable(
         { key: 'downloadSpeed', title: t('table.download'), sortable: true, render: (val) => formatSpeed(val) },
         { key: 'uploadSpeed', title: t('table.upload'), sortable: true, render: (val) => formatSpeed(val) },
         { key: 'establishedConnections', title: t('table.connections'), render: (_, row) => `${row.establishedConnections} / ${row.totalConnections}` },
-        { 
-            key: 'actions', 
-            title: t('table.actions'), 
-            width: '120px',
+        {
+            key: 'actions',
+            title: t('table.actions'),
+            width: '180px',
             render: (_, row) => (
                 <div class="action-cell">
                     <button class="btn-icon" onClick={() => callbacks.onShowDetails(row.pid)} title={t('actions.view_details')}>
@@ -51,6 +53,12 @@ export function useMonitorTable(
                     </button>
                     <button class="btn-icon" onClick={() => callbacks.onLimitSpeed(row.pid)} title={t('actions.limit_speed')}>
                          <Icon name="download" size={16} />
+                    </button>
+                    <button class="btn-icon" onClick={() => callbacks.onAddToBypass(row.pid)} title={t('proxy.add_to_bypass')}>
+                         <Icon name="shield-off" size={16} />
+                    </button>
+                    <button class="btn-icon" onClick={() => callbacks.onRemoveFromBypass(row.pid)} title={t('proxy.remove_from_bypass')}>
+                         <Icon name="shield-check" size={16} />
                     </button>
                 </div>
             )

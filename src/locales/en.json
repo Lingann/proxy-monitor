@@ -1,6 +1,8 @@
 {
   "common": {
     "loading": "Loading...",
+    "save": "Save",
+    "saving": "Saving...",
     "no_results": "No results",
     "please_select": "Please select",
     "no_options": "No options",
@@ -12,7 +14,8 @@
   "modules": {
     "network_monitor": "Network Monitor",
     "settings": "Settings",
-    "component_library": "Component Library"
+    "component_library": "Component Library",
+    "system_proxy": "System Proxy"
   },
   "monitor": {
     "analyze": "Analyze",
@@ -84,6 +87,42 @@
     "limit_speed_unavailable": "Limit Speed feature is not available for process {pid} (requires system driver).",
     "confirm_end_process": "Are you sure you want to end process {pid}?",
     "locating_file": "Locating file for process {pid}...",
-    "properties_for": "Properties for process {pid}..."
+    "properties_for": "Properties for process {pid}...",
+    "save_success": "Saved successfully",
+    "save_error": "Failed to save",
+    "no_addresses_found": "No network addresses found for this process",
+    "added_to_bypass": "Added {count} addresses to bypass list",
+    "add_to_bypass_error": "Failed to add addresses to bypass list",
+    "remove_from_bypass_unavailable": "Remove from bypass feature is under development"
+  },
+  "proxy": {
+    "status": "Proxy Status",
+    "enabled_status": "Enabled",
+    "disabled_status": "Disabled",
+    "enable": "Enable Proxy",
+    "disable": "Disable Proxy",
+    "server": "Proxy Server",
+    "server_placeholder": "e.g., 127.0.0.1:7890",
+    "server_hint": "Format: IP:Port or Domain:Port, supports HTTP and HTTPS proxy",
+    "bypass": "Bypass List",
+    "bypass_placeholder": "e.g., localhost;127.*;192.168.*",
+    "bypass_hint": "Separate multiple addresses with semicolons, wildcards * supported",
+    "bypass_rules": "Bypass Rules",
+    "add_rule": "Add Rule",
+    "address": "Address",
+    "description": "Description",
+    "rule_enabled": "Enabled",
+    "created_at": "Created At",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm_delete": "Are you sure you want to delete this rule?",
+    "load_error": "Failed to load proxy configuration",
+    "save_success": "Proxy configuration saved",
+    "save_error": "Failed to save proxy configuration",
+    "proxy_enabled": "Proxy enabled",
+    "proxy_disabled": "Proxy disabled",
+    "toggle_error": "Failed to toggle proxy status",
+    "add_to_bypass": "Add to Bypass",
+    "remove_from_bypass": "Remove from Bypass"
   }
 }
