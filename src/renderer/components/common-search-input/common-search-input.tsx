@@ -20,7 +20,7 @@ export default defineComponent({
       type: Object as PropType<SearchInputConfig>,
       default: () => ({})
     },
-    onUpdateModelValue: Function as PropType<(val: string | number | null) => void>,
+    'onUpdate:ModelValue': Function as PropType<(val: string | number | null) => void>,
     onChange: Function as PropType<(value: string | number | null, option?: SearchInputOption) => void>,
     onSearch: Function as PropType<(query: string) => void>,
     onFocus: Function as PropType<(e: FocusEvent) => void>,
