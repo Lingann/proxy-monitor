@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 import styles from './system-proxy.module.scss';
 import { useExtendedProxyState } from './composables/use-extended-proxy-state';
-import { BnInput } from '../../components/input';
+import { BnInput } from '../../components/bn-input';
 import BypassRulesTable from './components/bypass-rules-table';
 
 export default defineComponent({

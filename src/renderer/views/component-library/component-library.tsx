@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue';
 import styles from './component-library.module.scss';
 import { useDemoState } from './composables/use-demo-state';
-import CommonForm from '../../components/form/common-form';
-import CommonFormItem from '../../components/form/sub-components/common-form-item';
-import { BnInput } from '../../components/input';
+import CommonForm from '../../components/bn-form/common-form';
+import CommonFormItem from '../../components/bn-form/sub-components/common-form-item';
+import { BnInput } from '../../components/bn-input';
 import CommonSelect from '../../components/common-select/common-select';
 
 export default defineComponent({

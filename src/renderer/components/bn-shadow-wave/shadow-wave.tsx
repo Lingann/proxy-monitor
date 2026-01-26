@@ -9,9 +9,9 @@
 
 import './styles/index.scss'
 
-import { debounce } from 'lodash-es'
 import { defineComponent, nextTick, onBeforeUnmount, ref } from 'vue'
 
+import { debounce } from '../../utils'
 import { useWaveAnimation, useWaveState, useWaveStyles } from './composables'
 
 // ==================================================

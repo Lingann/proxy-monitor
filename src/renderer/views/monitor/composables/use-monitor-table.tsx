@@ -2,7 +2,7 @@ import { ref, computed, Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { ProcessData } from '../types';
 import { TableColumn } from '../../../components/common-table/types';
-import Icon from '../../../components/icon/icon';
+import Icon from '../../../components/bn-icon/icon';
 
 export function useMonitorTable(
     processes: Ref<ProcessData[] | undefined>,

@@ -2,9 +2,9 @@ import { defineComponent, ref, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { ProxyBypassRule } from '../../../../shared/common-types';
 import CommonTable from '../../../components/common-table/common-table';
-import { BnInput } from '../../../components/input';
+import { BnInput } from '../../../components/bn-input';
 import { TableColumn } from '../../../components/common-table/types';
-import Icon from '../../../components/icon/icon';
+import Icon from '../../../components/bn-icon/icon';
 import styles from './bypass-rules-table.module.scss';
 
 export default defineComponent({

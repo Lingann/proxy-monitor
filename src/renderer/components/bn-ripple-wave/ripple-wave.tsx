@@ -9,9 +9,9 @@
 
 import './styles/index.scss'
 
-import { debounce } from 'lodash-es'
 import { defineComponent, onBeforeUnmount, ref } from 'vue'
 
+import { debounce } from '../../utils'
 import { useRippleAnimation, useRippleState } from './composables'
 
 // ==================================================

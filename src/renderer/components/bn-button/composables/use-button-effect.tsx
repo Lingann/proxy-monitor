@@ -10,10 +10,10 @@
 import type { ComputedRef, FunctionalComponent } from 'vue'
 import { ref } from 'vue'
 
-import type { RippleWaveInstance } from '../../ripple-wave'
-import { BnRippleWave } from '../../ripple-wave'
-import type { ShadowWaveInstance } from '../../shadow-wave'
-import { BnShadowWave } from '../../shadow-wave'
+import type { RippleWaveInstance } from '../../bn-ripple-wave'
+import { BnRippleWave } from '../../bn-ripple-wave'
+import type { ShadowWaveInstance } from '../../bn-shadow-wave'
+import { BnShadowWave } from '../../bn-shadow-wave'
 import type { ButtonProps } from '../props'
 import type { ButtonEmitter } from '../types'
 
