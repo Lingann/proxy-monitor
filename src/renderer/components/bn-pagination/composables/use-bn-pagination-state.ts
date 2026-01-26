@@ -1,7 +1,7 @@
 import { computed } from 'vue';
-import { PaginationProps } from '../types';
+import { BnPaginationProps } from '../types';
 
-export function usePaginationState(props: PaginationProps) {
+export function useBnPaginationState(props: BnPaginationProps) {
   /* 计算总页数 */
   const totalPages = computed(() => Math.ceil(props.total / props.pageSize) || 1);
 

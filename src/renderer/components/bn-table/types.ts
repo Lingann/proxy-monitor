@@ -1,4 +1,4 @@
-export interface TableColumn<T = any> {
+export interface BnTableColumn<T = any> {
   key: string;
   title: string;
   width?: string;
@@ -6,25 +6,32 @@ export interface TableColumn<T = any> {
   render?: (value: any, row: T) => any;
 }
 
-export interface TablePagination {
+export interface BnTablePagination {
   enable: boolean;
   pageSize: number;
 }
 
-export interface TableProps<T = any> {
-  columns: TableColumn<T>[];
+export interface BnTableProps<T = any> {
+  columns: BnTableColumn<T>[];
   data?: T[];
   loading?: boolean;
-  pagination?: Partial<TablePagination>;
+  pagination?: Partial<BnTablePagination>;
   height?: string;
 }
 
-export interface TableConfig<T = any> {
-  columns: TableColumn<T>[];
+export interface BnTableConfig<T = any> {
+  columns: BnTableColumn<T>[];
   data: T[];
   loading: boolean;
-  pagination: TablePagination;
+  pagination: BnTablePagination;
   height: string;
 }
 
-export type SortDirection = 'asc' | 'desc';
+export type BnTableSortDirection = 'asc' | 'desc';
+
+// 向后兼容的类型别名
+export type TableColumn<T = any> = BnTableColumn<T>;
+export type TablePagination = BnTablePagination;
+export type TableProps<T = any> = BnTableProps<T>;
+export type TableConfig<T = any> = BnTableConfig<T>;
+export type SortDirection = BnTableSortDirection;

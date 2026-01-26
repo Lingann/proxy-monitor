@@ -1,9 +1,9 @@
 import { defineComponent, ref, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { ProxyBypassRule } from '../../../../shared/common-types';
-import CommonTable from '../../../components/common-table/common-table';
+import BnTable from '../../../components/bn-table/bn-table';
 import { BnInput } from '../../../components/bn-input';
-import { TableColumn } from '../../../components/common-table/types';
+import { BnTableColumn } from '../../../components/bn-table/types';
 import Icon from '../../../components/bn-icon/icon';
 import styles from './bypass-rules-table.module.scss';
 
@@ -79,7 +79,7 @@ export default defineComponent({
       return new Date(timestamp).toLocaleString();
     };
 
-    const columns: TableColumn<ProxyBypassRule>[] = [
+    const columns: BnTableColumn<ProxyBypassRule>[] = [
       {
         key: 'address',
         title: t('proxy.address'),
@@ -189,7 +189,7 @@ export default defineComponent({
             {t('proxy.add_rule')}
           </button>
         </div>
-        <CommonTable
+        <BnTable
           columns={columns}
           data={props.rules}
           pagination={{ enable: true, pageSize: 10 }}

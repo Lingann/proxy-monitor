@@ -1,7 +1,7 @@
 import { ref, computed, Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { ProcessData } from '../types';
-import { TableColumn } from '../../../components/common-table/types';
+import { BnTableColumn } from '../../../components/bn-table/types';
 import Icon from '../../../components/bn-icon/icon';
 
 export function useMonitorTable(
@@ -35,7 +35,7 @@ export function useMonitorTable(
         return data;
     });
 
-    const columns = computed<TableColumn<ProcessData>[]>(() => [
+    const columns = computed<BnTableColumn<ProcessData>[]>(() => [
         { key: 'pid', title: t('table.pid'), width: '80px', sortable: true },
         { key: 'name', title: t('table.name'), sortable: true },
         { key: 'category', title: t('table.category'), sortable: true, render: (val) => val || t('category.third_party') },

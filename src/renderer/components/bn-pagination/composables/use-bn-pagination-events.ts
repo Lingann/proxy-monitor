@@ -1,8 +1,8 @@
 import { Ref } from 'vue';
-import { PaginationProps } from '../types';
+import { BnPaginationProps } from '../types';
 
-export function usePaginationEvents(
-  props: PaginationProps,
+export function useBnPaginationEvents(
+  props: BnPaginationProps,
   totalPages: Ref<number>
 ) {
   /* 处理页码改变 */

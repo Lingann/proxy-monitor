@@ -2,13 +2,13 @@ import { defineComponent, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-vue-next';
 import { BnSelect } from '../bn-select';
-import { PaginationProps } from './types';
-import { usePaginationState } from './composables/use-pagination-state';
-import { usePaginationEvents } from './composables/use-pagination-events';
-import './common-table-pagination.scss';
+import { BnPaginationProps } from './types';
+import { useBnPaginationState } from './composables/use-bn-pagination-state';
+import { useBnPaginationEvents } from './composables/use-bn-pagination-events';
+import './bn-pagination.scss';
 
 export default defineComponent({
-  name: 'CommonTablePagination',
+  name: 'BnPagination',
   props: {
     total: { type: Number, required: true },
     currentPage: { type: Number, required: true },
@@ -18,21 +18,21 @@ export default defineComponent({
     onUpdatePageSize: Function as PropType<(val: number) => void>,
     onChange: Function as PropType<(page: number, size: number) => void>
   },
-  setup(props: PaginationProps) {
+  setup(props: BnPaginationProps) {
     const { t } = useI18n();
 
     /* 1. 分页状态 */
-    const { totalPages } = usePaginationState(props);
+    const { totalPages } = useBnPaginationState(props);
 
     /* 2. 事件处理 */
-    const { handlePageChange, handleSizeChange } = usePaginationEvents(props, totalPages);
+    const { handlePageChange, handleSizeChange } = useBnPaginationEvents(props, totalPages);
 
     return () => (
-      <div class="common-table-pagination">
-         <div class="common-table-pagination__total">
+      <div class="bn-pagination">
+         <div class="bn-pagination__total">
             {t('common.total')} {props.total}
          </div>
-         <div class="common-table-pagination__size">
+         <div class="bn-pagination__size">
              <BnSelect
                options={(props.pageSizeOptions || [10, 20, 50, 100]).map(s => ({
                  label: `${s} / ${t('common.page') || 'page'}`,
@@ -44,7 +44,7 @@ export default defineComponent({
                onChange={(val) => handleSizeChange(val)}
              />
          </div>
-         <div class="common-table-pagination__pages">
+         <div class="bn-pagination__pages">
             <button 
                 class="btn-icon" 
                 disabled={props.currentPage === 1}

@@ -1,5 +1,5 @@
 
-export interface PaginationProps {
+export interface BnPaginationProps {
   /* 总条数 */
   total: number;
   /* 当前页码 */
@@ -15,3 +15,6 @@ export interface PaginationProps {
   /* 页码或每页条数改变的回调 */
   onChange?: (page: number, size: number) => void;
 }
+
+// 向后兼容的类型别名
+export type PaginationProps = BnPaginationProps;
