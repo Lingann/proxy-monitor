@@ -4,7 +4,7 @@ import { useDemoState } from './composables/use-demo-state';
 import CommonForm from '../../components/bn-form/common-form';
 import CommonFormItem from '../../components/bn-form/sub-components/common-form-item';
 import { BnInput } from '../../components/bn-input';
-import CommonSelect from '../../components/common-select/common-select';
+import { BnSelect } from '../../components/bn-select';
 
 export default defineComponent({
     name: 'ComponentLibraryView',
@@ -61,17 +61,15 @@ export default defineComponent({
                                 />
                             </CommonFormItem>
                             <CommonFormItem prop="role" label="Role">
-                                <CommonSelect
+                                <BnSelect
                                     modelValue={formData.role}
                                     onUpdateModelValue={(v: string | number | null) => formData.role = String(v || '')}
-                                    config={{
-                                        placeholder: 'Select role',
-                                        options: [
-                                            { label: 'Admin', value: 'admin' },
-                                            { label: 'User', value: 'user' },
-                                            { label: 'Guest', value: 'guest' }
-                                        ]
-                                    }}
+                                    placeholder="Select role"
+                                    options={[
+                                        { label: 'Admin', value: 'admin' },
+                                        { label: 'User', value: 'user' },
+                                        { label: 'Guest', value: 'guest' }
+                                    ]}
                                 />
                             </CommonFormItem>
                         </CommonForm>

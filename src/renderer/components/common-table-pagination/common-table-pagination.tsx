@@ -1,7 +1,7 @@
 import { defineComponent, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-vue-next';
-import CommonSelect from '../common-select/common-select';
+import { BnSelect } from '../bn-select';
 import { PaginationProps } from './types';
 import { usePaginationState } from './composables/use-pagination-state';
 import { usePaginationEvents } from './composables/use-pagination-events';
@@ -33,16 +33,13 @@ export default defineComponent({
             {t('common.total')} {props.total}
          </div>
          <div class="common-table-pagination__size">
-             <CommonSelect 
-               config={{
-                   options: (props.pageSizeOptions || [10, 20, 50, 100]).map(s => ({ 
-                     label: `${s} / ${t('common.page') || 'page'}`, 
-                     value: s 
-                   })),
-                   size: 'small',
-                   width: 120,
-                   clearable: false
-               }}
+             <BnSelect
+               options={(props.pageSizeOptions || [10, 20, 50, 100]).map(s => ({
+                 label: `${s} / ${t('common.page') || 'page'}`,
+                 value: s
+               }))}
+               size="small"
+               clearable={false}
                modelValue={props.pageSize}
                onChange={(val) => handleSizeChange(val)}
              />

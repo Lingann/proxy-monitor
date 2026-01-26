@@ -1,0 +1,72 @@
+// ======================================================
+// 选择器混入
+// ======================================================
+
+// 基础样式混入
+@mixin select-base {
+  position: relative;
+  box-sizing: border-box;
+  font-family: inherit;
+  width: 100%;
+}
+
+// 触发器样式混入
+@mixin select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: var(--bn-select-bg);
+  border: 1px solid var(--bn-select-border);
+  border-radius: var(--bn-select-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  user-select: none;
+
+  &:hover {
+    border-color: var(--bn-select-border-hover);
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: var(--bn-select-border-focus);
+    box-shadow: 0 0 0 2px rgba(var(--bn-primary-inner-5), 0.2);
+  }
+}
+
+// 下拉框样式混入
+@mixin select-dropdown {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: var(--bn-select-bg);
+  border: 1px solid var(--bn-select-border);
+  border-radius: var(--bn-select-radius);
+  box-shadow: var(--bn-select-shadow);
+  z-index: var(--bn-select-z-index);
+  display: none;
+  max-height: calc(var(--bn-select-item-height) * var(--max-display-items, 5));
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 4px 0;
+}
+
+// 选项样式混入
+@mixin select-option {
+  height: var(--bn-select-item-height);
+  line-height: var(--bn-select-item-height);
+  padding: 0 12px;
+  cursor: pointer;
+  color: var(--bn-select-text);
+  transition: background 0.1s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background: var(--bn-select-item-hover);
+  }
+}

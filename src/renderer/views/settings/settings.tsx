@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 import styles from './settings.module.scss';
 import { useSettingsState } from './composables/use-settings-state';
-import CommonSelect from '../../components/common-select/common-select';
+import { BnSelect } from '../../components/bn-select';
 
 export default defineComponent({
     name: 'SettingsView',
@@ -35,13 +35,11 @@ export default defineComponent({
                     <div class={styles.formGroup}>
                         <label>{t('settings.language')}</label>
                         <div style={{ width: '200px' }}>
-                            <CommonSelect
+                            <BnSelect
                                 modelValue={currentLocale.value}
                                 onUpdateModelValue={(val: string | number | null) => currentLocale.value = String(val)}
-                                config={{
-                                    options: languageOptions,
-                                    placeholder: t('settings.select_language') || 'Select Language'
-                                }}
+                                options={languageOptions}
+                                placeholder={t('settings.select_language') || 'Select Language'}
                             />
                         </div>
                     </div>
@@ -49,13 +47,11 @@ export default defineComponent({
                     <div class={styles.formGroup}>
                         <label>{t('settings.theme')}</label>
                         <div style={{ width: '200px' }}>
-                            <CommonSelect
+                            <BnSelect
                                 modelValue={currentTheme.value}
                                 onUpdateModelValue={(val: string | number | null) => currentTheme.value = val as 'light' | 'dark'}
-                                config={{
-                                    options: themeOptions,
-                                    placeholder: t('settings.select_theme') || 'Select Theme'
-                                }}
+                                options={themeOptions}
+                                placeholder={t('settings.select_theme') || 'Select Theme'}
                             />
                         </div>
                     </div>
