@@ -1,26 +1,42 @@
 
-import { InjectionKey, Ref } from 'vue';
+import { InjectionKey, Ref } from 'vue'
 
 export interface ValidationResult {
   isValid: boolean;
   message?: string;
 }
 
+export type FormTrigger = 'blur' | 'change'
+
+export type FormRuleMessageType =
+  | 'required'
+  | 'min'
+  | 'max'
+  | 'len'
+  | 'pattern'
+  | 'email'
+  | 'url'
+  | 'number'
+  | 'string'
+  | 'validator'
+  | 'default'
+
 export interface FormItemRule {
-  trigger?: 'change' | 'blur' | 'focus';
+  trigger?: FormTrigger | FormTrigger[];
   required?: boolean;
   message?: string;
   min?: number;
   max?: number;
+  len?: number;
   type?: 'email' | 'string' | 'number' | 'url';
   pattern?: RegExp | string;
-  validator?: (value: any) => ValidationResult | Promise<ValidationResult> | boolean | Promise<boolean>;
+  validator?: FormItemRuleValidator | LegacyFormItemRuleValidator;
 }
 
 export type FormRules = Record<string, FormItemRule | FormItemRule[]>;
 
 export interface FormProps {
-  model: Record<string, any>;
+  model: Record<string, unknown>;
   rules?: FormRules;
 
   /* 标签宽度 */
@@ -61,13 +77,17 @@ export interface FormItemConfig {
 
 export interface FormItemContext {
   prop: string;
-  validate: (trigger?: string) => Promise<ValidationResult>;
+  validate: (trigger?: FormTrigger) => Promise<ValidationResult>;
   resetField: () => void;
   clearValidate: () => void;
 }
 
+export interface FormItemValidateContext {
+  validate: (trigger?: FormTrigger) => Promise<ValidationResult>;
+}
+
 export interface FormContext {
-  model: Record<string, any>;
+  model: Record<string, unknown>;
   labelWidth: Ref<string | number | undefined>;
   labelPosition: Ref<'left' | 'right' | 'top' | undefined>;
   size: Ref<'small' | 'medium' | 'large' | undefined>;
@@ -79,4 +99,14 @@ export interface FormContext {
   validateField: (prop: string, cb?: (isValid: boolean, message?: string) => void) => void;
 }
 
+export type FormItemRuleValidator = (
+  rule: FormItemRule,
+  value: unknown
+) => Promise<void | string | boolean> | void | string | boolean
+
+export type LegacyFormItemRuleValidator = (
+  value: unknown
+) => ValidationResult | Promise<ValidationResult> | boolean | Promise<boolean>
+
 export const FormContextKey: InjectionKey<FormContext> = Symbol('FormContext');
+export const FormItemContextKey: InjectionKey<FormItemValidateContext> = Symbol('FormItemContext');

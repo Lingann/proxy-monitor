@@ -16,7 +16,7 @@ export function bnFormProps() {
   return {
     /* 表单数据模型 */
     model: {
-      type: Object as PropType<Record<string, any>>,
+      type: Object as PropType<Record<string, unknown>>,
       required: true
     },
 

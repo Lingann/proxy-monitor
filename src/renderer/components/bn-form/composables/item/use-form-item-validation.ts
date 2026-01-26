@@ -8,141 +8,128 @@
  */
 
 import { onMounted, onUnmounted, type Ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import type {
   FormContext,
   FormItemContext,
   FormItemRule,
+  FormRuleMessageType,
+  FormTrigger,
   ValidationResult
 } from '../../types'
 import type { BnFormItemProps } from '../../props'
+import { transformRulesToZod, type RuleMessageResolver } from '../../utils/zod-adapter'
 
 /* 处理 FormItem 的校验逻辑 */
 export function useFormItemValidation(
   props: BnFormItemProps,
   formContext: FormContext | undefined,
-  fieldValue: Ref<any>,
-  validateState: Ref<string>,
+  fieldValue: Ref<unknown>,
+  validateState: Ref<'valid' | 'error' | 'validating' | ''>,
   validateMessage: Ref<string>
 ) {
+  const { t } = useI18n()
+
+  const fieldLabel = props.label || props.prop || ''
+
+  const resolveMessage: RuleMessageResolver = (
+    rule: FormItemRule,
+    messageType: FormRuleMessageType,
+    params?: Record<string, number>
+  ) => {
+    if (rule.message) return rule.message
+
+    if (messageType === 'min') return t('form.validation.min', { min: params?.min })
+
+    if (messageType === 'max') return t('form.validation.max', { max: params?.max })
+
+    if (messageType === 'len') return t('form.validation.len', { len: params?.len })
+
+    if (messageType === 'pattern') return t('form.validation.pattern')
+
+    if (messageType === 'email') return t('form.validation.email')
+
+    if (messageType === 'url') return t('form.validation.url')
+
+    if (messageType === 'number') return t('form.validation.number')
+
+    if (messageType === 'string') return t('form.validation.string')
+
+    if (messageType === 'validator') return t('form.validation.validator')
+
+    if (messageType === 'required') return t('form.validation.required')
+
+    return fieldLabel ? t('form.validation.default_with_field', { field: fieldLabel }) : t('form.validation.default')
+  }
+
+  const normalizeRules = (ruleInput?: FormItemRule | FormItemRule[]): FormItemRule[] => {
+    if (!ruleInput) return []
+
+    return Array.isArray(ruleInput) ? ruleInput : [ruleInput]
+  }
+
   const getRules = (): FormItemRule[] => {
-    let rules: FormItemRule[] = [];
-    
-    // 1. 组件 props 传入的 rules
-    if (props.rules) {
-      rules = rules.concat(props.rules);
-    }
-    
-    // 2. Form rules
-    if (props.prop && formContext?.rules.value && formContext.rules.value[props.prop]) {
-      const formRules = formContext.rules.value[props.prop];
-      rules = rules.concat(formRules);
-    }
+    const localRules = normalizeRules(props.rules)
+    const formRules = props.prop ? normalizeRules(formContext?.rules.value?.[props.prop]) : []
 
-    // 3. required prop
+    const mergedRules = [...localRules, ...formRules]
+
     if (props.required) {
-      rules.push({ required: true, message: `${props.label || props.prop} is required` });
+      mergedRules.push({
+        required: true,
+        message: fieldLabel ? t('form.validation.required_with_field', { field: fieldLabel }) : t('form.validation.required')
+      })
     }
 
-    return rules;
-  };
+    return mergedRules
+  }
 
-  const validate = async (trigger?: string): Promise<ValidationResult> => {
-    const rules = getRules();
-    if (!rules.length) {
-      return { isValid: true };
+  const isTriggerMatched = (rule: FormItemRule, trigger?: FormTrigger): boolean => {
+    if (!trigger) return true
+
+    if (!rule.trigger) return true
+
+    if (Array.isArray(rule.trigger)) return rule.trigger.includes(trigger)
+
+    return rule.trigger === trigger
+  }
+
+  const validate = async (trigger?: FormTrigger): Promise<ValidationResult> => {
+    const rules = getRules().filter(rule => isTriggerMatched(rule, trigger))
+
+    if (!rules.length) return { isValid: true }
+
+    validateState.value = 'validating'
+
+    const zodSchema = transformRulesToZod(rules, resolveMessage)
+
+    const result = await zodSchema.safeParseAsync(fieldValue.value)
+
+    if (result.success) {
+      validateState.value = 'valid'
+      validateMessage.value = ''
+
+      return { isValid: true }
     }
 
-    const value = fieldValue.value;
-    validateState.value = 'validating';
+    const firstError = result.error.errors[0]
 
-    for (const rule of rules) {
-      // 过滤 trigger
-      if (trigger && rule.trigger && rule.trigger !== trigger) {
-        continue;
-      }
+    validateState.value = 'error'
+    validateMessage.value = firstError?.message || resolveMessage(rules[0], 'default')
 
-      // 必填校验
-      if (rule.required) {
-        if (value === undefined || value === null || value === '') {
-          validateState.value = 'error';
-          validateMessage.value = rule.message || 'Required';
-          return { isValid: false, message: validateMessage.value };
-        }
-      }
-
-      // 长度校验 (min/max)
-      if (typeof rule.min === 'number' || typeof rule.max === 'number') {
-          const valStr = String(value || '');
-          if (typeof rule.min === 'number' && valStr.length < rule.min) {
-               validateState.value = 'error';
-               validateMessage.value = rule.message || `Length should be at least ${rule.min}`;
-               return { isValid: false, message: validateMessage.value };
-          }
-          if (typeof rule.max === 'number' && valStr.length > rule.max) {
-               validateState.value = 'error';
-               validateMessage.value = rule.message || `Length should be no more than ${rule.max}`;
-               return { isValid: false, message: validateMessage.value };
-          }
-      }
-
-      // 类型校验 (type=email)
-      if (rule.type === 'email') {
-           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-           if (value && !emailRegex.test(String(value))) {
-               validateState.value = 'error';
-               validateMessage.value = rule.message || 'Invalid email format';
-               return { isValid: false, message: validateMessage.value };
-           }
-      }
-
-      // 正则校验 (pattern)
-      if (rule.pattern) {
-           const regex = typeof rule.pattern === 'string' ? new RegExp(rule.pattern) : rule.pattern;
-           if (value && !regex.test(String(value))) {
-               validateState.value = 'error';
-               validateMessage.value = rule.message || 'Pattern mismatch';
-               return { isValid: false, message: validateMessage.value };
-           }
-      }
-
-      // 自定义校验器
-      if (rule.validator) {
-        try {
-          const result = await rule.validator(value);
-          if (typeof result === 'boolean') {
-            if (!result) {
-               validateState.value = 'error';
-               validateMessage.value = rule.message || 'Validation failed';
-               return { isValid: false, message: validateMessage.value };
-            }
-          } else if (typeof result === 'object' && !result.isValid) {
-            validateState.value = 'error';
-            validateMessage.value = result.message || rule.message || 'Validation failed';
-            return { isValid: false, message: validateMessage.value };
-          }
-        } catch (e) {
-           validateState.value = 'error';
-           validateMessage.value = rule.message || 'Validation error';
-           return { isValid: false, message: validateMessage.value };
-        }
-      }
-    }
-
-    validateState.value = 'valid';
-    validateMessage.value = '';
-    return { isValid: true };
-  };
+    return { isValid: false, message: validateMessage.value }
+  }
 
   const resetField = () => {
-    validateState.value = '';
-    validateMessage.value = '';
-  };
+    validateState.value = ''
+    validateMessage.value = ''
+  }
 
   const clearValidate = () => {
-    validateState.value = '';
-    validateMessage.value = '';
-  };
+    validateState.value = ''
+    validateMessage.value = ''
+  }
 
   const context: FormItemContext = {
     prop: props.prop || '',
@@ -163,13 +150,12 @@ export function useFormItemValidation(
     }
   });
 
-  // 监听值变化，自动校验 (如果规则中有 trigger: 'change')
+  /* 监听值变化，自动校验 */
   watch(fieldValue, () => {
-    const rules = getRules();
-    if (rules.some(r => r.trigger === 'change' || !r.trigger)) {
-      validate('change');
-    }
-  });
+    const rules = getRules()
+
+    if (rules.some(rule => isTriggerMatched(rule, 'change'))) validate('change')
+  })
 
   return {
     validate,

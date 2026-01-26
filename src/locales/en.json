@@ -101,6 +101,23 @@
     "add_to_bypass_error": "Failed to add addresses to bypass list",
     "remove_from_bypass_unavailable": "Remove from bypass feature is under development"
   },
+  "form": {
+    "validation": {
+      "required": "This field is required",
+      "required_with_field": "{field} is required",
+      "min": "Minimum length is {min}",
+      "max": "Maximum length is {max}",
+      "len": "Length must be {len}",
+      "pattern": "Value format is invalid",
+      "email": "Please enter a valid email address",
+      "url": "Please enter a valid URL",
+      "number": "Please enter a valid number",
+      "string": "Please enter a valid text",
+      "validator": "Validation failed",
+      "default": "Validation failed",
+      "default_with_field": "{field} is invalid"
+    }
+  },
   "proxy": {
     "status": "Proxy Status",
     "enabled_status": "Enabled",

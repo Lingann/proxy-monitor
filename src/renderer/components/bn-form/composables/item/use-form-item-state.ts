@@ -21,7 +21,7 @@ export function useFormItemState(
   const validateState = ref<'valid' | 'error' | 'validating' | ''>('')
   const validateMessage = ref('')
 
-  const fieldValue = computed(() => {
+  const fieldValue = computed<unknown>(() => {
     if (props.prop && formContext?.model) {
       return getPropValue(formContext.model, props.prop)
     }

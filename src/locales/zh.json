@@ -105,6 +105,23 @@
     "add_to_bypass_error": "添加到绕过列表失败",
     "remove_from_bypass_unavailable": "从绕过列表移除功能开发中"
   },
+  "form": {
+    "validation": {
+      "required": "该字段为必填项",
+      "required_with_field": "{field}为必填项",
+      "min": "最小长度为 {min}",
+      "max": "最大长度为 {max}",
+      "len": "长度必须为 {len}",
+      "pattern": "格式不正确",
+      "email": "请输入有效的邮箱地址",
+      "url": "请输入有效的链接地址",
+      "number": "请输入有效的数字",
+      "string": "请输入有效的文本",
+      "validator": "校验失败",
+      "default": "校验失败",
+      "default_with_field": "{field}不合法"
+    }
+  },
   "proxy": {
     "status": "代理状态",
     "enabled_status": "已启用",

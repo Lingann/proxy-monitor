@@ -13,6 +13,7 @@ import { useI18n } from 'vue-i18n'
 
 import { ChevronDown, X } from 'lucide-vue-next'
 
+import { useFormItem } from '../bn-form/composables/item/use-form-item'
 import { selectProps } from './props/select-props'
 import { useSelectState } from './composables/use-select-state'
 import { useSelectEvent } from './composables/use-select-event'
@@ -30,6 +31,8 @@ export const BnSelect = defineComponent({
   setup(props, { expose, emit }) {
     /* 国际化 */
     const { t } = useI18n()
+
+    const { notifyBlur, notifyChange } = useFormItem()
 
     /* 组件状态 */
     const {
@@ -53,6 +56,24 @@ export const BnSelect = defineComponent({
       close
     }, emit)
 
+    const handleSelectWithValidation = (option: Parameters<typeof handleSelect>[0]) => {
+      handleSelect(option)
+
+      notifyChange()
+    }
+
+    const handleClearWithValidation = (event: MouseEvent) => {
+      handleClear(event)
+
+      notifyChange()
+    }
+
+    const handleBlurWithValidation = (event: FocusEvent) => {
+      handleBlur(event)
+
+      notifyBlur()
+    }
+
     /* 渲染逻辑 */
     const {
       selectedOptionRef,
@@ -75,7 +96,7 @@ export const BnSelect = defineComponent({
           class="bn-select__trigger"
           onClick={toggle}
           onFocus={handleFocus}
-          onBlur={handleBlur}
+          onBlur={handleBlurWithValidation}
           tabindex={props.disabled ? -1 : 0}
         >
           <span class={['bn-select__value', { 'bn-select__value--placeholder': !selectedOptionRef.value }]}>
@@ -83,7 +104,7 @@ export const BnSelect = defineComponent({
           </span>
 
           {props.clearable && selectedOptionRef.value && !props.disabled && (
-            <span class="bn-select__clear" onClick={handleClear}>
+            <span class="bn-select__clear" onClick={handleClearWithValidation}>
               <X size={14} />
             </span>
           )}
@@ -111,7 +132,7 @@ export const BnSelect = defineComponent({
                 ]}
                 onClick={(e) => {
                   e.stopPropagation()
-                  handleSelect(opt)
+                  handleSelectWithValidation(opt)
                 }}
               >
                 {opt.label}

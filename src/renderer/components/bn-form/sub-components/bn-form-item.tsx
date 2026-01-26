@@ -8,13 +8,14 @@
  */
 
 import type { SetupContext } from 'vue'
-import { defineComponent } from 'vue'
+import { defineComponent, provide } from 'vue'
 
 import { useFormItemConfig } from '../composables/item/use-form-item-config'
 import { useFormItemRender } from '../composables/item/use-form-item-render'
 import { useFormItemState } from '../composables/item/use-form-item-state'
 import { useFormItemValidation } from '../composables/item/use-form-item-validation'
 import { bnFormItemProps, type BnFormItemProps } from '../props/form-item-props'
+import { FormItemContextKey } from '../types'
 
 export const BnFormItem = defineComponent({
   name: 'BnFormItem',
@@ -29,7 +30,7 @@ export const BnFormItem = defineComponent({
     const { validateState, validateMessage, fieldValue } = useFormItemState(props, formContext)
 
     /* 3. Validation */
-    const { getRules } = useFormItemValidation(
+    const { getRules, validate } = useFormItemValidation(
       props,
       formContext,
       fieldValue,
@@ -44,6 +45,10 @@ export const BnFormItem = defineComponent({
       validateState,
       getRules
     )
+
+    provide(FormItemContextKey, {
+      validate
+    })
 
     return () => (
       <div
