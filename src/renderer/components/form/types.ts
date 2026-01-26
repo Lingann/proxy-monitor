@@ -19,27 +19,24 @@ export interface FormItemRule {
 
 export type FormRules = Record<string, FormItemRule | FormItemRule[]>;
 
-export interface FormConfig {
-  /* 标签宽度 */
-  labelWidth?: string | number;
-  
-  /* 标签对齐方式 */
-  labelPosition?: 'left' | 'right' | 'top';
-  
-  /* 表单尺寸 */
-  size?: 'small' | 'medium' | 'large';
-  
-  /* 是否禁用 */
-  disabled?: boolean;
-  
-  /* 是否显示校验错误信息 */
-  showMessage?: boolean;
-}
-
 export interface FormProps {
   model: Record<string, any>;
   rules?: FormRules;
-  config?: FormConfig;
+
+  /* 标签宽度 */
+  labelWidth?: string | number;
+
+  /* 标签对齐方式 */
+  labelPosition?: 'left' | 'right' | 'top';
+
+  /* 表单尺寸 */
+  size?: 'small' | 'medium' | 'large';
+
+  /* 是否禁用 */
+  disabled?: boolean;
+
+  /* 是否显示校验错误信息 */
+  showMessage?: boolean;
 }
 
 export interface FormItemConfig {
@@ -71,7 +68,11 @@ export interface FormItemContext {
 
 export interface FormContext {
   model: Record<string, any>;
-  config: Ref<FormConfig>;
+  labelWidth: Ref<string | number | undefined>;
+  labelPosition: Ref<'left' | 'right' | 'top' | undefined>;
+  size: Ref<'small' | 'medium' | 'large' | undefined>;
+  disabled: Ref<boolean | undefined>;
+  showMessage: Ref<boolean | undefined>;
   rules: Ref<FormRules | undefined>;
   registerField: (field: FormItemContext) => void;
   unregisterField: (field: FormItemContext) => void;

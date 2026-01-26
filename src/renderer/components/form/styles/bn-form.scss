@@ -1,0 +1,105 @@
+/**
+ * ******************************************************
+ * @file                     bn-form.scss
+ * @description             「表单组件样式」
+ * 基于 BEM 命名规范和 bn 主题变量
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+/* 表单容器 */
+.bn-form {
+  width: 100%;
+  box-sizing: border-box;
+
+  /* 标签位置 - 顶部 */
+  &--label-top {
+    .bn-form-item {
+      display: flex;
+      flex-direction: column;
+
+      &__label {
+        margin-bottom: var(--bn-spacing-sm);
+        text-align: left;
+      }
+    }
+  }
+
+  /* 标签位置 - 左侧/右侧 */
+  &--label-left,
+  &--label-right {
+    .bn-form-item {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+
+      &__label {
+        margin-bottom: 0;
+        margin-right: var(--bn-spacing-3);
+        padding-top: 6px;
+      }
+    }
+  }
+
+  /* 标签对齐 - 右对齐 */
+  &--label-right {
+    .bn-form-item__label {
+      text-align: right;
+    }
+  }
+
+  /* 标签对齐 - 左对齐 */
+  &--label-left {
+    .bn-form-item__label {
+      text-align: left;
+    }
+  }
+}
+
+/* 表单项 */
+.bn-form-item {
+  margin-bottom: var(--bn-spacing-lg);
+
+  /* 标签 */
+  &__label {
+    font-size: 14px;
+    color: var(--bn-text-color-base);
+    line-height: 20px;
+    font-weight: 500;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+
+  /* 必填标记 */
+  &--required > &__label::before {
+    content: '*';
+    color: var(--bn-text-color-danger-base);
+    margin-right: var(--bn-spacing-xs);
+    display: inline-block;
+  }
+
+  /* 内容区域 */
+  &__content {
+    position: relative;
+    font-size: 14px;
+    flex: 1;
+    min-width: 0;
+    line-height: 32px;
+  }
+
+  /* 错误提示 */
+  &__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding-top: var(--bn-spacing-xs);
+    font-size: 12px;
+    color: var(--bn-text-color-danger-base);
+    line-height: 1;
+  }
+
+  /* 错误状态 */
+  &--error {
+    /* 可根据需要添加错误状态的额外样式 */
+  }
+}

@@ -1,11 +1,25 @@
-import { watch, onMounted, onUnmounted, Ref } from 'vue';
-import { FormItemConfig, FormItemRule, ValidationResult, FormContext, FormItemContext } from '../../types';
-
 /**
- * 处理 FormItem 的校验逻辑
+ * ******************************************************
+ * @file                     use-form-item-validation.ts
+ * @description             「表单项校验逻辑」
+ * 处理表单项的校验规则和校验执行
+ * @author                  blancnova-web
+ * ******************************************************
  */
+
+import { onMounted, onUnmounted, type Ref, watch } from 'vue'
+
+import type {
+  FormContext,
+  FormItemContext,
+  FormItemRule,
+  ValidationResult
+} from '../../types'
+import type { BnFormItemProps } from '../../props'
+
+/* 处理 FormItem 的校验逻辑 */
 export function useFormItemValidation(
-  props: FormItemConfig,
+  props: BnFormItemProps,
   formContext: FormContext | undefined,
   fieldValue: Ref<any>,
   validateState: Ref<string>,

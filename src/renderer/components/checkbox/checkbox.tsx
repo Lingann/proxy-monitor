@@ -118,7 +118,7 @@ export const BnCheckbox = defineComponent({
         <span class="bn-checkbox__inner" />
         <input
           /* 常规 props */
-          autoFocus={props.autoFocus}
+          autofocus={props.autoFocus}
           checked={finalIsChecked.value}
           disabled={finalIsDisabled.value}
           name={finalName.value}

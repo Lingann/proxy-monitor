@@ -1,5 +1,5 @@
 import { reactive, ref } from 'vue';
-import { FormRules } from '../../../components/common-form/types';
+import { FormRules } from '../../../components/form/types';
 
 export function useDemoState() {
     const formData = reactive({
