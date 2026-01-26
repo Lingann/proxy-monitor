@@ -14,7 +14,7 @@ import type { RippleWaveInstance } from '../../bn-ripple-wave'
 import { BnRippleWave } from '../../bn-ripple-wave'
 import type { ShadowWaveInstance } from '../../bn-shadow-wave'
 import { BnShadowWave } from '../../bn-shadow-wave'
-import type { ButtonProps } from '../props'
+import type { ButtonProps } from '../props/button-props'
 import type { ButtonEmitter } from '../types'
 
 interface EffectOptions {

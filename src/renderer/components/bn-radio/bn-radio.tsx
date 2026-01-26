@@ -13,7 +13,7 @@ import { computed, defineComponent, Fragment, onErrorCaptured, onMounted, ref, w
 
 import { useRadio } from './composables'
 import type { RadioEmitFn } from './composables/use-radio'
-import { createRadioProps, type RadioProps } from './props'
+import { createRadioProps, type RadioProps } from './props/radio-props'
 
 /**
  * 单选框组件

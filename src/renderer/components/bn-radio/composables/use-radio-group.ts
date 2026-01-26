@@ -10,7 +10,7 @@
 // import { generateId } from '@blanc-nova/utils' // Assuming a utility for unique IDs
 import { computed, provide, ref, type SetupContext, watch } from 'vue' // Removed toRefs as it's not used
 
-import type { RadioGroupProps } from '../props'
+import type { RadioGroupProps } from '../props/radio-group-props'
 import type { RadioGroupContext, RadioGroupEmit, RadioValueType } from '../types'
 // Import Key from types instead of self
 import { RADIO_GROUP_KEY } from '../types'

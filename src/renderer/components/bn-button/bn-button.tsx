@@ -15,7 +15,7 @@ import { useButtonClass } from './composables/use-button-class'
 import { useButtonEffect } from './composables/use-button-effect'
 import { useButtonEvent } from './composables/use-button-event'
 import { useButtonPreset } from './composables/use-button-preset'
-import { createButtonProps } from './props'
+import { createButtonProps } from './props/button-props'
 // ==================================================
 // #region 组件定义
 // ==================================================

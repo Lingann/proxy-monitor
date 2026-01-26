@@ -14,7 +14,7 @@ import { useFormItemConfig } from '../composables/item/use-form-item-config'
 import { useFormItemRender } from '../composables/item/use-form-item-render'
 import { useFormItemState } from '../composables/item/use-form-item-state'
 import { useFormItemValidation } from '../composables/item/use-form-item-validation'
-import { bnFormItemProps, type BnFormItemProps } from '../props'
+import { bnFormItemProps, type BnFormItemProps } from '../props/form-item-props'
 
 export const BnFormItem = defineComponent({
   name: 'BnFormItem',

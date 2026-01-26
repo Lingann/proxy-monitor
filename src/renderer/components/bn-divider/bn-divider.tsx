@@ -13,7 +13,7 @@ import { computed, defineComponent } from 'vue'
 
 import { useDividerClass } from './composables/use-divider-class'
 import { useDividerEvent } from './composables/use-divider-event'
-import { createDividerProps, type DividerProps } from './props'
+import { createDividerProps, type DividerProps } from './props/divider-props'
 
 // ==================================================
 // #region 组件定义

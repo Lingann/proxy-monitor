@@ -18,7 +18,7 @@ import {
   useBadgeStandalone
 } from './composables'
 
-import { type BadgeProps, createBadgeProps } from './props'
+import { type BadgeProps, createBadgeProps } from './props/badge-props'
 import type { BadgeEmitFn } from './types'
 
 /* ================================================== */

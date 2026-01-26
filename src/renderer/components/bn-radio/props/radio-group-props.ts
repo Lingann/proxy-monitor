@@ -1,6 +1,6 @@
 /**
  * ******************************************************
- * @file                     radio-group.ts
+ * @file                     radio-group-props.ts
  * @description             「单选框组属性定义」
  * 定义单选框组的基础属性
  * @author                  blancnova-web

@@ -14,7 +14,7 @@ import { computed, defineComponent, onErrorCaptured, ref, type SetupContext } fr
 import { useRadioGroup } from './composables'
 // 从 composables 目录导入 EmitFn 类型
 import type { EmitFn } from './composables/use-radio-group'
-import { createRadioGroupProps } from './props' // Removed type import as props are inferred
+import { createRadioGroupProps } from './props/radio-group-props' // Removed type import as props are inferred
 import { BnRadio } from './bn-radio' // Import BnRadio
 import type {
   RadioGroupEmit,

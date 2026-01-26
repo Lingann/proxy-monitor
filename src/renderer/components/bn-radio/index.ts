@@ -18,9 +18,12 @@ export {
 
 // Export types
 export type {
-  RadioProps,
+  RadioProps
+} from './props/radio-props'
+
+export type {
   RadioGroupProps
-} from './props'
+} from './props/radio-group-props'
 
 export type {
   RadioValueType,

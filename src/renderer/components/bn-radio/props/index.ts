@@ -5,15 +5,10 @@
  * @author                  blancnova-web
  * ******************************************************
  */
-import type { ExtractPropTypes } from 'vue'
-
-import { createRadioProps } from './radio'
-import { createRadioGroupProps } from './radio-group'
+import { createRadioProps } from './radio-props'
+import { createRadioGroupProps } from './radio-group-props'
 
 export {
   createRadioProps,
   createRadioGroupProps
 }
-
-export type RadioProps = Partial<ExtractPropTypes<ReturnType<typeof createRadioProps>>>
-export type RadioGroupProps = Partial<ExtractPropTypes<ReturnType<typeof createRadioGroupProps>>>

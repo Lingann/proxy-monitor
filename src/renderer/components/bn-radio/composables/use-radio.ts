@@ -9,7 +9,7 @@
 
 import { computed, inject, ref, type SetupContext, watch } from 'vue'
 
-import type { RadioProps } from '../props'
+import type { RadioProps } from '../props/radio-props'
 // Import Key and Context from types to break cycle
 import {
   isValidRadioValue,

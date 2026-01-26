@@ -17,7 +17,7 @@ import { useFormEvents } from './composables/use-form-events'
 import { useFormRegistry } from './composables/use-form-registry'
 import { useFormRender } from './composables/use-form-render'
 import { useFormValidation } from './composables/use-form-validation'
-import { bnFormProps, type BnFormProps } from './props'
+import { bnFormProps, type BnFormProps } from './props/form-props'
 import { FormContextKey } from './types'
 
 export const BnForm = defineComponent({
