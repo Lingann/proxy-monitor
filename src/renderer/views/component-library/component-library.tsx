@@ -1,8 +1,7 @@
 import { defineComponent } from 'vue';
 import styles from './component-library.module.scss';
 import { useDemoState } from './composables/use-demo-state';
-import CommonForm from '../../components/bn-form/common-form';
-import CommonFormItem from '../../components/bn-form/sub-components/common-form-item';
+import { BnForm, BnFormItem } from '../../components/bn-form';
 import { BnInput } from '../../components/bn-input';
 import { BnSelect } from '../../components/bn-select';
 
@@ -43,24 +42,24 @@ export default defineComponent({
                 <div class={styles.section}>
                     <h3>Common Form Demo</h3>
                     <div class={styles.demoForm}>
-                        <CommonForm ref={formRef} model={formData} rules={rules}>
-                            <CommonFormItem prop="username" label="Username">
+                        <BnForm ref={formRef} model={formData} rules={rules}>
+                            <BnFormItem prop="username" label="Username">
                                 <BnInput
                                     modelValue={formData.username}
                                     onUpdate:modelValue={(v: string | number | null) => formData.username = String(v || '')}
                                     placeholder="Enter username"
                                     block
                                 />
-                            </CommonFormItem>
-                            <CommonFormItem prop="email" label="Email">
+                            </BnFormItem>
+                            <BnFormItem prop="email" label="Email">
                                 <BnInput
                                     modelValue={formData.email}
                                     onUpdate:modelValue={(v: string | number | null) => formData.email = String(v || '')}
                                     placeholder="Enter email"
                                     block
                                 />
-                            </CommonFormItem>
-                            <CommonFormItem prop="role" label="Role">
+                            </BnFormItem>
+                            <BnFormItem prop="role" label="Role">
                                 <BnSelect
                                     modelValue={formData.role}
                                     onUpdate:modelValue={(v: string | number | null) => formData.role = String(v || '')}
@@ -71,8 +70,8 @@ export default defineComponent({
                                         { label: 'Guest', value: 'guest' }
                                     ]}
                                 />
-                            </CommonFormItem>
-                        </CommonForm>
+                            </BnFormItem>
+                        </BnForm>
                     </div>
 
                     <div class={styles.actions}>

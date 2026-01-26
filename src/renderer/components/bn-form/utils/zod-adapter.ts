@@ -66,6 +66,11 @@ const resolveValidatorResult = async (
     return false
   })
 
+  // 类型守卫：将 void 转换为 undefined
+  if (validatorResult === undefined) {
+    return undefined
+  }
+
   return validatorResult
 }
 
