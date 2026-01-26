@@ -10,7 +10,7 @@ description: vue组件创建、开发、编写、优化、修复、改进、完�
 * **包管理器**：项目采用 PNPM 作为包管理器，严禁使用 Yarn 或 npm。
 * **技术栈限制**：仅限 **Vue 3.x + TSX** + **TypeScript**。严禁使用 `.vue` 单文件组件 (SFC)、`render` 渲染函数及 `any` 类型。
 * **模块规范**：全量采用 **ES Modules**；禁止使用 CommonJS。
-* **独立沙箱模式**：每个组件/页面必须拥有独立目录，包含专属的 `composables/`、`utils/`、`styles/` 和 `sub-components/`。通用功能必须抽离至全局 `shared/` 目录。
+* **独立沙箱模式**：每个组件/页面必须拥有独立目录，包含专属的 `composables/`、`helpers/`、`styles/`、 `sub-components/`和`variant-components/`。通用功能必须抽离至全局 `shared/`或`utils/` 目录。
 * **导出一致性**：每个目录必须包含 `index.ts` 进行统一导出。禁止重复导出（index.ts 导出后，子模块不再单独导出）。
 * **依赖完整性**：所有资源（变量、函数、样式）必须显式 `import`。严禁隐式全局变量，代码仅适配现代浏览器，无需考虑向后兼容。
 * **代码整洁**：及时清理不再需要的模块、变量、函数，保持代码整洁。
@@ -20,17 +20,17 @@ description: vue组件创建、开发、编写、优化、修复、改进、完�
 * **全量中划线 (Kebab-case)**：所有目录名、TSX 文件名、样式文件名、Composables 文件名必须使用中划线。严禁使用驼峰命名（CamelCase/PascalCase）。
 * **命名映射法则**：**目录名 = 文件名 = 组件名**（例如：目录 `user-profile/` -> `user-profile.tsx` -> `export const UserProfile = ...`）。
 * **单一职责原则**：**一个文件仅包含一个核心函数或类**。
-* **Composables 命名**：必须具备明确业务含义且长度 >2 个单词（如 `use-network-monitor.ts`），严禁 `use-common.ts` 或 `use-logic.ts` 等模糊命名。
+* **Composables 命名**：必须具备明确业务含义且长度 >=3 个单词（如 `use-network-monitor.ts`），严禁 `use-common.ts` 或 `use-logic.ts` 等模糊命名。
+* **Ref 变量命名**：所有 `ref`、`computed`、`shallowRef` 等响应式变量必须以 `Ref` 作为后缀（如 `userIdRef`、`statusRef`、`isLoadingRef`）。严禁定义不带 `Ref` 后缀的响应式变量。
 * **文件名称/目录名称**：必须直观，能够清晰地表达其功能或内容，避免简写或过于概况。
 
 ## 3. 组件开发与交互规范 (Component Patterns)
 
-* **组件定义**：使用 `defineComponent` 或函数式组件，**严禁使用 `emits` 选项**。
-* **事件通信**：全量采用 **Props 回调模式**（例如：使用 `props.onClick` 代替 `emit('click')`）。
-  * **禁止使用 `emits` 和 `emit`**：在 TSX 组件中，不符合 React/TSX 的语法规范和开发习惯。
-  * **Props 事件命名**：事件回调必须以 `on` 开头（如 `onClick`、`onChange`、`onUpdateModelValue`）。
-  * **类型定义**：使用 `PropType<(params) => void>` 明确事件回调的参数类型。
-  * **v-model 双向绑定**：使用 `onUpdateModelValue` 替代 `emit('update:modelValue')`。
+* **组件定义**：使用 `defineComponent` 或函数式组件。
+* **事件通信**：严格区分双向绑定事件与普通事件。
+  * **双向绑定事件**：`onUpdate:xxxXxx` 等遵循 Vue 双向绑定规范的事件名，必须使用 `emits` 选项定义，并通过 `$emit` 调用。
+  * **普通事件**：其他所有事件必须使用 Props 回调模式（例如：使用 `props.onClick` 代替 `$emit('click')`）。
+  * 禁止混合使用两种模式。
 * **交互限制**：禁止使用位移、缩放等改变元素位置的 hover 效果。
 * **交互引导**：优先使用阴影、字体加重、背景颜色变化来实现交互反馈。
 * **国际化 (i18n)**：强制使用 `useI18n`。严禁在 TSX 模版或逻辑中硬编码任何中/英文字符串。
@@ -40,6 +40,62 @@ description: vue组件创建、开发、编写、优化、修复、改进、完�
 
 * **逻辑下沉**：TSX 仅负责视图组装，严禁在 TSX 顶层编写复杂业务逻辑，必须抽离至 `composables`。
 * **扁平调度**：Composables 之间 **禁止相互调用**。所有逻辑依赖必须由组件层（Component）进行统一调度和数据传递，杜绝深层耦合。
+
+### 4.1 Composables 命名规范与示例
+
+**命名原则**：
+* 必须具备明确业务含义且长度 >=3 个单词
+* 严禁 `use-common.ts` 或 `use-logic.ts` 等模糊命名
+* 必须职责单一，功能明确且直观
+* 采用 `use-功能-领域.ts` 格式
+
+**常见命名示例**：
+
+| 功能类型 | 命名示例 | 职责说明 |
+|---------|---------|---------|
+| **渲染相关** | `use-input-render.ts` | 处理输入框的渲染逻辑、动态属性计算 |
+| | `use-button-classes.ts` | 管理按钮的样式类名计算、状态样式 |
+| | `use-select-render.ts` | 处理下拉选择框的渲染、选项展示 |
+| | `use-table-render.ts` | 处理表格的渲染、列配置 |
+| **状态管理** | `use-checkbox-state.ts` | 管理复选框的选中状态、半选状态 |
+| | `use-radio-state.ts` | 管理单选框的选中状态、分组逻辑 |
+| | `use-switch-state.ts` | 管理开关的开关状态、加载状态 |
+| | `use-form-state.ts` | 管理表单的整体状态、验证状态 |
+| **事件处理** | `use-input-event.ts` | 处理输入框的输入、失焦、回车等事件 |
+| | `use-button-event.ts` | 处理按钮的点击、焦点事件 |
+| | `use-drag-event.ts` | 处理拖拽相关的所有事件 |
+| | `use-keyboard-event.ts` | 处理键盘快捷键事件 |
+| **数据校验** | `use-input-validation.ts` | 输入框的实时校验逻辑 |
+| | `use-form-validation.ts` | 表单的整体校验逻辑 |
+| | `use-email-validation.ts` | 邮箱格式的专项校验 |
+| | `use-password-strength.ts` | 密码强度检测逻辑 |
+| **样式计算** | `use-responsive-classes.ts` | 响应式样式类名计算 |
+| | `use-theme-classes.ts` | 主题相关的样式类名计算 |
+| | `use-size-classes.ts` | 尺寸相关的样式类名计算 |
+| | `use-animation-classes.ts` | 动画相关的样式类名计算 |
+| **业务逻辑** | `use-user-auth.ts` | 用户认证状态管理 |
+| | `use-network-monitor.ts` | 网络状态监控 |
+| | `use-data-fetch.ts` | 数据获取与缓存管理 |
+| | `use-permission-check.ts` | 权限验证逻辑 |
+| **生命周期** | `use-component-lifecycle.ts` | 组件生命周期钩子管理 |
+| | `use-resource-cleanup.ts` | 资源清理逻辑 |
+| | `use-timer-control.ts` | 定时器控制与清理 |
+| | `use-observer-setup.ts` | 观察器（IntersectionObserver 等）设置 |
+
+**命名反例**：
+* ❌ `use-common.ts` - 过于通用，职责不明确
+* ❌ `use-logic.ts` - 模糊，无法判断功能
+* ❌ `use-helper.ts` - 辅助类名称，不具体
+* ❌ `use-utils.ts` - 工具类名称，不符合 composable 命名规范
+* ❌ `use-state.ts` - 状态管理过于宽泛
+* ❌ `use-event.ts` - 事件处理不具体
+
+**命名正例**：
+* ✅ `use-input-render.ts` - 明确是输入框的渲染逻辑
+* ✅ `use-button-classes.ts` - 明确是按钮的样式类计算
+* ✅ `use-checkbox-state.ts` - 明确是复选框的状态管理
+* ✅ `use-form-validation.ts` - 明确是表单的校验逻辑
+* ✅ `use-user-auth.ts` - 明确是用户认证相关
 
 ## 5. 样式\布局与CSS变量规范 (Styling & Design)
 
@@ -65,6 +121,7 @@ description: vue组件创建、开发、编写、优化、修复、改进、完�
   * 对于 nextTick、setTimeout、setInterval 或自定义指令等单个执行语句，严禁强制换行。
   * 禁止冗余大括号：若逻辑只有单行，优先不使用大括号（如：nextTick(() => doSomething())）。
   * 拒绝括号换行：即便保留大括号，也必须单行书写，禁止将大括号拆分到多行。
+  * 如果是多个执行逻辑，保留多行，每个逻辑之间用空行隔开。
 
 ## 7. 注释与文档 (Documentation)
 
@@ -75,71 +132,56 @@ description: vue组件创建、开发、编写、优化、修复、改进、完�
 
 ## 8. 事件处理规范详解
 
-### 8.1 Props 回调模式 vs Emits 模式
+### 8.1 事件处理模式选择
 
-**❌ 错误示例：使用 emits（不符合 TSX 规范）**
-```tsx
-export const BadComponent = defineComponent({
-  props: {
-    modelValue: String
-  },
-  emits: ['update:modelValue', 'change', 'click'], // ❌ 禁止使用 emits
-  setup(props, { emit }) {
-    const handleClick = () => {
-      emit('click', event) // ❌ 禁止使用 emit
-    }
+**核心原则**：
+- **双向绑定事件**（如 `update:modelValue`）：必须使用 `emits` 选项定义，通过 `$emit` 调用
+- **普通事件**（如 `click`、`change`、`focus`）：必须使用 Props 回调模式（`props.onClick`）
+- **禁止混合使用**：同一事件类型只能选择一种模式
 
-    const handleInput = (value: string) => {
-      emit('update:modelValue', value) // ❌ 禁止使用 emit
-      emit('change', value) // ❌ 禁止使用 emit
-    }
-
-    return () => <input value={props.modelValue} onInput={handleInput} />
-  }
-})
-```
-
-**✅ 正确示例：使用 Props 回调模式**
+**✅ 正确示例：混合使用 emits（双向绑定）和 Props 回调（普通事件）**
 ```tsx
 import { PropType } from 'vue'
 
 export const GoodComponent = defineComponent({
   props: {
-    /* v-model 绑定值 */
+    /** v-model 绑定值 */
     modelValue: String,
 
-    /* 事件回调：以 on 开头，明确类型 */
-    onUpdateModelValue: Function as PropType<(value: string) => void>,
+    /** 普通事件回调：以 on 开头，明确类型 */
     onChange: Function as PropType<(value: string) => void>,
+    /** 事件回调：点击事件 */
     onClick: Function as PropType<(event: MouseEvent) => void>,
+    /** 事件回调：焦点事件 */
     onFocus: Function as PropType<(event: FocusEvent) => void>,
+    /** 事件回调：失焦事件 */ 
     onBlur: Function as PropType<(event: FocusEvent) => void>
   },
 
-  setup(props) {
-    /* 直接调用 props 中的回调函数 */
-    const handleClick = (event: MouseEvent) => {
-      props.onClick?.(event)
-    }
+  /* 双向绑定事件：必须使用 emits */
+  emits: ['update:modelValue'],
+
+  setup(props, { emit }) {
+    /* 普通事件：直接调用 props 中的回调函数 */
+    const handleClick = (event: MouseEvent) => props.onClick?.(event)
 
     const handleInput = (event: Event) => {
       const target = event.target as HTMLInputElement
+
       const value = target.value
 
-      /* 触发 v-model 更新 */
-      props.onUpdateModelValue?.(value)
+      /* 双向绑定事件：使用 emit 触发 */
+      emit('update:modelValue', value)
 
-      /* 触发 change 事件 */
+      /* 普通事件：调用 Props 回调 */
       props.onChange?.(value)
     }
 
-    const handleFocus = (event: FocusEvent) => {
-      props.onFocus?.(event)
-    }
+    /** 处理焦点事件 */
+    const handleFocus = (event: FocusEvent) => props.onFocus?.(event)
 
-    const handleBlur = (event: FocusEvent) => {
-      props.onBlur?.(event)
-    }
+    /** 处理失焦事件 */
+    const handleBlur = (event: FocusEvent) => props.onBlur?.(event)
 
     return () => (
       <input
@@ -156,7 +198,7 @@ export const GoodComponent = defineComponent({
 
 ### 8.2 Props 事件定义规范
 
-**Props 文件示例（props/index.ts）**
+**Props 文件示例（props/button-props.ts）**
 ```tsx
 import { ExtractPropTypes, PropType } from 'vue'
 
@@ -170,13 +212,16 @@ export interface ButtonEvents {
 /* Props 定义函数 */
 export function createButtonProps() {
   return {
-    /* 基础属性 */
+    /** 基础属性：禁用状态 */
     disabled: Boolean,
+    /** 基础属性：加载状态 */
     loading: Boolean,
 
-    /* 事件回调：必须以 on 开头 */
+    /** 事件回调：必须以 on 开头 */
     onClick: Function as PropType<(event: MouseEvent) => void>,
+    /** 事件回调：焦点事件 */
     onFocus: Function as PropType<(event: FocusEvent) => void>,
+    /** 事件回调：失焦事件 */
     onBlur: Function as PropType<(event: FocusEvent) => void>
   } as const
 }
@@ -192,28 +237,21 @@ export type ButtonProps = ExtractPropTypes<ReturnType<typeof createButtonProps>>
 import { ComputedRef } from 'vue'
 import { ButtonProps } from '../props'
 
-export function useButtonEvent(
-  config: ComputedRef<ButtonProps>
-) {
+export function useButtonEvent(config: ComputedRef<ButtonProps>) {
   /* 处理点击事件 */
   const handleClick = (event: MouseEvent) => {
     /* 禁用状态下阻止事件 */
-    if (config.value.disabled || config.value.loading) {
-      event.preventDefault()
-      return
-    }
+    if (config.value.disabled || config.value.loading) return event.preventDefault()
 
     /* 调用 Props 中的回调 */
     config.value.onClick?.(event)
   }
 
-  const handleFocus = (event: FocusEvent) => {
-    config.value.onFocus?.(event)
-  }
+  /** 处理焦点事件 */
+  const handleFocus = (event: FocusEvent) => config.value.onFocus?.(event)
 
-  const handleBlur = (event: FocusEvent) => {
-    config.value.onBlur?.(event)
-  }
+  /** 处理失焦事件 */
+  const handleBlur = (event: FocusEvent) => config.value.onBlur?.(event)
 
   return {
     handleClick,
@@ -228,31 +266,30 @@ export function useButtonEvent(
 ```tsx
 export const ParentComponent = defineComponent({
   setup() {
-    const inputValue = ref('')
+    const inputValueRef = ref('')
 
     /* 事件处理函数 */
     const handleInputChange = (value: string) => {
       console.log('输入值变化:', value)
-      inputValue.value = value
+
+      inputValueRef.value = value
     }
 
-    const handleClick = (event: MouseEvent) => {
-      console.log('按钮被点击', event)
-    }
+    const handleClick = (event: MouseEvent) => console.log('按钮被点击', event)
 
     return () => (
       <div>
-        {/* 使用 v-model 和事件回调 */}
+        {/* 使用 v-model：自动处理 update:modelValue 事件 */}
         <GoodComponent
-          v-model={inputValue.value}
+          v-model={inputValueRef.value}
           onChange={handleInputChange}
           onClick={handleClick}
         />
 
-        {/* 或使用 onUpdateModelValue 手动绑定 */}
+        {/* 或使用 modelValue + onUpdate:modelValue 手动绑定 */}
         <GoodComponent
-          modelValue={inputValue.value}
-          onUpdateModelValue={(val) => inputValue.value = val}
+          modelValue={inputValueRef.value}
+          onUpdate:modelValue={(val) => inputValueRef.value = val}
           onChange={handleInputChange}
           onClick={handleClick}
         />
@@ -264,25 +301,25 @@ export const ParentComponent = defineComponent({
 
 ### 8.5 常见事件命名规范
 
-| 事件类型 | Props 命名 | 参数类型 | 说明 |
-|---------|-----------|---------|------|
-| v-model 更新 | `onUpdateModelValue` | `(value: T) => void` | 双向绑定值更新 |
-| 输入事件 | `onInput` | `(value: string, event: Event) => void` | 实时输入 |
-| 变更事件 | `onChange` | `(value: T, ...args) => void` | 值确认变更 |
-| 点击事件 | `onClick` | `(event: MouseEvent) => void` | 鼠标点击 |
-| 焦点事件 | `onFocus` | `(event: FocusEvent) => void` | 获得焦点 |
-| 失焦事件 | `onBlur` | `(event: FocusEvent) => void` | 失去焦点 |
-| 清除事件 | `onClear` | `() => void` | 清空内容 |
-| 搜索事件 | `onSearch` | `(value: string) => void` | 触发搜索 |
-| 鼠标悬停 | `onMouseenter` | `(event: MouseEvent) => void` | 鼠标进入 |
-| 鼠标离开 | `onMouseleave` | `(event: MouseEvent) => void` | 鼠标离开 |
-| 提交事件 | `onSubmit` | `(data: T) => void` | 表单提交 |
-| 重置事件 | `onReset` | `() => void` | 表单重置 |
+| 事件类型 | 处理模式 | Props/Emits 命名 | 参数类型 | 说明 |
+|---------|---------|-----------------|---------|------|
+| v-model 更新 | emits | `update:modelValue` | `(value: T) => void` | 双向绑定值更新，必须使用 emits |
+| 输入事件 | Props | `onInput` | `(value: string, event: Event) => void` | 实时输入 |
+| 变更事件 | Props | `onChange` | `(value: T, ...args) => void` | 值确认变更 |
+| 点击事件 | Props | `onClick` | `(event: MouseEvent) => void` | 鼠标点击 |
+| 焦点事件 | Props | `onFocus` | `(event: FocusEvent) => void` | 获得焦点 |
+| 失焦事件 | Props | `onBlur` | `(event: FocusEvent) => void` | 失去焦点 |
+| 清除事件 | Props | `onClear` | `() => void` | 清空内容 |
+| 搜索事件 | Props | `onSearch` | `(value: string) => void` | 触发搜索 |
+| 鼠标悬停 | Props | `onMouseenter` | `(event: MouseEvent) => void` | 鼠标进入 |
+| 鼠标离开 | Props | `onMouseleave` | `(event: MouseEvent) => void` | 鼠标离开 |
+| 提交事件 | Props | `onSubmit` | `(data: T) => void` | 表单提交 |
+| 重置事件 | Props | `onReset` | `() => void` | 表单重置 |
 
 
 ## 9. 最佳实践示例
 
-按照规范，该示例展示了 呼吸感排版、卫语句、极简调用、Props 回调模式 以及 TSX 极致扁平化：
+按照规范，该示例展示了 呼吸感排版、卫语句、极简调用、事件处理模式（emits + Props 回调） 以及 TSX 极致扁平化：
 
 ```tsx
 /* 引入样式：BEM 命名与中划线文件名 */
@@ -303,18 +340,21 @@ interface StatusChangeEvent {
 
 /* 目录名 = 文件名 = 组件名 (PascalCase 导出) */
 export const UserStatusCard = defineComponent({
-  /* 声明 Props：使用 Props 回调模式，禁止 emits */
+  /* 声明 Props：普通事件使用 Props 回调模式，双向绑定事件使用 emits */
   props: {
+    /** 用户ID */
     userId: { type: String, required: true },
 
-    /* 事件回调：以 on 开头，明确类型 */
+    /** 事件回调：以 on 开头，明确类型 */
     onStateChange: Function as PropType<(event: StatusChangeEvent) => void>,
+
+    /** 点击事件：普通事件使用 Props 回调模式 */
     onClick: Function as PropType<(event: MouseEvent) => void>
   },
 
   setup(props) {
     /* 逻辑下沉至 Composable，组件层负责调度 */
-    const { status, updateTimestamp, clearTimer } = useUserStatusMonitor(props.userId)
+    const { statusRef, updateTimestampRef, clearTimer } = useUserStatusMonitor(props.userId)
 
     /* 卫语句：处理异常边界 */
     if (!props.userId) return () => <div class="user-status-card" />
@@ -323,33 +363,25 @@ export const UserStatusCard = defineComponent({
     const handleRefresh = (event: MouseEvent) => {
       nextTick(() => console.log('DOM updated'))
 
-      /* 调用父组件传入的回调 */
       props.onClick?.(event)
     }
 
-    const handleStatusChange = () => {
-      /* 触发状态变更事件 */
-      props.onStateChange?.({
-        userId: props.userId,
-        status: status.value,
-        timestamp: updateTimestamp.value
-      })
-    }
+    const handleStatusChange = () => props.onStateChange?.({ userId: props.userId, status: statusRef.value, timestamp: updateTimestampRef.value })
 
     /* 资源清理：防止内存泄漏 */
     onUnmounted(() => clearTimer())
 
     /* 渲染函数：一行代码 + 一行空格，保持呼吸感 */
     return () => (
-      /* 使用 BEM 命名法 */
+      { /* 使用 BEM 命名法 */ }
       <div class="user-status-card user-status-card--active">
 
-        /* 国际化：严禁硬编码中文 */
+       { /* 国际化：严禁硬编码中文 */ }
         <span class="user-status-card__label">{ t('status.label') }</span>
 
-        /* 呼吸感：关键节点空行 */
+        { /* 呼吸感：关键节点空行 */ }
         <div class="user-status-card__value" onClick={handleRefresh}>
-          { status.value }
+          { statusRef.value }
         </div>
 
         <button class="user-status-card__action" onClick={handleStatusChange}>
