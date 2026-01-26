@@ -1,141 +1,120 @@
-/**
- * ******************************************************
- * @file                     types.ts
- * @description             「徽章组件类型定义」
- * 定义徽章组件的所有类型和接口
- * @author                  blancnova-web
- * ******************************************************
- */
+/* ****************************************************** */
+/* @file                     types.ts */
+/* @description             「徽章组件类型定义」 */
+/* 定义徽章组件的所有类型和接口 */
+/* @author                  blancnova-web */
+/* ****************************************************** */
 
-import type { createEmitter } from '../../../utils/create-emitter'
+/* ================================================== */
+/* #region 基础类型定义 */
+/* ================================================== */
 
-// ==================================================
-// #region 基础类型定义
-// ==================================================
-
-/**
- * 徽章尺寸类型
- */
+/* 徽章尺寸类型 */
 export type BadgeSize = 'small' | 'medium' | 'large'
 
-/**
- * 徽章颜色类型
- */
+/* 徽章颜色类型 */
 export type BadgeColor = 'default' | 'primary' | 'danger' | 'success' | 'warning'
 
-/**
- * 徽章形状类型
- */
+/* 徽章形状类型 */
 export type BadgeShape = 'circle' | 'square'
 
-/**
- * 徽章状态类型
- */
+/* 徽章状态类型 */
 export type BadgeStatus = 'success' | 'processing' | 'default' | 'error' | 'warning'
 
-/**
- * 徽章预设
- */
+/* 徽章预设 */
 export type BadgePreset = 'default' | 'primary' | 'danger' | 'success' | 'warning'
 
-// #endregion
-// ==================================================
+/* #endregion */
+/* ================================================== */
 
-// ==================================================
-// #region 预设配置类型
-// ==================================================
+/* ================================================== */
+/* #region 预设配置类型 */
+/* ================================================== */
 
-/**
- * 徽章预设配置接口
- */
+/* 徽章预设配置接口 */
 export interface BadgePresetConfig {
 
-  /** 颜色 */
+  /* 颜色 */
   color?: BadgeColor
 
-  /** 尺寸 */
+  /* 尺寸 */
   size?: BadgeSize
 
-  /** 形状 */
+  /* 形状 */
   shape?: BadgeShape
 }
 
-/**
- * 徽章预设映射表类型
- */
+/* 徽章预设映射表类型 */
 export type BadgePresetMap = Record<BadgePreset, BadgePresetConfig>
 
-// #endregion
-// ==================================================
+/* #endregion */
+/* ================================================== */
 
-// ==================================================
-// #region 徽章状态接口
-// ==================================================
+/* ================================================== */
+/* #region 徽章状态接口 */
+/* ================================================== */
 
-/**
- * 徽章状态接口
- */
+/* 徽章状态接口 */
 export interface BadgeStateProps {
 
-  /** 是否显示 */
+  /* 是否显示 */
   show: boolean
 
-  /** 是否有点 */
+  /* 是否有点 */
   dot: boolean
 
-  /** 状态类型 */
+  /* 状态类型 */
   status?: BadgeStatus
 }
 
-// #endregion
-// ==================================================
+/* #endregion */
+/* ================================================== */
 
-// ==================================================
-// #region 事件类型定义
-// ==================================================
+/* ================================================== */
+/* #region 配置类型定义 */
+/* ================================================== */
 
-/**
- * 徽章事件类型枚举
- */
-export type BadgeEventType = 'click' | 'mouseenter' | 'mouseleave' | 'mounted' | 'unmounted'
-
-/**
- * 徽章事件映射类型
- */
-export type BadgeEvents = Record<BadgeEventType, MouseEvent>
-
-/**
- * 徽章事件分发器类型
- */
-export type BadgeEmitter = ReturnType<typeof createEmitter<BadgeEvents>>
-
-// #endregion
-// ==================================================
-
-// ==================================================
-// #region 配置类型定义
-// ==================================================
-
-/**
- * 徽章配置接口
- */
+/* 徽章配置接口 */
 export interface BadgeConfig extends BadgePresetConfig, BadgeStateProps {
 
-  /** 显示的数字 */
+  /* 显示的数字 */
   count?: number | string
 
-  /** 最大显示数值 */
+  /* 最大显示数值 */
   overflowCount?: number
 
-  /** 当count为0时是否显示 */
+  /* 当count为0时是否显示 */
   showZero?: boolean
 
-  /** 自定义文本 */
+  /* 自定义文本 */
   text?: string
 
-  /** 徽章的偏移量 */
+  /* 徽章的偏移量 */
   offset?: [number | string, number | string]
 }
 
-// #endregion
-// ==================================================
+/* #endregion */
+/* ================================================== */
+
+/* ================================================== */
+/* #region 事件类型定义 */
+/* ================================================== */
+
+/* 徽章计数值类型 */
+export type BadgeCountValue = number | string
+
+/* 徽章组件 Emit 类型 */
+export type BadgeEmitFn = {
+  (event: 'update:modelValue', value: BadgeCountValue): void
+
+  (event: 'update:count', value: BadgeCountValue): void
+
+  (event: 'click', value: MouseEvent): void
+
+  (event: 'mouseenter', value: MouseEvent): void
+
+  (event: 'mouseleave', value: MouseEvent): void
+}
+
+/* #endregion */
+/* ================================================== */
