@@ -7,9 +7,9 @@
  * ******************************************************
  */
 
-export { default as BnShadowWave } from './shadow-wave'
+export { default as BnShadowWave } from './bn-shadow-wave'
 export type {
   ShadowWaveOptions,
   ShadowWaveProps,
   ShadowWaveInstance
-} from './shadow-wave'
+} from './bn-shadow-wave'

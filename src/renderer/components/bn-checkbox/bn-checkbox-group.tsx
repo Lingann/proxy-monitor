@@ -9,7 +9,7 @@
 
 import { defineComponent } from 'vue'
 
-import { BnCheckbox } from './checkbox'
+import { BnCheckbox } from './bn-checkbox'
 import { useCheckboxGroup } from './composables'
 import { checkboxGroupProps } from './props'
 

@@ -7,7 +7,7 @@
  * ******************************************************
  */
 
-import { BnDivider } from './divider'
+import { BnDivider } from './bn-divider'
 import type { DividerProps } from './props'
 import type { DividerOrientation, DividerStyle, DividerType } from './types'
 

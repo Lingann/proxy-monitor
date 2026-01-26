@@ -15,7 +15,7 @@ import { useRadioGroup } from './composables'
 // 从 composables 目录导入 EmitFn 类型
 import type { EmitFn } from './composables/use-radio-group'
 import { createRadioGroupProps } from './props' // Removed type import as props are inferred
-import { BnRadio } from './radio' // Import BnRadio
+import { BnRadio } from './bn-radio' // Import BnRadio
 import type {
   RadioGroupEmit,
   RadioOptionType,

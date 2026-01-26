@@ -7,8 +7,8 @@
  * ******************************************************
  */
 
-import { BnCheckbox } from './checkbox'
-import { BnCheckboxGroup } from './checkbox-group'
+import { BnCheckbox } from './bn-checkbox'
+import { BnCheckboxGroup } from './bn-checkbox-group'
 
 // 导出组件
 export {

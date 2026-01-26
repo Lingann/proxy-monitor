@@ -9,7 +9,7 @@
 
 import type { Ref } from 'vue'
 
-import type { ShadowWaveOptions } from '../shadow-wave'
+import type { ShadowWaveOptions } from '../bn-shadow-wave'
 
 // ==================================================
 // #region 类型定义

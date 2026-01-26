@@ -7,8 +7,8 @@
  * ******************************************************
  */
 
-import { BnRadio } from './radio'
-import { BnRadioGroup } from './radio-group'
+import { BnRadio } from './bn-radio'
+import { BnRadioGroup } from './bn-radio-group'
 
 // Export components
 export {

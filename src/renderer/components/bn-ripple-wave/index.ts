@@ -7,11 +7,11 @@
  * ******************************************************
  */
 
-export { default as BnRippleWave } from './ripple-wave'
+export { default as BnRippleWave } from './bn-ripple-wave'
 
 export type {
   RippleWaveOptions,
   RippleWaveProps,
   RippleWaveInstance
-} from './ripple-wave'
+} from './bn-ripple-wave'
 

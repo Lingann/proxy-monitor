@@ -8,5 +8,3 @@
  */
 
 export * from './input-props'
-export * from './password-input-props'
-export * from './search-input-props'

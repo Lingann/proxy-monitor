@@ -9,7 +9,7 @@
 
 import type { Ref } from 'vue'
 
-import type { RippleWaveOptions } from '../ripple-wave'
+import type { RippleWaveOptions } from '../bn-ripple-wave'
 
 // ==================================================
 // #region 类型定义

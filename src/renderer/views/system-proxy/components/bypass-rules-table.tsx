@@ -4,7 +4,7 @@ import type { ProxyBypassRule } from '../../../../shared/common-types';
 import BnTable from '../../../components/bn-table/bn-table';
 import { BnInput } from '../../../components/bn-input';
 import { BnTableColumn } from '../../../components/bn-table/types';
-import Icon from '../../../components/bn-icon/icon';
+import Icon from '../../../components/bn-icon/bn-icon';
 import styles from './bypass-rules-table.module.scss';
 
 export default defineComponent({

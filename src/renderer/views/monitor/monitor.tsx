@@ -6,7 +6,7 @@ import { useMonitorChart } from './composables/use-monitor-chart';
 import { useMonitorTable } from './composables/use-monitor-table';
 import BnTable from '../../components/bn-table/bn-table';
 import { BnSearchInput } from '../../components/bn-input';
-import Icon from '../../components/bn-icon/icon';
+import Icon from '../../components/bn-icon/bn-icon';
 
 export default defineComponent({
     name: 'MonitorView',
