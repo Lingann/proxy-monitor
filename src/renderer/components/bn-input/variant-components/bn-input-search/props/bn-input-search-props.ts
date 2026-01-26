@@ -1,6 +1,6 @@
 /**
  * ******************************************************
- * @file                     bn-search-input-props.ts
+ * @file                     bn-input-search-props.ts
  * @description             「搜索输入框属性定义」
  * 支持双模式：扁平化 Props（推荐）+ config 对象（向后兼容）
  * @author                  blancnova-web

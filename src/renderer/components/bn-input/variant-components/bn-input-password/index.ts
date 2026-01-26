@@ -7,5 +7,5 @@
  * ******************************************************
  */
 
-export { BnPasswordInput } from './bn-password-input'
-export * from './props/bn-password-input-props'
+export { BnPasswordInput } from './bn-input-password'
+export * from './props/bn-input-password-props'

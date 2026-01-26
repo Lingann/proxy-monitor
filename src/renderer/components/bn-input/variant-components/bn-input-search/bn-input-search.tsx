@@ -1,20 +1,20 @@
 /**
  * ******************************************************
- * @file                     bn-search-input.tsx
+ * @file                     bn-input-search.tsx
  * @description             「搜索输入框组件」
  * 支持下拉选项、模糊搜索、键盘导航的搜索输入框
  * @author                  blancnova-web
  * ******************************************************
  */
 
-import './styles/bn-search-input.scss'
+import './styles/bn-input-search.scss'
 
 import { defineComponent, ref, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Search } from 'lucide-vue-next'
 
 import { BnInput } from '../../input'
-import { bnSearchInputProps } from './props/bn-search-input-props'
+import { bnSearchInputProps } from './props/bn-input-search-props'
 import { useSearchConfig } from './composables/use-search-config'
 import { useSearchDropdown } from './composables/use-search-dropdown'
 import { useSearchFuzzy } from './composables/use-search-fuzzy'

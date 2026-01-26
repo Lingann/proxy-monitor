@@ -8,7 +8,7 @@
  */
 
 import { computed } from 'vue'
-import type { BnSearchInputProps } from '../props/bn-search-input-props'
+import type { BnSearchInputProps } from '../props/bn-input-search-props'
 import type { SearchInputConfig } from '../types'
 
 /* ================================================== */

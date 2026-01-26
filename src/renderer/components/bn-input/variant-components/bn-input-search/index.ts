@@ -7,6 +7,6 @@
  * ******************************************************
  */
 
-export { BnSearchInput } from './bn-search-input'
-export * from './props/bn-search-input-props'
+export { BnSearchInput } from './bn-input-search'
+export * from './props/bn-input-search-props'
 export * from './types'

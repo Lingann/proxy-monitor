@@ -1,6 +1,6 @@
 /**
  * ******************************************************
- * @file                     bn-password-input-props.ts
+ * @file                     bn-input-password-props.ts
  * @description             「密码输入框属性定义」
  * 定义密码输入框的属性
  * @author                  blancnova-web

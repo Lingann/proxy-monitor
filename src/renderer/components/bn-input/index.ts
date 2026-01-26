@@ -8,11 +8,11 @@
  */
 
 import BnInput from './input'
-import { BnPasswordInput } from './variant-components/bn-password-input'
-import { BnSearchInput } from './variant-components/bn-search-input'
+import { BnPasswordInput } from './variant-components/bn-input-password'
+import { BnSearchInput } from './variant-components/bn-input-search'
 
 export type * from './props'
-export type * from './variant-components/bn-search-input/types'
+export type * from './variant-components/bn-input-search/types'
 
 export {
   BnInput,
