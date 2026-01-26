@@ -1,6 +1,6 @@
 /**
  * ******************************************************
- * @file                     password-input.tsx
+ * @file                     bn-password-input.tsx
  * @description             「密码输入框组件」
  * 预设密码图标和切换可见性的输入框组件
  * @author                  blancnova-web
@@ -10,9 +10,9 @@
 import { Eye, EyeOff, Lock } from 'lucide-vue-next'
 import { computed, defineComponent, h, ref } from 'vue'
 
-import { useInputEvent } from './composables/use-input-event'
-import { BnInput } from './input'
-import { passwordInputProps } from './props/password-input-props'
+import { useInputEvent } from '../../composables/use-input-event'
+import { BnInput } from '../../input'
+import { passwordInputProps } from './props/bn-password-input-props'
 
 // ==================================================
 // #region 组件定义

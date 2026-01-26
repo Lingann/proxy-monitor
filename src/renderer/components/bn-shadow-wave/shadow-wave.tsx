@@ -9,7 +9,7 @@
 
 import './styles/index.scss'
 
-import { defineComponent, nextTick, onBeforeUnmount, ref } from 'vue'
+import { CSSProperties, defineComponent, nextTick, onBeforeUnmount, ref } from 'vue'
 
 import { debounce } from '../../utils'
 import { useWaveAnimation, useWaveState, useWaveStyles } from './composables'

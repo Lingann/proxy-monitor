@@ -1,16 +1,16 @@
 /**
  * ******************************************************
- * @file                     password-input-props.ts
+ * @file                     bn-password-input-props.ts
  * @description             「密码输入框属性定义」
  * 定义密码输入框的属性
  * @author                  blancnova-web
  * ******************************************************
  */
 
-import { createVueProps } from '../../../utils/create-vue-props'
+import { createVueProps } from '../../../../../utils/create-vue-props'
 import type { ExtractPropTypes } from 'vue'
 
-import { inputProps } from './input-props'
+import { inputProps } from '../../../props/input-props'
 
 // ==================================================
 // #region 密码输入框属性定义

@@ -15,7 +15,7 @@ import type { ShadowWaveOptions } from '../shadow-wave'
 // #region 类型定义
 // ==================================================
 
-export interface WaveStyles {
+export interface WaveStyles  extends Record<string, string | number> {
 
   /** 阴影颜色 */
   '--shadow-color': string

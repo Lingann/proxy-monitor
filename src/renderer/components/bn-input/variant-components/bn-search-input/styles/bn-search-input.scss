@@ -1,0 +1,86 @@
+/**
+ * ******************************************************
+ * @file                     bn-search-input.scss
+ * @description             「搜索输入框样式」
+ * 定义搜索输入框的主样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+@use '../../styles/variables' as input-vars;
+
+// ==================================================
+// #region CSS 变量定义
+// ==================================================
+
+.#{$search-input-prefix} {
+  /* 继承 bn-input 变量 */
+  --bn-input-height: var(--bn-input-height-medium);
+  --bn-input-font-size: var(--bn-input-font-size-medium);
+
+  /* 搜索输入框特有变量 */
+  --bn-search-dropdown-bg: var(--system-color-bg-primary, #ffffff);
+  --bn-search-dropdown-border: var(--system-color-border-primary, #e0e0e0);
+  --bn-search-dropdown-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --bn-search-option-height: 36px;
+  --bn-search-option-hover-bg: var(--system-color-bg-hover, #f5f5f5);
+  --bn-search-option-active-bg: var(--system-color-bg-selected, #e3f2fd);
+  --bn-search-z-index: 1000;
+}
+
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 基础样式
+// ==================================================
+
+.#{$search-input-prefix} {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 下拉框样式（导入独立文件）
+// ==================================================
+
+@use './dropdown';
+
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 尺寸变体
+// ==================================================
+
+.#{$search-input-prefix}--small {
+  --bn-input-height: var(--bn-input-height-small);
+  --bn-input-font-size: var(--bn-input-font-size-small);
+  --bn-search-option-height: 28px;
+}
+
+.#{$search-input-prefix}--large {
+  --bn-input-height: var(--bn-input-height-large);
+  --bn-input-font-size: var(--bn-input-font-size-large);
+  --bn-search-option-height: 44px;
+}
+
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 状态修饰符
+// ==================================================
+
+.#{$search-input-prefix}--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+// #endregion
+// ==================================================

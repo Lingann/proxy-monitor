@@ -13,3 +13,7 @@
 // 导入扩展组件样式
 @use './password';
 @use './search';
+
+// 导入变体组件样式
+@use '../variant-components/bn-search-input/styles/bn-search-input';
+@use '../variant-components/bn-password-input/styles/bn-password-input';

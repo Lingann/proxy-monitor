@@ -5,7 +5,7 @@ import { useMonitorData } from './composables/use-monitor-data';
 import { useMonitorChart } from './composables/use-monitor-chart';
 import { useMonitorTable } from './composables/use-monitor-table';
 import BnTable from '../../components/bn-table/bn-table';
-import CommonSearchInput from '../../components/common-search-input/common-search-input';
+import { BnSearchInput } from '../../components/bn-input';
 import Icon from '../../components/bn-icon/icon';
 
 export default defineComponent({
@@ -144,10 +144,10 @@ export default defineComponent({
                             <div class={styles.header}>
                                 <h3>{t('monitor.process_list')}</h3>
                                 <div style={{ width: '300px' }}>
-                                    <CommonSearchInput 
+                                    <BnSearchInput
                                         modelValue={searchQuery.value}
                                         onUpdateModelValue={(v: string | number | null) => searchQuery.value = String(v || '')}
-                                        config={{ 
+                                        config={{
                                             placeholder: t('monitor.search_placeholder') || 'Search PID / Name',
                                             size: 'small'
                                         }}
