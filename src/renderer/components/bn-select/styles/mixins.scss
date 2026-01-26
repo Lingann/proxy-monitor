@@ -1,8 +1,8 @@
-// ======================================================
-// 选择器混入
-// ======================================================
+/* ====================================================== */
+/* 选择器混入 */
+/* ====================================================== */
 
-// 基础样式混入
+/* 基础样式混入 */
 @mixin select-base {
   position: relative;
   box-sizing: border-box;
@@ -10,7 +10,7 @@
   width: 100%;
 }
 
-// 触发器样式混入
+/* 触发器样式混入 */
 @mixin select-trigger {
   display: flex;
   align-items: center;
@@ -35,7 +35,7 @@
   }
 }
 
-// 下拉框样式混入
+/* 下拉框样式混入 */
 @mixin select-dropdown {
   position: absolute;
   left: 0;
@@ -52,7 +52,7 @@
   padding: 4px 0;
 }
 
-// 选项样式混入
+/* 选项样式混入 */
 @mixin select-option {
   height: var(--bn-select-item-height);
   line-height: var(--bn-select-item-height);

@@ -6,6 +6,9 @@
     "saving": "保存中...",
     "no_results": "无结果",
     "please_select": "请选择",
+    "input_placeholder": "请输入",
+    "search": "搜索",
+    "search_placeholder": "请输入搜索内容",
     "no_options": "无选项",
     "total": "共"
   },

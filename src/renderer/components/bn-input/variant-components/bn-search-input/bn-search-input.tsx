@@ -22,25 +22,29 @@ import { useSearchKeyboard } from './composables/use-search-keyboard'
 import { renderIcon } from './utils'
 import type { SearchOption } from './types'
 
-// ==================================================
-// #region 组件定义
-// ==================================================
+/* ================================================== */
+/* 区域：组件定义 */
+/* ================================================== */
 
 export const BnSearchInput = defineComponent({
   name: 'BnSearchInput',
   inheritAttrs: false,
+  emits: ['update:modelValue'],
   props: bnSearchInputProps(),
 
-  setup(props, { attrs, expose }) {
+  setup(props, { attrs, expose, emit }) {
     const { t } = useI18n()
 
-    /* ========== Refs ========== */
+    /* ========== 引用状态 ========== */
     const containerRef = ref<HTMLElement | null>(null)
-    const inputRef = ref<HTMLInputElement | null>(null)
-    const query = ref('')
+
+    const queryRef = ref('')
+
+    /* ========== 文案处理 ========== */
+    const searchTextRef = computed(() => props.searchText || t('common.search'))
 
     /* ========== 配置合并 ========== */
-    const { mergedConfig } = useSearchConfig(props)
+    const { mergedConfig } = useSearchConfig(props, t)
 
     /* ========== 下拉框状态 ========== */
     const {
@@ -65,29 +69,34 @@ export const BnSearchInput = defineComponent({
       computed(() => mergedConfig.value.maxItems)
     )
 
-    /* ========== 监听 modelValue 变化，同步 query ========== */
+    /* ========== 监听 modelValue 变化，同步查询文本 ========== */
     watch(() => props.modelValue, (newVal) => {
       if (!newVal && newVal !== 0) {
-        query.value = ''
+        queryRef.value = ''
         return
       }
+
       const opt = mergedConfig.value.options?.find(o => o.value === newVal)
+
       if (opt) {
-        query.value = opt.label
-      } else {
-        query.value = String(newVal)
+        queryRef.value = opt.label
+        return
       }
+
+      queryRef.value = String(newVal)
     }, { immediate: true })
 
     /* ========== 事件处理 ========== */
 
     /* 选择选项 */
     const selectOption = (opt: SearchOption) => {
-      query.value = opt.label
-      props.onUpdateModelValue?.(opt.value)
+      queryRef.value = opt.label
+
+      emit('update:modelValue', opt.value)
+
       props.onChange?.(opt.value, opt)
-      props.config?.onChange?.(opt.value, opt) // Legacy support
       props.onSelect?.(opt.value, opt)
+
       close()
     }
 
@@ -102,13 +111,15 @@ export const BnSearchInput = defineComponent({
 
     /* 处理输入 */
     const handleInput = (value: string) => {
-      query.value = value
-      props.onUpdateModelValue?.(value)
+      queryRef.value = value
+
+      emit('update:modelValue', value)
+
       props.onSearch?.(value)
-      props.config?.onSearch?.(value) // Legacy support
 
       if (mergedConfig.value.enableDropdown) {
         search(value)
+
         open()
       }
     }
@@ -116,12 +127,10 @@ export const BnSearchInput = defineComponent({
     /* 处理聚焦 */
     const handleFocus = (e: FocusEvent) => {
       props.onFocus?.(e)
-      props.config?.onFocus?.(e) // Legacy support
 
       if (mergedConfig.value.enableDropdown) {
-        if (!query.value) {
-          search('')
-        }
+        if (!queryRef.value) search('')
+
         open()
       }
     }
@@ -129,16 +138,16 @@ export const BnSearchInput = defineComponent({
     /* 处理失焦 */
     const handleBlur = (e: FocusEvent) => {
       props.onBlur?.(e)
-      props.config?.onBlur?.(e) // Legacy support
     }
 
     /* 清除内容 */
     const clear = () => {
-      query.value = ''
-      props.onUpdateModelValue?.(null)
+      queryRef.value = ''
+
+      emit('update:modelValue', null)
+
       props.onChange?.(null)
       props.onSearch?.('')
-      props.config?.onSearch?.('') // Legacy support
 
       if (mergedConfig.value.enableDropdown) {
         search('')
@@ -153,9 +162,11 @@ export const BnSearchInput = defineComponent({
     /* 渲染前缀图标 */
     const renderPrefixIcon = () => {
       const icon = mergedConfig.value.prefixIcon
+
       if (icon) {
         return <span class="bn-input__prefix">{renderIcon(icon)}</span>
       }
+
       return <span class="bn-input__prefix"><Search size={16} /></span>
     }
 
@@ -180,8 +191,9 @@ export const BnSearchInput = defineComponent({
         <BnInput
           {...props}
           {...attrs}
-          modelValue={query.value}
+          modelValue={queryRef.value}
           placeholder={mergedConfig.value.placeholder}
+          aria-label={searchTextRef.value}
           disabled={mergedConfig.value.disabled}
           clearable={mergedConfig.value.clearable}
           size={mergedConfig.value.size}
@@ -222,8 +234,9 @@ export const BnSearchInput = defineComponent({
   }
 })
 
-// #endregion
-// ==================================================
+/* ================================================== */
+/* 区域结束：组件定义 */
+/* ================================================== */
 
 export default BnSearchInput
 

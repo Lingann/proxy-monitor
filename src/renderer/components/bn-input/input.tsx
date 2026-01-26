@@ -9,21 +9,25 @@
 
 import './styles/index.scss'
 
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import { useInputEvent } from './composables/use-input-event'
 import { inputProps } from './props/input-props'
 
-// ==================================================
-// #region 组件定义
-// ==================================================
+/* ================================================== */
+/* 区域：组件定义 */
+/* ================================================== */
 
 export const BnInput = defineComponent({
   name: 'BnInput',
   inheritAttrs: false,
+  emits: ['update:modelValue'],
   props: inputProps(),
-  setup(props, { attrs, slots }) {
-    const type = computed(() => props.type)
+  setup(props, { attrs, slots, emit }) {
+    const { t } = useI18n()
+
+    const typeRef = computed(() => props.type)
 
     /* 使用事件处理组合式函数 */
     const {
@@ -32,8 +36,9 @@ export const BnInput = defineComponent({
       handleChange,
       handleFocus,
       handleBlur: baseHandleBlur,
-      handleClear
-    } = useInputEvent(props, props.maxLength)
+      handleClear,
+      clearState
+    } = useInputEvent(props, emit, props.maxLength)
 
     /* 包装 blur 事件处理以支持 trim */
     const handleBlur = (event: FocusEvent) => {
@@ -44,14 +49,20 @@ export const BnInput = defineComponent({
     const { class: _, ...inputAttrs } = attrs
 
     /* 计算当前字数 */
-    const currentLength = computed(() => props.modelValue?.length ?? 0)
+    const currentLengthRef = computed(() => props.modelValue?.length ?? 0)
 
     /* 计算是否超出最大长度 */
-    const isExceeded = computed(() => {
+    const isExceededRef = computed(() => {
       if (!props.maxLength) return false
 
-      return currentLength.value > props.maxLength
+      return currentLengthRef.value > props.maxLength
     })
+
+    /* 计算占位符文本 */
+    const placeholderTextRef = computed(() => props.placeholder || t('common.input_placeholder'))
+
+    /* 资源清理 */
+    onUnmounted(() => clearState())
 
     /* 渲染函数 */
     return () => (
@@ -85,9 +96,9 @@ export const BnInput = defineComponent({
             ]}
             disabled={props.disabled}
             maxlength={props.maxLength}
-            placeholder={props.placeholder}
+            placeholder={placeholderTextRef.value}
             readonly={props.readonly}
-            type={type.value}
+            type={typeRef.value}
             value={props.modelValue}
             onBlur={handleBlur}
             onChange={handleChange}
@@ -113,10 +124,10 @@ export const BnInput = defineComponent({
           <div
             class={[
               'bn-input__count',
-              { 'bn-input__count--exceeded': isExceeded.value }
+              { 'bn-input__count--exceeded': isExceededRef.value }
             ]}
           >
-            {currentLength.value}{props.maxLength ? ` / ${props.maxLength}` : ''}
+            {currentLengthRef.value}{props.maxLength ? ` / ${props.maxLength}` : ''}
           </div>
         )}
       </div>
@@ -124,7 +135,8 @@ export const BnInput = defineComponent({
   }
 })
 
-// #endregion
-// ==================================================
+/* ================================================== */
+/* 区域结束：组件定义 */
+/* ================================================== */
 
 export default BnInput

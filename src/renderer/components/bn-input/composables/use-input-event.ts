@@ -11,19 +11,21 @@ import { ref } from 'vue'
 
 import type { InputProps } from '../props/input-props'
 
-// ==================================================
-// #region 事件处理组合式函数
-// ==================================================
+/* ================================================== */
+/* 区域：事件处理组合式函数 */
+/* ================================================== */
 
 /**
  * 创建输入框事件处理函数
  * @param props - 「组件属性」包含事件回调和配置
+ * @param emit - 「双向绑定事件」用于更新 v-model
  * @param maxLength - 「最大长度」输入框允许的最大字符数
  * @returns 「事件处理函数集合」包含所有输入框相关事件处理函数
  * @complexity O(1) - 常量级函数创建
  */
 export const useInputEvent = (
   props: InputProps,
+  emit: (event: 'update:modelValue', value: string) => void,
   maxLength?: number
 ) => {
   /* 焦点状态 */
@@ -34,25 +36,28 @@ export const useInputEvent = (
    * @param value - 「输入值」用户输入的内容
    */
   const handleInput = (value: string) => {
-    /* 如果没有最大长度限制，直接更新 */
+    /* 没有最大长度限制时直接更新 */
     if (!maxLength) {
-      props.onUpdateModelValue?.(value)
+      emit('update:modelValue', value)
+
       props.onInput?.(value)
       return
     }
 
-    /* 如果新值长度超过最大长度，截断到最大长度 */
-    if (value.length > maxLength) {
-      const truncatedValue = value.slice(0, maxLength)
+    /* 未超出最大长度时直接更新 */
+    if (value.length <= maxLength) {
+      emit('update:modelValue', value)
 
-      props.onUpdateModelValue?.(truncatedValue)
-      props.onInput?.(truncatedValue)
+      props.onInput?.(value)
       return
     }
 
-    /* 正常更新 */
-    props.onUpdateModelValue?.(value)
-    props.onInput?.(value)
+    /* 超出最大长度时截断 */
+    const truncatedValue = value.slice(0, maxLength)
+
+    emit('update:modelValue', truncatedValue)
+
+    props.onInput?.(truncatedValue)
   }
 
   /**
@@ -82,12 +87,13 @@ export const useInputEvent = (
   const handleBlur = (event: FocusEvent, trim?: boolean, currentValue?: string) => {
     focused.value = false
 
-    /* 如果启用trim，则在失去焦点时去除首尾空格 */
+    /* 启用 trim 时去除首尾空格 */
     if (trim && currentValue) {
       const trimmedValue = currentValue.trim()
 
       if (trimmedValue !== currentValue) {
-        props.onUpdateModelValue?.(trimmedValue)
+        emit('update:modelValue', trimmedValue)
+
         props.onChange?.(event)
       }
     }
@@ -100,7 +106,15 @@ export const useInputEvent = (
    */
   const handleClear = () => {
     props.onClear?.()
-    props.onUpdateModelValue?.('')
+
+    emit('update:modelValue', '')
+  }
+
+  /**
+   * 处理卸载清理
+   */
+  const clearState = () => {
+    focused.value = false
   }
 
   return {
@@ -109,9 +123,11 @@ export const useInputEvent = (
     handleChange,
     handleFocus,
     handleBlur,
-    handleClear
+    handleClear,
+    clearState
   }
 }
 
-// #endregion
-// ==================================================
+/* ================================================== */
+/* 区域结束：事件处理组合式函数 */
+/* ================================================== */

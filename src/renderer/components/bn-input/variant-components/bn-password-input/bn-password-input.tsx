@@ -8,26 +8,27 @@
  */
 
 import { Eye, EyeOff, Lock } from 'lucide-vue-next'
-import { computed, defineComponent, h, ref } from 'vue'
+import { computed, defineComponent, h, onUnmounted, ref } from 'vue'
 
 import { useInputEvent } from '../../composables/use-input-event'
 import { BnInput } from '../../input'
 import { passwordInputProps } from './props/bn-password-input-props'
 
-// ==================================================
-// #region 组件定义
-// ==================================================
+/* ================================================== */
+/* 区域：组件定义 */
+/* ================================================== */
 
 export const BnPasswordInput = defineComponent({
   name: 'BnPasswordInput',
   inheritAttrs: false,
+  emits: ['update:modelValue'],
   props: passwordInputProps(),
-  setup(props, { attrs }) {
+  setup(props, { attrs, emit }) {
     /* 内部状态 */
-    const visible = ref(false)
+    const visibleRef = ref(false)
 
     /* 计算属性 */
-    const inputType = computed(() => visible.value ? 'text' : 'password')
+    const inputTypeRef = computed(() => visibleRef.value ? 'text' : 'password')
 
     /* 使用基础事件处理 */
     const {
@@ -36,12 +37,17 @@ export const BnPasswordInput = defineComponent({
       handleFocus,
       handleBlur,
       handleClear
-    } = useInputEvent(props)
+    } = useInputEvent(props, emit)
 
     /* 切换密码可见性 */
     const toggleVisibility = () => {
-      visible.value = !visible.value
+      visibleRef.value = !visibleRef.value
     }
+
+    /* 资源清理 */
+    onUnmounted(() => {
+      visibleRef.value = false
+    })
 
     /* 渲染函数 */
     const renderPrefixIcon = () => (
@@ -55,7 +61,7 @@ export const BnPasswordInput = defineComponent({
 
       return (
         <span class="bn-input__suffix">
-          {visible.value ? (
+          {visibleRef.value ? (
             h(Eye, {
               size: 16,
               class: 'bn-input__visibility-icon',
@@ -77,7 +83,7 @@ export const BnPasswordInput = defineComponent({
         {...props}
         {...attrs}
         class={['bn-input-password', attrs.class]}
-        type={inputType.value}
+        type={inputTypeRef.value}
         v-slots={{
           prefix: renderPrefixIcon,
           suffix: renderSuffixIcon
@@ -92,7 +98,8 @@ export const BnPasswordInput = defineComponent({
   }
 })
 
-// #endregion
-// ==================================================
+/* ================================================== */
+/* 区域结束：组件定义 */
+/* ================================================== */
 
 export default BnPasswordInput

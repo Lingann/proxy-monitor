@@ -1,66 +1,66 @@
-/**
- * ******************************************************
- * @file                     bn-select.tsx
- * @description             「选择器组件」
- * 提供下拉选择功能
- * @author                  blancnova-web
- * ******************************************************
- */
+/* ****************************************************** */
+/* 文件: bn-select.tsx */
+/* 描述: 选择器组件 */
+/* 提供下拉选择功能 */
+/* 作者: blancnova-web */
+/* ****************************************************** */
 
 import './styles/index.scss'
 
 import { defineComponent } from 'vue'
+
 import { useI18n } from 'vue-i18n'
+
 import { ChevronDown, X } from 'lucide-vue-next'
 
 import { selectProps } from './props/select-props'
 import { useSelectState } from './composables/use-select-state'
-import { useSelectEvents } from './composables/use-select-events'
+import { useSelectEvent } from './composables/use-select-event'
 import { useSelectRender } from './composables/use-select-render'
 
-// ==================================================
-// #region 组件定义
-// ==================================================
+/* 组件定义 */
 
 export const BnSelect = defineComponent({
   name: 'BnSelect',
 
   props: selectProps(),
 
-  setup(props, { expose }) {
+  emits: ['update:modelValue'],
+
+  setup(props, { expose, emit }) {
+    /* 国际化 */
     const { t } = useI18n()
 
-    /* 1. 组件状态 */
+    /* 组件状态 */
     const {
       containerRef,
       dropdownRef,
-      isOpen,
-      dropdownPosition,
+      isOpenRef,
+      dropdownPositionRef,
       open,
       close,
       toggle
     } = useSelectState(props)
 
-    /* 2. 事件处理 */
+    /* 事件处理 */
     const {
       handleSelect,
       handleClear,
       handleFocus,
       handleBlur
-    } = useSelectEvents({
+    } = useSelectEvent({
       props,
-      isOpen,
       close
-    })
+    }, emit)
 
-    /* 3. 渲染逻辑 */
+    /* 渲染逻辑 */
     const {
-      selectedOption,
-      containerClasses,
-      dropdownClasses,
-      containerStyles,
-      dropdownStyles
-    } = useSelectRender(props, isOpen, dropdownPosition)
+      selectedOptionRef,
+      containerClassesRef,
+      dropdownClassesRef,
+      containerStylesRef,
+      dropdownStylesRef
+    } = useSelectRender(props, isOpenRef, dropdownPositionRef)
 
     /* 暴露公共方法 */
     expose({ open, close })
@@ -68,8 +68,8 @@ export const BnSelect = defineComponent({
     return () => (
       <div
         ref={containerRef}
-        class={containerClasses.value}
-        style={containerStyles.value}
+        class={containerClassesRef.value}
+        style={containerStylesRef.value}
       >
         <div
           class="bn-select__trigger"
@@ -78,11 +78,11 @@ export const BnSelect = defineComponent({
           onBlur={handleBlur}
           tabindex={props.disabled ? -1 : 0}
         >
-          <span class={['bn-select__value', { 'bn-select__value--placeholder': !selectedOption.value }]}>
-            {selectedOption.value ? selectedOption.value.label : props.placeholder || t('common.please_select')}
+          <span class={['bn-select__value', { 'bn-select__value--placeholder': !selectedOptionRef.value }]}>
+            {selectedOptionRef.value ? selectedOptionRef.value.label : props.placeholder || t('common.please_select')}
           </span>
 
-          {props.clearable && selectedOption.value && !props.disabled && (
+          {props.clearable && selectedOptionRef.value && !props.disabled && (
             <span class="bn-select__clear" onClick={handleClear}>
               <X size={14} />
             </span>
@@ -95,8 +95,8 @@ export const BnSelect = defineComponent({
 
         <div
           ref={dropdownRef}
-          class={dropdownClasses.value}
-          style={dropdownStyles.value}
+          class={dropdownClassesRef.value}
+          style={dropdownStylesRef.value}
         >
           {props.options && props.options.length > 0 ? (
             props.options.map(opt => (
@@ -131,8 +131,5 @@ export const BnSelect = defineComponent({
     )
   }
 })
-
-// #endregion
-// ==================================================
 
 export default BnSelect

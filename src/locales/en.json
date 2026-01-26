@@ -5,6 +5,9 @@
     "saving": "Saving...",
     "no_results": "No results",
     "please_select": "Please select",
+    "input_placeholder": "Please enter",
+    "search": "Search",
+    "search_placeholder": "Enter search text",
     "no_options": "No options",
     "total": "Total"
   },

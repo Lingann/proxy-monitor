@@ -1,6 +1,6 @@
-// ======================================================
-// 选择器样式
-// ======================================================
+/* ====================================================== */
+/* 选择器样式 */
+/* ====================================================== */
 
 @use './variables' as *;
 @use './mixins' as *;
@@ -11,7 +11,7 @@
 
   font-size: var(--bn-select-font-size-medium);
 
-  // 尺寸修饰符
+  /* 尺寸修饰符 */
   &--small {
     font-size: var(--bn-select-font-size-small);
 
@@ -36,7 +36,7 @@
     }
   }
 
-  // 状态修饰符
+  /* 状态修饰符 */
   &--open {
     .bn-select__trigger {
       border-color: var(--bn-select-border-focus);
@@ -64,12 +64,12 @@
   }
 }
 
-// 触发器
+/* 触发器 */
 .bn-select__trigger {
   @include select-trigger;
 }
 
-// 值显示
+/* 值显示 */
 .bn-select__value {
   color: var(--bn-select-text);
   white-space: nowrap;
@@ -83,7 +83,7 @@
   }
 }
 
-// 清空按钮
+/* 清空按钮 */
 .bn-select__clear {
   display: flex;
   align-items: center;
@@ -98,7 +98,7 @@
   }
 }
 
-// 箭头图标
+/* 箭头图标 */
 .bn-select__arrow {
   display: flex;
   align-items: center;
@@ -108,11 +108,11 @@
   transform-origin: center;
 }
 
-// 下拉框
+/* 下拉框 */
 .bn-select__dropdown {
   @include select-dropdown;
 
-  // 位置修饰符
+  /* 位置修饰符 */
   &--bottom {
     top: calc(100% + 4px);
     transform-origin: top center;
@@ -125,7 +125,7 @@
     animation: bnSelectSlideUp 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  // 滚动条样式
+  /* 滚动条样式 */
   &::-webkit-scrollbar {
     width: 6px;
   }
@@ -144,7 +144,7 @@
   }
 }
 
-// 选项
+/* 选项 */
 .bn-select__option {
   @include select-option;
 
@@ -165,7 +165,7 @@
   }
 }
 
-// 错误提示
+/* 错误提示 */
 .bn-select__error {
   font-size: 12px;
   color: var(--bn-select-error);
@@ -174,7 +174,7 @@
   line-height: 1.4;
 }
 
-// 动画
+/* 动画 */
 @keyframes bnSelectSlideDown {
   from {
     transform: translateY(-8px) scaleY(0.95);

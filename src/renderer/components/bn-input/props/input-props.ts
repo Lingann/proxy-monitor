@@ -12,9 +12,9 @@ import type { Component, ExtractPropTypes, PropType } from 'vue'
 
 import type { InputSize, InputType } from '../types'
 
-// ==================================================
-// #region 基础属性定义
-// ==================================================
+/* ================================================== */
+/* 区域：基础属性定义 */
+/* ================================================== */
 
 /**
  * 创建基础输入框属性
@@ -39,7 +39,7 @@ export const inputProps = createVueProps('input', {
   },
   placeholder: {
     type: String,
-    default: '请输入'
+    default: ''
   },
   type: {
     type: String as () => InputType,
@@ -82,9 +82,6 @@ export const inputProps = createVueProps('input', {
     default: false
   },
 
-  /* 事件回调：v-model 更新事件 */
-  onUpdateModelValue: Function as PropType<(value: string) => void>,
-
   /* 事件回调：输入事件 */
   onInput: Function as PropType<(value: string) => void>,
 
@@ -101,7 +98,8 @@ export const inputProps = createVueProps('input', {
   onClear: Function as PropType<() => void>
 })
 
-// #endregion
-// ==================================================
+/* ================================================== */
+/* 区域结束：基础属性定义 */
+/* ================================================== */
 
 export type InputProps = Partial<ExtractPropTypes<ReturnType<typeof inputProps>>>

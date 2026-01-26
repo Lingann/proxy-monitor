@@ -7,15 +7,18 @@
  * ******************************************************
  */
 
-import { computed, Ref } from 'vue'
+import { computed } from 'vue'
 import type { BnSearchInputProps } from '../props/bn-search-input-props'
 import type { SearchInputConfig } from '../types'
 
-// ==================================================
-// #region 配置合并
-// ==================================================
+/* ================================================== */
+/* 区域：配置合并 */
+/* ================================================== */
 
-export function useSearchConfig(props: BnSearchInputProps) {
+export function useSearchConfig(
+  props: BnSearchInputProps,
+  t: (key: string) => string
+) {
   /* 合并配置：扁平化 Props > config 对象 > 默认值 */
   const mergedConfig = computed<SearchInputConfig>(() => ({
     options: props.options || props.config?.options || [],
@@ -24,7 +27,7 @@ export function useSearchConfig(props: BnSearchInputProps) {
     searchKeys: props.searchKeys || props.config?.searchKeys || ['label'],
     fuseOptions: props.fuseOptions || props.config?.fuseOptions || {},
     zIndex: props.zIndex || props.config?.zIndex || 1000,
-    placeholder: props.placeholder || props.config?.placeholder || '请输入搜索内容',
+    placeholder: props.placeholder || props.config?.placeholder || t('common.search_placeholder'),
     size: props.size || props.config?.size || 'medium',
     disabled: props.disabled ?? props.config?.disabled ?? false,
     clearable: props.clearable ?? props.config?.clearable ?? true,
@@ -35,5 +38,6 @@ export function useSearchConfig(props: BnSearchInputProps) {
   return { mergedConfig }
 }
 
-// #endregion
-// ==================================================
+/* ================================================== */
+/* 区域结束：配置合并 */
+/* ================================================== */

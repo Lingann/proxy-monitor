@@ -37,7 +37,7 @@ export default defineComponent({
                         <div style={{ width: '200px' }}>
                             <BnSelect
                                 modelValue={currentLocale.value}
-                                onUpdateModelValue={(val: string | number | null) => currentLocale.value = String(val)}
+                                onUpdate:modelValue={(val: string | number | null) => currentLocale.value = String(val)}
                                 options={languageOptions}
                                 placeholder={t('settings.select_language') || 'Select Language'}
                             />
@@ -49,7 +49,7 @@ export default defineComponent({
                         <div style={{ width: '200px' }}>
                             <BnSelect
                                 modelValue={currentTheme.value}
-                                onUpdateModelValue={(val: string | number | null) => currentTheme.value = val as 'light' | 'dark'}
+                                onUpdate:modelValue={(val: string | number | null) => currentTheme.value = val as 'light' | 'dark'}
                                 options={themeOptions}
                                 placeholder={t('settings.select_theme') || 'Select Theme'}
                             />

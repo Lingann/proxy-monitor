@@ -63,7 +63,7 @@ export default defineComponent({
                             <CommonFormItem prop="role" label="Role">
                                 <BnSelect
                                     modelValue={formData.role}
-                                    onUpdateModelValue={(v: string | number | null) => formData.role = String(v || '')}
+                                    onUpdate:modelValue={(v: string | number | null) => formData.role = String(v || '')}
                                     placeholder="Select role"
                                     options={[
                                         { label: 'Admin', value: 'admin' },

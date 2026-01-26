@@ -12,9 +12,9 @@ import type { Component, ExtractPropTypes, PropType, VNode } from 'vue'
 import { inputProps } from '../../../props/input-props'
 import type { SearchOption, SearchInputConfig } from '../types'
 
-// ==================================================
-// #region Props 定义
-// ==================================================
+/* ================================================== */
+/* 区域：Props 定义 */
+/* ================================================== */
 
 export const bnSearchInputProps = createVueProps('bn-search-input', {
   /* 继承基础输入框 Props */
@@ -61,7 +61,7 @@ export const bnSearchInputProps = createVueProps('bn-search-input', {
   /** 搜索按钮文本 */
   searchText: {
     type: String,
-    default: '搜索'
+    default: ''
   },
 
   /** 是否显示搜索按钮 */
@@ -93,7 +93,8 @@ export const bnSearchInputProps = createVueProps('bn-search-input', {
   onSelect: Function as PropType<(value: string | number | null, option?: SearchOption) => void>
 })
 
-// #endregion
-// ==================================================
+/* ================================================== */
+/* 区域结束：Props 定义 */
+/* ================================================== */
 
 export type BnSearchInputProps = Partial<ExtractPropTypes<ReturnType<typeof bnSearchInputProps>>>
