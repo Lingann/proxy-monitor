@@ -9,6 +9,8 @@
 
 import type { Component } from 'vue'
 
+import type { FormItemRule } from '../../shared/validation'
+
 // ==================================================
 // #region 基础类型定义
 // ==================================================
@@ -78,6 +80,9 @@ export interface BaseInputProps {
 
   /** 最大输入长度 */
   maxLength?: number
+
+  /** 校验规则 */
+  rules?: FormItemRule | FormItemRule[]
 }
 
 /**

@@ -9,6 +9,7 @@ import type { ExtractPropTypes, PropType } from 'vue'
 
 import { createVueProps } from '../../../utils/create-vue-props'
 
+import type { FormItemRule } from '../../../shared/validation'
 import type { SelectOption, SelectSize } from '../types'
 
 /* 属性工厂函数 */
@@ -68,6 +69,12 @@ export const createSelectProps = createVueProps('select', {
   errorMessage: {
     type: String,
     default: ''
+  },
+
+  /* 校验规则 */
+  rules: {
+    type: [Object, Array] as PropType<FormItemRule | FormItemRule[]>,
+    default: undefined
   },
 
   /* 下拉框层级 */

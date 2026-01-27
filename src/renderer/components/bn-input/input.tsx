@@ -9,10 +9,10 @@
 
 import './styles/index.scss'
 
-import { computed, defineComponent, onUnmounted } from 'vue'
+import { computed, defineComponent, onUnmounted, toRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useFormItem } from '../bn-form/composables/item/use-form-item'
+import { useFieldValidation } from '../../shared/validation'
 import { useInputEvent } from './composables/use-input-event'
 import { inputProps } from './props/input-props'
 
@@ -25,12 +25,21 @@ export const BnInput = defineComponent({
   inheritAttrs: false,
   emits: ['update:modelValue'],
   props: inputProps(),
-  setup(props, { attrs, slots, emit }) {
+  setup(props, { attrs, slots, emit, expose }) {
     const { t } = useI18n()
 
     const typeRef = computed(() => props.type)
 
-    const { notifyBlur, notifyChange } = useFormItem()
+    const {
+      validateState,
+      validateMessage,
+      validate,
+      clearValidate,
+      showError,
+    } = useFieldValidation({
+      fieldValue: toRef(props, 'modelValue'),
+      rules: toRef(props, 'rules')
+    })
 
     /* 使用事件处理组合式函数 */
     const {
@@ -47,13 +56,7 @@ export const BnInput = defineComponent({
     const handleBlur = (event: FocusEvent) => {
       baseHandleBlur(event, props.trim, props.modelValue)
 
-      notifyBlur()
-    }
-
-    const handleClearWithValidation = () => {
-      handleClear()
-
-      notifyChange()
+      validate('blur')
     }
 
     /* 过滤掉class属性，避免传递到input元素 */
@@ -72,8 +75,20 @@ export const BnInput = defineComponent({
     /* 计算占位符文本 */
     const placeholderTextRef = computed(() => props.placeholder || t('common.input_placeholder'))
 
+    const isErrorRef = computed(() => props.error || validateState.value === 'error')
+
+    const errorMessageRef = computed(() => props.errorMessage || validateMessage.value)
+
+    const shouldShowErrorMessageRef = computed(() => isErrorRef.value && !!errorMessageRef.value)
+
     /* 资源清理 */
     onUnmounted(() => clearState())
+
+    expose({
+      validate,
+      clearValidate,
+      showError
+    })
 
     /* 渲染函数 */
     return () => (
@@ -91,7 +106,7 @@ export const BnInput = defineComponent({
             {
               'bn-input__wrapper--focused': focused.value,
               'bn-input__wrapper--disabled': props.disabled,
-              'bn-input__wrapper--error': props.error
+              'bn-input__wrapper--error': isErrorRef.value
             }
           ]}
         >
@@ -100,7 +115,7 @@ export const BnInput = defineComponent({
             class={[
               'bn-input__inner',
               {
-                'bn-input__inner--error': props.error,
+                'bn-input__inner--error': isErrorRef.value,
                 'bn-input__inner--disabled': props.disabled,
                 'bn-input__inner--readonly': props.readonly
               }
@@ -116,14 +131,12 @@ export const BnInput = defineComponent({
             onFocus={handleFocus}
             onInput={(e: Event) => {
               handleInput((e.target as HTMLInputElement).value)
-
-              notifyChange()
             }}
             {...inputAttrs}
           />
           {slots.suffix?.()}
           {props.clearable && props.modelValue && !props.disabled && !props.readonly && (
-            <span class="bn-input__clear" onClick={handleClearWithValidation}>
+            <span class="bn-input__clear" onClick={handleClear}>
               <span class="bn-input__clear-icon">
                 <svg aria-hidden="true" data-icon="close" fill="currentColor" focusable="false" height="1em" viewBox="64 64 896 896" width="1em">
                   <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z" />
@@ -132,8 +145,8 @@ export const BnInput = defineComponent({
             </span>
           )}
         </div>
-        {(props.error && props.errorMessage) && (
-          <div class="bn-input__error-message">{props.errorMessage}</div>
+        {shouldShowErrorMessageRef.value && (
+          <div class="bn-input__error-message">{errorMessageRef.value}</div>
         )}
         {props.showCount && (
           <div

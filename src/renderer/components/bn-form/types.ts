@@ -1,39 +1,13 @@
 
-import { InjectionKey, Ref } from 'vue'
+import type { InjectionKey, Ref } from 'vue'
 
-export interface ValidationResult {
-  isValid: boolean;
-  message?: string;
-}
-
-export type FormTrigger = 'blur' | 'change'
-
-export type FormRuleMessageType =
-  | 'required'
-  | 'min'
-  | 'max'
-  | 'len'
-  | 'pattern'
-  | 'email'
-  | 'url'
-  | 'number'
-  | 'string'
-  | 'validator'
-  | 'default'
-
-export interface FormItemRule {
-  trigger?: FormTrigger | FormTrigger[];
-  required?: boolean;
-  message?: string;
-  min?: number;
-  max?: number;
-  len?: number;
-  type?: 'email' | 'string' | 'number' | 'url';
-  pattern?: RegExp | string;
-  validator?: FormItemRuleValidator | LegacyFormItemRuleValidator;
-}
-
-export type FormRules = Record<string, FormItemRule | FormItemRule[]>;
+import type {
+  FormItemRule,
+  FormRules,
+  FormTrigger,
+  ValidationResult,
+  ValidatableField
+} from '../../shared/validation'
 
 export interface FormProps {
   model: Record<string, unknown>;
@@ -75,38 +49,54 @@ export interface FormItemConfig {
   showMessage?: boolean;
 }
 
-export interface FormItemContext {
-  prop: string;
-  validate: (trigger?: FormTrigger) => Promise<ValidationResult>;
-  resetField: () => void;
-  clearValidate: () => void;
-}
-
+/* 表单项校验触发上下文 */
 export interface FormItemValidateContext {
-  validate: (trigger?: FormTrigger) => Promise<ValidationResult>;
+  /* 触发 blur 校验 */
+  notifyBlur: () => Promise<ValidationResult>;
+
+  /* 触发 change 校验 */
+  notifyChange: () => Promise<ValidationResult>;
 }
 
+/* 表单级上下文：配置 + 规则 + 注册 */
 export interface FormContext {
+  /* 表单模型 */
   model: Record<string, unknown>;
+
+  /* 标签宽度 */
   labelWidth: Ref<string | number | undefined>;
+
+  /* 标签对齐方式 */
   labelPosition: Ref<'left' | 'right' | 'top' | undefined>;
+
+  /* 表单尺寸 */
   size: Ref<'small' | 'medium' | 'large' | undefined>;
+
+  /* 是否禁用 */
   disabled: Ref<boolean | undefined>;
+
+  /* 是否显示校验信息 */
   showMessage: Ref<boolean | undefined>;
+
+  /* 表单规则 */
   rules: Ref<FormRules | undefined>;
-  registerField: (field: FormItemContext) => void;
-  unregisterField: (field: FormItemContext) => void;
+
+  /* 字段注册 */
+  registerField: (field: ValidatableField) => void;
+  unregisterField: (field: ValidatableField) => void;
+
+  /* 按字段触发校验 */
   validateField: (prop: string, cb?: (isValid: boolean, message?: string) => void) => void;
 }
 
-export type FormItemRuleValidator = (
-  rule: FormItemRule,
-  value: unknown
-) => Promise<void | string | boolean> | void | string | boolean
-
-export type LegacyFormItemRuleValidator = (
-  value: unknown
-) => ValidationResult | Promise<ValidationResult> | boolean | Promise<boolean>
-
 export const FormContextKey: InjectionKey<FormContext> = Symbol('FormContext');
 export const FormItemContextKey: InjectionKey<FormItemValidateContext> = Symbol('FormItemContext');
+
+export type {
+  FormItemRule,
+  FormRules,
+  FormTrigger,
+  ValidationResult,
+  ValidationState,
+  ValidatableField
+} from '../../shared/validation'

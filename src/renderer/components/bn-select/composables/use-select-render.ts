@@ -18,7 +18,8 @@ import type { DropdownPosition } from '../types'
 export function useSelectRender(
   props: SelectProps,
   isOpenRef: Ref<boolean>,
-  dropdownPositionRef: Ref<DropdownPosition>
+  dropdownPositionRef: Ref<DropdownPosition>,
+  isErrorRef: Ref<boolean>
 ) {
 
   /* 选中的选项 */
@@ -35,7 +36,7 @@ export function useSelectRender(
     {
       'bn-select--open': isOpenRef.value,
       'bn-select--disabled': props.disabled,
-      'bn-select--error': props.error
+      'bn-select--error': isErrorRef.value
     }
   ])
 

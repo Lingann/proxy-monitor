@@ -12,4 +12,3 @@ export { BnFormItem } from './sub-components/bn-form-item'
 
 export * from './props'
 export * from './types'
-export { useFormItem } from './composables/item/use-form-item'

@@ -9,14 +9,14 @@
 
 import { computed, type Ref } from 'vue'
 
-import type { FormContext, FormItemRule } from '../../types'
+import type { FormContext, FormItemRule, ValidationState } from '../../types'
 import type { BnFormItemProps } from '../../props'
 
 /* 处理 FormItem 的渲染逻辑 */
 export function useFormItemRender(
   props: BnFormItemProps,
   formContext: FormContext | undefined,
-  validateState: Ref<string>,
+  validateState: Ref<ValidationState>,
   getRules: () => FormItemRule[]
 ) {
   const labelStyle = computed(() => {

@@ -12,7 +12,6 @@ import './styles/bn-form.scss'
 import type { SetupContext } from 'vue'
 import { defineComponent, provide, toRef } from 'vue'
 
-import { useFormConfig } from './composables/use-form-config'
 import { useFormEvents } from './composables/use-form-events'
 import { useFormRegistry } from './composables/use-form-registry'
 import { useFormRender } from './composables/use-form-render'
@@ -27,18 +26,26 @@ export const BnForm = defineComponent({
 
   setup(props: BnFormProps, { slots, expose }: SetupContext) {
     /* 1. Config */
-    const { labelWidth, labelPosition, size, disabled, showMessage } = useFormConfig(props)
+    const labelWidth = toRef(props, 'labelWidth')
+
+    const labelPosition = toRef(props, 'labelPosition')
+
+    const size = toRef(props, 'size')
+
+    const disabled = toRef(props, 'disabled')
+
+    const showMessage = toRef(props, 'showMessage')
 
     /* 2. Registry */
     const { fields, registerField, unregisterField } = useFormRegistry()
 
     /* 3. Validation */
-    const { validate, validateField, clearValidate } = useFormValidation(fields.value)
+    const { validate, validateField, clearValidate } = useFormValidation(fields)
 
     /* 4. Events */
     const { handleSubmit, handleReset } = useFormEvents(
       validate,
-      fields.value,
+      fields,
       props.onSubmit,
       props.onReset
     )

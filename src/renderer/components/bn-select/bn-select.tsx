@@ -7,13 +7,13 @@
 
 import './styles/index.scss'
 
-import { defineComponent } from 'vue'
+import { computed, defineComponent, toRef, watch } from 'vue'
 
 import { useI18n } from 'vue-i18n'
 
 import { ChevronDown, X } from 'lucide-vue-next'
 
-import { useFormItem } from '../bn-form/composables/item/use-form-item'
+import { useFieldValidation } from '../../shared/validation'
 import { selectProps } from './props/select-props'
 import { useSelectState } from './composables/use-select-state'
 import { useSelectEvent } from './composables/use-select-event'
@@ -32,7 +32,28 @@ export const BnSelect = defineComponent({
     /* 国际化 */
     const { t } = useI18n()
 
-    const { notifyBlur, notifyChange } = useFormItem()
+    /* 绑定值引用 */
+    const modelValueRef = toRef(props, 'modelValue')
+
+    /* 规则引用 */
+    const rulesRef = toRef(props, 'rules')
+
+    /* 字段校验 */
+    const {
+      validateState,
+      validateMessage,
+      validate,
+      clearValidate,
+      showError
+    } = useFieldValidation({
+      fieldValue: modelValueRef,
+      rules: rulesRef
+    })
+
+    /* 监听值变更触发校验 */
+    watch(modelValueRef, () => {
+      validate('change')
+    })
 
     /* 组件状态 */
     const {
@@ -56,23 +77,21 @@ export const BnSelect = defineComponent({
       close
     }, emit)
 
-    const handleSelectWithValidation = (option: Parameters<typeof handleSelect>[0]) => {
-      handleSelect(option)
-
-      notifyChange()
-    }
-
-    const handleClearWithValidation = (event: MouseEvent) => {
-      handleClear(event)
-
-      notifyChange()
-    }
-
+    /* 失焦事件校验包装 */
     const handleBlurWithValidation = (event: FocusEvent) => {
       handleBlur(event)
 
-      notifyBlur()
+      validate('blur')
     }
+
+    /* 错误状态 */
+    const isErrorRef = computed(() => props.error || validateState.value === 'error')
+
+    /* 错误信息 */
+    const errorMessageRef = computed(() => props.errorMessage || validateMessage.value)
+
+    /* 是否展示错误信息 */
+    const shouldShowErrorMessageRef = computed(() => isErrorRef.value && !!errorMessageRef.value)
 
     /* 渲染逻辑 */
     const {
@@ -81,10 +100,16 @@ export const BnSelect = defineComponent({
       dropdownClassesRef,
       containerStylesRef,
       dropdownStylesRef
-    } = useSelectRender(props, isOpenRef, dropdownPositionRef)
+    } = useSelectRender(props, isOpenRef, dropdownPositionRef, isErrorRef)
 
     /* 暴露公共方法 */
-    expose({ open, close })
+    expose({
+      open,
+      close,
+      validate,
+      clearValidate,
+      showError
+    })
 
     return () => (
       <div
@@ -104,7 +129,7 @@ export const BnSelect = defineComponent({
           </span>
 
           {props.clearable && selectedOptionRef.value && !props.disabled && (
-            <span class="bn-select__clear" onClick={handleClearWithValidation}>
+            <span class="bn-select__clear" onClick={handleClear}>
               <X size={14} />
             </span>
           )}
@@ -132,7 +157,7 @@ export const BnSelect = defineComponent({
                 ]}
                 onClick={(e) => {
                   e.stopPropagation()
-                  handleSelectWithValidation(opt)
+                  handleSelect(opt)
                 }}
               >
                 {opt.label}
@@ -145,8 +170,8 @@ export const BnSelect = defineComponent({
           )}
         </div>
 
-        {props.error && props.errorMessage && (
-          <div class="bn-select__error">{props.errorMessage}</div>
+        {shouldShowErrorMessageRef.value && (
+          <div class="bn-select__error">{errorMessageRef.value}</div>
         )}
       </div>
     )

@@ -10,6 +10,7 @@
 import { createVueProps } from '../../../utils/create-vue-props'
 import type { Component, ExtractPropTypes, PropType } from 'vue'
 
+import type { FormItemRule } from '../../../shared/validation'
 import type { InputSize, InputType } from '../types'
 
 /* ================================================== */
@@ -80,6 +81,10 @@ export const inputProps = createVueProps('input', {
   trim: {
     type: Boolean,
     default: false
+  },
+  rules: {
+    type: [Object, Array] as PropType<FormItemRule | FormItemRule[]>,
+    default: undefined
   },
 
   /* 事件回调：输入事件 */

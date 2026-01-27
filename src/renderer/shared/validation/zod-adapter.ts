@@ -6,13 +6,12 @@ import type {
   FormRuleMessageType,
   LegacyFormItemRuleValidator,
   ValidationResult
-} from '../types'
+} from './types'
 
 export interface RuleMessageResolver {
   (rule: FormItemRule, messageType: FormRuleMessageType, params?: Record<string, number>): string
 }
 
-/* 判断值是否为空 */
 const isEmptyValue = (value: unknown): boolean => {
   if (value === undefined || value === null) return true
 
@@ -23,7 +22,6 @@ const isEmptyValue = (value: unknown): boolean => {
   return false
 }
 
-/* 获取值长度 */
 const getValueLength = (value: unknown): number | null => {
   if (typeof value === 'string') return value.length
 
@@ -32,7 +30,6 @@ const getValueLength = (value: unknown): number | null => {
   return null
 }
 
-/* 获取数值 */
 const getNumberValue = (value: unknown): number | null => {
   if (typeof value !== 'number') return null
 
@@ -41,14 +38,12 @@ const getNumberValue = (value: unknown): number | null => {
   return value
 }
 
-/* 判断是否为校验结果对象 */
 const isValidationResult = (value: unknown): value is ValidationResult => {
   if (!value || typeof value !== 'object') return false
 
   return 'isValid' in value
 }
 
-/* 执行自定义校验器 */
 const resolveValidatorResult = async (
   rule: FormItemRule,
   value: unknown
@@ -66,15 +61,11 @@ const resolveValidatorResult = async (
     return false
   })
 
-  // 类型守卫：将 void 转换为 undefined
-  if (validatorResult === undefined) {
-    return undefined
-  }
+  if (validatorResult === undefined) return undefined
 
   return validatorResult
 }
 
-/* 将规则转换为 Zod Schema */
 export const transformRulesToZod = (
   rules: FormItemRule[],
   resolveMessage: RuleMessageResolver
