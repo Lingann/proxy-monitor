@@ -6,19 +6,19 @@
  * @author                  blancnova-web
  * ******************************************************
  */
+import { createVueProps } from '../../../utils/create-vue-props'
 
 import type { ExtractPropTypes, PropType } from 'vue'
 
 import type { FormItemRule } from '../types'
 
 /* BnFormItem Props 定义函数 */
-export function bnFormItemProps() {
-  return {
-    /* 标签文本 */
-    label: {
-      type: String,
-      default: ''
-    },
+export const bnFormItemProps = createVueProps('BnFormItem', {
+  /* 标签文本 */
+  label: {
+    type: String,
+    default: ''
+  },
 
     /* 字段名 */
     prop: {
@@ -49,8 +49,7 @@ export function bnFormItemProps() {
       type: [String, Number] as PropType<string | number>,
       default: ''
     }
-  } as const
-}
+})
 
 /* 导出 BnFormItem Props 类型 */
 export type BnFormItemProps = ExtractPropTypes<ReturnType<typeof bnFormItemProps>>
