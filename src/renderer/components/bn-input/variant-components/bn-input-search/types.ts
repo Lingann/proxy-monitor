@@ -41,5 +41,19 @@ export interface SearchInputConfig {
   onChange?: (value: string | number | null, option?: SearchOption) => void
 }
 
+export interface SearchInputMergedConfig extends SearchInputConfig {
+  options: SearchOption[]
+  width: string | number
+  size: 'small' | 'medium' | 'large'
+  placeholder: string
+  disabled: boolean
+  clearable: boolean
+  enableDropdown: boolean
+  maxItems: number
+  searchKeys: string[]
+  fuseOptions: SearchInputConfig['fuseOptions']
+  zIndex: number
+}
+
 // #endregion
 // ==================================================

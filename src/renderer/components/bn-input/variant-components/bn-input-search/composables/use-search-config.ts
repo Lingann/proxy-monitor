@@ -8,19 +8,19 @@
  */
 
 import { computed } from 'vue'
-import type { BnSearchInputProps } from '../props/bn-input-search-props'
-import type { SearchInputConfig } from '../types'
+import type { inputSearchProps } from '../props/input-search-props'
+import type { SearchInputMergedConfig } from '../types'
 
 /* ================================================== */
 /* 区域：配置合并 */
 /* ================================================== */
 
 export function useSearchConfig(
-  props: BnSearchInputProps,
+  props: inputSearchProps,
   t: (key: string) => string
 ) {
   /* 合并配置：扁平化 Props > config 对象 > 默认值 */
-  const mergedConfig = computed<SearchInputConfig>(() => ({
+  const mergedConfig = computed<SearchInputMergedConfig>(() => ({
     options: props.options || props.config?.options || [],
     enableDropdown: props.enableDropdown ?? props.config?.enableDropdown ?? false,
     maxItems: props.maxItems || props.config?.maxItems || 5,

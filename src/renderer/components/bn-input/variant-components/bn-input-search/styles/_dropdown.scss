@@ -13,23 +13,23 @@
 // #region 下拉框容器
 // ==================================================
 
-.#{$search-input-prefix}__dropdown {
+.#{$input-search-prefix}__dropdown {
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
   width: 100%;
-  background: var(--bn-search-dropdown-bg);
-  border: 1px solid var(--bn-search-dropdown-border);
+  background: var(--bn-input-search-dropdown-bg);
+  border: 1px solid var(--bn-input-search-dropdown-border);
   border-radius: 4px;
-  box-shadow: var(--bn-search-dropdown-shadow);
-  z-index: var(--bn-search-z-index);
-  max-height: calc(var(--bn-search-option-height) * 5);
+  box-shadow: var(--bn-input-search-dropdown-shadow);
+  z-index: var(--bn-input-search-z-index);
+  max-height: calc(var(--bn-input-search-option-height) * 5);
   overflow-y: auto;
   padding: 4px 0;
   box-sizing: border-box;
 
   /* 动画 */
-  animation: bn-search-dropdown-slide-down 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: bn-input-search-dropdown-slide-down 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 // #endregion
@@ -39,9 +39,9 @@
 // #region 选项样式
 // ==================================================
 
-.#{$search-input-prefix}__option {
-  height: var(--bn-search-option-height);
-  line-height: var(--bn-search-option-height);
+.#{$input-search-prefix}__option {
+  height: var(--bn-input-search-option-height);
+  line-height: var(--bn-input-search-option-height);
   padding: 0 12px;
   cursor: pointer;
   color: var(--system-color-text-primary);
@@ -52,11 +52,11 @@
 
   &:hover,
   &--active {
-    background: var(--bn-search-option-hover-bg);
+    background: var(--bn-input-search-option-hover-bg);
   }
 
   &--selected {
-    background: var(--bn-search-option-active-bg);
+    background: var(--bn-input-search-option-active-bg);
     font-weight: 500;
   }
 }
@@ -68,7 +68,7 @@
 // #region 空状态
 // ==================================================
 
-.#{$search-input-prefix}__empty {
+.#{$input-search-prefix}__empty {
   padding: 8px 12px;
   color: var(--system-color-text-secondary);
   text-align: center;
@@ -82,7 +82,7 @@
 // #region 动画
 // ==================================================
 
-@keyframes bn-search-dropdown-slide-down {
+@keyframes bn-input-search-dropdown-slide-down {
   from {
     transform: translateY(-8px);
     opacity: 0;
@@ -100,16 +100,16 @@
 // #region 滚动条样式
 // ==================================================
 
-.#{$search-input-prefix}__dropdown::-webkit-scrollbar {
+.#{$input-search-prefix}__dropdown::-webkit-scrollbar {
   width: 6px;
 }
 
-.#{$search-input-prefix}__dropdown::-webkit-scrollbar-thumb {
+.#{$input-search-prefix}__dropdown::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 3px;
 }
 
-.#{$search-input-prefix}__dropdown::-webkit-scrollbar-track {
+.#{$input-search-prefix}__dropdown::-webkit-scrollbar-track {
   background: transparent;
 }
 

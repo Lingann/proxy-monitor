@@ -12,17 +12,17 @@ import { computed, defineComponent, h, onUnmounted, ref } from 'vue'
 
 import { useInputEvent } from '../../composables/use-input-event'
 import { BnInput } from '../../input'
-import { passwordInputProps } from './props/bn-input-password-props'
+import { inputPasswordProps } from './props/input-password-props'
 
 /* ================================================== */
 /* 区域：组件定义 */
 /* ================================================== */
 
-export const BnPasswordInput = defineComponent({
-  name: 'BnPasswordInput',
+export const BnInputPassword = defineComponent({
+  name: 'BnInputPassword',
   inheritAttrs: false,
   emits: ['update:modelValue'],
-  props: passwordInputProps(),
+  props: inputPasswordProps(),
   setup(props, { attrs, emit }) {
     /* 内部状态 */
     const visibleRef = ref(false)
@@ -102,4 +102,4 @@ export const BnPasswordInput = defineComponent({
 /* 区域结束：组件定义 */
 /* ================================================== */
 
-export default BnPasswordInput
+export default BnInputPassword

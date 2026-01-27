@@ -20,7 +20,7 @@ import { inputProps } from '../../../props/input-props'
  * 创建密码输入框属性
  * @returns 「密码输入框属性定义」包含默认值的属性定义
  */
-export const passwordInputProps = createVueProps('password-input', {
+export const inputPasswordProps = createVueProps('bn-input-password', {
   ...inputProps(),
   visibilityToggle: {
     type: Boolean,
@@ -31,4 +31,4 @@ export const passwordInputProps = createVueProps('password-input', {
 // #endregion
 // ==================================================
 
-export type PasswordInputProps = Partial<ExtractPropTypes<ReturnType<typeof passwordInputProps>>>
+export type InputPasswordProps = Partial<ExtractPropTypes<ReturnType<typeof inputPasswordProps>>>

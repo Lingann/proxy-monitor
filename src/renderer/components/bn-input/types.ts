@@ -88,7 +88,7 @@ export interface BaseInputProps {
 /**
  * 密码输入框特有属性接口
  */
-export interface PasswordInputProps extends BaseInputProps {
+export interface InputPasswordProps extends BaseInputProps {
 
   /** 是否显示密码可见性切换 */
   visibilityToggle?: boolean

@@ -16,11 +16,17 @@ import type { SearchOption, SearchInputConfig } from '../types'
 /* 区域：Props 定义 */
 /* ================================================== */
 
-export const bnSearchInputProps = createVueProps('bn-search-input', {
+export const inputSearchProps = createVueProps('bn-input-search', {
   /* 继承基础输入框 Props */
   ...inputProps(),
 
   /* ========== 扁平化 Props（推荐使用） ========== */
+
+  /** 绑定值 */
+  modelValue: {
+    type: [String, Number] as PropType<string | number | null>,
+    default: ''
+  },
 
   /** 搜索选项列表 */
   options: {
@@ -89,6 +95,9 @@ export const bnSearchInputProps = createVueProps('bn-search-input', {
   /** 搜索事件 */
   onSearch: Function as PropType<(query: string) => void>,
 
+  /** 值变更事件 */
+  onChange: Function as PropType<(value: string | number | null, option?: SearchOption) => void>,
+
   /** 选项选择事件 */
   onSelect: Function as PropType<(value: string | number | null, option?: SearchOption) => void>
 })
@@ -97,4 +106,4 @@ export const bnSearchInputProps = createVueProps('bn-search-input', {
 /* 区域结束：Props 定义 */
 /* ================================================== */
 
-export type BnSearchInputProps = Partial<ExtractPropTypes<ReturnType<typeof bnSearchInputProps>>>
+export type inputSearchProps = Partial<ExtractPropTypes<ReturnType<typeof inputSearchProps>>>

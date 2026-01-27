@@ -129,6 +129,7 @@ export const BnInput = defineComponent({
             onBlur={handleBlur}
             onChange={handleChange}
             onFocus={handleFocus}
+            onKeydown={props.onKeydown}
             onInput={(e: Event) => {
               handleInput((e.target as HTMLInputElement).value)
             }}

@@ -14,7 +14,7 @@ import { useI18n } from 'vue-i18n'
 import { Search } from 'lucide-vue-next'
 
 import { BnInput } from '../../input'
-import { bnSearchInputProps } from './props/bn-input-search-props'
+import { inputSearchProps } from './props/input-search-props'
 import { useSearchConfig } from './composables/use-search-config'
 import { useSearchDropdown } from './composables/use-search-dropdown'
 import { useSearchFuzzy } from './composables/use-search-fuzzy'
@@ -26,11 +26,11 @@ import type { SearchOption } from './types'
 /* 区域：组件定义 */
 /* ================================================== */
 
-export const BnSearchInput = defineComponent({
-  name: 'BnSearchInput',
+export const BnInputSearch = defineComponent({
+  name: 'BnInputSearch',
   inheritAttrs: false,
   emits: ['update:modelValue'],
-  props: bnSearchInputProps(),
+  props: inputSearchProps(),
 
   setup(props, { attrs, expose, emit }) {
     const { t } = useI18n()
@@ -45,6 +45,12 @@ export const BnSearchInput = defineComponent({
 
     /* ========== 配置合并 ========== */
     const { mergedConfig } = useSearchConfig(props, t)
+
+    const inputProps = computed(() => {
+      const { onChange, ...restProps } = props
+
+      return restProps
+    })
 
     /* ========== 下拉框状态 ========== */
     const {
@@ -174,11 +180,11 @@ export const BnSearchInput = defineComponent({
       <div
         ref={containerRef}
         class={[
-          'bn-search-input',
-          `bn-search-input--${mergedConfig.value.size}`,
+          'bn-input-search',
+          `bn-input-search--${mergedConfig.value.size}`,
           {
-            'bn-search-input--open': isOpen.value,
-            'bn-search-input--disabled': mergedConfig.value.disabled
+            'bn-input-search--open': isOpen.value,
+            'bn-input-search--disabled': mergedConfig.value.disabled
           }
         ]}
         style={{
@@ -189,7 +195,7 @@ export const BnSearchInput = defineComponent({
         }}
       >
         <BnInput
-          {...props}
+          {...inputProps.value}
           {...attrs}
           modelValue={queryRef.value}
           placeholder={mergedConfig.value.placeholder}
@@ -197,7 +203,7 @@ export const BnSearchInput = defineComponent({
           disabled={mergedConfig.value.disabled}
           clearable={mergedConfig.value.clearable}
           size={mergedConfig.value.size}
-          class={['bn-search-input__input', attrs.class]}
+          class={['bn-input-search__input', attrs.class]}
           v-slots={{
             prefix: renderPrefixIcon
           }}
@@ -209,14 +215,14 @@ export const BnSearchInput = defineComponent({
         />
 
         {isOpen.value && mergedConfig.value.enableDropdown && (
-          <div class="bn-search-input__dropdown">
+          <div class="bn-input-search__dropdown">
             {filteredOptions.value.length > 0 ? (
               filteredOptions.value.map((opt, index) => (
                 <div
                   key={opt.value}
                   class={[
-                    'bn-search-input__option',
-                    { 'bn-search-input__option--active': index === activeIndex.value }
+                    'bn-input-search__option',
+                    { 'bn-input-search__option--active': index === activeIndex.value }
                   ]}
                   onClick={() => selectOption(opt)}
                   onMouseenter={() => setActiveIndex(index)}
@@ -225,7 +231,7 @@ export const BnSearchInput = defineComponent({
                 </div>
               ))
             ) : (
-              <div class="bn-search-input__empty">{t('common.no_results')}</div>
+              <div class="bn-input-search__empty">{t('common.no_results')}</div>
             )}
           </div>
         )}
@@ -238,5 +244,4 @@ export const BnSearchInput = defineComponent({
 /* 区域结束：组件定义 */
 /* ================================================== */
 
-export default BnSearchInput
-
+export default BnInputSearch

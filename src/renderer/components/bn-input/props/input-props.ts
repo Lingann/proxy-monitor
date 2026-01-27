@@ -99,6 +99,9 @@ export const inputProps = createVueProps('input', {
   /* 事件回调：失去焦点事件 */
   onBlur: Function as PropType<(event: FocusEvent) => void>,
 
+  /* 事件回调：键盘按下事件 */
+  onKeydown: Function as PropType<(event: KeyboardEvent) => void>,
+
   /* 事件回调：清除事件 */
   onClear: Function as PropType<() => void>
 })
