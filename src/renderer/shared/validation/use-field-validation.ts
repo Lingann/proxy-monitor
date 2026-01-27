@@ -115,10 +115,10 @@ export const useFieldValidation = (options: FieldValidationOptions) => {
       return { isValid: true }
     }
 
-    const firstError = result.error.errors[0]
+    const firstError = result.error.issues[0]
 
     validateState.value = 'error'
-    validateMessage.value = firstError?.message || resolveMessage(rules[0], 'default')
+    validateMessage.value = firstError?.message ?? resolveMessage(rules[0], 'default')
 
     return { isValid: false, message: validateMessage.value }
   }
