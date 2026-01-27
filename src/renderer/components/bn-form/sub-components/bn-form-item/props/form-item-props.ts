@@ -6,11 +6,11 @@
  * @author                  blancnova-web
  * ******************************************************
  */
-import { createVueProps } from '../../../utils/create-vue-props'
+import { createVueProps } from '../../../../../utils/create-vue-props'
 
 import type { ExtractPropTypes, PropType } from 'vue'
 
-import type { FormItemRule } from '../types'
+import type { FormItemRule } from '../../../types'
 
 /* BnFormItem Props 定义函数 */
 export const bnFormItemProps = createVueProps('BnFormItem', {

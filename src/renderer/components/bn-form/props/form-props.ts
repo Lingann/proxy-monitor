@@ -8,17 +8,17 @@
  */
 
 import type { ExtractPropTypes, PropType } from 'vue'
+import { createVueProps } from '../../../utils/create-vue-props'
 
 import type { FormRules } from '../types'
 
 /* BnForm Props 定义函数 */
-export function bnFormProps() {
-  return {
-    /* 表单数据模型 */
-    model: {
-      type: Object as PropType<Record<string, unknown>>,
-      required: true
-    },
+export const bnFormProps = createVueProps('BnForm', {
+  /* 表单数据模型 */
+  model: {
+    type: Object as PropType<Record<string, unknown>>,
+    required: true
+  },
 
     /* 表单校验规则 */
     rules: {
@@ -67,8 +67,7 @@ export function bnFormProps() {
       type: Function as PropType<(e?: Event) => void>,
       default: undefined
     }
-  } as const
-}
+})
 
 /* 导出 BnForm Props 类型 */
 export type BnFormProps = ExtractPropTypes<ReturnType<typeof bnFormProps>>

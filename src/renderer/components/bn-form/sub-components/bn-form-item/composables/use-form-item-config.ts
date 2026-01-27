@@ -9,7 +9,7 @@
 
 import { inject } from 'vue'
 
-import { FormContextKey } from '../../types'
+import { FormContextKey } from '../../../types'
 
 /* 获取 Form Context */
 export function useFormItemConfig() {

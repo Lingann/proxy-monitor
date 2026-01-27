@@ -20,13 +20,13 @@ import {
   watch
 } from 'vue'
 
-import { normalizeRules, useFieldValidation } from '../../../shared/validation'
-import { useFormItemConfig } from '../composables/item/use-form-item-config'
-import { useFormItemRender } from '../composables/item/use-form-item-render'
-import { useFormItemState } from '../composables/item/use-form-item-state'
-import { bnFormItemProps, type BnFormItemProps } from '../props/form-item-props'
-import type { FormItemRule, FormTrigger, ValidatableField, ValidationResult } from '../types'
-import { FormItemContextKey } from '../types'
+import { normalizeRules, useFieldValidation } from '../../../../shared/validation'
+import { useFormItemConfig } from './composables/use-form-item-config'
+import { useFormItemRender } from './composables/use-form-item-render'
+import { useFormItemState } from './composables/use-form-item-state'
+import { bnFormItemProps, type BnFormItemProps } from './props/form-item-props'
+import type { FormItemRule, FormTrigger, ValidatableField, ValidationResult } from '../../types'
+import { FormItemContextKey } from '../../types'
 
 export const BnFormItem = defineComponent({
   name: 'BnFormItem',

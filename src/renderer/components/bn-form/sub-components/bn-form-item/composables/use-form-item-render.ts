@@ -9,8 +9,8 @@
 
 import { computed, type Ref } from 'vue'
 
-import type { FormContext, FormItemRule, ValidationState } from '../../types'
-import type { BnFormItemProps } from '../../props'
+import type { FormContext, FormItemRule, ValidationState } from '../../../types'
+import type { BnFormItemProps } from '../props/form-item-props'
 
 /* 处理 FormItem 的渲染逻辑 */
 export function useFormItemRender(

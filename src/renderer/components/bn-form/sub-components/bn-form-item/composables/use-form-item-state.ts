@@ -9,9 +9,9 @@
 
 import { computed } from 'vue'
 
-import type { FormContext } from '../../types'
-import type { BnFormItemProps } from '../../props'
-import { getPropValue } from '../../utils'
+import type { FormContext } from '../../../types'
+import type { BnFormItemProps } from '../props/form-item-props'
+import { getPropValue } from '../../../utils'
 
 /* 管理 FormItem 的字段值 */
 export function useFormItemState(
