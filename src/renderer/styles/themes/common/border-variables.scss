@@ -2,8 +2,6 @@
 // 边框变量
 // ======================================================
 
-@use '../functions/color-functions' as color-funcs;
-
 // 边框变量混入
 // @mixin border-variables - 定义所有边框相关的CSS变量
 @mixin border-variables {
@@ -32,39 +30,39 @@
   // 边框状态颜色
   --bn-border-color-hover: rgb(0 0 0 / 20%);
   --bn-border-color-active: rgb(0 0 0 / 30%);
-  --bn-border-color-focus: var(--bn-primary-color-base);
+  --bn-border-color-focus: var(--bn-primary-color-5);
   --bn-border-color-disabled: rgb(0 0 0 / 8%);
-  --bn-border-color-error: var(--bn-danger-color-base);
+  --bn-border-color-error: var(--bn-danger-color-5);
 
   // 功能 主色边框
-  --bn-border-color-primary: var(--bn-primary-color-base);
-  --bn-border-color-primary-hover: var(--bn-primary-color-hover);
-  --bn-border-color-primary-active: var(--bn-primary-color-active);
-  --bn-border-color-primary-disabled: var(--bn-primary-color-disabled);
+  --bn-border-color-primary: var(--bn-primary-color-5);
+  --bn-border-color-primary-hover: var(--bn-primary-color-4);
+  --bn-border-color-primary-active: var(--bn-primary-color-6);
+  --bn-border-color-primary-disabled: var(--bn-primary-color-2);
 
   // 功能 危险色边框
-  --bn-border-color-danger: var(--bn-danger-color-base);
-  --bn-border-color-danger-hover: var(--bn-danger-color-hover);
-  --bn-border-color-danger-active: var(--bn-danger-color-active);
-  --bn-border-color-danger-disabled: var(--bn-danger-color-disabled);
+  --bn-border-color-danger: var(--bn-danger-color-5);
+  --bn-border-color-danger-hover: var(--bn-danger-color-4);
+  --bn-border-color-danger-active: var(--bn-danger-color-6);
+  --bn-border-color-danger-disabled: var(--bn-danger-color-2);
 
   // 功能 警告色边框
-  --bn-border-color-warning: var(--bn-warning-color-base);
-  --bn-border-color-warning-hover: var(--bn-warning-color-hover);
-  --bn-border-color-warning-active: var(--bn-warning-color-active);
-  --bn-border-color-warning-disabled: var(--bn-warning-color-disabled);
+  --bn-border-color-warning: var(--bn-warning-color-5);
+  --bn-border-color-warning-hover: var(--bn-warning-color-4);
+  --bn-border-color-warning-active: var(--bn-warning-color-6);
+  --bn-border-color-warning-disabled: var(--bn-warning-color-2);
 
   // 功能 成功色边框
-  --bn-border-color-success: var(--bn-success-color-base);
-  --bn-border-color-success-hover: var(--bn-success-color-hover);
-  --bn-border-color-success-active: var(--bn-success-color-active);
-  --bn-border-color-success-disabled: var(--bn-success-color-disabled);
+  --bn-border-color-success: var(--bn-success-color-5);
+  --bn-border-color-success-hover: var(--bn-success-color-4);
+  --bn-border-color-success-active: var(--bn-success-color-6);
+  --bn-border-color-success-disabled: var(--bn-success-color-2);
 
   // 功能 信息色边框
-  --bn-border-color-info: var(--bn-info-color-base);
-  --bn-border-color-info-hover: var(--bn-info-color-hover);
-  --bn-border-color-info-active: var(--bn-info-color-active);
-  --bn-border-color-info-disabled: var(--bn-info-color-disabled);
+  --bn-border-color-info: var(--bn-info-color-5);
+  --bn-border-color-info-hover: var(--bn-info-color-4);
+  --bn-border-color-info-active: var(--bn-info-color-6);
+  --bn-border-color-info-disabled: var(--bn-info-color-2);
 
   // 功能边框颜色-淡色
   --bn-border-color-primary-light: var(--bn-primary-color-3);

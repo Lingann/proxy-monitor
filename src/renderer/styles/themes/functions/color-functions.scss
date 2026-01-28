@@ -55,16 +55,26 @@
 // @param {Color} $color - 基础颜色
 // @param {Number} $amount - 调亮的程度 (0-1)
 // @return {Color} - 调亮后的颜色
-@function lighten-color($color, $amount: 0.1) {
-  @return color.adjust($color, $lightness: math.percentage($amount));
+@function lighten-color($color, $weight: 0.2) {
+  // 1. 使用白色混合代替直接调整亮度，保持色彩纯度
+  $mixed: color.mix(white, $color, math.percentage($weight));
+  
+  // 2. 模拟自然光：颜色变亮时，色相微调（暖色向黄偏，冷色向青偏）
+  $hue-adjust: if(color.channel($color, "hue", $space: hsl) < 200, -2deg, 2deg);
+  
+  @return color.adjust($mixed, $hue: $hue-adjust);
 }
 
 // 调暗颜色
 // @param {Color} $color - 基础颜色
 // @param {Number} $amount - 调暗的程度 (0-1)
 // @return {Color} - 调暗后的颜色
-@function darken-color($color, $amount: 0.1) {
-  @return color.adjust($color, $lightness: math.percentage($amount) * -1);
+@function darken-color($color, $weight: 0.2) {
+  // 1. 使用黑色混合
+  $mixed: color.mix(black, $color, math.percentage($weight));
+  
+  // 2. 补偿：颜色变暗时，通常需要提高一点饱和度，防止颜色变“焦”
+  @return color.adjust($mixed, $saturation: 5%, $hue: 2deg);
 }
 
 // 调整颜色饱和度
@@ -73,56 +83,4 @@
 // @return {Color} - 调整后的颜色
 @function adjust-saturation($color, $amount: 0.1) {
   @return color.adjust($color, $saturation: math.percentage($amount));
-}
-
-// 创建hover状态的颜色(默认调亮5%)
-// @param {Color} $color - 基础颜色
-// @return {Color} - hover状态的颜色
-@function hover-color($color) {
-  @return lighten-color($color, 0.05);
-}
-
-// 创建active状态的颜色(默认调暗5%)
-// @param {Color} $color - 基础颜色
-// @return {Color} - active状态的颜色
-@function active-color($color) {
-  @return darken-color($color, 0.05);
-}
-
-// 创建disabled状态的颜色(默认降低饱和度并增加亮度)
-// @param {Color} $color - 基础颜色
-// @return {Color} - disabled状态的颜色
-@function disabled-color($color) {
-  $desaturated: color.adjust($color, $saturation: -30%);
-
-  @return lighten-color($desaturated, 0.2);
-}
-
-// 创建背景颜色(默认调亮90%)
-// @param {Color} $color - 基础颜色
-// @return {Color} - 背景颜色
-@function bg-color($color) {
-  @return lighten-color($color, 0.9);
-}
-
-// 创建边框颜色(默认调亮80%)
-// @param {Color} $color - 基础颜色
-// @return {Color} - 边框颜色
-@function border-color($color) {
-  @return lighten-color($color, 0.8);
-}
-
-// 创建透明色
-// @param {Color} $color - 基础颜色
-// @param {Number} $alpha - 透明度 (0-1)
-// @return {Color} - 透明色
-@function transparent-color($color, $alpha: 0.5) {
-  @return color.change($color, $alpha: $alpha);
-}
-
-// 创建selected状态的颜色(默认调亮10%)
-// @param {Color} $color - 基础颜色
-// @return {Color} - selected状态的颜色
-@function selected-color($color) {
-  @return lighten-color($color, 0.1);
 }

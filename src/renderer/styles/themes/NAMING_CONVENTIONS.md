@@ -67,11 +67,9 @@
 
 | 文件名 | 说明 | 混合宏类别 |
 |--------|------|----------|
-| `color-mixins.scss` | 颜色相关混合宏 | color |
 | `palette-mixins.scss` | 调色板相关混合宏 | palette |
 | `responsive-mixins.scss` | 响应式相关混合宏 | responsive |
-| `root-variables-mixins.scss` | 根变量相关混合宏 | root-variables |
-| `typography-mixins.scss` | 排版相关混合宏 | typography |
+| `root-mixins.scss` | 根变量相关混合宏 | root |
 
 ### 1.4 调色板文件 (`palettes/` 目录)
 
@@ -308,7 +306,28 @@ themes/
 --bn-animation-slide-in-up      // 从上滑入
 ```
 
-### 2.4 命名原则
+### 2.4 调色板变量规范
+
+**核心原则：用途优先而非定义优先。** 调色板只提供基础色阶，所有语义化变量在用途层定义。
+
+**色板变量范围：**
+- 基础色阶变量：`--bn-{palette}-inner-{1-9}` 与 `--bn-{palette}-color-{1-9}`
+- 禁止在色板层定义语义变量（bg/text/border 等）
+
+**色阶到语义映射示例：**
+```scss
+// 背景语义变量（用途层）
+--bn-bg-color-primary-base: var(--bn-primary-color-5);
+--bn-bg-color-primary-hover: var(--bn-primary-color-4);
+--bn-bg-color-primary-active: var(--bn-primary-color-6);
+--bn-bg-color-primary-disabled: var(--bn-primary-color-2);
+
+// 文本/边框语义变量（用途层）
+--bn-text-color-primary-base: var(--bn-primary-color-5);
+--bn-border-color-primary: var(--bn-primary-color-5);
+```
+
+### 2.5 命名原则
 
 1. **语义化优先**：变量名应清晰表达其用途
 2. **层级清晰**：按照 类别-类型-状态-变体 的层级组织
@@ -357,10 +376,8 @@ themes/
 #### 功能性 Mixin
 ```scss
 // 调色板生成
-@mixin generate-inner-vars { }
-@mixin generate-color-vars { }
-@mixin generate-semantic-vars { }
-@mixin generate-gradient-vars { }
+@mixin generate-palette-rgb-inner-vars { }
+@mixin generate-palette-rgb-color-vars { }
 
 // 响应式
 @mixin respond-above { }
@@ -376,7 +393,7 @@ themes/
 
 ```scss
 // 参数使用小写字母和连字符
-@mixin generate-color-vars($name, $palette, $prefix: 'bn') {
+@mixin generate-palette-rgb-color-vars($name, $palette, $prefix: 'bn') {
   // $name: 色板名称
   // $palette: 色板颜色映射
   // $prefix: CSS 变量前缀
@@ -485,8 +502,8 @@ themes/
   --bn-bg-color-disabled: #f5f5f5;
   
   // 3. 功能背景色
-  --bn-bg-color-primary-base: var(--bn-primary-color-base);
-  --bn-bg-color-success-base: var(--bn-success-color-base);
+  --bn-bg-color-primary-base: var(--bn-primary-color-5);
+  --bn-bg-color-success-base: var(--bn-success-color-5);
   
   // 4. 特殊背景色
   --bn-bg-color-mask: rgb(0 0 0 / 50%);
@@ -499,11 +516,11 @@ themes/
 每个 Mixin 应添加注释说明其用途和参数：
 
 ```scss
-// 生成颜色变量
+// 生成色板颜色变量
 // @param {String} $name - 色板名称 (如 primary, success 等)
 // @param {Map} $palette - 色板颜色映射
 // @param {String} $prefix - CSS 变量前缀，默认为 'bn'
-@mixin generate-color-vars($name, $palette, $prefix: 'bn') {
+@mixin generate-palette-rgb-color-vars($name, $palette, $prefix: 'bn') {
   @each $level, $color in $palette {
     $color-var-name: --#{$prefix}-#{$name}-color-#{$level};
     #{$color-var-name}: rgb(var(--#{$prefix}-#{$name}-inner-#{$level}));
@@ -557,16 +574,16 @@ themes/
   --bn-bg-color-disabled: #f5f5f5;
 
   // 3. 功能背景色 - 主色
-  --bn-bg-color-primary-base: var(--bn-primary-color-base);
+  --bn-bg-color-primary-base: var(--bn-primary-color-5);
   --bn-bg-color-primary-soft: rgba(var(--bn-primary-inner-5), 0.2);
-  --bn-bg-color-primary-hover: var(--bn-primary-color-hover);
-  --bn-bg-color-primary-active: var(--bn-primary-color-active);
+  --bn-bg-color-primary-hover: var(--bn-primary-color-4);
+  --bn-bg-color-primary-active: var(--bn-primary-color-6);
 
   // 4. 功能背景色 - 成功色
-  --bn-bg-color-success-base: var(--bn-success-color-base);
+  --bn-bg-color-success-base: var(--bn-success-color-5);
   --bn-bg-color-success-soft: rgba(var(--bn-success-inner-5), 0.2);
-  --bn-bg-color-success-hover: var(--bn-success-color-hover);
-  --bn-bg-color-success-active: var(--bn-success-color-active);
+  --bn-bg-color-success-hover: var(--bn-success-color-4);
+  --bn-bg-color-success-active: var(--bn-success-color-6);
 
   // 5. 特殊背景色
   --bn-bg-color-mask: rgb(0 0 0 / 50%);
@@ -584,19 +601,19 @@ themes/
   --bn-text-color-tertiary: #ccc;
 
   // 2. 功能文本色 - 主色
-  --bn-text-color-primary-base: var(--bn-primary-color-base);
-  --bn-text-color-primary-hover: var(--bn-primary-color-hover);
-  --bn-text-color-primary-active: var(--bn-primary-color-active);
+  --bn-text-color-primary-base: var(--bn-primary-color-5);
+  --bn-text-color-primary-hover: var(--bn-primary-color-4);
+  --bn-text-color-primary-active: var(--bn-primary-color-6);
 
   // 3. 功能文本色 - 成功色
-  --bn-text-color-success-base: var(--bn-success-color-base);
-  --bn-text-color-success-hover: var(--bn-success-color-hover);
-  --bn-text-color-success-active: var(--bn-success-color-active);
+  --bn-text-color-success-base: var(--bn-success-color-5);
+  --bn-text-color-success-hover: var(--bn-success-color-4);
+  --bn-text-color-success-active: var(--bn-success-color-6);
 
   // 4. 状态文本色
   --bn-text-color-disabled: rgb(0 0 0 / 25%);
   --bn-text-color-inverse: rgb(255 255 255 / 85%);
-  --bn-text-color-link: var(--bn-primary-color-base);
+  --bn-text-color-link: var(--bn-primary-color-5);
 
   // 5. 特殊文本色
   --bn-text-color-title: rgb(0 0 0 / 85%);
@@ -657,8 +674,8 @@ themes/
 
 ```scss
 // ✅ 推荐：使用变量引用
---bn-bg-color-primary-base: var(--bn-primary-color-base);
---bn-bg-color-primary-hover: var(--bn-primary-color-hover);
+--bn-bg-color-primary-base: var(--bn-primary-color-5);
+--bn-bg-color-primary-hover: var(--bn-primary-color-4);
 
 // ❌ 不推荐：重复定义
 --bn-bg-color-primary-base: #1890ff;

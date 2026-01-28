@@ -40,11 +40,11 @@ $icon-prefix: bn-icon;
   --bn-icon-color-inverse: var(--bn-text-color-inverse);
 
   // 图标功能色
-  --bn-icon-color-primary: var(--bn-primary-color-base);
-  --bn-icon-color-success: var(--bn-success-color-base);
-  --bn-icon-color-warning: var(--bn-warning-color-base);
-  --bn-icon-color-danger: var(--bn-danger-color-base);
-  --bn-icon-color-info: var(--bn-info-color-base);
+  --bn-icon-color-primary: var(--bn-text-color-primary-base);
+  --bn-icon-color-success: var(--bn-text-color-success-base);
+  --bn-icon-color-warning: var(--bn-text-color-warning-base);
+  --bn-icon-color-danger: var(--bn-text-color-danger-base);
+  --bn-icon-color-info: var(--bn-text-color-info-base);
 
   // 图标交互状态颜色
   --bn-icon-color-hover: var(--bn-text-color-hover);

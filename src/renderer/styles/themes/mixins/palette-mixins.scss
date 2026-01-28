@@ -3,13 +3,14 @@
 // ======================================================
 
 @use '../functions/color-functions' as color;
-@use '../functions/palette-functions' as palette;
 
-// 生成内部RGB值变量
-// @param {String} $name - 色板名称 (如primary, success等)
-// @param {Map} $palette - 色板颜色映射
-// @param {String} $prefix - CSS变量前缀，默认为bn
-@mixin generate-inner-vars($name, $palette, $prefix: 'bn') {
+/**
+ * 生成内部RGB值变量
+ * @param {String} $name - 色板名称 (如primary, success等)
+ * @param {Map} $palette - 色板颜色映射
+ * @param {String} $prefix - CSS变量前缀，默认为bn
+ */
+@mixin generate-palette-rgb-inner-vars($name, $palette, $prefix: 'bn') {
   @each $level, $color in $palette {
     $inner-var-name: --#{$prefix}-#{$name}-inner-#{$level};
 
@@ -17,76 +18,16 @@
   }
 }
 
-// 生成颜色变量 (使用inner变量)
-// @param {String} $name - 色板名称 (如primary, success等)
-// @param {Map} $palette - 色板颜色映射
-// @param {String} $prefix - CSS变量前缀，默认为bn
-@mixin generate-color-vars($name, $palette, $prefix: 'bn') {
+/**
+ * 生成颜色变量 (使用inner变量)
+ * @param {String} $name - 色板名称 (如primary, success等)
+ * @param {Map} $palette - 色板颜色映射
+ * @param {String} $prefix - CSS变量前缀，默认为bn
+ */
+@mixin generate-palette-rgb-color-vars($name, $palette, $prefix: 'bn') {
   @each $level, $color in $palette {
     $color-var-name: --#{$prefix}-#{$name}-color-#{$level};
 
     #{$color-var-name}: rgb(var(--#{$prefix}-#{$name}-inner-#{$level}));
   }
 }
-
-// 生成语义颜色变量
-// @param {String} $name - 色板名称 (如primary, success等)
-// @param {Map} $semantic-colors - 语义颜色映射
-// @param {String} $prefix - CSS变量前缀，默认为bn
-@mixin generate-semantic-vars($name, $semantic-colors, $prefix: 'bn') {
-  @each $type, $color in $semantic-colors {
-    $semantic-var-name: --#{$prefix}-#{$name}-color-#{$type};
-
-    @if $type == 'bg' or $type == 'border' or $type == 'subdued' or $type == 'disabled' {
-      // 这些类型使用浅色版本，对应数字1-4
-      $level: 1;
-
-      @if $type == 'border' {
-        $level: 2;
-      } @else if $type == 'subdued' {
-        $level: 3;
-      } @else if $type == 'disabled' {
-        $level: 2;
-      }
-
-      #{$semantic-var-name}: rgb(var(--#{$prefix}-#{$name}-inner-#{$level}));
-    } @else if $type == 'base' or $type == 'focus' {
-      // 这些类型使用基础色，对应数字5
-      #{$semantic-var-name}: rgb(var(--#{$prefix}-#{$name}-inner-5));
-    } @else if $type == 'hover' {
-      // hover使用浅一级的色，对应数字4
-      #{$semantic-var-name}: rgb(var(--#{$prefix}-#{$name}-inner-4));
-    } @else if $type == 'active' {
-      // active使用深一级的色，对应数字6
-      #{$semantic-var-name}: rgb(var(--#{$prefix}-#{$name}-inner-6));
-    } @else if $type == 'emphasis' {
-      // emphasis使用最深的色，对应数字9
-      #{$semantic-var-name}: rgb(var(--#{$prefix}-#{$name}-inner-9));
-    } @else if $type contains 'ghost' {
-      // ghost类型使用rgba格式
-      $opacity: 0.1;
-
-      @if $type == 'ghost-border' {
-        $opacity: 0.2;
-      } @else if $type == 'ghost-text' {
-        $opacity: 0.5;
-      }
-
-      #{$semantic-var-name}: rgba(var(--#{$prefix}-#{$name}-inner-5), #{$opacity});
-    }
-  }
-}
-
-// 生成渐变颜色变量
-// @param {String} $name - 色板名称 (如primary, success等)
-// @param {Map} $gradient-colors - 渐变颜色映射
-// @param {String} $prefix - CSS变量前缀，默认为bn
-@mixin generate-gradient-vars($name, $gradient-colors, $prefix: 'bn') {
-  @each $type, $value in $gradient-colors {
-    $gradient-var-name: --#{$prefix}-#{$name}-gradient-#{$type};
-
-    #{$gradient-var-name}: #{$value};
-  }
-}
-
-

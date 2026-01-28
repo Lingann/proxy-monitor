@@ -28,16 +28,16 @@ $blockquote-prefix: bn-blockquote;
 }
 
 @mixin blockquote-variant-variables {
-  --bn-blockquote-info-border-color: var(--bn-info-color-base);
-  --bn-blockquote-info-background-color: var(--bn-bg-color-info-light);
-  --bn-blockquote-info-color: var(--bn-text-color-info);
-  --bn-blockquote-success-border-color: var(--bn-success-color-base);
-  --bn-blockquote-success-background-color: var(--bn-bg-color-success-light);
-  --bn-blockquote-success-color: var(--bn-text-color-success);
-  --bn-blockquote-warning-border-color: var(--bn-warning-color-base);
-  --bn-blockquote-warning-background-color: var(--bn-bg-color-warning-light);
-  --bn-blockquote-warning-color: var(--bn-text-color-warning);
-  --bn-blockquote-danger-border-color: var(--bn-danger-color-base);
-  --bn-blockquote-danger-background-color: var(--bn-bg-color-danger-light);
-  --bn-blockquote-danger-color: var(--bn-text-color-danger);
+  --bn-blockquote-info-border-color: var(--bn-border-color-info);
+  --bn-blockquote-info-background-color: var(--bn-bg-color-info-soft-base);
+  --bn-blockquote-info-color: var(--bn-text-color-info-base);
+  --bn-blockquote-success-border-color: var(--bn-border-color-success);
+  --bn-blockquote-success-background-color: var(--bn-bg-color-success-soft-base);
+  --bn-blockquote-success-color: var(--bn-text-color-success-base);
+  --bn-blockquote-warning-border-color: var(--bn-border-color-warning);
+  --bn-blockquote-warning-background-color: var(--bn-bg-color-warning-soft-base);
+  --bn-blockquote-warning-color: var(--bn-text-color-warning-base);
+  --bn-blockquote-danger-border-color: var(--bn-border-color-danger);
+  --bn-blockquote-danger-background-color: var(--bn-bg-color-danger-soft-base);
+  --bn-blockquote-danger-color: var(--bn-text-color-danger-base);
 }

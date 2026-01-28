@@ -30,7 +30,7 @@
       transition: all var(--#{$input-prefix}-transition-duration);
 
       &:hover {
-        color: var(--bn-primary-color-base, #1677ff);
+        color: var(--bn-text-color-link-hover, #1677ff);
       }
 
       &:disabled {
