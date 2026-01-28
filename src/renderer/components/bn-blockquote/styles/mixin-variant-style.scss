@@ -1,88 +1,38 @@
-@use '../../variables' as *;
-// ======================================================
-// 引用文本样式混入
-// ======================================================
+/**
+ * ******************************************************
+ * @file                     mixin-variant-style.scss
+ * @description             Blockquote variant styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
 
-$blockquote-prefix: bn-blockquote;
+@use './variables' as *;
 
-// 引用文本基础样式
-@mixin blockquote-base-style {
-  blockquote {
-    padding-left: var(--bn-blockquote-padding-left);
-    margin: var(--bn-blockquote-margin);
-    font-size: var(--bn-blockquote-font-size);
-    font-style: var(--bn-blockquote-font-style);
-    line-height: var(--bn-blockquote-line-height);
-    color: var(--bn-blockquote-color);
-    background-color: var(--bn-blockquote-background-color);
-    border-left: var(--bn-blockquote-border-width) var(--bn-blockquote-border-style)
-      var(--bn-blockquote-border-color);
-
-    p {
-      margin-top: 0;
-      margin-bottom: var(--bn-spacing-sm);
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-
-    cite {
-      display: block;
-      margin-top: var(--bn-spacing-sm);
-      font-size: var(--bn-font-size-sm);
-      font-style: normal;
-      color: var(--bn-text-color-tertiary);
-    }
-  }
-}
-
-// 引用文本暗色模式样式
-@mixin blockquote-dark-style {
-  .dark-mode,
-  [data-theme='dark'] {
-    blockquote {
-      color: var(--bn-blockquote-color-dark);
-      background-color: var(--bn-blockquote-background-color-dark);
-      border-left-color: var(--bn-blockquote-border-color-dark);
-    }
-  }
-}
-
-// 引用文本类型样式
-@mixin blockquote-type-style {
-  // 信息引用文本
+@mixin blockquote-variant-style {
   .#{$blockquote-prefix}-info {
     color: var(--bn-blockquote-info-color);
     background-color: var(--bn-blockquote-info-background-color);
     border-left-color: var(--bn-blockquote-info-border-color);
   }
 
-  // 成功引用文本
   .#{$blockquote-prefix}-success {
     color: var(--bn-blockquote-success-color);
     background-color: var(--bn-blockquote-success-background-color);
     border-left-color: var(--bn-blockquote-success-border-color);
   }
 
-  // 警告引用文本
   .#{$blockquote-prefix}-warning {
     color: var(--bn-blockquote-warning-color);
     background-color: var(--bn-blockquote-warning-background-color);
     border-left-color: var(--bn-blockquote-warning-border-color);
   }
 
-  // 危险引用文本
   .#{$blockquote-prefix}-danger {
     color: var(--bn-blockquote-danger-color);
     background-color: var(--bn-blockquote-danger-background-color);
     border-left-color: var(--bn-blockquote-danger-border-color);
   }
-}
 
-// 引用文本样式变体
-@mixin blockquote-variant-style {
-  // 带图标的引用文本
   .#{$blockquote-prefix}-with-icon {
     position: relative;
     padding-left: calc(var(--bn-blockquote-padding-left) * 2 + 20px);
@@ -116,7 +66,6 @@ $blockquote-prefix: bn-blockquote;
     }
   }
 
-  // 全宽引用文本
   .#{$blockquote-prefix}-full-width {
     padding: var(--bn-padding-md);
     margin-right: 0;

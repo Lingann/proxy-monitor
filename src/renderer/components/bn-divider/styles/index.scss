@@ -1,32 +1,24 @@
 /**
  * ******************************************************
  * @file                     index.scss
- * @description             「分割线组件样式」
- * 分割线组件的样式定义
+ * @description             Divider style entry
  * @author                  blancnova-web
  * ******************************************************
  */
 
 @use './variables' as *;
-@use './mixins' as *;
-
-// ==================================================
-// #region 应用CSS变量
-// ==================================================
+@use './mixin-base-style' as *;
+@use './mixin-size-style' as *;
+@use './mixin-color-style' as *;
+@use './mixin-state-style' as *;
+@use './mixin-variant-style' as *;
 
 .#{$divider-prefix} {
   @include divider-base-variables;
 }
 
-// #endregion
-// ==================================================
-
-// ==================================================
-// #region 应用样式
-// ==================================================
-
-// 基础样式
 @include divider-base-style;
-
-// #endregion
-// ==================================================
+@include divider-size-style;
+@include divider-color-style;
+@include divider-state-style;
+@include divider-variant-style;

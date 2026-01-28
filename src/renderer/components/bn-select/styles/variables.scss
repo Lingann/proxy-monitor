@@ -1,22 +1,21 @@
-/* ====================================================== */
-/* 选择器变量 */
-/* ====================================================== */
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             Select variables and prefixes
+ * @author                  blancnova-web
+ * ******************************************************
+ */
 
-/* 选择器变量混入 */
-/* @mixin select-variables - 定义所有选择器相关的CSS变量 */
+$select-prefix: bn-select;
+
 @mixin select-variables {
-  /* 尺寸变量 */
   --bn-select-height-small: 24px;
   --bn-select-height-medium: 32px;
   --bn-select-height-large: 40px;
   --bn-select-font-size-small: 12px;
   --bn-select-font-size-medium: 14px;
   --bn-select-font-size-large: 16px;
-
-  /* 选项高度 */
   --bn-select-item-height: 36px;
-
-  /* 颜色变量 */
   --bn-select-bg: var(--bn-bg-color-base);
   --bn-select-border: var(--bn-border-color-base);
   --bn-select-border-hover: var(--bn-border-color-hover);
@@ -26,13 +25,7 @@
   --bn-select-item-hover: var(--bn-bg-color-hover);
   --bn-select-item-selected: var(--bn-bg-color-primary-soft-base);
   --bn-select-error: var(--bn-text-color-danger-base);
-
-  /* 圆角 */
   --bn-select-radius: var(--bn-border-radius-md);
-
-  /* 阴影 */
   --bn-select-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  /* 层级 */
   --bn-select-z-index: 100;
 }

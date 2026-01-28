@@ -1,0 +1,35 @@
+/**
+ * ******************************************************
+ * @file                     mixin-size-style.scss
+ * @description             Select size styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin select-size-style {
+  .#{$select-prefix}--small {
+    font-size: var(--bn-select-font-size-small);
+
+    .#{$select-prefix}__trigger {
+      height: var(--bn-select-height-small);
+    }
+  }
+
+  .#{$select-prefix}--medium {
+    font-size: var(--bn-select-font-size-medium);
+
+    .#{$select-prefix}__trigger {
+      height: var(--bn-select-height-medium);
+    }
+  }
+
+  .#{$select-prefix}--large {
+    font-size: var(--bn-select-font-size-large);
+
+    .#{$select-prefix}__trigger {
+      height: var(--bn-select-height-large);
+    }
+  }
+}

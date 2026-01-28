@@ -1,54 +1,42 @@
-// ======================================================
-// 引用文本变量混入
-// ======================================================
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             Blockquote variables and prefixes
+ * @author                  blancnova-web
+ * ******************************************************
+ */
 
-// 引用文本基础变量
+$blockquote-prefix: bn-blockquote;
+
 @mixin blockquote-base-variables {
-  // 引用文本内边距和间距
   --bn-blockquote-padding-left: 1rem;
   --bn-blockquote-margin: var(--bn-spacing-md) 0;
-
-  // 引用文本边框
   --bn-blockquote-border-width: 4px;
   --bn-blockquote-border-style: solid;
-
-  // 引用文本字体样式
   --bn-blockquote-font-style: italic;
   --bn-blockquote-font-size: var(--bn-font-size-md);
   --bn-blockquote-line-height: var(--bn-line-height-md);
 }
 
-// 引用文本颜色变量
 @mixin blockquote-color-variables {
-  // 引用文本颜色
   --bn-blockquote-color: var(--bn-text-color-secondary);
   --bn-blockquote-border-color: var(--bn-primary-color-3);
   --bn-blockquote-background-color: transparent;
-
-  // 暗色模式下的颜色
   --bn-blockquote-color-dark: var(--bn-text-color-secondary-dark);
   --bn-blockquote-border-color-dark: var(--bn-primary-color-6);
   --bn-blockquote-background-color-dark: var(--bn-bg-color-component-dark);
 }
 
-// 引用文本变体变量
 @mixin blockquote-variant-variables {
-  // 引用文本变体 - 信息
   --bn-blockquote-info-border-color: var(--bn-info-color-base);
   --bn-blockquote-info-background-color: var(--bn-bg-color-info-light);
   --bn-blockquote-info-color: var(--bn-text-color-info);
-
-  // 引用文本变体 - 成功
   --bn-blockquote-success-border-color: var(--bn-success-color-base);
   --bn-blockquote-success-background-color: var(--bn-bg-color-success-light);
   --bn-blockquote-success-color: var(--bn-text-color-success);
-
-  // 引用文本变体 - 警告
   --bn-blockquote-warning-border-color: var(--bn-warning-color-base);
   --bn-blockquote-warning-background-color: var(--bn-bg-color-warning-light);
   --bn-blockquote-warning-color: var(--bn-text-color-warning);
-
-  // 引用文本变体 - 危险
   --bn-blockquote-danger-border-color: var(--bn-danger-color-base);
   --bn-blockquote-danger-background-color: var(--bn-bg-color-danger-light);
   --bn-blockquote-danger-color: var(--bn-text-color-danger);

@@ -1,0 +1,83 @@
+/**
+ * ******************************************************
+ * @file                     mixin-size-style.scss
+ * @description             Radio size styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use 'sass:map';
+@use './variables' as *;
+
+$radio-sizes: (
+  'small': (
+    size: $radio-size-sm,
+    dot-size: $radio-dot-size-sm,
+    padding-left: $radio-label-padding-left-sm
+  ),
+  'medium': (
+    size: $radio-size-md,
+    dot-size: $radio-dot-size-md,
+    padding-left: $radio-label-padding-left-md
+  ),
+  'large': (
+    size: $radio-size-lg,
+    dot-size: $radio-dot-size-lg,
+    padding-left: $radio-label-padding-left-lg
+  )
+);
+
+@mixin radio-size-style {
+  @each $size-name, $size-values in $radio-sizes {
+    .#{$radio-prefix}--#{$size-name} {
+      font-size: map.get($size-values, size);
+
+      .#{$radio-prefix}__inner {
+        width: map.get($size-values, size);
+        height: map.get($size-values, size);
+
+        &::after {
+          width: map.get($size-values, dot-size);
+          height: map.get($size-values, dot-size);
+          margin-top: calc(map.get($size-values, dot-size) / -2);
+          margin-left: calc(map.get($size-values, dot-size) / -2);
+        }
+      }
+
+      .#{$radio-prefix}__label {
+        padding-left: map.get($size-values, padding-left);
+        line-height: map.get($size-values, size);
+      }
+    }
+  }
+}
+
+$radio-button-sizes: (
+  'small': (
+    font-size: $radio-size-sm,
+    padding-y: $radio-button-padding-y-sm,
+    padding-x: $radio-button-padding-x-sm
+  ),
+  'medium': (
+    font-size: $radio-size-md,
+    padding-y: $radio-button-padding-y-md,
+    padding-x: $radio-button-padding-x-md
+  ),
+  'large': (
+    font-size: $radio-size-lg,
+    padding-y: $radio-button-padding-y-lg,
+    padding-x: $radio-button-padding-x-lg
+  )
+);
+
+@mixin radio-button-size-style {
+  @each $size-name, $size-values in $radio-button-sizes {
+    .#{$radio-prefix}-button--#{$size-name} {
+      padding: map.get($size-values, padding-y) map.get($size-values, padding-x);
+      font-size: map.get($size-values, font-size);
+      line-height: calc(
+        #{map.get($size-values, font-size)} + #{map.get($size-values, padding-y)} * 2 - #{$radio-border-width} * 2
+      );
+    }
+  }
+}

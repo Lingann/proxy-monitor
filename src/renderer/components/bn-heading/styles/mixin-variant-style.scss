@@ -1,0 +1,85 @@
+/**
+ * ******************************************************
+ * @file                     mixin-variant-style.scss
+ * @description             Heading variant styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin heading-variant-style {
+  .#{$heading-prefix}-border {
+    padding-bottom: var(--bn-heading-with-border-padding-bottom);
+    margin-bottom: var(--bn-heading-with-border-margin-bottom);
+    border-bottom: var(--bn-heading-border-bottom-width) var(--bn-heading-border-bottom-style)
+      var(--bn-heading-border-bottom-color);
+  }
+
+  .#{$heading-prefix}-badge {
+    display: inline-flex;
+    align-items: center;
+
+    &::after {
+      display: inline-block;
+      padding: var(--bn-heading-badge-padding);
+      margin-left: var(--bn-heading-badge-margin-left);
+      font-size: var(--bn-heading-badge-font-size);
+      font-weight: var(--bn-font-weight-normal);
+      line-height: 1;
+      color: var(--bn-heading-badge-color);
+      content: attr(data-badge);
+      background-color: var(--bn-heading-badge-background);
+      border-radius: var(--bn-heading-badge-border-radius);
+    }
+  }
+
+  .#{$heading-prefix}-clickable {
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--bn-heading-hover-color);
+    }
+  }
+
+  .#{$heading-prefix}-anchor {
+    position: relative;
+
+    &:hover .#{$heading-prefix}-anchor-link {
+      opacity: 1;
+    }
+
+    .#{$heading-prefix}-anchor-link {
+      position: absolute;
+      top: 50%;
+      left: -1.2em;
+      width: 1em;
+      height: 1em;
+      color: var(--bn-text-color-tertiary);
+      opacity: 0;
+      transform: translateY(-50%);
+      transition: opacity 0.3s;
+
+      &:hover {
+        color: var(--bn-primary-color-base);
+      }
+    }
+  }
+
+  .dark-mode,
+  [data-theme='dark'] {
+    .#{$heading-prefix}-border {
+      border-bottom-color: var(--bn-heading-border-bottom-color-dark);
+    }
+
+    .#{$heading-prefix}-badge::after {
+      color: var(--bn-heading-badge-color-dark);
+      background-color: var(--bn-heading-badge-background-dark);
+    }
+
+    .#{$heading-prefix}-clickable:hover {
+      color: var(--bn-heading-hover-color-dark);
+    }
+  }
+}

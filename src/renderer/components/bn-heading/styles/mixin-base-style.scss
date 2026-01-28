@@ -1,0 +1,100 @@
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             Heading base styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin heading-base-style {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .#{$heading-prefix}-h1,
+  .#{$heading-prefix}-h2,
+  .#{$heading-prefix}-h3,
+  .#{$heading-prefix}-h4,
+  .#{$heading-prefix}-h5,
+  .#{$heading-prefix}-h6 {
+    padding: 0;
+    margin: 0;
+    font-family: var(--bn-heading-font-family);
+  }
+
+  h1,
+  .#{$heading-prefix}-h1 {
+    margin-top: var(--bn-h1-margin-top);
+    margin-bottom: var(--bn-h1-margin-bottom);
+    font-size: var(--bn-h1-font-size);
+    font-weight: var(--bn-h1-font-weight);
+    line-height: var(--bn-h1-line-height);
+    color: var(--bn-h1-color);
+    text-transform: var(--bn-h1-text-transform);
+    letter-spacing: var(--bn-h1-letter-spacing);
+  }
+
+  h2,
+  .#{$heading-prefix}-h2 {
+    margin-top: var(--bn-h2-margin-top);
+    margin-bottom: var(--bn-h2-margin-bottom);
+    font-size: var(--bn-h2-font-size);
+    font-weight: var(--bn-h2-font-weight);
+    line-height: var(--bn-h2-line-height);
+    color: var(--bn-h2-color);
+    text-transform: var(--bn-h2-text-transform);
+    letter-spacing: var(--bn-h2-letter-spacing);
+  }
+
+  h3,
+  .#{$heading-prefix}-h3 {
+    margin-top: var(--bn-h3-margin-top);
+    margin-bottom: var(--bn-h3-margin-bottom);
+    font-size: var(--bn-h3-font-size);
+    font-weight: var(--bn-h3-font-weight);
+    line-height: var(--bn-h3-line-height);
+    color: var(--bn-h3-color);
+    text-transform: var(--bn-h3-text-transform);
+    letter-spacing: var(--bn-h3-letter-spacing);
+  }
+
+  h4,
+  .#{$heading-prefix}-h4 {
+    margin-top: var(--bn-h4-margin-top);
+    margin-bottom: var(--bn-h4-margin-bottom);
+    font-size: var(--bn-h4-font-size);
+    font-weight: var(--bn-h4-font-weight);
+    line-height: var(--bn-h4-line-height);
+    color: var(--bn-h4-color);
+    text-transform: var(--bn-h4-text-transform);
+    letter-spacing: var(--bn-h4-letter-spacing);
+  }
+
+  h5,
+  .#{$heading-prefix}-h5 {
+    margin-top: var(--bn-h5-margin-top);
+    margin-bottom: var(--bn-h5-margin-bottom);
+    font-size: var(--bn-h5-font-size);
+    font-weight: var(--bn-h5-font-weight);
+    line-height: var(--bn-h5-line-height);
+    color: var(--bn-h5-color);
+    text-transform: var(--bn-h5-text-transform);
+    letter-spacing: var(--bn-h5-letter-spacing);
+  }
+
+  h6,
+  .#{$heading-prefix}-h6 {
+    margin-top: var(--bn-h6-margin-top);
+    margin-bottom: var(--bn-h6-margin-bottom);
+    font-size: var(--bn-h6-font-size);
+    font-weight: var(--bn-h6-font-weight);
+    line-height: var(--bn-h6-line-height);
+    color: var(--bn-h6-color);
+    text-transform: var(--bn-h6-text-transform);
+    letter-spacing: var(--bn-h6-letter-spacing);
+  }
+}
