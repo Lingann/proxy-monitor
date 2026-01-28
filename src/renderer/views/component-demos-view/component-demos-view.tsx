@@ -23,11 +23,12 @@ const menuData: MenuItem[] = [
         ]
     },
     {
-        id: 'trigger',
-        label: 'Trigger Components',
+        id: 'select',
+        label: 'Select Components',
         type: 'group',
         children: [
-            { id: 'bn-button-trigger', label: 'BnButtonTrigger', type: 'item' }
+            { id: 'bn-select', label: 'BnSelect', type: 'item' },
+            { id: 'bn-select-item', label: 'BnSelectItem', type: 'item' }
         ]
     }
 ];

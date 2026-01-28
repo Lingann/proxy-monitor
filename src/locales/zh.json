@@ -21,6 +21,91 @@
     "component_library": "组件库",
     "system_proxy": "系统代理"
   },
+  "component_demos": {
+    "bn_select_item": {
+      "basic": {
+        "trigger_label": "点击选择",
+        "content": "选择内容"
+      },
+      "click": {
+        "trigger_label": "点击选择",
+        "content": "点击选择的内容"
+      },
+      "hover": {
+        "trigger_label": "悬停选择",
+        "content": "悬停选择的内容"
+      }
+    },
+    "bn_select": {
+      "role_placeholder": "请选择角色",
+      "roles": {
+        "admin": "管理员",
+        "user": "用户",
+        "guest": "访客"
+      }
+    },
+    "bn_input": {
+      "basic_placeholder": "请输入内容",
+      "username_placeholder": "请输入用户名",
+      "disabled_value": "禁用的输入框"
+    },
+    "bn_form_item": {
+      "labels": {
+        "username": "用户名",
+        "email_address": "邮箱地址"
+      },
+      "placeholders": {
+        "username": "请输入用户名",
+        "email_address": "请输入邮箱地址"
+      }
+    },
+    "bn_form": {
+      "labels": {
+        "username": "用户名",
+        "email": "邮箱",
+        "role": "角色"
+      },
+      "placeholders": {
+        "username": "请输入用户名",
+        "email": "请输入邮箱",
+        "role": "请选择角色"
+      },
+      "roles": {
+        "admin": "管理员",
+        "user": "用户",
+        "guest": "访客"
+      },
+      "actions": {
+        "rules": {
+          "username_required": "用户名必填",
+          "email_required": "邮箱必填"
+        },
+        "validate_result": "验证结果: {result}",
+        "validate_success": "成功",
+        "validate_failure": "失败",
+        "validate_error": "验证错误: {error}",
+        "reset_done": "表单已重置",
+        "set_defaults": "已设置为管理员默认值",
+        "button_validate": "验证",
+        "button_reset": "重置",
+        "button_get_values": "获取值",
+        "button_set_values": "设置值",
+        "output_placeholder": "// 输出将显示在这里"
+      },
+      "validation": {
+        "rules": {
+          "username_required": "用户名必填",
+          "username_min": "至少3个字符",
+          "email_required": "邮箱必填",
+          "email_invalid": "请输入有效的邮箱",
+          "role_required": "角色必选"
+        },
+        "result_log": "验证结果:",
+        "error_log": "验证失败:",
+        "button_validate": "验证表单"
+      }
+    }
+  },
   "monitor": {
     "network_traffic": "网络流量",
     "process_list": "进程列表",
@@ -153,3 +238,4 @@
     "remove_from_bypass": "从绕过列表移除"
   }
 }
+

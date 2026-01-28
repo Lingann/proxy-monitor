@@ -6,7 +6,7 @@ const demoPages: Record<string, any> = {
     'bn-form-item': defineAsyncComponent(() => import('../demos/bn-form-item/bn-form-item-doc')),
     'bn-input': defineAsyncComponent(() => import('../demos/bn-input/bn-input-doc')),
     'bn-select': defineAsyncComponent(() => import('../demos/bn-select/bn-select-doc')),
-    'bn-button-trigger': defineAsyncComponent(() => import('../demos/bn-button-trigger/bn-button-trigger-doc'))
+    'bn-select-item': defineAsyncComponent(() => import('../demos/bn-select-item/bn-select-item-doc'))
 };
 
 export interface DemoDocPageProps {

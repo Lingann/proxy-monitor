@@ -1,0 +1,77 @@
+@use './variables' as *;
+
+@mixin select-item-variant-style {
+  .#{$select-item-prefix}--variant-soft {
+    --bn-select-item-bg-color: var(--bn-select-item-nature-soft-bg-color);
+    --bn-select-item-text-color: var(--bn-select-item-nature-soft-text-color);
+    --bn-select-item-border-color: var(--bn-select-item-nature-soft-border-color);
+    --bn-select-item-hover-bg-color: var(--bn-select-item-nature-soft-hover-bg-color);
+    --bn-select-item-hover-text-color: var(--bn-select-item-nature-soft-hover-text-color);
+    --bn-select-item-hover-border-color: var(--bn-select-item-nature-soft-hover-border-color);
+    --bn-select-item-active-bg-color: var(--bn-select-item-nature-soft-active-bg-color);
+    --bn-select-item-active-text-color: var(--bn-select-item-nature-soft-active-text-color);
+    --bn-select-item-active-border-color: var(--bn-select-item-nature-soft-active-border-color);
+    --bn-select-item-selected-bg-color: var(--bn-select-item-nature-soft-selected-bg-color);
+    --bn-select-item-selected-text-color: var(--bn-select-item-nature-soft-selected-text-color);
+    --bn-select-item-selected-border-color: var(--bn-select-item-nature-soft-selected-border-color);
+    --bn-select-item-disabled-bg-color: var(--bn-select-item-nature-soft-disabled-bg-color);
+    --bn-select-item-disabled-text-color: var(--bn-select-item-nature-soft-disabled-text-color);
+    --bn-select-item-disabled-border-color: var(--bn-select-item-nature-soft-disabled-border-color);
+  }
+
+  .#{$select-item-prefix}--variant-solid {
+    --bn-select-item-bg-color: var(--bn-select-item-nature-solid-bg-color);
+    --bn-select-item-text-color: var(--bn-select-item-nature-solid-text-color);
+    --bn-select-item-border-color: var(--bn-select-item-nature-solid-border-color);
+    --bn-select-item-hover-bg-color: var(--bn-select-item-nature-solid-hover-bg-color);
+    --bn-select-item-hover-text-color: var(--bn-select-item-nature-solid-hover-text-color);
+    --bn-select-item-hover-border-color: var(--bn-select-item-nature-solid-hover-border-color);
+    --bn-select-item-active-bg-color: var(--bn-select-item-nature-solid-active-bg-color);
+    --bn-select-item-active-text-color: var(--bn-select-item-nature-solid-active-text-color);
+    --bn-select-item-active-border-color: var(--bn-select-item-nature-solid-active-border-color);
+    --bn-select-item-selected-bg-color: var(--bn-select-item-nature-solid-selected-bg-color);
+    --bn-select-item-selected-text-color: var(--bn-select-item-nature-solid-selected-text-color);
+    --bn-select-item-selected-border-color: var(--bn-select-item-nature-solid-selected-border-color);
+    --bn-select-item-disabled-bg-color: var(--bn-select-item-nature-solid-disabled-bg-color);
+    --bn-select-item-disabled-text-color: var(--bn-select-item-nature-solid-disabled-text-color);
+    --bn-select-item-disabled-border-color: var(--bn-select-item-nature-solid-disabled-border-color);
+  }
+
+  @each $color in $select-item-colors {
+    .#{$select-item-prefix}--variant-soft.#{$select-item-prefix}--color-#{$color} {
+      --bn-select-item-bg-color: var(--bn-select-item-#{$color}-soft-bg-color);
+      --bn-select-item-text-color: var(--bn-select-item-#{$color}-soft-text-color);
+      --bn-select-item-border-color: var(--bn-select-item-#{$color}-soft-border-color);
+      --bn-select-item-hover-bg-color: var(--bn-select-item-#{$color}-soft-hover-bg-color);
+      --bn-select-item-hover-text-color: var(--bn-select-item-#{$color}-soft-hover-text-color);
+      --bn-select-item-hover-border-color: var(--bn-select-item-#{$color}-soft-hover-border-color);
+      --bn-select-item-active-bg-color: var(--bn-select-item-#{$color}-soft-active-bg-color);
+      --bn-select-item-active-text-color: var(--bn-select-item-#{$color}-soft-active-text-color);
+      --bn-select-item-active-border-color: var(--bn-select-item-#{$color}-soft-active-border-color);
+      --bn-select-item-selected-bg-color: var(--bn-select-item-#{$color}-soft-selected-bg-color);
+      --bn-select-item-selected-text-color: var(--bn-select-item-#{$color}-soft-selected-text-color);
+      --bn-select-item-selected-border-color: var(--bn-select-item-#{$color}-soft-selected-border-color);
+      --bn-select-item-disabled-bg-color: var(--bn-select-item-#{$color}-soft-disabled-bg-color);
+      --bn-select-item-disabled-text-color: var(--bn-select-item-#{$color}-soft-disabled-text-color);
+      --bn-select-item-disabled-border-color: var(--bn-select-item-#{$color}-soft-disabled-border-color);
+    }
+
+    .#{$select-item-prefix}--variant-solid.#{$select-item-prefix}--color-#{$color} {
+      --bn-select-item-bg-color: var(--bn-select-item-#{$color}-solid-bg-color);
+      --bn-select-item-text-color: var(--bn-select-item-#{$color}-solid-text-color);
+      --bn-select-item-border-color: var(--bn-select-item-#{$color}-solid-border-color);
+      --bn-select-item-hover-bg-color: var(--bn-select-item-#{$color}-solid-hover-bg-color);
+      --bn-select-item-hover-text-color: var(--bn-select-item-#{$color}-solid-hover-text-color);
+      --bn-select-item-hover-border-color: var(--bn-select-item-#{$color}-solid-hover-border-color);
+      --bn-select-item-active-bg-color: var(--bn-select-item-#{$color}-solid-active-bg-color);
+      --bn-select-item-active-text-color: var(--bn-select-item-#{$color}-solid-active-text-color);
+      --bn-select-item-active-border-color: var(--bn-select-item-#{$color}-solid-active-border-color);
+      --bn-select-item-selected-bg-color: var(--bn-select-item-#{$color}-solid-selected-bg-color);
+      --bn-select-item-selected-text-color: var(--bn-select-item-#{$color}-solid-selected-text-color);
+      --bn-select-item-selected-border-color: var(--bn-select-item-#{$color}-solid-selected-border-color);
+      --bn-select-item-disabled-bg-color: var(--bn-select-item-#{$color}-solid-disabled-bg-color);
+      --bn-select-item-disabled-text-color: var(--bn-select-item-#{$color}-solid-disabled-text-color);
+      --bn-select-item-disabled-border-color: var(--bn-select-item-#{$color}-solid-disabled-border-color);
+    }
+  }
+}

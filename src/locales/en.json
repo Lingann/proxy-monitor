@@ -20,6 +20,91 @@
     "component_library": "Component Library",
     "system_proxy": "System Proxy"
   },
+  "component_demos": {
+    "bn_select_item": {
+      "basic": {
+        "trigger_label": "Click to select",
+        "content": "Select content"
+      },
+      "click": {
+        "trigger_label": "Click to select",
+        "content": "Content selected by click"
+      },
+      "hover": {
+        "trigger_label": "Hover to select",
+        "content": "Content selected by hover"
+      }
+    },
+    "bn_select": {
+      "role_placeholder": "Please select a role",
+      "roles": {
+        "admin": "Administrator",
+        "user": "User",
+        "guest": "Guest"
+      }
+    },
+    "bn_input": {
+      "basic_placeholder": "Please enter content",
+      "username_placeholder": "Please enter username",
+      "disabled_value": "Disabled input"
+    },
+    "bn_form_item": {
+      "labels": {
+        "username": "Username",
+        "email_address": "Email address"
+      },
+      "placeholders": {
+        "username": "Please enter username",
+        "email_address": "Please enter email address"
+      }
+    },
+    "bn_form": {
+      "labels": {
+        "username": "Username",
+        "email": "Email",
+        "role": "Role"
+      },
+      "placeholders": {
+        "username": "Please enter username",
+        "email": "Please enter email",
+        "role": "Please select a role"
+      },
+      "roles": {
+        "admin": "Administrator",
+        "user": "User",
+        "guest": "Guest"
+      },
+      "actions": {
+        "rules": {
+          "username_required": "Username is required",
+          "email_required": "Email is required"
+        },
+        "validate_result": "Validation result: {result}",
+        "validate_success": "Success",
+        "validate_failure": "Failure",
+        "validate_error": "Validation error: {error}",
+        "reset_done": "Form has been reset",
+        "set_defaults": "Set to default administrator values",
+        "button_validate": "Validate",
+        "button_reset": "Reset",
+        "button_get_values": "Get Values",
+        "button_set_values": "Set Values",
+        "output_placeholder": "// Output will appear here"
+      },
+      "validation": {
+        "rules": {
+          "username_required": "Username is required",
+          "username_min": "At least 3 characters",
+          "email_required": "Email is required",
+          "email_invalid": "Please enter a valid email",
+          "role_required": "Role is required"
+        },
+        "result_log": "Validation result:",
+        "error_log": "Validation failed:",
+        "button_validate": "Validate form"
+      }
+    }
+  },
   "monitor": {
     "analyze": "Analyze",
     "refresh": "Refresh",
@@ -149,3 +234,4 @@
     "remove_from_bypass": "Remove from Bypass"
   }
 }
+

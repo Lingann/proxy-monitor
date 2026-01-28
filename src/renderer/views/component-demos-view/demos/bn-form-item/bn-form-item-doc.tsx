@@ -4,9 +4,9 @@ import { DemoContainer } from '../../components/demo-container';
 import { BnForm } from '../../../components/bn-form';
 import { BnFormItem } from '../../../components/bn-form';
 import { BnInput } from '../../../components/bn-input';
-import BasicFormItem from './examples/basic-form-item';
-import FormItemLabel from './examples/form-item-label';
-import FormItemRequired from './examples/form-item-required';
+import { BasicFormItem } from './examples/basic-form-item';
+import { FormItemLabel } from './examples/form-item-label';
+import { FormItemRequired } from './examples/form-item-required';
 
 export default defineComponent({
     name: 'BnFormItemDoc',
@@ -51,3 +51,4 @@ export default defineComponent({
         );
     }
 });
+

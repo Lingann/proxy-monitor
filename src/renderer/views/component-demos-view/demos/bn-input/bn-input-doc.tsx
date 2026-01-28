@@ -2,9 +2,9 @@ import { defineComponent } from 'vue';
 import styles from './bn-input-doc.module.scss';
 import { DemoContainer } from '../../components/demo-container';
 import { BnInput } from '../../../components/bn-input';
-import BasicInput from './examples/basic-input';
-import InputPlaceholder from './examples/input-placeholder';
-import InputDisabled from './examples/input-disabled';
+import { BasicInput } from './examples/basic-input';
+import { InputPlaceholder } from './examples/input-placeholder';
+import { InputDisabled } from './examples/input-disabled';
 
 export default defineComponent({
     name: 'BnInputDoc',
@@ -43,3 +43,4 @@ export default defineComponent({
         );
     }
 });
+

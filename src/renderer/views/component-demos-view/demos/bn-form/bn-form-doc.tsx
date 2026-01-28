@@ -5,9 +5,9 @@ import { BnForm } from '../../../components/bn-form';
 import { BnFormItem } from '../../../components/bn-form';
 import { BnInput } from '../../../components/bn-input';
 import { BnSelect } from '../../../components/bn-select';
-import BasicForm from './examples/basic-form';
-import FormValidation from './examples/form-validation';
-import FormActions from './examples/form-actions';
+import { BasicForm } from './examples/basic-form';
+import { FormValidation } from './examples/form-validation';
+import { FormActions } from './examples/form-actions';
 
 export default defineComponent({
     name: 'BnFormDoc',
@@ -80,3 +80,4 @@ const handleSetValues = () => {
         );
     }
 });
+
