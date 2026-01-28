@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 import styles from './settings.module.scss';
 import { useSettingsState } from './composables/use-settings-state';
-import { BnSelect } from '../../components/bn-select';
+import { BnSelect } from '@balnc-nova-ui/core';
 
 export default defineComponent({
     name: 'SettingsView',

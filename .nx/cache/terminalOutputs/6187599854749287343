@@ -1,0 +1,34 @@
+[2m> [22mtsc && concurrently "vite" "cross-env NODE_ENV=development electron ."
+
+apps/proxy-monitor/src/renderer/index.ts(11,29): error TS2307: Cannot find module '../views/monitor/index' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/index.ts(16,29): error TS2307: Cannot find module '../views/settings/index' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/index.ts(21,29): error TS2307: Cannot find module '../views/system-proxy/index' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/index.ts(26,29): error TS2307: Cannot find module '../views/component-library/index' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/router/index.ts(26,29): error TS2307: Cannot find module '../views/component-library/index' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(4,31): error TS2307: Cannot find module '../../../components/bn-table/types' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(5,18): error TS2307: Cannot find module '../../../components/bn-icon/bn-icon' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(41,81): error TS7006: Parameter 'val' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(42,86): error TS7006: Parameter 'val' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(43,82): error TS7006: Parameter 'val' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(44,82): error TS7006: Parameter '_' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(44,85): error TS7006: Parameter 'row' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(49,22): error TS7006: Parameter '_' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(49,25): error TS7006: Parameter 'row' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/monitor/monitor.tsx(7,25): error TS2307: Cannot find module '@balnc-nova-ui/core' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/monitor/monitor.tsx(8,31): error TS2307: Cannot find module '@balnc-nova-ui/core' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/monitor/monitor.tsx(9,18): error TS2307: Cannot find module '@balnc-nova-ui/core' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/settings/settings.tsx(5,26): error TS2307: Cannot find module '@balnc-nova-ui/core' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(4,25): error TS2307: Cannot find module '@balnc-nova-ui/core' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(5,25): error TS2307: Cannot find module '@balnc-nova-ui/core' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(6,31): error TS2307: Cannot find module '@balnc-nova-ui/core' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(7,18): error TS2307: Cannot find module '@balnc-nova-ui/core' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(87,18): error TS7006: Parameter '_' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(87,21): error TS7006: Parameter 'row' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(104,18): error TS7006: Parameter '_' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(104,21): error TS7006: Parameter 'row' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(122,18): error TS7006: Parameter '_' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(122,21): error TS7006: Parameter 'row' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(136,18): error TS7006: Parameter 'val' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(142,18): error TS7006: Parameter '_' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(142,21): error TS7006: Parameter 'row' implicitly has an 'any' type.
+apps/proxy-monitor/src/renderer/views/system-proxy/system-proxy.tsx(5,25): error TS2307: Cannot find module '@balnc-nova-ui/core' or its corresponding type declarations.

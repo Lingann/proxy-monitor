@@ -1,1 +1,3 @@
-export { default } from './bn-icon'
+export { default as Icon } from './bn-icon'
+export type { IconProps } from './bn-icon'
+

@@ -12,9 +12,7 @@ export default defineComponent({
   setup(props) {
     const iconComponent = computed(() => {
       if (!props.name) return null;
-      // Convert kebab-case to PascalCase (e.g. arrow-right -> ArrowRight)
       const pascalName = props.name.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('');
-      // Check if icon exists in lucide-vue-next
       return (icons as any)[pascalName] || (icons as any).HelpCircle;
     });
 
@@ -25,3 +23,9 @@ export default defineComponent({
     };
   }
 });
+
+export type IconProps = {
+  name: string;
+  size?: number | string;
+  color?: string;
+};

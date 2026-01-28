@@ -19,11 +19,6 @@ const routes: RouteRecordRaw[] = [
     path: '/system-proxy',
     name: 'SystemProxy',
     component: () => import('../views/system-proxy/index'),
-  },
-  {
-    path: '/components',
-    name: 'ComponentLibrary',
-    component: () => import('../views/component-library/index'),
   }
 ];
 

@@ -10,10 +10,6 @@
 // 导入基础样式（已包含变量和mixins）
 @use './base';
 
-// 导入扩展组件样式
-@use './password';
-@use './search';
-
 // 导入变体组件样式
 @use '../variant-components/bn-input-search/styles/bn-input-search';
 @use '../variant-components/bn-input-password/styles/bn-input-password';

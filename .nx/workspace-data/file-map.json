@@ -6,156 +6,24 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".trae/documents/plan_20260128_011934.md",
-        "hash": "15946266072856243079"
-      },
-      {
-        "file": ".vitepress/cache/deps/@theme_index.js",
-        "hash": "7967740956884224036"
-      },
-      {
-        "file": ".trae/rules/vue-rules.md",
-        "hash": "7837087920487187816"
-      },
-      {
-        "file": "nx.json",
-        "hash": "6431549804473848863"
-      },
-      {
-        "file": ".trae/documents/plan_20260128_062723.md",
-        "hash": "10673803384013581523"
-      },
-      {
-        "file": ".vitepress/cache/deps/chunk-IFWPYFML.js",
-        "hash": "304946611700921198"
-      },
-      {
-        "file": ".trae/documents/plan_20260128_035715.md",
-        "hash": "8887825467987394023"
-      },
-      {
-        "file": ".vitepress/cache/deps/vue-router.js.map",
-        "hash": "12503477223043622735"
-      },
-      {
-        "file": "pnpm-workspace.yaml",
-        "hash": "2373171212127886927"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "7733597100238590621"
-      },
-      {
-        "file": ".vitepress/cache/deps/vitepress___@vue_devtools-api.js.map",
-        "hash": "16861081419289571817"
-      },
-      {
-        "file": "vite.config.ts",
-        "hash": "10242443951058791965"
-      },
-      {
-        "file": ".vscode/settings.json",
-        "hash": "4319354886464025292"
-      },
-      {
-        "file": ".trae/documents/plan_20260128_014619.md",
-        "hash": "10329645134009063053"
-      },
-      {
-        "file": "lerna.json",
-        "hash": "9739398129073150820"
-      },
-      {
-        "file": ".vitepress/cache/deps/lucide-vue-next.js.map",
-        "hash": "9779349411416633095"
-      },
-      {
-        "file": ".trae/documents/plan_20260128_080644.md",
-        "hash": "5444355493028737275"
-      },
-      {
-        "file": "package.json",
-        "hash": "4192706141444911933"
-      },
-      {
-        "file": ".vitepress/cache/deps/chunk-CQ64OYRR.js.map",
-        "hash": "12208529066322168875"
-      },
-      {
-        "file": ".trae/documents/plan_20260128_023204.md",
-        "hash": "1142998360006384263"
-      },
-      {
-        "file": ".vitepress/cache/deps/vue-router.js",
-        "hash": "9603891120456611686"
-      },
-      {
-        "file": ".vitepress/cache/deps/vue.js",
-        "hash": "7061661139969787694"
-      },
-      {
-        "file": ".vitepress/cache/deps/chunk-PZ5AY32C.js",
-        "hash": "7535493894870532592"
-      },
-      {
-        "file": ".trae/documents/plan_20260128_112750.md",
-        "hash": "5632456734076247356"
-      },
-      {
-        "file": ".trae/documents/plan_20260127_080213.md",
-        "hash": "17749399620295873373"
-      },
-      {
-        "file": ".trae/rules/page-layout-rules.md",
-        "hash": "8794820235698135500"
-      },
-      {
-        "file": ".npmrc",
-        "hash": "8857846965084270953"
-      },
-      {
-        "file": ".vitepress/cache/deps/chunk-IFWPYFML.js.map",
-        "hash": "17818210943788058576"
-      },
-      {
-        "file": ".vitepress/cache/deps/echarts.js.map",
-        "hash": "13067301634607530618"
-      },
-      {
-        "file": ".trae/skills/vue-code-skill/SKILL.md",
-        "hash": "15464707277596191083"
-      },
-      {
-        "file": ".vitepress/cache/deps/fuse__js.js",
-        "hash": "17940548980002404467"
-      },
-      {
-        "file": ".trae/rules/core-rules.md",
-        "hash": "15017509213478709833"
-      },
-      {
-        "file": ".vitepress/cache/deps/package.json",
-        "hash": "8630294688235076505"
-      },
-      {
-        "file": ".vitepress/cache/deps/vue-i18n.js.map",
-        "hash": "5207514094595254884"
-      },
-      {
-        "file": ".vitepress/cache/deps/vue.js.map",
-        "hash": "9947606979680686569"
+        "file": "update-imports.js",
+        "hash": "3275893564870504705"
       },
       {
         "file": ".vitepress/cache/deps/chunk-CQ64OYRR.js",
         "hash": "273196664897895687"
       },
       {
-        "file": "update-imports.js",
-        "hash": "3275893564870504705"
+        "file": ".vitepress/cache/deps/lucide-vue-next.js.map",
+        "hash": "9779349411416633095"
       },
       {
-        "file": ".vitepress/cache/deps/chunk-QK7O6LCA.js",
-        "hash": "8354012739917333500"
+        "file": "package.json",
+        "hash": "4192706141444911933"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_112750.md",
+        "hash": "5632456734076247356"
       },
       {
         "file": ".trae/documents/plan_20260128_030104.md",
@@ -166,92 +34,224 @@
         "hash": "14182749612669951590"
       },
       {
-        "file": ".vitepress/cache/deps/@theme_index.js.map",
-        "hash": "16972912250535375528"
-      },
-      {
-        "file": ".vitepress/cache/deps/_metadata.json",
-        "hash": "9718958221647447332"
-      },
-      {
-        "file": ".vitepress/cache/deps/chunk-PZ5AY32C.js.map",
+        "file": ".vitepress/cache/deps/vue.js.map",
         "hash": "9947606979680686569"
       },
       {
-        "file": ".trae/documents/plan_20260127_074549.md",
-        "hash": "15128948245667894795"
+        "file": "vite.config.ts",
+        "hash": "10242443951058791965"
       },
       {
-        "file": ".trae/skills/page-layout-skill/SKILL.md",
-        "hash": "10085187854527457643"
+        "file": ".vitepress/cache/deps/vue.js",
+        "hash": "7061661139969787694"
       },
       {
-        "file": ".vitepress/cache/deps/vitepress___@vueuse_core.js",
-        "hash": "12276289793856102691"
+        "file": ".trae/rules/page-layout-rules.md",
+        "hash": "8794820235698135500"
       },
       {
-        "file": ".vitepress/cache/deps/zod.js",
-        "hash": "6989561154129592425"
-      },
-      {
-        "file": "pnpm-lock.yaml",
-        "hash": "6198152232885121062"
-      },
-      {
-        "file": ".vitepress/cache/deps/fuse__js.js.map",
-        "hash": "787945356730605091"
-      },
-      {
-        "file": ".vitepress/cache/deps/zod.js.map",
-        "hash": "14235846421467087095"
-      },
-      {
-        "file": ".trae/skills/core-code-skill/SKILL.md",
-        "hash": "15896793939631442160"
-      },
-      {
-        "file": ".vitepress/cache/deps/lucide-vue-next.js",
-        "hash": "11999695868141814682"
-      },
-      {
-        "file": ".vitepress/cache/deps/chunk-QK7O6LCA.js.map",
-        "hash": "12981296336703104225"
-      },
-      {
-        "file": ".trae/documents/plan_20260128_043320.md",
-        "hash": "7172828338465643355"
-      },
-      {
-        "file": ".trae/documents/plan_20260128_094642.md",
-        "hash": "3473090893571957680"
-      },
-      {
-        "file": ".vitepress/cache/deps/vitepress___@vueuse_core.js.map",
-        "hash": "9947606979680686569"
-      },
-      {
-        "file": ".trae/documents/plan_20260128_031113.md",
-        "hash": "10475074116689070496"
-      },
-      {
-        "file": ".trae/documents/plan_20260127_091735.md",
-        "hash": "5320292668742000588"
-      },
-      {
-        "file": ".vitepress/cache/deps/vue-i18n.js",
-        "hash": "15269542313260093363"
+        "file": ".vitepress/cache/deps/chunk-IFWPYFML.js",
+        "hash": "304946611700921198"
       },
       {
         "file": ".vitepress/cache/deps/echarts.js",
         "hash": "8107294206848032607"
       },
       {
+        "file": ".trae/documents/plan_20260128_023204.md",
+        "hash": "1142998360006384263"
+      },
+      {
+        "file": ".trae/documents/plan_20260127_080213.md",
+        "hash": "17749399620295873373"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_011934.md",
+        "hash": "15946266072856243079"
+      },
+      {
+        "file": ".vitepress/cache/deps/echarts.js.map",
+        "hash": "13067301634607530618"
+      },
+      {
+        "file": ".vitepress/cache/deps/vitepress___@vueuse_core.js.map",
+        "hash": "9947606979680686569"
+      },
+      {
+        "file": ".vitepress/cache/deps/zod.js",
+        "hash": "6989561154129592425"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_035715.md",
+        "hash": "8887825467987394023"
+      },
+      {
+        "file": ".trae/skills/vue-code-skill/SKILL.md",
+        "hash": "15464707277596191083"
+      },
+      {
+        "file": ".trae/rules/vue-rules.md",
+        "hash": "7837087920487187816"
+      },
+      {
+        "file": ".trae/documents/plan_20260127_074549.md",
+        "hash": "15128948245667894795"
+      },
+      {
+        "file": ".vitepress/cache/deps/vitepress___@vue_devtools-api.js.map",
+        "hash": "16861081419289571817"
+      },
+      {
+        "file": ".vitepress/cache/deps/lucide-vue-next.js",
+        "hash": "11999695868141814682"
+      },
+      {
+        "file": ".vitepress/cache/deps/zod.js.map",
+        "hash": "14235846421467087095"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_031113.md",
+        "hash": "10475074116689070496"
+      },
+      {
+        "file": ".vitepress/cache/deps/vue-router.js.map",
+        "hash": "12503477223043622735"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-QK7O6LCA.js",
+        "hash": "8354012739917333500"
+      },
+      {
+        "file": ".trae/skills/page-layout-skill/SKILL.md",
+        "hash": "10085187854527457643"
+      },
+      {
+        "file": "nx.json",
+        "hash": "6431549804473848863"
+      },
+      {
+        "file": ".vitepress/cache/deps/vue-i18n.js.map",
+        "hash": "5207514094595254884"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-CQ64OYRR.js.map",
+        "hash": "12208529066322168875"
+      },
+      {
+        "file": ".trae/rules/core-rules.md",
+        "hash": "15017509213478709833"
+      },
+      {
+        "file": ".vitepress/cache/deps/vitepress___@vueuse_core.js",
+        "hash": "12276289793856102691"
+      },
+      {
+        "file": ".vitepress/cache/deps/vue-router.js",
+        "hash": "9603891120456611686"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "2373171212127886927"
+      },
+      {
+        "file": ".trae/skills/core-code-skill/SKILL.md",
+        "hash": "15896793939631442160"
+      },
+      {
         "file": ".vitepress/cache/deps/vitepress___@vue_devtools-api.js",
         "hash": "6418331550472864707"
       },
       {
+        "file": ".trae/documents/plan_20260128_094642.md",
+        "hash": "3473090893571957680"
+      },
+      {
+        "file": ".trae/documents/plan_20260127_091735.md",
+        "hash": "5320292668742000588"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "6198152232885121062"
+      },
+      {
+        "file": ".vitepress/cache/deps/fuse__js.js",
+        "hash": "17940548980002404467"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-IFWPYFML.js.map",
+        "hash": "17818210943788058576"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-QK7O6LCA.js.map",
+        "hash": "12981296336703104225"
+      },
+      {
+        "file": ".vitepress/cache/deps/fuse__js.js.map",
+        "hash": "787945356730605091"
+      },
+      {
+        "file": ".vitepress/cache/deps/vue-i18n.js",
+        "hash": "15269542313260093363"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_043320.md",
+        "hash": "7172828338465643355"
+      },
+      {
+        "file": ".vitepress/cache/deps/_metadata.json",
+        "hash": "9718958221647447332"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-PZ5AY32C.js",
+        "hash": "7535493894870532592"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "7733597100238590621"
+      },
+      {
+        "file": ".vitepress/cache/deps/package.json",
+        "hash": "8630294688235076505"
+      },
+      {
+        "file": "lerna.json",
+        "hash": "9739398129073150820"
+      },
+      {
+        "file": ".npmrc",
+        "hash": "8857846965084270953"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "4319354886464025292"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-PZ5AY32C.js.map",
+        "hash": "9947606979680686569"
+      },
+      {
+        "file": ".vitepress/cache/deps/@theme_index.js.map",
+        "hash": "16972912250535375528"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_062723.md",
+        "hash": "10673803384013581523"
+      },
+      {
         "file": "tsconfig.json",
         "hash": "12543029853862930820"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_014619.md",
+        "hash": "10329645134009063053"
+      },
+      {
+        "file": ".vitepress/cache/deps/@theme_index.js",
+        "hash": "7967740956884224036"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_080644.md",
+        "hash": "5444355493028737275"
       }
     ],
     "projectFileMap": {
@@ -811,7 +811,7 @@
         },
         {
           "file": "apps/proxy-monitor/src/renderer/index.ts",
-          "hash": "3080123305227074277",
+          "hash": "7532678639269407617",
           "deps": [
             "npm:vue-router"
           ]
@@ -830,7 +830,7 @@
         },
         {
           "file": "apps/proxy-monitor/src/renderer/router/index.ts",
-          "hash": "3080123305227074277",
+          "hash": "7532678639269407617",
           "deps": [
             "npm:vue-router"
           ]
@@ -1255,10 +1255,11 @@
         },
         {
           "file": "apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx",
-          "hash": "8289256556840759952",
+          "hash": "10807463078204960953",
           "deps": [
             "npm:vue",
-            "npm:vue-i18n"
+            "npm:vue-i18n",
+            "balnc-nova-ui"
           ]
         },
         {
@@ -1300,10 +1301,11 @@
         },
         {
           "file": "apps/proxy-monitor/src/renderer/views/settings/settings.tsx",
-          "hash": "4721819299993212670",
+          "hash": "12364314344218158819",
           "deps": [
             "npm:vue",
-            "npm:vue-i18n"
+            "npm:vue-i18n",
+            "balnc-nova-ui"
           ]
         },
         {
@@ -1312,10 +1314,11 @@
         },
         {
           "file": "apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx",
-          "hash": "16601946125969374695",
+          "hash": "16276114936041420636",
           "deps": [
             "npm:vue",
-            "npm:vue-i18n"
+            "npm:vue-i18n",
+            "balnc-nova-ui"
           ]
         },
         {
@@ -1344,10 +1347,11 @@
         },
         {
           "file": "apps/proxy-monitor/src/renderer/views/system-proxy/system-proxy.tsx",
-          "hash": "2085018304710535210",
+          "hash": "924244775375136298",
           "deps": [
             "npm:vue",
-            "npm:vue-i18n"
+            "npm:vue-i18n",
+            "balnc-nova-ui"
           ]
         },
         {
@@ -2521,7 +2525,7 @@
         },
         {
           "file": "packages/balnc-nova-ui/src/components/bn-icon/bn-icon.tsx",
-          "hash": "9142904532608562867",
+          "hash": "15435920450106437842",
           "deps": [
             "npm:vue",
             "npm:lucide-vue-next"
@@ -2529,7 +2533,7 @@
         },
         {
           "file": "packages/balnc-nova-ui/src/components/bn-icon/index.ts",
-          "hash": "15632671934911294023"
+          "hash": "14188477200144371343"
         },
         {
           "file": "packages/balnc-nova-ui/src/components/bn-icon/styles/index.scss",
@@ -2595,7 +2599,7 @@
         },
         {
           "file": "packages/balnc-nova-ui/src/components/bn-input/styles/index.scss",
-          "hash": "2487168225571925904"
+          "hash": "10954696857565969508"
         },
         {
           "file": "packages/balnc-nova-ui/src/components/bn-input/styles/mixin-base-style.scss",
@@ -2653,7 +2657,7 @@
         },
         {
           "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-password/styles/bn-input-password.scss",
-          "hash": "14876909523693844013"
+          "hash": "17611777151886915584"
         },
         {
           "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/bn-input-search.tsx",
@@ -2714,7 +2718,7 @@
         },
         {
           "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/styles/bn-input-search.scss",
-          "hash": "10771799885405132578"
+          "hash": "7798011896206213284"
         },
         {
           "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/types.ts",
@@ -3473,7 +3477,7 @@
         },
         {
           "file": "packages/balnc-nova-ui/src/utils/index.ts",
-          "hash": "6860869084574702791"
+          "hash": "17361569730959018513"
         },
         {
           "file": "packages/balnc-nova-ui/tsconfig.json",

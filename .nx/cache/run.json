@@ -1,8 +1,8 @@
 {
   "run": {
     "command": "nx run proxy-monitor:dev",
-    "startTime": "2026-01-28T11:58:11.193Z",
-    "endTime": "2026-01-28T11:58:21.509Z",
+    "startTime": "2026-01-28T12:37:36.235Z",
+    "endTime": "2026-01-28T12:37:40.392Z",
     "inner": false
   },
   "tasks": [
@@ -10,9 +10,9 @@
       "taskId": "proxy-monitor:dev",
       "target": "dev",
       "projectName": "proxy-monitor",
-      "hash": "17796599555666166465",
-      "startTime": "2026-01-28T11:58:12.113Z",
-      "endTime": "2026-01-28T11:58:21.502Z",
+      "hash": "4763751099285655462",
+      "startTime": "2026-01-28T12:37:36.279Z",
+      "endTime": "2026-01-28T12:37:40.389Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

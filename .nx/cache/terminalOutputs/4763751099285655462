@@ -1,0 +1,14 @@
+[2m> [22mtsc && concurrently "vite" "cross-env NODE_ENV=development electron ."
+
+apps/proxy-monitor/src/renderer/index.ts(11,29): error TS2307: Cannot find module '../views/monitor/index' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/index.ts(16,29): error TS2307: Cannot find module '../views/settings/index' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/index.ts(21,29): error TS2307: Cannot find module '../views/system-proxy/index' or its corresponding type declarations.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(52,27): error TS2604: JSX element type 'Icon' does not have any construct or call signatures.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(55,27): error TS2604: JSX element type 'Icon' does not have any construct or call signatures.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(58,27): error TS2604: JSX element type 'Icon' does not have any construct or call signatures.
+apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx(61,27): error TS2604: JSX element type 'Icon' does not have any construct or call signatures.
+apps/proxy-monitor/src/renderer/views/monitor/monitor.tsx(167,34): error TS2604: JSX element type 'Icon' does not have any construct or call signatures.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(147,20): error TS2604: JSX element type 'Icon' does not have any construct or call signatures.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(150,20): error TS2604: JSX element type 'Icon' does not have any construct or call signatures.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(158,18): error TS2604: JSX element type 'Icon' does not have any construct or call signatures.
+apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx(161,18): error TS2604: JSX element type 'Icon' does not have any construct or call signatures.
