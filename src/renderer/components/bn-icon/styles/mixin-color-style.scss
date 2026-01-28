@@ -1,0 +1,54 @@
+/**
+ * ******************************************************
+ * @file                     mixin-color-style.scss
+ * @description             Color style mixin
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     mixin-color-style.scss
+ * @description             「图标颜色样式混入」
+ * 定义图标颜色变体样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin icon-color-style {
+  .#{$icon-prefix}.#{$icon-prefix}-primary {
+    color: var(--bn-icon-color-primary);
+  }
+
+  .#{$icon-prefix}.#{$icon-prefix}-success {
+    color: var(--bn-icon-color-success);
+  }
+
+  .#{$icon-prefix}.#{$icon-prefix}-warning {
+    color: var(--bn-icon-color-warning);
+  }
+
+  .#{$icon-prefix}.#{$icon-prefix}-danger {
+    color: var(--bn-icon-color-danger);
+  }
+
+  .#{$icon-prefix}.#{$icon-prefix}-info {
+    color: var(--bn-icon-color-info);
+  }
+
+  .#{$icon-prefix}.#{$icon-prefix}-secondary {
+    color: var(--bn-icon-color-secondary);
+  }
+
+  .#{$icon-prefix}.#{$icon-prefix}-disabled,
+  .#{$icon-prefix}[disabled] {
+    color: var(--bn-icon-color-disabled);
+    cursor: not-allowed;
+  }
+
+  .#{$icon-prefix}.#{$icon-prefix}-inverse {
+    color: var(--bn-icon-color-inverse);
+  }
+}
+

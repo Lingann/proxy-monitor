@@ -147,10 +147,8 @@ export default defineComponent({
                                     <BnInputSearch
                                         modelValue={searchQuery.value}
                                         onUpdateModelValue={(v: string | number | null) => searchQuery.value = String(v || '')}
-                                        config={{
-                                            placeholder: t('monitor.search_placeholder') || 'Search PID / Name',
-                                            size: 'small'
-                                        }}
+                                        placeholder={t('monitor.search_placeholder') || 'Search PID / Name'}
+                                        size="small"
                                     />
                                 </div>
                             </div>

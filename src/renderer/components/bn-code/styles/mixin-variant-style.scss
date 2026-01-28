@@ -1,69 +1,22 @@
+/**
+ * ******************************************************
+ * @file                     mixin-variant-style.scss
+ * @description             Variant style mixin
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     mixin-variant-style.scss
+ * @description             「代码变体样式混入」
+ * 定义可展开与行号等变体样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
 @use './variables' as *;
-// ======================================================
-// 代码文本样式混入
-// ======================================================
 
-$code-prefix: bn-code;
-$pre-prefix: bn-pre;
-
-// 代码文本基础样式
-@mixin code-base-style {
-  // 内联代码样式
-  code:not([class*='language-']) {
-    padding: var(--bn-code-padding);
-    font-family: var(--bn-code-font-family);
-    font-size: var(--bn-code-font-size);
-    line-height: var(--bn-code-line-height);
-    color: var(--bn-code-color);
-    overflow-wrap: break-word;
-    white-space: pre-wrap;
-    background-color: var(--bn-code-background-color);
-    border-radius: var(--bn-code-border-radius);
-  }
-
-  // 代码块内的代码不需要背景和内边距
-  pre code:not([class*='language-']) {
-    padding: 0;
-    color: inherit;
-    background-color: transparent;
-    border-radius: 0;
-  }
-
-  // 代码块基础样式
-  pre:not([class*='language-']) {
-    max-height: var(--bn-pre-max-height);
-    padding: var(--bn-pre-padding);
-    overflow: auto;
-    font-family: var(--bn-code-font-family);
-    line-height: var(--bn-pre-line-height);
-    color: var(--bn-pre-color);
-    overflow-wrap: normal;
-    white-space: pre;
-    background-color: var(--bn-pre-background-color);
-    border: var(--bn-pre-border-width) var(--bn-pre-border-style) var(--bn-pre-border-color);
-    border-radius: var(--bn-pre-border-radius);
-  }
-}
-
-// 代码暗色模式样式
-@mixin code-dark-style {
-  .dark-mode,
-  [data-theme='dark'] {
-    code:not([class*='language-']) {
-      color: var(--bn-code-color-dark);
-      background-color: var(--bn-code-background-color-dark);
-    }
-
-    pre:not([class*='language-']) {
-      color: var(--bn-pre-color-dark);
-      background-color: var(--bn-pre-background-color-dark);
-      border-color: var(--bn-pre-border-color-dark);
-    }
-  }
-}
-
-// 代码可扩展样式
-@mixin code-expandable-style {
+@mixin code-variant-style {
   .#{$pre-prefix}-expandable {
     position: relative;
 
@@ -119,10 +72,7 @@ $pre-prefix: bn-pre;
       border-color: var(--bn-border-color-base-dark);
     }
   }
-}
 
-// 代码行号样式
-@mixin code-line-numbers-style {
   .#{$pre-prefix}-line-numbers {
     position: relative;
     padding-left: 3.5em;
@@ -167,3 +117,4 @@ $pre-prefix: bn-pre;
     }
   }
 }
+

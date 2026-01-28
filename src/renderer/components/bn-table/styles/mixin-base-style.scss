@@ -1,0 +1,109 @@
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             Base style mixin
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             「表格基础样式混入」
+ * 定义表格基础布局与通用样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin table-base-style {
+  .#{$table-wrapper-prefix} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: var(--bn-bg-color-base);
+    color: var(--bn-text-color-base);
+    border: 1px solid var(--bn-border-color-base);
+    border-radius: var(--bn-table-border-radius);
+    overflow: hidden;
+  }
+
+  .#{$table-container-prefix} {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+  }
+
+  .#{$table-prefix} {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: var(--bn-font-size-sm);
+    table-layout: fixed;
+
+    th {
+      padding: var(--bn-table-header-padding);
+      font-weight: var(--bn-font-weight-medium);
+      color: var(--bn-text-color-secondary);
+      border-bottom: 1px solid var(--bn-border-color-base);
+      white-space: nowrap;
+      user-select: none;
+      position: sticky;
+      top: 0;
+      background: var(--bn-bg-color-secondary);
+      z-index: 1;
+
+      &.is-sortable {
+        cursor: pointer;
+
+        &:hover {
+          color: var(--bn-text-color-base);
+        }
+      }
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--bn-border-color-base);
+      transition: background-color 0.2s;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: var(--bn-bg-color-hover);
+      }
+    }
+
+    td {
+      padding: var(--bn-table-cell-padding);
+      color: var(--bn-text-color-base);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .#{$table-prefix}__th-content {
+    display: flex;
+    align-items: center;
+    gap: var(--bn-table-cell-gap);
+  }
+
+  .#{$table-prefix}__sort-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bn-text-color-primary-base);
+  }
+
+  .#{$table-prefix}__loading-cell,
+  .#{$table-prefix}__empty-cell {
+    text-align: center;
+    padding: var(--bn-table-loading-padding);
+    color: var(--bn-text-color-secondary);
+  }
+}
+

@@ -8,8 +8,8 @@
 /**
  * ******************************************************
  * @file                     index.scss
- * @description             「图标样式入口文件」
- * 加载所有图标相关样式
+ * @description             「分页样式入口文件」
+ * 加载所有分页相关样式
  * @author                  blancnova-web
  * ******************************************************
  */
@@ -21,9 +21,13 @@
 @use './mixin-state-style' as *;
 @use './mixin-variant-style' as *;
 
-@include icon-base-style;
-@include icon-size-style;
-@include icon-color-style;
-@include icon-state-style;
-@include icon-variant-style;
+.#{$pagination-prefix} {
+  @include pagination-base-variables;
+}
+
+@include pagination-base-style;
+@include pagination-size-style;
+@include pagination-color-style;
+@include pagination-state-style;
+@include pagination-variant-style;
 

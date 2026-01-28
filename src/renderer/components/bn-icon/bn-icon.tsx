@@ -1,5 +1,6 @@
 import { defineComponent, computed } from 'vue';
 import * as icons from 'lucide-vue-next';
+import './styles/index.scss';
 
 export default defineComponent({
   name: 'Icon',

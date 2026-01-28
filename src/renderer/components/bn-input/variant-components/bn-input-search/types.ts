@@ -7,8 +7,6 @@
  * ******************************************************
  */
 
-import { Component, VNode } from 'vue'
-
 // ==================================================
 // #region 类型定义
 // ==================================================
@@ -18,41 +16,6 @@ export interface SearchOption {
   label: string
   value: string | number
   [key: string]: any
-}
-
-/** 配置对象接口（向后兼容） */
-export interface SearchInputConfig {
-  options?: SearchOption[]
-  width?: string | number
-  size?: 'small' | 'medium' | 'large'
-  placeholder?: string
-  disabled?: boolean
-  clearable?: boolean
-  enableDropdown?: boolean
-  maxItems?: number
-  searchKeys?: string[]
-  fuseOptions?: any
-  prefixIcon?: Component | VNode
-  zIndex?: number
-  /* Legacy callbacks support in config */
-  onSearch?: (query: string) => void
-  onFocus?: (e: FocusEvent) => void
-  onBlur?: (e: FocusEvent) => void
-  onChange?: (value: string | number | null, option?: SearchOption) => void
-}
-
-export interface SearchInputMergedConfig extends SearchInputConfig {
-  options: SearchOption[]
-  width: string | number
-  size: 'small' | 'medium' | 'large'
-  placeholder: string
-  disabled: boolean
-  clearable: boolean
-  enableDropdown: boolean
-  maxItems: number
-  searchKeys: string[]
-  fuseOptions: SearchInputConfig['fuseOptions']
-  zIndex: number
 }
 
 // #endregion

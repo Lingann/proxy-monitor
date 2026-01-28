@@ -2,15 +2,15 @@
  * ******************************************************
  * @file                     bn-input-search-props.ts
  * @description             「搜索输入框属性定义」
- * 支持双模式：扁平化 Props（推荐）+ config 对象（向后兼容）
+ * 支持扁平化 Props（推荐）
  * @author                  blancnova-web
  * ******************************************************
  */
 
 import { createVueProps } from '../../../../../utils/create-vue-props'
-import type { Component, ExtractPropTypes, PropType, VNode } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import { inputProps } from '../../../props/input-props'
-import type { SearchOption, SearchInputConfig } from '../types'
+import type { SearchOption } from '../types'
 
 /* ================================================== */
 /* 区域：Props 定义 */
@@ -80,14 +80,6 @@ export const inputSearchProps = createVueProps('bn-input-search', {
   searchOnInput: {
     type: Boolean,
     default: false
-  },
-
-  /* ========== 配置对象（向后兼容） ========== */
-
-  /** 配置对象（优先级低于扁平化 Props） */
-  config: {
-    type: Object as PropType<SearchInputConfig>,
-    default: () => ({})
   },
 
   /* ========== 事件回调 ========== */

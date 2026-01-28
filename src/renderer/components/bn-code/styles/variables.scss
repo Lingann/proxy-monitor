@@ -1,26 +1,32 @@
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             Component variables
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             「代码组件变量定义」
+ * 定义代码组件前缀与变量混入
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+$code-prefix: bn-code;
+$pre-prefix: bn-pre;
+
 // ======================================================
 // 代码文本变量混入
 // ======================================================
 
 // 代码文本基础变量
 @mixin code-base-variables {
-  // 代码文本字体
-  --bn-code-font-family: var(--bn-font-family-monospace);
-  --bn-code-font-size: 0.875em;
-
-  // 代码文本间距
-  --bn-code-padding: 0.2em 0.4em;
-
-  // 代码文本圆角
-  --bn-code-border-radius: 3px;
 }
 
 // 代码文本颜色变量
 @mixin code-color-variables {
-  // 代码文本颜色
-  --bn-code-color: var(--bn-danger-color-6);
-  --bn-code-background-color: var(--bn-neutral-color-2);
-
   // 代码文本暗色模式颜色
   --bn-code-color-dark: var(--bn-danger-color-4);
   --bn-code-background-color-dark: var(--bn-neutral-color-8);
@@ -53,3 +59,4 @@
   --bn-code-line-height: var(--bn-line-height-md);
   --bn-pre-line-height: var(--bn-line-height-md);
 }
+

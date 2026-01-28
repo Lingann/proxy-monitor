@@ -7,7 +7,7 @@ import { useTableConfig } from './composables/use-table-config';
 import { useTableState } from './composables/use-table-state';
 import { useTableData } from './composables/use-table-data';
 import { useTableEvents } from './composables/use-table-events';
-import './bn-table.scss';
+import './styles/index.scss';
 
 export default defineComponent({
   name: 'BnTable',

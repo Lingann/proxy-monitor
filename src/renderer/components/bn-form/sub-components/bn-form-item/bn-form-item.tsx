@@ -7,6 +7,8 @@
  * ******************************************************
  */
 
+import './styles/index.scss'
+
 import type { SetupContext, VNode } from 'vue'
 import {
   cloneVNode,

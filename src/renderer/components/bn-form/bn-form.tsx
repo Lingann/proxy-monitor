@@ -7,7 +7,7 @@
  * ******************************************************
  */
 
-import './styles/bn-form.scss'
+import './styles/index.scss'
 
 import type { SetupContext } from 'vue'
 import { defineComponent, provide, toRef } from 'vue'

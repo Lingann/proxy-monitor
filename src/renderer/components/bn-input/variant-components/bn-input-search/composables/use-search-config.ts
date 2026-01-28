@@ -1,43 +1,41 @@
 /**
  * ******************************************************
  * @file                     use-search-config.ts
- * @description             「搜索输入框配置合并」
- * 合并扁平化 Props 和 config 对象，处理优先级
+ * @description             「搜索输入框配置处理」
+ * 基于扁平化 Props 处理默认值
  * @author                  blancnova-web
  * ******************************************************
  */
 
 import { computed } from 'vue'
 import type { inputSearchProps } from '../props/input-search-props'
-import type { SearchInputMergedConfig } from '../types'
 
 /* ================================================== */
-/* 区域：配置合并 */
+/* 区域：配置处理 */
 /* ================================================== */
 
 export function useSearchConfig(
   props: inputSearchProps,
   t: (key: string) => string
 ) {
-  /* 合并配置：扁平化 Props > config 对象 > 默认值 */
-  const mergedConfig = computed<SearchInputMergedConfig>(() => ({
-    options: props.options || props.config?.options || [],
-    enableDropdown: props.enableDropdown ?? props.config?.enableDropdown ?? false,
-    maxItems: props.maxItems || props.config?.maxItems || 5,
-    searchKeys: props.searchKeys || props.config?.searchKeys || ['label'],
-    fuseOptions: props.fuseOptions || props.config?.fuseOptions || {},
-    zIndex: props.zIndex || props.config?.zIndex || 1000,
-    placeholder: props.placeholder || props.config?.placeholder || t('common.search_placeholder'),
-    size: props.size || props.config?.size || 'medium',
-    disabled: props.disabled ?? props.config?.disabled ?? false,
-    clearable: props.clearable ?? props.config?.clearable ?? true,
-    prefixIcon: props.prefixIcon || props.config?.prefixIcon,
-    width: props.config?.width || '100%'
+  const mergedConfig = computed(() => ({
+    options: props.options ?? [],
+    enableDropdown: props.enableDropdown ?? false,
+    maxItems: props.maxItems ?? 5,
+    searchKeys: props.searchKeys ?? ['label'],
+    fuseOptions: props.fuseOptions ?? {},
+    zIndex: props.zIndex ?? 1000,
+    placeholder: props.placeholder || t('common.search_placeholder'),
+    size: props.size ?? 'medium',
+    disabled: props.disabled ?? false,
+    clearable: props.clearable ?? true,
+    prefixIcon: props.prefixIcon,
+    width: '100%'
   }))
 
   return { mergedConfig }
 }
 
 /* ================================================== */
-/* 区域结束：配置合并 */
+/* 区域结束：配置处理 */
 /* ================================================== */

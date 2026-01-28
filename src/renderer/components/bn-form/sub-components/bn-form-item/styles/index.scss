@@ -8,22 +8,18 @@
 /**
  * ******************************************************
  * @file                     index.scss
- * @description             「图标样式入口文件」
- * 加载所有图标相关样式
+ * @description             「表单项样式入口文件」
+ * 加载所有表单项相关样式
  * @author                  blancnova-web
  * ******************************************************
  */
 
 @use './variables' as *;
 @use './mixin-base-style' as *;
-@use './mixin-size-style' as *;
-@use './mixin-color-style' as *;
-@use './mixin-state-style' as *;
-@use './mixin-variant-style' as *;
 
-@include icon-base-style;
-@include icon-size-style;
-@include icon-color-style;
-@include icon-state-style;
-@include icon-variant-style;
+.#{$form-item-prefix} {
+  @include form-item-base-variables;
+}
+
+@include form-item-base-style;
 

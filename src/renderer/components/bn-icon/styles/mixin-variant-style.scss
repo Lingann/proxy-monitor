@@ -1,0 +1,35 @@
+/**
+ * ******************************************************
+ * @file                     mixin-variant-style.scss
+ * @description             Variant style mixin
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     mixin-variant-style.scss
+ * @description             「图标变体样式混入」
+ * 定义图标动效变体
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin icon-variant-style {
+  .#{$icon-prefix}-spin {
+    display: inline-block;
+    animation: icon-spin 1s infinite linear;
+  }
+
+  @keyframes icon-spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+

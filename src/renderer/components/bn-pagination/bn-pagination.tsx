@@ -5,7 +5,7 @@ import { BnSelect } from '../bn-select';
 import { BnPaginationProps } from './types';
 import { useBnPaginationState } from './composables/use-bn-pagination-state';
 import { useBnPaginationEvents } from './composables/use-bn-pagination-events';
-import './bn-pagination.scss';
+import './styles/index.scss';
 
 export default defineComponent({
   name: 'BnPagination',

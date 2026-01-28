@@ -1,0 +1,28 @@
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             Component variables
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             「表格组件变量定义」
+ * 定义表格组件前缀与基础变量
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+$table-prefix: bn-table;
+$table-wrapper-prefix: bn-table-wrapper;
+$table-container-prefix: bn-table-container;
+
+@mixin table-base-variables {
+  --bn-table-border-radius: 8px;
+  --bn-table-header-padding: 12px 16px;
+  --bn-table-cell-padding: 10px 16px;
+  --bn-table-cell-gap: 6px;
+  --bn-table-loading-padding: 40px;
+}
+
