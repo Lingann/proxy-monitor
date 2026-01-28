@@ -1,0 +1,77 @@
+@use './variables' as *;
+
+@mixin button-trigger-variant-style {
+  .#{$button-trigger-prefix}--variant-soft {
+    --bn-button-trigger-bg-color: var(--bn-button-trigger-nature-soft-bg-color);
+    --bn-button-trigger-text-color: var(--bn-button-trigger-nature-soft-text-color);
+    --bn-button-trigger-border-color: var(--bn-button-trigger-nature-soft-border-color);
+    --bn-button-trigger-hover-bg-color: var(--bn-button-trigger-nature-soft-hover-bg-color);
+    --bn-button-trigger-hover-text-color: var(--bn-button-trigger-nature-soft-hover-text-color);
+    --bn-button-trigger-hover-border-color: var(--bn-button-trigger-nature-soft-hover-border-color);
+    --bn-button-trigger-active-bg-color: var(--bn-button-trigger-nature-soft-active-bg-color);
+    --bn-button-trigger-active-text-color: var(--bn-button-trigger-nature-soft-active-text-color);
+    --bn-button-trigger-active-border-color: var(--bn-button-trigger-nature-soft-active-border-color);
+    --bn-button-trigger-selected-bg-color: var(--bn-button-trigger-nature-soft-selected-bg-color);
+    --bn-button-trigger-selected-text-color: var(--bn-button-trigger-nature-soft-selected-text-color);
+    --bn-button-trigger-selected-border-color: var(--bn-button-trigger-nature-soft-selected-border-color);
+    --bn-button-trigger-disabled-bg-color: var(--bn-button-trigger-nature-soft-disabled-bg-color);
+    --bn-button-trigger-disabled-text-color: var(--bn-button-trigger-nature-soft-disabled-text-color);
+    --bn-button-trigger-disabled-border-color: var(--bn-button-trigger-nature-soft-disabled-border-color);
+  }
+
+  .#{$button-trigger-prefix}--variant-solid {
+    --bn-button-trigger-bg-color: var(--bn-button-trigger-nature-solid-bg-color);
+    --bn-button-trigger-text-color: var(--bn-button-trigger-nature-solid-text-color);
+    --bn-button-trigger-border-color: var(--bn-button-trigger-nature-solid-border-color);
+    --bn-button-trigger-hover-bg-color: var(--bn-button-trigger-nature-solid-hover-bg-color);
+    --bn-button-trigger-hover-text-color: var(--bn-button-trigger-nature-solid-hover-text-color);
+    --bn-button-trigger-hover-border-color: var(--bn-button-trigger-nature-solid-hover-border-color);
+    --bn-button-trigger-active-bg-color: var(--bn-button-trigger-nature-solid-active-bg-color);
+    --bn-button-trigger-active-text-color: var(--bn-button-trigger-nature-solid-active-text-color);
+    --bn-button-trigger-active-border-color: var(--bn-button-trigger-nature-solid-active-border-color);
+    --bn-button-trigger-selected-bg-color: var(--bn-button-trigger-nature-solid-selected-bg-color);
+    --bn-button-trigger-selected-text-color: var(--bn-button-trigger-nature-solid-selected-text-color);
+    --bn-button-trigger-selected-border-color: var(--bn-button-trigger-nature-solid-selected-border-color);
+    --bn-button-trigger-disabled-bg-color: var(--bn-button-trigger-nature-solid-disabled-bg-color);
+    --bn-button-trigger-disabled-text-color: var(--bn-button-trigger-nature-solid-disabled-text-color);
+    --bn-button-trigger-disabled-border-color: var(--bn-button-trigger-nature-solid-disabled-border-color);
+  }
+
+  @each $color in $button-trigger-colors {
+    .#{$button-trigger-prefix}--variant-soft.#{$button-trigger-prefix}--color-#{$color} {
+      --bn-button-trigger-bg-color: var(--bn-button-trigger-#{$color}-soft-bg-color);
+      --bn-button-trigger-text-color: var(--bn-button-trigger-#{$color}-soft-text-color);
+      --bn-button-trigger-border-color: var(--bn-button-trigger-#{$color}-soft-border-color);
+      --bn-button-trigger-hover-bg-color: var(--bn-button-trigger-#{$color}-soft-hover-bg-color);
+      --bn-button-trigger-hover-text-color: var(--bn-button-trigger-#{$color}-soft-hover-text-color);
+      --bn-button-trigger-hover-border-color: var(--bn-button-trigger-#{$color}-soft-hover-border-color);
+      --bn-button-trigger-active-bg-color: var(--bn-button-trigger-#{$color}-soft-active-bg-color);
+      --bn-button-trigger-active-text-color: var(--bn-button-trigger-#{$color}-soft-active-text-color);
+      --bn-button-trigger-active-border-color: var(--bn-button-trigger-#{$color}-soft-active-border-color);
+      --bn-button-trigger-selected-bg-color: var(--bn-button-trigger-#{$color}-soft-selected-bg-color);
+      --bn-button-trigger-selected-text-color: var(--bn-button-trigger-#{$color}-soft-selected-text-color);
+      --bn-button-trigger-selected-border-color: var(--bn-button-trigger-#{$color}-soft-selected-border-color);
+      --bn-button-trigger-disabled-bg-color: var(--bn-button-trigger-#{$color}-soft-disabled-bg-color);
+      --bn-button-trigger-disabled-text-color: var(--bn-button-trigger-#{$color}-soft-disabled-text-color);
+      --bn-button-trigger-disabled-border-color: var(--bn-button-trigger-#{$color}-soft-disabled-border-color);
+    }
+
+    .#{$button-trigger-prefix}--variant-solid.#{$button-trigger-prefix}--color-#{$color} {
+      --bn-button-trigger-bg-color: var(--bn-button-trigger-#{$color}-solid-bg-color);
+      --bn-button-trigger-text-color: var(--bn-button-trigger-#{$color}-solid-text-color);
+      --bn-button-trigger-border-color: var(--bn-button-trigger-#{$color}-solid-border-color);
+      --bn-button-trigger-hover-bg-color: var(--bn-button-trigger-#{$color}-solid-hover-bg-color);
+      --bn-button-trigger-hover-text-color: var(--bn-button-trigger-#{$color}-solid-hover-text-color);
+      --bn-button-trigger-hover-border-color: var(--bn-button-trigger-#{$color}-solid-hover-border-color);
+      --bn-button-trigger-active-bg-color: var(--bn-button-trigger-#{$color}-solid-active-bg-color);
+      --bn-button-trigger-active-text-color: var(--bn-button-trigger-#{$color}-solid-active-text-color);
+      --bn-button-trigger-active-border-color: var(--bn-button-trigger-#{$color}-solid-active-border-color);
+      --bn-button-trigger-selected-bg-color: var(--bn-button-trigger-#{$color}-solid-selected-bg-color);
+      --bn-button-trigger-selected-text-color: var(--bn-button-trigger-#{$color}-solid-selected-text-color);
+      --bn-button-trigger-selected-border-color: var(--bn-button-trigger-#{$color}-solid-selected-border-color);
+      --bn-button-trigger-disabled-bg-color: var(--bn-button-trigger-#{$color}-solid-disabled-bg-color);
+      --bn-button-trigger-disabled-text-color: var(--bn-button-trigger-#{$color}-solid-disabled-text-color);
+      --bn-button-trigger-disabled-border-color: var(--bn-button-trigger-#{$color}-solid-disabled-border-color);
+    }
+  }
+}

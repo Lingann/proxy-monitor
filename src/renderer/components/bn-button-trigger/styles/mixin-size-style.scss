@@ -1,0 +1,57 @@
+@use './variables' as *;
+
+@mixin button-trigger-size-variables {
+  --bn-button-trigger-height-small: var(--bn-size-sm);
+  --bn-button-trigger-height-medium: var(--bn-size-md);
+  --bn-button-trigger-height-large: var(--bn-size-lg);
+  --bn-button-trigger-line-height-small: var(--bn-button-trigger-height-small);
+  --bn-button-trigger-line-height-medium: var(--bn-button-trigger-height-medium);
+  --bn-button-trigger-line-height-large: var(--bn-button-trigger-height-large);
+  --bn-button-trigger-font-size-small: var(--bn-font-size-sm);
+  --bn-button-trigger-font-size-medium: var(--bn-font-size-md);
+  --bn-button-trigger-font-size-large: var(--bn-font-size-lg);
+  --bn-button-trigger-padding-horizontal-small: var(--bn-padding-horizontal-sm);
+  --bn-button-trigger-padding-horizontal-medium: var(--bn-padding-horizontal-md);
+  --bn-button-trigger-padding-horizontal-large: var(--bn-padding-horizontal-lg);
+  --bn-button-trigger-padding-vertical-small: 0;
+  --bn-button-trigger-padding-vertical-medium: 0;
+  --bn-button-trigger-padding-vertical-large: 0;
+}
+
+@mixin button-trigger-size-style {
+  .#{$button-trigger-prefix} {
+    height: var(--bn-button-trigger-height-medium);
+    padding: var(--bn-button-trigger-padding-vertical-medium) var(--bn-button-trigger-padding-horizontal-medium);
+    font-size: var(--bn-button-trigger-font-size-medium);
+    line-height: var(--bn-button-trigger-line-height-medium);
+    --bn-button-trigger-padding-vertical: var(--bn-button-trigger-padding-vertical-medium);
+    --bn-button-trigger-padding-horizontal: var(--bn-button-trigger-padding-horizontal-medium);
+  }
+
+  .#{$button-trigger-prefix}--size-small {
+    height: var(--bn-button-trigger-height-small);
+    padding: var(--bn-button-trigger-padding-vertical-small) var(--bn-button-trigger-padding-horizontal-small);
+    font-size: var(--bn-button-trigger-font-size-small);
+    line-height: var(--bn-button-trigger-line-height-small);
+    --bn-button-trigger-padding-vertical: var(--bn-button-trigger-padding-vertical-small);
+    --bn-button-trigger-padding-horizontal: var(--bn-button-trigger-padding-horizontal-small);
+  }
+
+  .#{$button-trigger-prefix}--size-medium {
+    height: var(--bn-button-trigger-height-medium);
+    padding: var(--bn-button-trigger-padding-vertical-medium) var(--bn-button-trigger-padding-horizontal-medium);
+    font-size: var(--bn-button-trigger-font-size-medium);
+    line-height: var(--bn-button-trigger-line-height-medium);
+    --bn-button-trigger-padding-vertical: var(--bn-button-trigger-padding-vertical-medium);
+    --bn-button-trigger-padding-horizontal: var(--bn-button-trigger-padding-horizontal-medium);
+  }
+
+  .#{$button-trigger-prefix}--size-large {
+    height: var(--bn-button-trigger-height-large);
+    padding: var(--bn-button-trigger-padding-vertical-large) var(--bn-button-trigger-padding-horizontal-large);
+    font-size: var(--bn-button-trigger-font-size-large);
+    line-height: var(--bn-button-trigger-line-height-large);
+    --bn-button-trigger-padding-vertical: var(--bn-button-trigger-padding-vertical-large);
+    --bn-button-trigger-padding-horizontal: var(--bn-button-trigger-padding-horizontal-large);
+  }
+}

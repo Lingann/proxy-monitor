@@ -1,0 +1,21 @@
+@use './variables' as *;
+
+@mixin button-trigger-shape-variables {
+  --bn-button-trigger-border-radius-square: var(--bn-border-radius-md);
+  --bn-button-trigger-border-radius-circle: var(--bn-border-radius-circle);
+  --bn-button-trigger-border-radius-capsule: var(--bn-border-radius-pill);
+}
+
+@mixin button-trigger-shape-style {
+  .#{$button-trigger-prefix}--shape-square {
+    border-radius: var(--bn-button-trigger-border-radius-square);
+  }
+
+  .#{$button-trigger-prefix}--shape-circle {
+    border-radius: var(--bn-button-trigger-border-radius-circle);
+  }
+
+  .#{$button-trigger-prefix}--shape-capsule {
+    border-radius: var(--bn-button-trigger-border-radius-capsule);
+  }
+}
