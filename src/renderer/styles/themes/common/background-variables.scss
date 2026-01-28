@@ -2,7 +2,7 @@
 // 背景变量
 // ======================================================
 
-@use '../functions/color' as color-funcs;
+@use '../functions/color-functions' as color-funcs;
 
 // 背景变量混入
 // @mixin background-variables - 定义所有背景相关的CSS变量
@@ -111,31 +111,11 @@
   --bn-bg-translucent-dark: rgb(0 0 0 / 50%);
 
   // 渐变背景色
-  --bn-bg-color-primary-gradient: linear-gradient(
-    to right,
-    var(--bn-primary-color-base),
-    var(--bn-primary-color-hover)
-  );
-  --bn-bg-color-success-gradient: linear-gradient(
-    to right,
-    var(--bn-success-color-base),
-    var(--bn-success-color-hover)
-  );
-  --bn-bg-color-warning-gradient: linear-gradient(
-    to right,
-    var(--bn-warning-color-base),
-    var(--bn-warning-color-hover)
-  );
-  --bn-bg-color-danger-gradient: linear-gradient(
-    to right,
-    var(--bn-danger-color-base),
-    var(--bn-danger-color-hover)
-  );
-  --bn-bg-color-info-gradient: linear-gradient(
-    to right,
-    var(--bn-info-color-base),
-    var(--bn-info-color-hover)
-  );
+  --bn-bg-color-primary-gradient: linear-gradient(to right, var(--bn-primary-color-base), var(--bn-primary-color-hover));
+  --bn-bg-color-success-gradient: linear-gradient(to right, var(--bn-success-color-base), var(--bn-success-color-hover));
+  --bn-bg-color-warning-gradient: linear-gradient(to right, var(--bn-warning-color-base), var(--bn-warning-color-hover));
+  --bn-bg-color-danger-gradient: linear-gradient(to right, var(--bn-danger-color-base), var(--bn-danger-color-hover));
+  --bn-bg-color-info-gradient: linear-gradient(to right, var(--bn-info-color-base), var(--bn-info-color-hover));
 }
 
 // 暗色模式背景变量混入
@@ -197,3 +177,5 @@
   --bn-bg-translucent-soft: rgb(255 255 255 / 10%); // 更暗的半透明白色
   --bn-bg-translucent-dark: rgb(0 0 0 / 80%); // 更暗的半透明黑色
 }
+
+

@@ -2,7 +2,7 @@
 // 边框变量
 // ======================================================
 
-@use '../functions/color' as color-funcs;
+@use '../functions/color-functions' as color-funcs;
 
 // 边框变量混入
 // @mixin border-variables - 定义所有边框相关的CSS变量
@@ -95,3 +95,5 @@
   --bn-border-color-danger-light: rgba(var(--bn-danger-inner-5), 0.4);
   --bn-border-color-info-light: rgba(var(--bn-info-inner-5), 0.4);
 }
+
+

@@ -1,8 +1,8 @@
-@use '../../common/background.scss' as *;
-@use '../../common/border.scss' as *;
-@use '../../common/text.scss' as *;
-@use '../../common/shadow.scss' as *;
-@use '../../common/ripple.scss' as *;
+@use '../../common/background-variables.scss' as *;
+@use '../../common/border-variables.scss' as *;
+@use '../../common/text-variables.scss' as *;
+@use '../../common/shadow-variables.scss' as *;
+@use '../../common/ripple-variables.scss' as *;
 
 // CSS变量定义
 .dark,
@@ -23,3 +23,5 @@ html[data-theme='dark'] {
   // 波纹变量
   @include ripple-variables-dark;
 }
+
+

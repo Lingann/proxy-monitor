@@ -2,7 +2,7 @@
 // 阴影变量
 // ======================================================
 
-@use '../functions/color' as color;
+@use '../functions/color-functions' as color;
 
 // 阴影变量混入
 // @mixin shadow-variables - 定义所有阴影相关的CSS变量
@@ -88,3 +88,5 @@
   --bn-shadow-glow-danger: 0 0 12px rgba(var(--bn-danger-inner-5), 0.7);
   --bn-shadow-glow-info: 0 0 12px rgba(var(--bn-info-inner-5), 0.7);
 }
+
+

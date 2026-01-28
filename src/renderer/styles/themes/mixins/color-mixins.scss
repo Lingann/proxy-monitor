@@ -2,7 +2,7 @@
 // 颜色相关混合宏
 // ======================================================
 
-@import '../functions/color';
+@import '../functions/color-functions';
 
 // 设置文本颜色和悬停颜色
 // @param {Color} $color - 基本文本颜色
@@ -194,3 +194,5 @@
   background-image: radial-gradient(circle, $inner-color, $outer-color);
   background-repeat: no-repeat;
 }
+
+

@@ -2,7 +2,7 @@
 // 色板相关混合宏
 // ======================================================
 
-@use '../functions/color' as color;
+@use '../functions/color-functions' as color;
 @use '../functions/palette-functions' as palette;
 
 // 生成内部RGB值变量
@@ -88,3 +88,5 @@
     #{$gradient-var-name}: #{$value};
   }
 }
+
+

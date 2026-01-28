@@ -1,17 +1,17 @@
-@use '../../common/background.scss' as *;
-@use '../../common/border.scss' as *;
-@use '../../common/font.scss' as *;
-@use '../../common/filter.scss' as *;
-@use '../../common/shadow.scss' as *;
-@use '../../common/sizing.scss' as *;
-@use '../../common/spacing.scss' as *;
-@use '../../common/text.scss' as *;
-@use '../../common/transition.scss' as *;
-@use '../../common/animation.scss' as *;
-@use '../../common/responsive.scss' as *;
-@use '../../common/grid.scss' as *;
-@use '../../common/line-height.scss' as *;
-@use '../../common/ripple.scss' as *;
+@use '../../common/background-variables.scss' as *;
+@use '../../common/border-variables.scss' as *;
+@use '../../common/typography-variables.scss' as *;
+@use '../../common/filter-variables.scss' as *;
+@use '../../common/shadow-variables.scss' as *;
+@use '../../common/sizing-variables.scss' as *;
+@use '../../common/spacing-variables.scss' as *;
+@use '../../common/text-variables.scss' as *;
+@use '../../common/transition-variables.scss' as *;
+@use '../../common/animation-variables.scss' as *;
+@use '../../common/responsive-variables.scss' as *;
+@use '../../common/grid-variables.scss' as *;
+@use '../../common/line-height-variables.scss' as *;
+@use '../../common/ripple-variables.scss' as *;
 // CSS变量定义
 :root {
   // 背景变量
@@ -56,3 +56,5 @@
   // 波纹变量
   @include ripple-variables;
 }
+
+

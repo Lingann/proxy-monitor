@@ -27,23 +27,6 @@
   --bn-grid-container-max-width-xl: 1140px;
   --bn-grid-container-max-width-xxl: 1320px;
 
-  // 网格布局模式
-  --bn-grid-auto-flow-row: row;
-  --bn-grid-auto-flow-column: column;
-  --bn-grid-auto-flow-dense: dense;
-
-  // 网格对齐方式
-  --bn-grid-justify-start: start;
-  --bn-grid-justify-end: end;
-  --bn-grid-justify-center: center;
-  --bn-grid-justify-between: space-between;
-  --bn-grid-justify-around: space-around;
-  --bn-grid-justify-evenly: space-evenly;
-  --bn-grid-align-start: start;
-  --bn-grid-align-end: end;
-  --bn-grid-align-center: center;
-  --bn-grid-align-stretch: stretch;
-
   // 网格间距变体
   --bn-grid-gap-xs: var(--bn-spacing-xs);
   --bn-grid-gap-sm: var(--bn-spacing-sm);

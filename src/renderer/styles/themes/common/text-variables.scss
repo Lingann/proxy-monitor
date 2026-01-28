@@ -2,7 +2,7 @@
 // 文本变量
 // ======================================================
 
-@use '../functions/color' as color-funcs;
+@use '../functions/color-functions' as color-funcs;
 
 // 文本变量混入
 // @mixin text-variables - 定义所有文本相关的CSS变量
@@ -96,3 +96,5 @@
   // 强调文本色
   --bn-text-color-emphasis: rgb(255 255 255 / 95%);
 }
+
+

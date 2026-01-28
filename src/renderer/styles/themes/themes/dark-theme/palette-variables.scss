@@ -1,11 +1,10 @@
-@use '../../common/palettes' as *;
-@use '../../palettes/primary' as primary;
-@use '../../palettes/neutral' as neutral;
-@use '../../palettes/success' as success;
-@use '../../palettes/warning' as warning;
-@use '../../palettes/danger' as danger;
-@use '../../palettes/info' as info;
-@use '../../functions/color' as color;
+@use '../../palettes/primary-palette' as primary;
+@use '../../palettes/neutral-palette' as neutral;
+@use '../../palettes/success-palette' as success;
+@use '../../palettes/warning-palette' as warning;
+@use '../../palettes/danger-palette' as danger;
+@use '../../palettes/info-palette' as info;
+@use '../../functions/color-functions' as color;
 @use '../../functions/palette-functions' as palette;
 @use '../../mixins/palette-mixins' as mixins;
 
@@ -127,3 +126,5 @@ html[data-theme='dark'] {
   // 例如：
   // --bn-neutral-inner-1: 18, 29, 44;
 }
+
+

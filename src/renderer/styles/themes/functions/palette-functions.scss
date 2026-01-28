@@ -3,7 +3,7 @@
 // ======================================================
 
 @use 'sass:map';
-@use './color' as color-funcs;
+@use './color-functions' as color-funcs;
 
 // 创建色板颜色变量，同时生成CSS变量(亮色模式)
 // @param {String} $prefix - 变量前缀
