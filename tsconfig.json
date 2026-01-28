@@ -4,7 +4,7 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM"],
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./apps/proxy-monitor/src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -16,6 +16,6 @@
     "jsx": "preserve",
     "jsxImportSource": "vue"
   },
-  "include": ["src/**/*"],
+  "include": ["apps/proxy-monitor/src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

@@ -4,9 +4,9 @@ import styles from './monitor.module.scss';
 import { useMonitorData } from './composables/use-monitor-data';
 import { useMonitorChart } from './composables/use-monitor-chart';
 import { useMonitorTable } from './composables/use-monitor-table';
-import BnTable from '../../components/bn-table/bn-table';
-import { BnInputSearch } from '../../components/bn-input';
-import Icon from '../../components/bn-icon/bn-icon';
+import { BnTable } from '@balnc-nova-ui/core';
+import { BnInputSearch } from '@balnc-nova-ui/core';
+import Icon from '@balnc-nova-ui/core';
 
 export default defineComponent({
     name: 'MonitorView',
@@ -146,7 +146,7 @@ export default defineComponent({
                                 <div style={{ width: '300px' }}>
                                     <BnInputSearch
                                         modelValue={searchQuery.value}
-                                        onUpdateModelValue={(v: string | number | null) => searchQuery.value = String(v || '')}
+                                        onUpdate:modelValue={(v: string | number | null) => searchQuery.value = String(v || '')}
                                         placeholder={t('monitor.search_placeholder') || 'Search PID / Name'}
                                         size="small"
                                     />

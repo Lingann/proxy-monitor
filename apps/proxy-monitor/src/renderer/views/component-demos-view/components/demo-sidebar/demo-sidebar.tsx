@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, type PropType } from 'vue';
 import styles from './demo-sidebar.module.scss';
 
 export interface MenuItem {
@@ -18,7 +18,7 @@ export default defineComponent({
     name: 'DemoSidebar',
     props: {
         menuData: {
-            type: Array as () => MenuItem[],
+            type: Array as PropType<MenuItem[]>,
             required: true
         },
         activeId: {
@@ -26,7 +26,7 @@ export default defineComponent({
             required: true
         },
         onSelect: {
-            type: Function as () => (id: string) => void,
+            type: Function as PropType<(id: string) => void>,
             required: true
         }
     },

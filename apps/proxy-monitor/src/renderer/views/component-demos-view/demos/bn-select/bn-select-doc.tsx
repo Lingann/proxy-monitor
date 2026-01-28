@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import styles from './bn-select-doc.module.scss';
-import { DemoContainer } from '../../components/demo-container';
-import { BnSelect } from '../../../components/bn-select';
+import DemoContainer from '../../components/demo-container';
+import { BnSelect } from '@balnc-nova-ui/core';
 import { BasicSelect } from './examples/basic-select';
 import { SelectDisabled } from './examples/select-disabled';
 import { SelectClearable } from './examples/select-clearable';

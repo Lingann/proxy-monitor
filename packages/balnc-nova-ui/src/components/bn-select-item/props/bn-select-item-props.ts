@@ -12,7 +12,14 @@ export type SelectItemShape = 'circle' | 'square' | 'capsule'
 
 export type SelectItemIcon = string | VNode
 
+export type SelectItemTrigger = 'click' | 'hover'
+
 export const createSelectItemProps = createVueProps('select-item', {
+  trigger: {
+    type: String as PropType<SelectItemTrigger>,
+    default: 'click'
+  },
+
   color: {
     type: String as PropType<SelectItemColor>,
     default: 'nature'

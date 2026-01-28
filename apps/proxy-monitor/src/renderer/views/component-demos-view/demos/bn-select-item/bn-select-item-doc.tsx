@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import styles from './bn-select-item-doc.module.scss';
-import { DemoContainer } from '../../components/demo-container';
-import { BnSelectItem } from '../../../../components/bn-select-item';
+import DemoContainer from '../../components/demo-container';
+import { BnSelectItem } from '@balnc-nova-ui/core';
 import { BasicItem } from './examples/basic-item';
 import { ItemClick } from './examples/item-click';
 import { ItemHover } from './examples/item-hover';

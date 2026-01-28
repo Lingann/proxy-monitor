@@ -11,6 +11,7 @@ export const BnSelectItem = defineComponent<SelectItemProps>({
   props: createSelectItemProps(),
   setup(props, { slots }) {
     const triggerRef = ref<HTMLElement | null>(null)
+    const contentRef = ref<HTMLElement | null>(null)
 
     const { triggerClass } = useSelectItemClasses(props)
 
@@ -76,21 +77,54 @@ export const BnSelectItem = defineComponent<SelectItemProps>({
       )
     }
 
+    const handleMouseEnter = () => {
+      if (props.trigger === 'hover' && contentRef.value) {
+        contentRef.value.style.display = 'block'
+      }
+    }
+
+    const handleMouseLeave = () => {
+      if (props.trigger === 'hover' && contentRef.value) {
+        contentRef.value.style.display = 'none'
+      }
+    }
+
+    const handleTriggerClick = (event: MouseEvent) => {
+      if (props.trigger === 'click' && contentRef.value) {
+        const isVisible = contentRef.value.style.display !== 'none'
+        contentRef.value.style.display = isVisible ? 'none' : 'block'
+      }
+      handleClick(event)
+    }
+
     return () => (
-      <button
-        ref={triggerRef}
-        class={triggerClass.value}
-        disabled={props.disabled}
-        type="button"
-        aria-pressed={props.selected}
-        onClick={handleClick}
+      <div
+        class="bn-select-item-wrapper"
+        onMouseenter={handleMouseEnter}
+        onMouseleave={handleMouseLeave}
       >
-        {renderPrefix()}
-
-        {renderDefault()}
-
-        {renderSuffix()}
-      </button>
+        <button
+          ref={triggerRef}
+          class={triggerClass.value}
+          disabled={props.disabled}
+          type="button"
+          aria-pressed={props.selected}
+          onClick={handleTriggerClick}
+        >
+          {renderPrefix()}
+          {renderDefault()}
+          {renderSuffix()}
+        </button>
+        {slots.trigger && (
+          <div
+            ref={contentRef}
+            class="bn-select-item__content"
+            style={{ display: props.trigger === 'hover' ? 'none' : undefined }}
+          >
+            {slots.trigger()}
+          </div>
+        )}
+      </div>
     )
   }
 })

@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue';
 import styles from './bn-form-item-doc.module.scss';
-import { DemoContainer } from '../../components/demo-container';
-import { BnForm } from '../../../components/bn-form';
-import { BnFormItem } from '../../../components/bn-form';
-import { BnInput } from '../../../components/bn-input';
+import DemoContainer from '../../components/demo-container';
+import { BnForm } from '@balnc-nova-ui/core';
+import { BnFormItem } from '@balnc-nova-ui/core';
+import { BnInput } from '@balnc-nova-ui/core';
 import { BasicFormItem } from './examples/basic-form-item';
 import { FormItemLabel } from './examples/form-item-label';
 import { FormItemRequired } from './examples/form-item-required';

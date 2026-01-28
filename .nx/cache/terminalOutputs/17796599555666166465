@@ -1,0 +1,3 @@
+[2m> [22mtsc && concurrently "vite" "cross-env NODE_ENV=development electron ."
+
+error TS18003: No inputs were found in config file 'H:/lingann/proxy-monitor/tsconfig.json'. Specified 'include' paths were '["src/**/*"]' and 'exclude' paths were '["node_modules","dist"]'.

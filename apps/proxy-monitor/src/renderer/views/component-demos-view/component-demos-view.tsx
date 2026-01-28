@@ -1,7 +1,7 @@
 import { defineComponent, ref } from 'vue';
 import styles from './component-demos-view.module.scss';
-import { DemoSidebar } from './components/demo-sidebar';
-import { DemoDocPage } from './components/demo-doc-page';
+import DemoSidebar from './components/demo-sidebar';
+import DemoDocPage from './components/demo-doc-page';
 
 interface MenuItem {
     id: string;

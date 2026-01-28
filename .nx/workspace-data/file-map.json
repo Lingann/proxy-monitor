@@ -1,0 +1,3495 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.8.4",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".trae/documents/plan_20260128_011934.md",
+        "hash": "15946266072856243079"
+      },
+      {
+        "file": ".vitepress/cache/deps/@theme_index.js",
+        "hash": "7967740956884224036"
+      },
+      {
+        "file": ".trae/rules/vue-rules.md",
+        "hash": "7837087920487187816"
+      },
+      {
+        "file": "nx.json",
+        "hash": "6431549804473848863"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_062723.md",
+        "hash": "10673803384013581523"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-IFWPYFML.js",
+        "hash": "304946611700921198"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_035715.md",
+        "hash": "8887825467987394023"
+      },
+      {
+        "file": ".vitepress/cache/deps/vue-router.js.map",
+        "hash": "12503477223043622735"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "2373171212127886927"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "7733597100238590621"
+      },
+      {
+        "file": ".vitepress/cache/deps/vitepress___@vue_devtools-api.js.map",
+        "hash": "16861081419289571817"
+      },
+      {
+        "file": "vite.config.ts",
+        "hash": "10242443951058791965"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "4319354886464025292"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_014619.md",
+        "hash": "10329645134009063053"
+      },
+      {
+        "file": "lerna.json",
+        "hash": "9739398129073150820"
+      },
+      {
+        "file": ".vitepress/cache/deps/lucide-vue-next.js.map",
+        "hash": "9779349411416633095"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_080644.md",
+        "hash": "5444355493028737275"
+      },
+      {
+        "file": "package.json",
+        "hash": "4192706141444911933"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-CQ64OYRR.js.map",
+        "hash": "12208529066322168875"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_023204.md",
+        "hash": "1142998360006384263"
+      },
+      {
+        "file": ".vitepress/cache/deps/vue-router.js",
+        "hash": "9603891120456611686"
+      },
+      {
+        "file": ".vitepress/cache/deps/vue.js",
+        "hash": "7061661139969787694"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-PZ5AY32C.js",
+        "hash": "7535493894870532592"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_112750.md",
+        "hash": "5632456734076247356"
+      },
+      {
+        "file": ".trae/documents/plan_20260127_080213.md",
+        "hash": "17749399620295873373"
+      },
+      {
+        "file": ".trae/rules/page-layout-rules.md",
+        "hash": "8794820235698135500"
+      },
+      {
+        "file": ".npmrc",
+        "hash": "8857846965084270953"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-IFWPYFML.js.map",
+        "hash": "17818210943788058576"
+      },
+      {
+        "file": ".vitepress/cache/deps/echarts.js.map",
+        "hash": "13067301634607530618"
+      },
+      {
+        "file": ".trae/skills/vue-code-skill/SKILL.md",
+        "hash": "15464707277596191083"
+      },
+      {
+        "file": ".vitepress/cache/deps/fuse__js.js",
+        "hash": "17940548980002404467"
+      },
+      {
+        "file": ".trae/rules/core-rules.md",
+        "hash": "15017509213478709833"
+      },
+      {
+        "file": ".vitepress/cache/deps/package.json",
+        "hash": "8630294688235076505"
+      },
+      {
+        "file": ".vitepress/cache/deps/vue-i18n.js.map",
+        "hash": "5207514094595254884"
+      },
+      {
+        "file": ".vitepress/cache/deps/vue.js.map",
+        "hash": "9947606979680686569"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-CQ64OYRR.js",
+        "hash": "273196664897895687"
+      },
+      {
+        "file": "update-imports.js",
+        "hash": "3275893564870504705"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-QK7O6LCA.js",
+        "hash": "8354012739917333500"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_030104.md",
+        "hash": "1073881233062493502"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_062859.md",
+        "hash": "14182749612669951590"
+      },
+      {
+        "file": ".vitepress/cache/deps/@theme_index.js.map",
+        "hash": "16972912250535375528"
+      },
+      {
+        "file": ".vitepress/cache/deps/_metadata.json",
+        "hash": "9718958221647447332"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-PZ5AY32C.js.map",
+        "hash": "9947606979680686569"
+      },
+      {
+        "file": ".trae/documents/plan_20260127_074549.md",
+        "hash": "15128948245667894795"
+      },
+      {
+        "file": ".trae/skills/page-layout-skill/SKILL.md",
+        "hash": "10085187854527457643"
+      },
+      {
+        "file": ".vitepress/cache/deps/vitepress___@vueuse_core.js",
+        "hash": "12276289793856102691"
+      },
+      {
+        "file": ".vitepress/cache/deps/zod.js",
+        "hash": "6989561154129592425"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "6198152232885121062"
+      },
+      {
+        "file": ".vitepress/cache/deps/fuse__js.js.map",
+        "hash": "787945356730605091"
+      },
+      {
+        "file": ".vitepress/cache/deps/zod.js.map",
+        "hash": "14235846421467087095"
+      },
+      {
+        "file": ".trae/skills/core-code-skill/SKILL.md",
+        "hash": "15896793939631442160"
+      },
+      {
+        "file": ".vitepress/cache/deps/lucide-vue-next.js",
+        "hash": "11999695868141814682"
+      },
+      {
+        "file": ".vitepress/cache/deps/chunk-QK7O6LCA.js.map",
+        "hash": "12981296336703104225"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_043320.md",
+        "hash": "7172828338465643355"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_094642.md",
+        "hash": "3473090893571957680"
+      },
+      {
+        "file": ".vitepress/cache/deps/vitepress___@vueuse_core.js.map",
+        "hash": "9947606979680686569"
+      },
+      {
+        "file": ".trae/documents/plan_20260128_031113.md",
+        "hash": "10475074116689070496"
+      },
+      {
+        "file": ".trae/documents/plan_20260127_091735.md",
+        "hash": "5320292668742000588"
+      },
+      {
+        "file": ".vitepress/cache/deps/vue-i18n.js",
+        "hash": "15269542313260093363"
+      },
+      {
+        "file": ".vitepress/cache/deps/echarts.js",
+        "hash": "8107294206848032607"
+      },
+      {
+        "file": ".vitepress/cache/deps/vitepress___@vue_devtools-api.js",
+        "hash": "6418331550472864707"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "12543029853862930820"
+      }
+    ],
+    "projectFileMap": {
+      "balnc-nova-ui-docs": [
+        {
+          "file": "apps/balnc-nova-ui-docs/.vitepress/config.ts",
+          "hash": "6697066941500015922",
+          "deps": [
+            "npm:vitepress",
+            "npm:@gl/vitepress-demo-container-plugin"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/.vitepress/theme/index.ts",
+          "hash": "11524545441910686638",
+          "deps": [
+            "npm:vitepress",
+            "npm:vue",
+            "npm:@gl/vitepress-demo-container",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/components/bn-form-item.md",
+          "hash": "5268618987121953558"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/components/bn-form.md",
+          "hash": "15461833246809871690"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/components/bn-input.md",
+          "hash": "12183490470464676845"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/components/bn-select-item.md",
+          "hash": "8298479118217909722"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/components/bn-select.md",
+          "hash": "2270365279050886140"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/bn-form-item-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/bn-form-item-doc.tsx",
+          "hash": "7705078865776300768",
+          "deps": [
+            "npm:vue",
+            "npm:@gl/vitepress-demo-container",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/examples/basic-form-item/basic-form-item.tsx",
+          "hash": "2667891071297888176",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/examples/basic-form-item/index.ts",
+          "hash": "16718178307940048753"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/examples/basic-form-item/styles/basic-form-item.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/examples/form-item-label/form-item-label.tsx",
+          "hash": "1790434555253444777",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/examples/form-item-label/index.ts",
+          "hash": "16883975762115528514"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/examples/form-item-label/styles/form-item-label.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/examples/form-item-required/form-item-required.tsx",
+          "hash": "6350867234094086104",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/examples/form-item-required/index.ts",
+          "hash": "16843901422811421611"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/examples/form-item-required/styles/form-item-required.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form-item/index.ts",
+          "hash": "16874997451478979247"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/bn-form-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/bn-form-doc.tsx",
+          "hash": "16316626009100573436",
+          "deps": [
+            "npm:vue",
+            "npm:@gl/vitepress-demo-container",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/examples/basic-form/basic-form.tsx",
+          "hash": "12087572369749627833",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/examples/basic-form/index.ts",
+          "hash": "1162699407636755547"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/examples/basic-form/styles/basic-form.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/examples/form-actions/form-actions.tsx",
+          "hash": "8489121862698118278",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/examples/form-actions/index.ts",
+          "hash": "12334355142507204120"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/examples/form-actions/styles/form-actions.module.scss",
+          "hash": "10784371293872562723"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/examples/form-validation/form-validation.tsx",
+          "hash": "4660839682225779408",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/examples/form-validation/index.ts",
+          "hash": "11130140090871459467"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/examples/form-validation/styles/form-validation.module.scss",
+          "hash": "8146178253270848664"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-form/index.ts",
+          "hash": "5284050878082224813"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/bn-input-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/bn-input-doc.tsx",
+          "hash": "8324704944774578843",
+          "deps": [
+            "npm:vue",
+            "npm:@gl/vitepress-demo-container",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/examples/basic-input/basic-input.tsx",
+          "hash": "6798540013872404874",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/examples/basic-input/index.ts",
+          "hash": "14252919777454383047"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/examples/basic-input/styles/basic-input.module.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/examples/input-disabled/index.ts",
+          "hash": "7317174683936415426"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/examples/input-disabled/input-disabled.tsx",
+          "hash": "4842444769008337171",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/examples/input-disabled/styles/input-disabled.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/examples/input-placeholder/index.ts",
+          "hash": "17951781569198650"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/examples/input-placeholder/input-placeholder.tsx",
+          "hash": "1212762741901580317",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/examples/input-placeholder/styles/input-placeholder.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-input/index.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/bn-select-item-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/bn-select-item-doc.tsx",
+          "hash": "17053106424770281366",
+          "deps": [
+            "npm:vue",
+            "npm:@gl/vitepress-demo-container"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/examples/basic-item/basic-item.tsx",
+          "hash": "1672052576488663402",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/examples/basic-item/index.ts",
+          "hash": "2082733832427198601"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/examples/basic-item/styles/basic-item.module.scss",
+          "hash": "2152709550688185019"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/examples/item-click/index.ts",
+          "hash": "2553627583752010876"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/examples/item-click/item-click.tsx",
+          "hash": "6578400712598250767",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/examples/item-click/styles/item-click.module.scss",
+          "hash": "2152709550688185019"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/examples/item-hover/index.ts",
+          "hash": "6105453063832247709"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/examples/item-hover/item-hover.tsx",
+          "hash": "8634728130609172781",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/examples/item-hover/styles/item-hover.module.scss",
+          "hash": "2152709550688185019"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select-item/index.ts",
+          "hash": "10705609214813150907"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/bn-select-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/bn-select-doc.tsx",
+          "hash": "1472789849175562170",
+          "deps": [
+            "npm:vue",
+            "npm:@gl/vitepress-demo-container",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/examples/basic-select/basic-select.tsx",
+          "hash": "14279001172322922281",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/examples/basic-select/index.ts",
+          "hash": "9933952332673852050"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/examples/basic-select/styles/basic-select.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/examples/select-clearable/index.ts",
+          "hash": "3169752339033904788"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/examples/select-clearable/select-clearable.tsx",
+          "hash": "1148738289415404406",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/examples/select-clearable/styles/select-clearable.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/examples/select-disabled/index.ts",
+          "hash": "3583298507039657343"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/examples/select-disabled/select-disabled.tsx",
+          "hash": "1718508489852561504",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/examples/select-disabled/styles/select-disabled.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/demos/bn-select/index.ts",
+          "hash": "2931182496105828688"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/guide/getting-started.md",
+          "hash": "14396197894587835196"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/index.md",
+          "hash": "5937898140450945108"
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/package.json",
+          "hash": "2801151009732034681",
+          "deps": [
+            "npm:@gl/vitepress-demo-container",
+            "npm:@gl/vitepress-demo-container-plugin",
+            "npm:@vitejs/plugin-vue",
+            "npm:@vitejs/plugin-vue-jsx",
+            "npm:sass",
+            "npm:typescript",
+            "npm:vite",
+            "npm:vitepress",
+            "balnc-nova-ui",
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/balnc-nova-ui-docs/project.json",
+          "hash": "12821092806549570086"
+        }
+      ],
+      "proxy-monitor": [
+        {
+          "file": "apps/proxy-monitor/package.json",
+          "hash": "1554236503606706284",
+          "deps": [
+            "npm:@types/better-sqlite3",
+            "npm:@types/ejs",
+            "npm:@types/node",
+            "npm:@vitejs/plugin-vue",
+            "npm:@vitejs/plugin-vue-jsx",
+            "npm:concurrently",
+            "npm:cross-env",
+            "npm:electron",
+            "npm:electron-builder",
+            "npm:sass",
+            "npm:typescript",
+            "npm:vite",
+            "balnc-nova-ui",
+            "npm:better-sqlite3",
+            "npm:echarts",
+            "npm:ejs",
+            "npm:electron-ejs",
+            "npm:execa",
+            "npm:fuse.js",
+            "npm:lucide-vue-next",
+            "npm:systeminformation",
+            "npm:vue",
+            "npm:vue-i18n",
+            "npm:vue-router",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/project.json",
+          "hash": "5556858875893572291"
+        },
+        {
+          "file": "apps/proxy-monitor/src/core/config-manager.ts",
+          "hash": "5579657535625272970",
+          "deps": [
+            "npm:electron"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/core/database-service.ts",
+          "hash": "5731192577386674151",
+          "deps": [
+            "npm:better-sqlite3",
+            "npm:electron"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/core/i18n-service.ts",
+          "hash": "859446672685943047",
+          "deps": [
+            "npm:electron"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/core/index.ts",
+          "hash": "3914171851110725413"
+        },
+        {
+          "file": "apps/proxy-monitor/src/core/module-manager.ts",
+          "hash": "204161308257961682"
+        },
+        {
+          "file": "apps/proxy-monitor/src/core/process-manager-service.ts",
+          "hash": "5151753930055756094"
+        },
+        {
+          "file": "apps/proxy-monitor/src/locales/en.json",
+          "hash": "6501914495515014304"
+        },
+        {
+          "file": "apps/proxy-monitor/src/locales/zh.json",
+          "hash": "10375120808996068766"
+        },
+        {
+          "file": "apps/proxy-monitor/src/main/elevation.ts",
+          "hash": "15056290208975745776",
+          "deps": [
+            "npm:electron"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/main/index.ts",
+          "hash": "5897211596178566405",
+          "deps": [
+            "npm:electron"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/component-library/component-library-module.ts",
+          "hash": "1343853248862686195"
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/component-library/index.ts",
+          "hash": "1536765868193681511"
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/network-monitor/index.ts",
+          "hash": "15722116639570249691"
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/network-monitor/network-monitor-module.ts",
+          "hash": "9059992953171496462"
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/network-monitor/network-monitor-service.ts",
+          "hash": "10846841934816315951"
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/network-monitor/network-monitor.worker.ts",
+          "hash": "6041852180218935357",
+          "deps": [
+            "npm:systeminformation",
+            "npm:execa"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/settings/index.ts",
+          "hash": "16512114817273419574"
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/settings/settings-module.ts",
+          "hash": "14749746311545800443"
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/system-proxy/index.ts",
+          "hash": "4884097689600853735"
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/system-proxy/system-proxy-module.ts",
+          "hash": "15384596907723097307"
+        },
+        {
+          "file": "apps/proxy-monitor/src/modules/system-proxy/system-proxy-service.ts",
+          "hash": "9837585251700447968"
+        },
+        {
+          "file": "apps/proxy-monitor/src/preload/index.cts",
+          "hash": "14272590174919315480",
+          "deps": [
+            "npm:electron"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/App.tsx",
+          "hash": "9638023736531026291",
+          "deps": [
+            "npm:vue",
+            "npm:vue-router",
+            "npm:vue-i18n",
+            "npm:lucide-vue-next"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/app-styles.css",
+          "hash": "2393114598328132810"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/index.ts",
+          "hash": "3080123305227074277",
+          "deps": [
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/renderer-entry.ts",
+          "hash": "208052028360812029",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/renderer-types.d.ts",
+          "hash": "7007238366478068865"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/router/index.ts",
+          "hash": "3080123305227074277",
+          "deps": [
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/component-demos-view.module.scss",
+          "hash": "12971966836375011313"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/component-demos-view.tsx",
+          "hash": "8971008563345413967",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/components/demo-container/demo-container.module.scss",
+          "hash": "16411779490619961734"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/components/demo-container/demo-container.tsx",
+          "hash": "5341238823466686233",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/components/demo-container/index.ts",
+          "hash": "3765258323059717431"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/components/demo-doc-page/demo-doc-page.module.scss",
+          "hash": "14746938723372220467"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/components/demo-doc-page/demo-doc-page.tsx",
+          "hash": "7617626451409471270",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/components/demo-doc-page/index.ts",
+          "hash": "17993015484985577072"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/components/demo-sidebar/demo-sidebar.module.scss",
+          "hash": "9176055789136180367"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/components/demo-sidebar/demo-sidebar.tsx",
+          "hash": "11915192764247049846",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/components/demo-sidebar/index.ts",
+          "hash": "7462115034989303479"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/bn-form-item-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/bn-form-item-doc.tsx",
+          "hash": "13853702426962583862",
+          "deps": [
+            "npm:vue",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/examples/basic-form-item/basic-form-item.tsx",
+          "hash": "2667891071297888176",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/examples/basic-form-item/index.ts",
+          "hash": "16718178307940048753"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/examples/basic-form-item/styles/basic-form-item.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/examples/form-item-label/form-item-label.tsx",
+          "hash": "1790434555253444777",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/examples/form-item-label/index.ts",
+          "hash": "16883975762115528514"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/examples/form-item-label/styles/form-item-label.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/examples/form-item-required/form-item-required.tsx",
+          "hash": "6350867234094086104",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/examples/form-item-required/index.ts",
+          "hash": "16843901422811421611"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/examples/form-item-required/styles/form-item-required.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form-item/index.ts",
+          "hash": "16874997451478979247"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/bn-form-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/bn-form-doc.tsx",
+          "hash": "12869634799112426873",
+          "deps": [
+            "npm:vue",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/examples/basic-form/basic-form.tsx",
+          "hash": "12087572369749627833",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/examples/basic-form/index.ts",
+          "hash": "1162699407636755547"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/examples/basic-form/styles/basic-form.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/examples/form-actions/form-actions.tsx",
+          "hash": "8489121862698118278",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/examples/form-actions/index.ts",
+          "hash": "12334355142507204120"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/examples/form-actions/styles/form-actions.module.scss",
+          "hash": "10784371293872562723"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/examples/form-validation/form-validation.tsx",
+          "hash": "4660839682225779408",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/examples/form-validation/index.ts",
+          "hash": "11130140090871459467"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/examples/form-validation/styles/form-validation.module.scss",
+          "hash": "8146178253270848664"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-form/index.ts",
+          "hash": "5284050878082224813"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/bn-input-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/bn-input-doc.tsx",
+          "hash": "6208980218525695507",
+          "deps": [
+            "npm:vue",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/examples/basic-input/basic-input.tsx",
+          "hash": "6798540013872404874",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/examples/basic-input/index.ts",
+          "hash": "14252919777454383047"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/examples/basic-input/styles/basic-input.module.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/examples/input-disabled/index.ts",
+          "hash": "7317174683936415426"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/examples/input-disabled/input-disabled.tsx",
+          "hash": "4842444769008337171",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/examples/input-disabled/styles/input-disabled.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/examples/input-placeholder/index.ts",
+          "hash": "17951781569198650"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/examples/input-placeholder/input-placeholder.tsx",
+          "hash": "1212762741901580317",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/examples/input-placeholder/styles/input-placeholder.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-input/index.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/bn-select-item-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/bn-select-item-doc.tsx",
+          "hash": "6720742808630302370",
+          "deps": [
+            "npm:vue",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/examples/basic-item/basic-item.tsx",
+          "hash": "1672052576488663402",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/examples/basic-item/index.ts",
+          "hash": "2082733832427198601"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/examples/basic-item/styles/basic-item.module.scss",
+          "hash": "2152709550688185019"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/examples/item-click/index.ts",
+          "hash": "2553627583752010876"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/examples/item-click/item-click.tsx",
+          "hash": "4445393497603591941",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/examples/item-click/styles/item-click.module.scss",
+          "hash": "2152709550688185019"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/examples/item-hover/index.ts",
+          "hash": "6105453063832247709"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/examples/item-hover/item-hover.tsx",
+          "hash": "5847133660280465650",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/examples/item-hover/styles/item-hover.module.scss",
+          "hash": "2152709550688185019"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select-item/index.ts",
+          "hash": "10705609214813150907"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/bn-select-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/bn-select-doc.tsx",
+          "hash": "6961110864104163135",
+          "deps": [
+            "npm:vue",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/examples/basic-select/basic-select.tsx",
+          "hash": "14279001172322922281",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/examples/basic-select/index.ts",
+          "hash": "9933952332673852050"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/examples/basic-select/styles/basic-select.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/examples/select-clearable/index.ts",
+          "hash": "3169752339033904788"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/examples/select-clearable/select-clearable.tsx",
+          "hash": "1148738289415404406",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/examples/select-clearable/styles/select-clearable.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/examples/select-disabled/index.ts",
+          "hash": "3583298507039657343"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/examples/select-disabled/select-disabled.tsx",
+          "hash": "1718508489852561504",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/examples/select-disabled/styles/select-disabled.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/demos/bn-select/index.ts",
+          "hash": "2931182496105828688"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-demos-view/index.ts",
+          "hash": "13067985046124009156"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-library/component-library.module.scss",
+          "hash": "8037575753213519299"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-library/component-library.tsx",
+          "hash": "9493214165547676396",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-library/composables/use-demo-state.ts",
+          "hash": "7805906901822910341",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/component-library/index.ts",
+          "hash": "10940288369844373156"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-chart.ts",
+          "hash": "13009840549684423180",
+          "deps": [
+            "npm:vue",
+            "npm:echarts",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-data.ts",
+          "hash": "10467152770105935886",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/monitor/composables/use-monitor-table.tsx",
+          "hash": "8289256556840759952",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/monitor/index.ts",
+          "hash": "11326460413710688028"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/monitor/monitor.module.scss",
+          "hash": "4018284315652806056"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/monitor/monitor.tsx",
+          "hash": "1727582078741391508",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n",
+            "balnc-nova-ui"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/monitor/types.ts",
+          "hash": "2942667796603991255"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/settings/composables/use-settings-state.ts",
+          "hash": "4360379973337984731",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/settings/index.ts",
+          "hash": "11262739933486353161"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/settings/settings.module.scss",
+          "hash": "5532948911807948816"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/settings/settings.tsx",
+          "hash": "4721819299993212670",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.module.scss",
+          "hash": "4478245021258872523"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/system-proxy/components/bypass-rules-table.tsx",
+          "hash": "16601946125969374695",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/system-proxy/composables/use-extended-proxy-state.ts",
+          "hash": "8578691224267249848",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/system-proxy/composables/use-proxy-state.ts",
+          "hash": "10838139243737412088",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/system-proxy/index.ts",
+          "hash": "18306359957561226396"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/system-proxy/system-proxy.module.scss",
+          "hash": "11660673723959209932"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/system-proxy/system-proxy.tsx",
+          "hash": "2085018304710535210",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/component-demos-view.module.scss",
+          "hash": "12971966836375011313"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/component-demos-view.tsx",
+          "hash": "4637048348536122140",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/components/demo-container/demo-container.module.scss",
+          "hash": "16411779490619961734"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/components/demo-container/demo-container.tsx",
+          "hash": "5341238823466686233",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/components/demo-container/index.ts",
+          "hash": "3765258323059717431"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/components/demo-doc-page/demo-doc-page.module.scss",
+          "hash": "14746938723372220467"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/components/demo-doc-page/demo-doc-page.tsx",
+          "hash": "7617626451409471270",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/components/demo-doc-page/index.ts",
+          "hash": "17993015484985577072"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/components/demo-sidebar/demo-sidebar.module.scss",
+          "hash": "9176055789136180367"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/components/demo-sidebar/demo-sidebar.tsx",
+          "hash": "3887269856804485953",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/components/demo-sidebar/index.ts",
+          "hash": "7462115034989303479"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/bn-form-item-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/bn-form-item-doc.tsx",
+          "hash": "11581597911576581600",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/examples/basic-form-item/basic-form-item.tsx",
+          "hash": "2667891071297888176",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/examples/basic-form-item/index.ts",
+          "hash": "16718178307940048753"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/examples/basic-form-item/styles/basic-form-item.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/examples/form-item-label/form-item-label.tsx",
+          "hash": "1790434555253444777",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/examples/form-item-label/index.ts",
+          "hash": "16883975762115528514"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/examples/form-item-label/styles/form-item-label.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/examples/form-item-required/form-item-required.tsx",
+          "hash": "6350867234094086104",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/examples/form-item-required/index.ts",
+          "hash": "16843901422811421611"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/examples/form-item-required/styles/form-item-required.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form-item/index.ts",
+          "hash": "16874997451478979247"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/bn-form-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/bn-form-doc.tsx",
+          "hash": "2125584559426484239",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/examples/basic-form/basic-form.tsx",
+          "hash": "12087572369749627833",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/examples/basic-form/index.ts",
+          "hash": "1162699407636755547"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/examples/basic-form/styles/basic-form.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/examples/form-actions/form-actions.tsx",
+          "hash": "8489121862698118278",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/examples/form-actions/index.ts",
+          "hash": "12334355142507204120"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/examples/form-actions/styles/form-actions.module.scss",
+          "hash": "10784371293872562723"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/examples/form-validation/form-validation.tsx",
+          "hash": "4660839682225779408",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/examples/form-validation/index.ts",
+          "hash": "11130140090871459467"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/examples/form-validation/styles/form-validation.module.scss",
+          "hash": "8146178253270848664"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-form/index.ts",
+          "hash": "5284050878082224813"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/bn-input-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/bn-input-doc.tsx",
+          "hash": "11381232246462407204",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/examples/basic-input/basic-input.tsx",
+          "hash": "6798540013872404874",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/examples/basic-input/index.ts",
+          "hash": "14252919777454383047"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/examples/basic-input/styles/basic-input.module.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/examples/input-disabled/index.ts",
+          "hash": "7317174683936415426"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/examples/input-disabled/input-disabled.tsx",
+          "hash": "4842444769008337171",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/examples/input-disabled/styles/input-disabled.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/examples/input-placeholder/index.ts",
+          "hash": "17951781569198650"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/examples/input-placeholder/input-placeholder.tsx",
+          "hash": "1212762741901580317",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/examples/input-placeholder/styles/input-placeholder.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-input/index.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/bn-select-item-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/bn-select-item-doc.tsx",
+          "hash": "4304823128331824712",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/examples/basic-item/basic-item.tsx",
+          "hash": "1672052576488663402",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/examples/basic-item/index.ts",
+          "hash": "2082733832427198601"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/examples/basic-item/styles/basic-item.module.scss",
+          "hash": "2152709550688185019"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/examples/item-click/index.ts",
+          "hash": "2553627583752010876"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/examples/item-click/item-click.tsx",
+          "hash": "6578400712598250767",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/examples/item-click/styles/item-click.module.scss",
+          "hash": "2152709550688185019"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/examples/item-hover/index.ts",
+          "hash": "6105453063832247709"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/examples/item-hover/item-hover.tsx",
+          "hash": "8634728130609172781",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/examples/item-hover/styles/item-hover.module.scss",
+          "hash": "2152709550688185019"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select-item/index.ts",
+          "hash": "10705609214813150907"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/bn-select-doc.module.scss",
+          "hash": "12864837485344559499"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/bn-select-doc.tsx",
+          "hash": "13075537917055190703",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/examples/basic-select/basic-select.tsx",
+          "hash": "14279001172322922281",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/examples/basic-select/index.ts",
+          "hash": "9933952332673852050"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/examples/basic-select/styles/basic-select.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/examples/select-clearable/index.ts",
+          "hash": "3169752339033904788"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/examples/select-clearable/select-clearable.tsx",
+          "hash": "1148738289415404406",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/examples/select-clearable/styles/select-clearable.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/examples/select-disabled/index.ts",
+          "hash": "3583298507039657343"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/examples/select-disabled/select-disabled.tsx",
+          "hash": "1718508489852561504",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/examples/select-disabled/styles/select-disabled.module.scss",
+          "hash": "8782832519141275775"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/demos/bn-select/index.ts",
+          "hash": "2931182496105828688"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-demos-view/index.ts",
+          "hash": "13067985046124009156"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-library/component-library.module.scss",
+          "hash": "8037575753213519299"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-library/component-library.tsx",
+          "hash": "9493214165547676396",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-library/composables/use-demo-state.ts",
+          "hash": "7805906901822910341",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/component-library/index.ts",
+          "hash": "10940288369844373156"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/monitor/composables/use-monitor-chart.ts",
+          "hash": "13009840549684423180",
+          "deps": [
+            "npm:vue",
+            "npm:echarts",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/monitor/composables/use-monitor-data.ts",
+          "hash": "10467152770105935886",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/monitor/composables/use-monitor-table.tsx",
+          "hash": "8289256556840759952",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/monitor/index.ts",
+          "hash": "11326460413710688028"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/monitor/monitor.module.scss",
+          "hash": "4018284315652806056"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/monitor/monitor.tsx",
+          "hash": "4137374083695003410",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/monitor/types.ts",
+          "hash": "2942667796603991255"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/settings/composables/use-settings-state.ts",
+          "hash": "4360379973337984731",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/settings/index.ts",
+          "hash": "11262739933486353161"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/settings/settings.module.scss",
+          "hash": "5532948911807948816"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/settings/settings.tsx",
+          "hash": "4721819299993212670",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/system-proxy/components/bypass-rules-table.module.scss",
+          "hash": "4478245021258872523"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/system-proxy/components/bypass-rules-table.tsx",
+          "hash": "16601946125969374695",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/system-proxy/composables/use-extended-proxy-state.ts",
+          "hash": "8578691224267249848",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/system-proxy/composables/use-proxy-state.ts",
+          "hash": "10838139243737412088",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/system-proxy/index.ts",
+          "hash": "18306359957561226396"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/system-proxy/system-proxy.module.scss",
+          "hash": "11660673723959209932"
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/views/views/system-proxy/system-proxy.tsx",
+          "hash": "2085018304710535210",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/renderer/vite-env.d.ts",
+          "hash": "12550324617509866684",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "apps/proxy-monitor/src/shared/common-types.ts",
+          "hash": "8207950215587612880"
+        },
+        {
+          "file": "apps/proxy-monitor/src/shared/index.ts",
+          "hash": "17900035768816378229"
+        },
+        {
+          "file": "apps/proxy-monitor/tsconfig.json",
+          "hash": "2083807763092470316"
+        },
+        {
+          "file": "apps/proxy-monitor/vite.config.ts",
+          "hash": "8425907363341836127",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-vue",
+            "npm:@vitejs/plugin-vue-jsx"
+          ]
+        }
+      ],
+      "balnc-nova-ui": [
+        {
+          "file": "packages/balnc-nova-ui/package.json",
+          "hash": "10486644099615855370",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n",
+            "npm:@types/node",
+            "npm:@vitejs/plugin-vue",
+            "npm:@vitejs/plugin-vue-jsx",
+            "npm:sass",
+            "npm:typescript",
+            "npm:vite",
+            "npm:vite-plugin-dts"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/project.json",
+          "hash": "10157122366528785655"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/STYLE_GUIDE.md",
+          "hash": "15695506437911959132"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/badge.tsx",
+          "hash": "18220701065304488294",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/composables/index.ts",
+          "hash": "5662985636879037642"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/composables/use-badge-class.ts",
+          "hash": "11760998823513556426",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/composables/use-badge-event.ts",
+          "hash": "10239764693140433450",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/composables/use-badge-model-value.ts",
+          "hash": "3327584889351569959",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/composables/use-badge-offset-style.ts",
+          "hash": "12775396321599960034",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/composables/use-badge-preset.ts",
+          "hash": "16109841881846580098",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/composables/use-badge-standalone.ts",
+          "hash": "5592812639900499380",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/index.ts",
+          "hash": "12907362380346991540"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/props/badge-props.ts",
+          "hash": "17968526780213253407",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/props/index.ts",
+          "hash": "935057361935584839"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/styles/index.scss",
+          "hash": "3038346912161931997"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/styles/mixin-base-style.scss",
+          "hash": "15356514691092839198"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/styles/mixin-color-style.scss",
+          "hash": "15570089279728220907"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/styles/mixin-shape-style.scss",
+          "hash": "9633791414045311985"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/styles/mixin-size-style.scss",
+          "hash": "404511427643087641"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/styles/mixin-variant-style.scss",
+          "hash": "6300931444256659993"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/styles/variables.scss",
+          "hash": "9940078955239267539"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-badge/types/index.ts",
+          "hash": "77253383749053989"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-blockquote/index.ts",
+          "hash": "118892742224110043"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-blockquote/styles/index.scss",
+          "hash": "14059890033962462645"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-blockquote/styles/mixin-base-style.scss",
+          "hash": "16162096948225338893"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-blockquote/styles/mixin-color-style.scss",
+          "hash": "7997249010620443160"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-blockquote/styles/mixin-size-style.scss",
+          "hash": "4048038628383849682"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-blockquote/styles/mixin-state-style.scss",
+          "hash": "16006520150532376156"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-blockquote/styles/mixin-variant-style.scss",
+          "hash": "12394014015139538995"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-blockquote/styles/variables.scss",
+          "hash": "15430046986181093935"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/README.md",
+          "hash": "9423422214481339281"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/STYLE_GUIDE.md",
+          "hash": "18345550098736748199"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/bn-button.tsx",
+          "hash": "1299049270498165997",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/composables/index.ts",
+          "hash": "16852050238610250691"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/composables/use-button-class.ts",
+          "hash": "2792691278197485116",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/composables/use-button-effect.tsx",
+          "hash": "10047911142069225703",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/composables/use-button-event.ts",
+          "hash": "4596647883344457967",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/composables/use-button-preset.ts",
+          "hash": "4692869432275041804",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/composables/use-button-state.ts",
+          "hash": "9871474814945786034",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/index.ts",
+          "hash": "3896284228753507291"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/props/button-props.ts",
+          "hash": "10168059066354398897",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/props/index.ts",
+          "hash": "4594784074447214080"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/styles/index.scss",
+          "hash": "10205964066594912352"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/styles/mixin-base-style.scss",
+          "hash": "14579776071949341703"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/styles/mixin-color-style.scss",
+          "hash": "11915881051900326098"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/styles/mixin-reset-style.scss",
+          "hash": "18283151425906885758"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/styles/mixin-shape-style.scss",
+          "hash": "10101805232312722574"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/styles/mixin-size-style.scss",
+          "hash": "1821828087558302140"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/styles/mixin-variant-color-style.scss",
+          "hash": "16747741835675397174"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/styles/mixin-variant-style.scss",
+          "hash": "12676830173240557118"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/styles/variables.scss",
+          "hash": "17318099538559682590"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/types/index.ts",
+          "hash": "9357900694801638216"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-button/utils/index.ts",
+          "hash": "1580739768022420244"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/__tests__/checkbox.test.ts",
+          "hash": "13684564556907901966",
+          "deps": [
+            "npm:vitest"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/bn-checkbox-group.tsx",
+          "hash": "9383417112481163817",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/bn-checkbox.tsx",
+          "hash": "12233849620644336858",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/composables/index.ts",
+          "hash": "6413534654059470684"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/composables/use-checkbox-group.ts",
+          "hash": "10035543946427748584",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/composables/use-checkbox.ts",
+          "hash": "7285418080057332455",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/index.ts",
+          "hash": "2864610292870117440"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/props/checkbox-group-props.ts",
+          "hash": "8598538538308551803",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/props/checkbox-props.ts",
+          "hash": "12969902834994164190",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/props/index.ts",
+          "hash": "9917010978494474291"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/styles/index.scss",
+          "hash": "2038928114943189849"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/styles/mixin-base-style.scss",
+          "hash": "2426112727287781135"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/styles/mixin-color-style.scss",
+          "hash": "8368659126188913819"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/styles/mixin-size-style.scss",
+          "hash": "11547298256573780012"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/styles/mixin-state-style.scss",
+          "hash": "11059859243851381395"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/styles/mixin-variant-style.scss",
+          "hash": "8144718960566529477"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/styles/variables.scss",
+          "hash": "6304308026136424803"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-checkbox/types/index.ts",
+          "hash": "4860086438044434471"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-code/index.ts",
+          "hash": "9228008576749745891"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-code/styles/index.scss",
+          "hash": "2553518146432154914"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-code/styles/mixin-base-style.scss",
+          "hash": "11093807335909201032"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-code/styles/mixin-color-style.scss",
+          "hash": "5969973455841511406"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-code/styles/mixin-size-style.scss",
+          "hash": "6010079106156005265"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-code/styles/mixin-state-style.scss",
+          "hash": "2068430647876286890"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-code/styles/mixin-variant-style.scss",
+          "hash": "2310407985050624539"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-code/styles/variables.scss",
+          "hash": "14089880556566271634"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/bn-divider.tsx",
+          "hash": "12186939556971350444",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/composables/use-divider-class.ts",
+          "hash": "521883288536507012",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/composables/use-divider-event.ts",
+          "hash": "5903402368016379120"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/index.ts",
+          "hash": "9439924582878716024"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/props/divider-props.ts",
+          "hash": "12293768632081087716",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/props/index.ts",
+          "hash": "12157578366567947440"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/styles/index.scss",
+          "hash": "14669506966716217453"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/styles/mixin-base-style.scss",
+          "hash": "17976718757101106049"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/styles/mixin-color-style.scss",
+          "hash": "343165597776988027"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/styles/mixin-size-style.scss",
+          "hash": "11795855401860242964"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/styles/mixin-state-style.scss",
+          "hash": "3238617082980426109"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/styles/mixin-variant-style.scss",
+          "hash": "4101160938478740985"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/styles/variables.scss",
+          "hash": "11896506520669147297"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-divider/types/index.ts",
+          "hash": "2532534651552518549"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/bn-form.tsx",
+          "hash": "17110028023185504450",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/composables/use-form-events.ts",
+          "hash": "6830018409533966783",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/composables/use-form-registry.ts",
+          "hash": "10785944252425210636",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/composables/use-form-render.ts",
+          "hash": "9460312487888496747",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/composables/use-form-validation.ts",
+          "hash": "8020068177927930145",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/index.ts",
+          "hash": "171518415469591184"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/props/form-props.ts",
+          "hash": "4532093822241115898",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/props/index.ts",
+          "hash": "13502538899154233619"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/styles/index.scss",
+          "hash": "16817650109709317756"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/styles/mixin-base-style.scss",
+          "hash": "14714612668066067485"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/styles/mixin-color-style.scss",
+          "hash": "9376423316899382777"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/styles/mixin-size-style.scss",
+          "hash": "5207977589479876456"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/styles/mixin-state-style.scss",
+          "hash": "9469381219531350308"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/styles/mixin-variant-style.scss",
+          "hash": "11941422783807279596"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/styles/variables.scss",
+          "hash": "1098077011987348324"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/sub-components/bn-form-item/bn-form-item.tsx",
+          "hash": "10906016721992405600",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/sub-components/bn-form-item/composables/use-form-item-config.ts",
+          "hash": "10364281139344452858",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/sub-components/bn-form-item/composables/use-form-item-render.ts",
+          "hash": "4650938511204364706",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/sub-components/bn-form-item/composables/use-form-item-state.ts",
+          "hash": "6802095508246735637",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/sub-components/bn-form-item/index.ts",
+          "hash": "17631864545285926919"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/sub-components/bn-form-item/props/form-item-props.ts",
+          "hash": "17673872039299497936",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/sub-components/bn-form-item/styles/index.scss",
+          "hash": "4021863005539070077"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/sub-components/bn-form-item/styles/mixin-base-style.scss",
+          "hash": "12468186942761801403"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/sub-components/bn-form-item/styles/variables.scss",
+          "hash": "8362171451241490163"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/types.ts",
+          "hash": "17516274449716363122",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-form/utils/index.ts",
+          "hash": "2631490572314732598"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-heading/index.ts",
+          "hash": "17864429046795049990"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-heading/styles/index.scss",
+          "hash": "13660393054839292136"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-heading/styles/mixin-base-style.scss",
+          "hash": "13851816855352666085"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-heading/styles/mixin-color-style.scss",
+          "hash": "14881977316014867619"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-heading/styles/mixin-size-style.scss",
+          "hash": "12226656989976350054"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-heading/styles/mixin-state-style.scss",
+          "hash": "4785343947810212921"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-heading/styles/mixin-variant-style.scss",
+          "hash": "10892567083100491554"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-heading/styles/variables.scss",
+          "hash": "14611782917895425741"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-icon/bn-icon.tsx",
+          "hash": "9142904532608562867",
+          "deps": [
+            "npm:vue",
+            "npm:lucide-vue-next"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-icon/index.ts",
+          "hash": "15632671934911294023"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-icon/styles/index.scss",
+          "hash": "3629615732254969219"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-icon/styles/mixin-base-style.scss",
+          "hash": "1519001969412174234"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-icon/styles/mixin-color-style.scss",
+          "hash": "10444352460245767756"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-icon/styles/mixin-size-style.scss",
+          "hash": "2170282587675905982"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-icon/styles/mixin-state-style.scss",
+          "hash": "3154630192079431110"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-icon/styles/mixin-variant-style.scss",
+          "hash": "4121012370320307618"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-icon/styles/variables.scss",
+          "hash": "9270357464503366597"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/composables/use-input-event.ts",
+          "hash": "12700900896248389606",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/index.ts",
+          "hash": "2736248087123742520"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/input.tsx",
+          "hash": "4318078966244847101",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/props/index.ts",
+          "hash": "1567142462487513663"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/props/input-props.ts",
+          "hash": "11218661879734686741",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/styles/base.scss",
+          "hash": "16698331673059703672"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/styles/index.scss",
+          "hash": "2487168225571925904"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/styles/mixin-base-style.scss",
+          "hash": "386111327643649027"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/styles/mixin-clear-style.scss",
+          "hash": "8112764769527174085"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/styles/mixin-password-style.scss",
+          "hash": "10489615369224876689"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/styles/mixin-search-style.scss",
+          "hash": "9408475690781760111"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/styles/mixin-size-style.scss",
+          "hash": "11802800980663291834"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/styles/mixin-state-style.scss",
+          "hash": "5810859288425731070"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/styles/variables.scss",
+          "hash": "294388179442537329"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/types.ts",
+          "hash": "17185720371241551120",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-password/bn-input-password.tsx",
+          "hash": "7911878085048728231",
+          "deps": [
+            "npm:lucide-vue-next",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-password/index.ts",
+          "hash": "17847643309081668508"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-password/props/input-password-props.ts",
+          "hash": "11919121281095046098",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-password/styles/bn-input-password.scss",
+          "hash": "14876909523693844013"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/bn-input-search.tsx",
+          "hash": "10296258428408285523",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n",
+            "npm:lucide-vue-next"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/composables/use-search-config.ts",
+          "hash": "2571767195055748258",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/composables/use-search-dropdown.ts",
+          "hash": "3307886299155604946",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/composables/use-search-fuzzy.ts",
+          "hash": "228889247496880476",
+          "deps": [
+            "npm:vue",
+            "npm:fuse.js"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/composables/use-search-keyboard.ts",
+          "hash": "9914521407596788262",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/index.ts",
+          "hash": "5307477293992123857"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/props/input-search-props.ts",
+          "hash": "2627049893823481047",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/styles/_dropdown.scss",
+          "hash": "918175490003843649"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/styles/_variables.scss",
+          "hash": "5048050517206427023"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/styles/bn-input-search.scss",
+          "hash": "10771799885405132578"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/types.ts",
+          "hash": "14896680142459390326"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-input/variant-components/bn-input-search/utils.ts",
+          "hash": "10663850527918702266",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/bn-pagination.tsx",
+          "hash": "11679421407299655351",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n",
+            "npm:lucide-vue-next"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/composables/use-bn-pagination-events.ts",
+          "hash": "8790079091445031621",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/composables/use-bn-pagination-state.ts",
+          "hash": "8550041119167933953",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/index.ts",
+          "hash": "15725752274749147457"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/styles/index.scss",
+          "hash": "11265552168499578969"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/styles/mixin-base-style.scss",
+          "hash": "8026492246283211296"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/styles/mixin-color-style.scss",
+          "hash": "7326788641012607518"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/styles/mixin-size-style.scss",
+          "hash": "2393983238691528829"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/styles/mixin-state-style.scss",
+          "hash": "18185018065175689311"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/styles/mixin-variant-style.scss",
+          "hash": "16931385732032716370"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/styles/variables.scss",
+          "hash": "6948457580827305356"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-pagination/types.ts",
+          "hash": "11701326169465809394"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/bn-radio-group.tsx",
+          "hash": "9348137449861444869",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/bn-radio.tsx",
+          "hash": "3294453414094449751",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/composables/index.ts",
+          "hash": "15440827846300315477"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/composables/use-radio-group.ts",
+          "hash": "1451505161690873143",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/composables/use-radio.ts",
+          "hash": "15259767546108668750",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/index.ts",
+          "hash": "3717280714643926639"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/props/index.ts",
+          "hash": "12350891908691988344"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/props/radio-group-props.ts",
+          "hash": "8428435720992273889",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/props/radio-props.ts",
+          "hash": "10375207426232095271",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/styles/index.scss",
+          "hash": "18137729023803678441"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/styles/mixin-base-style.scss",
+          "hash": "12281252798305512883"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/styles/mixin-size-style.scss",
+          "hash": "11026287981103426559"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/styles/mixin-state-style.scss",
+          "hash": "16701156727030870892"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/styles/mixin-variant-style.scss",
+          "hash": "14226742619016914566"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/styles/variables.scss",
+          "hash": "18012014074080788717"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/types/index.ts",
+          "hash": "16441657134424618016"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-radio/types/radio.ts",
+          "hash": "17200275220075094449",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-ripple-wave/README.md",
+          "hash": "11711034257620302480"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-ripple-wave/bn-ripple-wave.tsx",
+          "hash": "11946117382472110391",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-ripple-wave/composables/index.ts",
+          "hash": "12055172585456633372"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-ripple-wave/composables/use-ripple-animation.ts",
+          "hash": "11787575199223328931",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-ripple-wave/composables/use-ripple-state.ts",
+          "hash": "7420433622597719731",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-ripple-wave/index.ts",
+          "hash": "1081364618233988069"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-ripple-wave/styles/index.scss",
+          "hash": "6234806136065447941"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-scrollbar/index.ts",
+          "hash": "11241679776114009868"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-scrollbar/styles/index.scss",
+          "hash": "14157335596639107876"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-scrollbar/styles/mixin-base-style.scss",
+          "hash": "3487903487791540186"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-scrollbar/styles/mixin-color-style.scss",
+          "hash": "6960674629888190757"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-scrollbar/styles/mixin-size-style.scss",
+          "hash": "13400074534639327146"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-scrollbar/styles/mixin-state-style.scss",
+          "hash": "15666980133239176968"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-scrollbar/styles/mixin-variant-style.scss",
+          "hash": "423111345300200948"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-scrollbar/styles/variables.scss",
+          "hash": "1606814482827484707"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/bn-select-item.tsx",
+          "hash": "8684225397841370972",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/composables/index.ts",
+          "hash": "8058609149004376325"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/composables/use-select-item-classes.ts",
+          "hash": "1630089365447523388",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/composables/use-select-item-event.ts",
+          "hash": "7737238074988024915"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/index.ts",
+          "hash": "11180915888212453111"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/props/bn-select-item-props.ts",
+          "hash": "929258027538913909",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/props/index.ts",
+          "hash": "6943813551900302685"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/styles/index.scss",
+          "hash": "1611265571420686266"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/styles/mixin-base-style.scss",
+          "hash": "2844434686253824974"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/styles/mixin-border-style.scss",
+          "hash": "177339263781658428"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/styles/mixin-color-style.scss",
+          "hash": "10284378519552904532"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/styles/mixin-shape-style.scss",
+          "hash": "6928812991000539224"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/styles/mixin-size-style.scss",
+          "hash": "4578581809697013186"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/styles/mixin-state-style.scss",
+          "hash": "16185702283768724350"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/styles/mixin-variant-style.scss",
+          "hash": "6756290889828811104"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select-item/styles/variables.scss",
+          "hash": "11866545937030500795"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/bn-select.tsx",
+          "hash": "14656999734485532551",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n",
+            "npm:lucide-vue-next"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/composables/use-select-event.ts",
+          "hash": "16137798602688670749"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/composables/use-select-render.ts",
+          "hash": "7782550594086320544",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/composables/use-select-state.ts",
+          "hash": "14664867797215222462",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/index.ts",
+          "hash": "6201413679940560676"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/props/select-props.ts",
+          "hash": "13125697293274237571",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/styles/index.scss",
+          "hash": "2227967669874943052"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/styles/mixin-base-style.scss",
+          "hash": "2921609625270249559"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/styles/mixin-color-style.scss",
+          "hash": "4415483361797349883"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/styles/mixin-size-style.scss",
+          "hash": "92743647147410941"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/styles/mixin-state-style.scss",
+          "hash": "8996997957415810455"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/styles/mixin-variant-style.scss",
+          "hash": "10428337728079139777"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/styles/variables.scss",
+          "hash": "7919043409053595847"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-select/types.ts",
+          "hash": "14141273794794381705"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-selection/index.ts",
+          "hash": "4758406213566157074"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-selection/styles/index.scss",
+          "hash": "14538484057540135503"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-selection/styles/mixin-base-style.scss",
+          "hash": "18264128387557693977"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-selection/styles/mixin-color-style.scss",
+          "hash": "6418512532497475712"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-selection/styles/mixin-size-style.scss",
+          "hash": "8805377429628498891"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-selection/styles/mixin-state-style.scss",
+          "hash": "10270530885521211119"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-selection/styles/mixin-variant-style.scss",
+          "hash": "4345934540105259563"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-selection/styles/variables.scss",
+          "hash": "7855691191815678530"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-shadow-wave/README.md",
+          "hash": "11711034257620302480"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-shadow-wave/bn-shadow-wave.tsx",
+          "hash": "3100044252539656005",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-shadow-wave/composables/index.ts",
+          "hash": "17607164334730124247"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-shadow-wave/composables/use-wave-animation.ts",
+          "hash": "16269364877511782754",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-shadow-wave/composables/use-wave-state.ts",
+          "hash": "16483318144854738502",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-shadow-wave/composables/use-wave-styles.ts",
+          "hash": "10728840551367358677",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-shadow-wave/index.ts",
+          "hash": "13464804289812299305"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-shadow-wave/styles/index.scss",
+          "hash": "1217486208917020573"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/bn-table.tsx",
+          "hash": "9859157120418528793",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n",
+            "npm:lucide-vue-next"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/composables/use-table-config.ts",
+          "hash": "524857465873264618",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/composables/use-table-data.ts",
+          "hash": "15997340591613647562",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/composables/use-table-events.ts",
+          "hash": "14664212060105895124",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/composables/use-table-state.ts",
+          "hash": "3628220142920995392",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/index.ts",
+          "hash": "3574899867850604124"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/styles/index.scss",
+          "hash": "6346225349496507246"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/styles/mixin-base-style.scss",
+          "hash": "8911992924665806059"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/styles/mixin-color-style.scss",
+          "hash": "6839256960662299706"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/styles/mixin-size-style.scss",
+          "hash": "18394162824114270942"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/styles/mixin-state-style.scss",
+          "hash": "12161152272657592034"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/styles/mixin-variant-style.scss",
+          "hash": "8995706806649196578"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/styles/variables.scss",
+          "hash": "9851111910594212459"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/bn-table/types.ts",
+          "hash": "9553192141914325775"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/index.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/components/index.ts",
+          "hash": "12087267662946499089"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/index.ts",
+          "hash": "15559369775474063373"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/shared/index.ts",
+          "hash": "6860869084574702791"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/shared/validation/index.ts",
+          "hash": "4150785287638618528"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/shared/validation/types.ts",
+          "hash": "6356843042930260653"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/shared/validation/use-field-validation.ts",
+          "hash": "15220850848196032627",
+          "deps": [
+            "npm:vue",
+            "npm:vue-i18n"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/shared/validation/utils.ts",
+          "hash": "15730256830860684161"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/shared/validation/zod-adapter.ts",
+          "hash": "3145311120544981377",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/index.ts",
+          "hash": "6860869084574702791"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/normalize.css",
+          "hash": "9177205127907575675"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/reset.scss",
+          "hash": "196697469523386489"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/NAMING_CONVENTIONS.md",
+          "hash": "14600560457251127265"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/animation-variables.scss",
+          "hash": "15813479972866084217"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/background-variables.scss",
+          "hash": "5505485459323900628"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/border-variables.scss",
+          "hash": "14646317465201757247"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/filter-variables.scss",
+          "hash": "16829507739253921765"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/grid-variables.scss",
+          "hash": "77128772281854083"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/line-height-variables.scss",
+          "hash": "11373127511371544093"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/responsive-variables.scss",
+          "hash": "9269122797134833183"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/ripple-variables.scss",
+          "hash": "1195851431542960350"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/shadow-variables.scss",
+          "hash": "15098699644297544557"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/sizing-variables.scss",
+          "hash": "10458665546583229386"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/spacing-variables.scss",
+          "hash": "11945567042127163348"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/text-variables.scss",
+          "hash": "1186299085292103297"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/transition-variables.scss",
+          "hash": "4100767736286294581"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/common/typography-variables.scss",
+          "hash": "9447392102281555833"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/functions/color-functions.scss",
+          "hash": "1133660052940030039"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/functions/math-functions.scss",
+          "hash": "9239196123910572142"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/functions/palette-functions.scss",
+          "hash": "10596630964137030552"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/functions/string-functions.scss",
+          "hash": "10391284555600311453"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/index.scss",
+          "hash": "4549322669035719513"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/index.ts",
+          "hash": "770726088424530673"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/mixins/palette-mixins.scss",
+          "hash": "8163898897034490858"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/mixins/root-mixins.scss",
+          "hash": "11614153581409716854"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/palettes/danger-palette.scss",
+          "hash": "3030736374030173675"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/palettes/info-palette.scss",
+          "hash": "4852609085298297901"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/palettes/neutral-palette.scss",
+          "hash": "10964481797206354193"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/palettes/primary-palette.scss",
+          "hash": "3182313277764753634"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/palettes/success-palette.scss",
+          "hash": "9254689328593394003"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/palettes/warning-palette.scss",
+          "hash": "2859885851874771047"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/style.ts",
+          "hash": "7494866518062861061"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/themes/dark-theme/common-variables.scss",
+          "hash": "12478697165899481039"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/themes/dark-theme/index.scss",
+          "hash": "1879279044773883644"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/themes/dark-theme/palette-variables.scss",
+          "hash": "10349419564158628735"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/themes/default-theme/common-variables.scss",
+          "hash": "4808792979239561563"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/themes/default-theme/index.scss",
+          "hash": "1879279044773883644"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/themes/default-theme/palette-variables.scss",
+          "hash": "134529408513689893"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/themes/index.scss",
+          "hash": "5929086503740568674"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/utils/config.scss",
+          "hash": "13982057834030699900"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/utils/css-vars.ts",
+          "hash": "11919790186320420769"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/styles/themes/utils/theme-switcher.scss",
+          "hash": "17082992532088420688"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/utils/create-emitter.ts",
+          "hash": "2639495363486934153"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/utils/create-vue-props.ts",
+          "hash": "10492393300033231320",
+          "deps": [
+            "npm:@vue/shared",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/utils/debounce.ts",
+          "hash": "2952409649667252496"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/utils/i18n-helper.ts",
+          "hash": "15537926096277736836"
+        },
+        {
+          "file": "packages/balnc-nova-ui/src/utils/index.ts",
+          "hash": "6860869084574702791"
+        },
+        {
+          "file": "packages/balnc-nova-ui/tsconfig.json",
+          "hash": "8133048704457928034"
+        },
+        {
+          "file": "packages/balnc-nova-ui/vite.config.ts",
+          "hash": "12198106111492489912",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-vue",
+            "npm:@vitejs/plugin-vue-jsx",
+            "npm:vite-plugin-dts"
+          ]
+        }
+      ]
+    }
+  }
+}

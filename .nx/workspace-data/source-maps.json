@@ -1,0 +1,720 @@
+{
+  "apps/balnc-nova-ui-docs": {
+    "root": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:vitepress": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:documentation": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:vue": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.description": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.executor": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.options": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.metadata": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.options.script": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.metadata.scriptContent": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.metadata.runCommand": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "apps/balnc-nova-ui-docs/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.commands": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.parallel": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.executor": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options.commands": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options.parallel": [
+      "apps/balnc-nova-ui-docs/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.dev.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.dev.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "apps/proxy-monitor": {
+    "root": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:network": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:monitor": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:proxy": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:electron": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:typescript": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.1": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.2": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.description": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:renderer": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:renderer.executor": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:renderer.options": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:renderer.metadata": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:renderer.options.script": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:renderer.metadata.scriptContent": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:renderer.metadata.runCommand": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:main": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:main.executor": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:main.options": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:main.metadata": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:main.options.script": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:main.metadata.scriptContent": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev:main.metadata.runCommand": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.executor": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.options": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.options.script": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata.scriptContent": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata.runCommand": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "apps/proxy-monitor/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.commands": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.parallel": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.executor": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options.commands": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options.parallel": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dist": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dist.executor": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dist.options": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dist.options.commands": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dist.options.parallel": [
+      "apps/proxy-monitor/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.dev.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.dev.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/balnc-nova-ui": {
+    "root": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:vue": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:components": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:ui": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:typescript": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.1": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.description": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.executor": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options.script": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.scriptContent": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.runCommand": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.clean": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.clean.executor": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.clean.options": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.clean.metadata": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.clean.options.script": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.clean.metadata.scriptContent": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.clean.metadata.runCommand": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "packages/balnc-nova-ui/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.defaultConfiguration": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.mode": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.mode": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.executor": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options.watch": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options.mode": [
+      "packages/balnc-nova-ui/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.dev.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.dev.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  }
+}
