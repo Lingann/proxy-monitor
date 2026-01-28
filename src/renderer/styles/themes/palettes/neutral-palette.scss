@@ -17,11 +17,5 @@ $neutral-dark-custom-colors: () !default;
 
 // 色板计算
 $neutral-palette: palette.create-palette('neutral', $neutral-5, $neutral-custom-colors);
-$neutral-semantic-colors: palette.create-semantic-colors($neutral-5);
-$neutral-gradient-colors: palette.create-gradient-colors('neutral', $neutral-palette);
-$neutral-ghost-colors: palette.create-ghost-colors($neutral-5);
 
 $neutral-palette-dark: palette.create-palette('neutral', $neutral-5-dark, $neutral-dark-custom-colors);
-$neutral-semantic-colors-dark: palette.create-semantic-colors($neutral-5-dark);
-$neutral-gradient-colors-dark: palette.create-gradient-colors('neutral', $neutral-palette-dark);
-$neutral-ghost-colors-dark: palette.create-ghost-colors($neutral-5-dark);

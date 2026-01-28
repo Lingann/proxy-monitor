@@ -17,11 +17,5 @@ $warning-dark-custom-colors: () !default;
 
 // 色板计算
 $warning-palette: palette.create-palette('warning', $warning-5, $warning-custom-colors);
-$warning-semantic-colors: palette.create-semantic-colors($warning-5);
-$warning-gradient-colors: palette.create-gradient-colors('warning', $warning-palette);
-$warning-ghost-colors: palette.create-ghost-colors($warning-5);
 
 $warning-palette-dark: palette.create-palette('warning', $warning-5-dark, $warning-dark-custom-colors);
-$warning-semantic-colors-dark: palette.create-semantic-colors($warning-5-dark);
-$warning-gradient-colors-dark: palette.create-gradient-colors('warning', $warning-palette-dark);
-$warning-ghost-colors-dark: palette.create-ghost-colors($warning-5-dark);

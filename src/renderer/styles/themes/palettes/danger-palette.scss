@@ -17,11 +17,5 @@ $danger-dark-custom-colors: () !default;
 
 // 色板计算
 $danger-palette: palette.create-palette('danger', $danger-5, $danger-custom-colors);
-$danger-semantic-colors: palette.create-semantic-colors($danger-5);
-$danger-gradient-colors: palette.create-gradient-colors('danger', $danger-palette);
-$danger-ghost-colors: palette.create-ghost-colors($danger-5);
 
 $danger-palette-dark: palette.create-palette('danger', $danger-5-dark, $danger-dark-custom-colors);
-$danger-semantic-colors-dark: palette.create-semantic-colors($danger-5-dark);
-$danger-gradient-colors-dark: palette.create-gradient-colors('danger', $danger-palette-dark);
-$danger-ghost-colors-dark: palette.create-ghost-colors($danger-5-dark);

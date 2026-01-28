@@ -430,9 +430,6 @@ themes/
 #### 调色板函数
 ```scss
 @function create-palette($name, $base-color, $custom-colors) { }
-@function create-semantic-colors($base-color) { }
-@function create-gradient-colors($name, $palette) { }
-@function create-ghost-colors($base-color) { }
 ```
 
 #### 数学函数

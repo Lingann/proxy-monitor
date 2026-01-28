@@ -1,0 +1,11 @@
+@use './variables' as *;
+
+@mixin trigger-border-style {
+  .#{$trigger-prefix}:not(.#{$trigger-prefix}--bordered) {
+    --bn-trigger-border-color: transparent;
+    --bn-trigger-hover-border-color: transparent;
+    --bn-trigger-active-border-color: transparent;
+    --bn-trigger-selected-border-color: transparent;
+    --bn-trigger-disabled-border-color: transparent;
+  }
+}

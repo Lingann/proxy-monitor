@@ -17,11 +17,5 @@ $primary-dark-custom-colors: () !default;
 
 // 色板计算
 $primary-palette: palette.create-palette('primary', $primary-5, $primary-custom-colors);
-$primary-semantic-colors: palette.create-semantic-colors($primary-5);
-$primary-gradient-colors: palette.create-gradient-colors('primary', $primary-palette);
-$primary-ghost-colors: palette.create-ghost-colors($primary-5);
 
 $primary-palette-dark: palette.create-palette('primary', $primary-5-dark, $primary-dark-custom-colors);
-$primary-semantic-colors-dark: palette.create-semantic-colors($primary-5-dark);
-$primary-gradient-colors-dark: palette.create-gradient-colors('primary', $primary-palette-dark);
-$primary-ghost-colors-dark: palette.create-ghost-colors($primary-5-dark);
