@@ -1,0 +1,85 @@
+// ======================================================
+// 主题系统全局配置
+// ======================================================
+
+// CSS变量前缀
+$prefix: 'bn' !default;
+
+// 命名空间分隔符
+$namespace-separator: '-' !default;
+
+// 组件状态分隔符
+$state-separator: '_' !default;
+
+// 默认主题名称
+$default-theme: 'default' !default;
+
+// 暗色主题名称
+$dark-theme: 'dark' !default;
+
+// 禁用CSS变量（用于兼容不支持CSS变量的浏览器）
+$disable-css-vars: false !default;
+
+// CSS变量的输出方式: global（全局定义）或 local（组件级定义）
+$css-vars-output: 'global' !default;
+
+// ======================================================
+// 断点配置
+// ======================================================
+
+// 响应式断点（像素值）
+$breakpoints: (
+  'xs': 480px,
+  // 超小屏幕，如手机竖屏
+  'sm': 576px,
+  // 小屏幕，如手机横屏
+  'md': 768px,
+  // 中等屏幕，如平板竖屏
+  'lg': 992px,
+  // 大屏幕，如平板横屏
+  'xl': 1200px,
+  // 超大屏幕，如桌面显示器
+  'xxl': 1600px // 巨大屏幕，如大型显示器
+) !default;
+
+// ======================================================
+// 辅助函数
+// ======================================================
+
+// 创建命名空间
+@function namespace($name) {
+  @return $prefix + $namespace-separator + $name;
+}
+
+// 创建状态变体名称
+@function state-variant($name, $state) {
+  @return $name + $state-separator + $state;
+}
+
+// 创建CSS变量名称
+@function var-name($name) {
+  @return '--' + namespace($name);
+}
+
+// 用于获取CSS变量的值
+@function var($name, $fallback: null) {
+  @if $disable-css-vars {
+    @return $fallback;
+  }
+
+  @if $fallback {
+    @return var(var-name($name), $fallback);
+  } @else {
+    @return var(var-name($name));
+  }
+}
+
+// ======================================================
+// 导出变量
+// ======================================================
+
+:export {
+  prefix: $prefix;
+  defaultTheme: $default-theme;
+  darkTheme: $dark-theme;
+}

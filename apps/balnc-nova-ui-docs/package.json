@@ -1,0 +1,33 @@
+{
+  "name": "@balnc-nova-ui/docs",
+  "version": "1.0.0",
+  "description": "Balnc Nova UI Documentation",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "keywords": [
+    "vitepress",
+    "documentation",
+    "vue"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@gl/vitepress-demo-container": "^1.0.0",
+    "@gl/vitepress-demo-container-plugin": "^1.0.0",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vitejs/plugin-vue-jsx": "^5.1.3",
+    "sass": "^1.97.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitepress": "^1.0.0"
+  },
+  "dependencies": {
+    "@balnc-nova-ui/core": "workspace:*",
+    "vue": "^3.5.27",
+    "vue-i18n": "^11.2.8"
+  }
+}

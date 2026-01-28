@@ -1,0 +1,34 @@
+/**
+ * ******************************************************
+ * @file                     mixin-state-style.scss
+ * @description             State style mixin
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     mixin-state-style.scss
+ * @description             「代码状态样式混入」
+ * 定义暗色模式样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin code-state-style {
+  .dark-mode,
+  [data-theme='dark'] {
+    code:not([class*='language-']) {
+      color: var(--bn-code-color-dark);
+      background-color: var(--bn-code-background-color-dark);
+    }
+
+    pre:not([class*='language-']) {
+      color: var(--bn-pre-color-dark);
+      background-color: var(--bn-pre-background-color-dark);
+      border-color: var(--bn-pre-border-color-dark);
+    }
+  }
+}
+

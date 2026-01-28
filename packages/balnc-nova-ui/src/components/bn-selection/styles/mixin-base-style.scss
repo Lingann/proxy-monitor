@@ -1,0 +1,31 @@
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             Selection base styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin selection-base-style {
+  ::selection {
+    color: var(--bn-selection-text-color);
+    background-color: var(--bn-selection-background-color);
+  }
+
+  pre::selection,
+  pre *::selection {
+    background-color: var(--bn-selection-pre-background-color);
+  }
+
+  code::selection,
+  code *::selection {
+    background-color: var(--bn-selection-code-background-color);
+  }
+
+  a::selection,
+  a *::selection {
+    background-color: var(--bn-selection-a-background-color);
+  }
+}

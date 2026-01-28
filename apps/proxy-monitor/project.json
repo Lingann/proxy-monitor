@@ -1,0 +1,30 @@
+{
+  "name": "proxy-monitor",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["tsc && vite build"],
+        "parallel": false
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["tsc && concurrently \"vite\" \"cross-env NODE_ENV=development electron .\""],
+        "parallel": false
+      }
+    },
+    "dist": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["electron-builder"],
+        "parallel": false
+      }
+    }
+  }
+}

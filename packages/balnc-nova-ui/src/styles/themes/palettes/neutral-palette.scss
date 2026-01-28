@@ -1,0 +1,21 @@
+// ======================================================
+// 中性色板 Neutral
+// ======================================================
+@use '../functions/palette-functions' as palette;
+
+// 中性色板 - 基础色
+$neutral-5: #8c8c8c !default;
+
+// 自定义梯度（可选）
+$neutral-custom-colors: () !default;
+
+// 暗色模式基础色
+$neutral-5-dark: #8c8c8c !default;
+
+// 自定义暗色梯度（可选）
+$neutral-dark-custom-colors: () !default;
+
+// 色板计算
+$neutral-palette: palette.create-palette('neutral', $neutral-5, $neutral-custom-colors);
+
+$neutral-palette-dark: palette.create-palette('neutral', $neutral-5-dark, $neutral-dark-custom-colors);

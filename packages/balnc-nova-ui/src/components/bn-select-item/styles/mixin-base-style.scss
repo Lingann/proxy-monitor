@@ -1,0 +1,70 @@
+@use './variables' as *;
+
+@mixin select-item-base-variables {
+  --bn-select-item-border-width: var(--bn-border-width-sm);
+  --bn-select-item-border-style: solid;
+  --bn-select-item-border-radius: var(--bn-border-radius-md);
+  --bn-select-item-font-weight: var(--bn-font-weight-medium);
+  --bn-select-item-icon-gap: var(--bn-spacing-xs);
+  --bn-select-item-transition: background-color var(--bn-animation-duration-fast) var(--bn-animation-timing-default),
+    border-color var(--bn-animation-duration-fast) var(--bn-animation-timing-default),
+    color var(--bn-animation-duration-fast) var(--bn-animation-timing-default);
+
+  --bn-select-item-bg-color: var(--bn-bg-color-soft-base);
+  --bn-select-item-text-color: var(--bn-text-color-base);
+  --bn-select-item-border-color: var(--bn-border-color-base);
+  --bn-select-item-hover-bg-color: var(--bn-bg-color-hover);
+  --bn-select-item-hover-text-color: var(--bn-text-color-base);
+  --bn-select-item-hover-border-color: var(--bn-border-color-hover);
+  --bn-select-item-active-bg-color: var(--bn-bg-color-active);
+  --bn-select-item-active-text-color: var(--bn-text-color-base);
+  --bn-select-item-active-border-color: var(--bn-border-color-active);
+  --bn-select-item-selected-bg-color: var(--bn-bg-color-selected);
+  --bn-select-item-selected-text-color: var(--bn-text-color-inverse);
+  --bn-select-item-selected-border-color: var(--bn-border-color-active);
+  --bn-select-item-disabled-bg-color: var(--bn-bg-color-disabled);
+  --bn-select-item-disabled-text-color: var(--bn-text-color-disabled);
+  --bn-select-item-disabled-border-color: var(--bn-border-color-disabled);
+}
+
+@mixin select-item-base-style {
+  .#{$select-item-prefix} {
+    display: inline-flex;
+    gap: var(--bn-select-item-icon-gap);
+    align-items: center;
+    justify-content: center;
+    padding: var(--bn-select-item-padding-vertical) var(--bn-select-item-padding-horizontal);
+    font-weight: var(--bn-select-item-font-weight);
+    color: var(--bn-select-item-text-color);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--bn-select-item-bg-color);
+    border: var(--bn-select-item-border-width) var(--bn-select-item-border-style) var(--bn-select-item-border-color);
+    border-radius: var(--bn-select-item-border-radius);
+    cursor: pointer;
+    user-select: none;
+    transition: var(--bn-select-item-transition);
+    appearance: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--bn-border-color-focus);
+      outline-offset: 2px;
+    }
+  }
+
+  .#{$select-item-prefix}__prefix,
+  .#{$select-item-prefix}__suffix {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .#{$select-item-prefix}__label {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+}

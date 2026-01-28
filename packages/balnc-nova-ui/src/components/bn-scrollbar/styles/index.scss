@@ -1,0 +1,22 @@
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             Scrollbar style entry
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+@use './mixin-base-style' as *;
+@use './mixin-size-style' as *;
+@use './mixin-color-style' as *;
+@use './mixin-state-style' as *;
+@use './mixin-variant-style' as *;
+
+@include scrollbar-base-style;
+@include scrollbar-container-style;
+@include scrollbar-size-style;
+@include scrollbar-color-style;
+@include scrollbar-state-style;
+@include scrollbar-hidden-style;
+@include scrollbar-thin-style;

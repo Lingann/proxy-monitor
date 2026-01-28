@@ -1,0 +1,37 @@
+/**
+ * ******************************************************
+ * @file                     mixin-state-style.scss
+ * @description             State style mixin
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     mixin-state-style.scss
+ * @description             「图标状态样式混入」
+ * 定义图标交互状态样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin icon-state-style {
+  .#{$icon-prefix}.#{$icon-prefix}-clickable {
+    cursor: pointer;
+
+    &:hover {
+      color: var(--bn-icon-color-hover);
+    }
+
+    &:active {
+      color: var(--bn-icon-color-active);
+    }
+
+    &:focus {
+      color: var(--bn-icon-color-focus);
+      outline: none;
+    }
+  }
+}
+

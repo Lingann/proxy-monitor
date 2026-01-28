@@ -1,0 +1,11 @@
+@use './variables' as *;
+
+@mixin select-item-border-style {
+  .#{$select-item-prefix}:not(.#{$select-item-prefix}--bordered) {
+    --bn-select-item-border-color: transparent;
+    --bn-select-item-hover-border-color: transparent;
+    --bn-select-item-active-border-color: transparent;
+    --bn-select-item-selected-border-color: transparent;
+    --bn-select-item-disabled-border-color: transparent;
+  }
+}

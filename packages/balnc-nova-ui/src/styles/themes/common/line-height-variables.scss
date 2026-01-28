@@ -1,0 +1,15 @@
+// ======================================================
+// 行高变量
+// ======================================================
+
+// 行高变量混入
+// @mixin line-height-variables - 定义所有行高相关的CSS变量
+@mixin line-height-variables {
+  // 基础行高变量
+  --bn-line-height-none: 1;
+  --bn-line-height-tight: 1.2;
+  --bn-line-height-snug: 1.375;
+  --bn-line-height-base: 1.5;
+  --bn-line-height-relaxed: 1.625;
+  --bn-line-height-loose: 2;
+}

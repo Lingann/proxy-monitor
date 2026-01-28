@@ -1,0 +1,19 @@
+/**
+ * ******************************************************
+ * @file                     mixin-state-style.scss
+ * @description             Selection state styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin selection-state-style {
+  .dark-mode,
+  [data-theme='dark'] {
+    ::selection {
+      color: var(--bn-selection-text-color-dark);
+      background-color: var(--bn-selection-background-color-dark);
+    }
+  }
+}

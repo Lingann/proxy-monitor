@@ -1,0 +1,206 @@
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             Select base styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin select-core-base {
+  position: relative;
+  box-sizing: border-box;
+  font-family: inherit;
+  width: 100%;
+}
+
+@mixin select-core-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: var(--bn-select-bg);
+  border: 1px solid var(--bn-select-border);
+  border-radius: var(--bn-select-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  user-select: none;
+
+  &:hover {
+    border-color: var(--bn-select-border-hover);
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: var(--bn-select-border-focus);
+    box-shadow: 0 0 0 2px rgba(var(--bn-primary-inner-5), 0.2);
+  }
+}
+
+@mixin select-core-dropdown {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: var(--bn-select-bg);
+  border: 1px solid var(--bn-select-border);
+  border-radius: var(--bn-select-radius);
+  box-shadow: var(--bn-select-shadow);
+  z-index: var(--bn-select-z-index);
+  display: none;
+  max-height: calc(var(--bn-select-item-height) * var(--max-display-items, 5));
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 4px 0;
+}
+
+@mixin select-core-option {
+  height: var(--bn-select-item-height);
+  line-height: var(--bn-select-item-height);
+  padding: 0 12px;
+  cursor: pointer;
+  color: var(--bn-select-text);
+  transition: background 0.1s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background: var(--bn-select-item-hover);
+  }
+}
+
+@mixin select-base-style {
+  .#{$select-prefix} {
+    @include select-core-base;
+    font-size: var(--bn-select-font-size-medium);
+  }
+
+  .#{$select-prefix}__trigger {
+    @include select-core-trigger;
+  }
+
+  .#{$select-prefix}__value {
+    color: var(--bn-select-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    margin-right: 8px;
+
+    &--placeholder {
+      color: var(--bn-select-placeholder);
+    }
+  }
+
+  .#{$select-prefix}__clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bn-select-placeholder);
+    cursor: pointer;
+    margin-right: 4px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--bn-select-text);
+    }
+  }
+
+  .#{$select-prefix}__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bn-select-placeholder);
+    transition: transform 0.2s ease;
+    transform-origin: center;
+  }
+
+  .#{$select-prefix}__dropdown {
+    @include select-core-dropdown;
+
+    &--bottom {
+      top: calc(100% + 4px);
+      transform-origin: top center;
+      animation: bnSelectSlideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &--top {
+      bottom: calc(100% + 4px);
+      transform-origin: bottom center;
+      animation: bnSelectSlideUp 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--bn-border-color-base);
+      border-radius: 3px;
+
+      &:hover {
+        background: var(--bn-border-color-hover);
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
+
+  .#{$select-prefix}__option {
+    @include select-core-option;
+
+    &--selected {
+      background: var(--bn-select-item-selected);
+      color: var(--bn-text-color-primary-base);
+      font-weight: 500;
+    }
+
+    &--disabled {
+      color: var(--bn-select-placeholder);
+      cursor: not-allowed;
+      background: transparent;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+
+  .#{$select-prefix}__error {
+    font-size: 12px;
+    color: var(--bn-select-error);
+    margin-top: 4px;
+    min-height: 16px;
+    line-height: 1.4;
+  }
+
+  @keyframes bnSelectSlideDown {
+    from {
+      transform: translateY(-8px) scaleY(0.95);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0) scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes bnSelectSlideUp {
+    from {
+      transform: translateY(8px) scaleY(0.95);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0) scaleY(1);
+      opacity: 1;
+    }
+  }
+}

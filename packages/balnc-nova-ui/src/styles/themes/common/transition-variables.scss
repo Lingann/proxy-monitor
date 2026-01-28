@@ -1,0 +1,54 @@
+// ======================================================
+// 过渡变量
+// ======================================================
+
+// 过渡变量混入
+// @mixin transition-variables - 定义所有过渡相关的CSS变量
+@mixin transition-variables {
+  // 过渡持续时间变量
+  --bn-transition-duration-fastest: 0.05s;
+  --bn-transition-duration-fast: 0.2s;
+  --bn-transition-duration-normal: 0.3s;
+  --bn-transition-duration-slow: 0.4s;
+  --bn-transition-duration-slowest: 0.5s;
+
+  // 过渡缓动函数变量
+  --bn-transition-timing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --bn-transition-timing-in: cubic-bezier(0.4, 0, 1, 1);
+  --bn-transition-timing-out: cubic-bezier(0, 0, 0.2, 1);
+  --bn-transition-timing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  // 自定义过渡效果
+  --bn-transition-timing-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --bn-transition-timing-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  // 常用过渡属性组合
+  --bn-transition-property-common: color, background-color, border-color, opacity, transform, box-shadow;
+  --bn-transition-property-colors: color, background-color, border-color;
+  --bn-transition-property-transform: transform;
+  --bn-transition-property-opacity: opacity;
+  --bn-transition-property-shadow: box-shadow;
+
+  // 常用过渡组合
+  --bn-transition-base: all var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+  --bn-transition-colors: var(--bn-transition-property-colors) var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+  --bn-transition-transform: var(--bn-transition-property-transform) var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+  --bn-transition-opacity: var(--bn-transition-property-opacity) var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+  --bn-transition-shadow: var(--bn-transition-property-shadow) var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+
+  // 特殊过渡效果
+  --bn-transition-fast-in-slow-out: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --bn-transition-bounce: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --bn-transition-elastic: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  // 按钮过渡变量
+  --bn-btn-color-transition: all var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+  --bn-btn-bg-transition: background-color var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+  --bn-btn-border-transition: border-color var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+  --bn-btn-shadow-transition: box-shadow var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+  --bn-btn-transform-transition: transform var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+  --bn-btn-opacity-transition: opacity var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+
+  // 波纹过渡变量
+  --bn-ripple-transition: all var(--bn-transition-duration-normal) var(--bn-transition-timing-default);
+}

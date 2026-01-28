@@ -1,0 +1,117 @@
+/**
+ * ******************************************************
+ * @file                     _dropdown.scss
+ * @description             「搜索输入框下拉框样式」
+ * 定义下拉框、选项、空状态、动画等样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+// ==================================================
+// #region 下拉框容器
+// ==================================================
+
+.#{$input-search-prefix}__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background: var(--bn-input-search-dropdown-bg);
+  border: 1px solid var(--bn-input-search-dropdown-border);
+  border-radius: 4px;
+  box-shadow: var(--bn-input-search-dropdown-shadow);
+  z-index: var(--bn-input-search-z-index);
+  max-height: calc(var(--bn-input-search-option-height) * 5);
+  overflow-y: auto;
+  padding: 4px 0;
+  box-sizing: border-box;
+
+  /* 动画 */
+  animation: bn-input-search-dropdown-slide-down 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 选项样式
+// ==================================================
+
+.#{$input-search-prefix}__option {
+  height: var(--bn-input-search-option-height);
+  line-height: var(--bn-input-search-option-height);
+  padding: 0 12px;
+  cursor: pointer;
+  color: var(--system-color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.1s;
+
+  &:hover,
+  &--active {
+    background: var(--bn-input-search-option-hover-bg);
+  }
+
+  &--selected {
+    background: var(--bn-input-search-option-active-bg);
+    font-weight: 500;
+  }
+}
+
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 空状态
+// ==================================================
+
+.#{$input-search-prefix}__empty {
+  padding: 8px 12px;
+  color: var(--system-color-text-secondary);
+  text-align: center;
+  font-size: 12px;
+}
+
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 动画
+// ==================================================
+
+@keyframes bn-input-search-dropdown-slide-down {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 滚动条样式
+// ==================================================
+
+.#{$input-search-prefix}__dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.#{$input-search-prefix}__dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.#{$input-search-prefix}__dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+// #endregion
+// ==================================================

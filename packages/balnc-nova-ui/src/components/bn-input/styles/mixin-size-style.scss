@@ -1,0 +1,68 @@
+/**
+ * ******************************************************
+ * @file                     mixin-size-style.scss
+ * @description             「输入框尺寸样式混入」
+ * 定义输入框组件的不同尺寸样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+// ==================================================
+// #region 输入框小尺寸样式混入
+// ==================================================
+@mixin input-small-size-style {
+  .#{$input-prefix}--small {
+    .#{$input-prefix}__wrapper {
+      border-radius: 4px;
+    }
+
+    .#{$input-prefix}__inner {
+      height: var(--#{$input-prefix}-height-small);
+      padding: var(--#{$input-prefix}-padding-small);
+      font-size: var(--#{$input-prefix}-font-size-small);
+    }
+
+    .#{$input-prefix}__prefix,
+    .#{$input-prefix}__suffix {
+      font-size: var(--#{$input-prefix}-icon-size-small);
+    }
+  }
+}
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 输入框大尺寸样式混入
+// ==================================================
+@mixin input-large-size-style {
+  .#{$input-prefix}--large {
+    .#{$input-prefix}__wrapper {
+      border-radius: 8px;
+    }
+
+    .#{$input-prefix}__inner {
+      height: var(--#{$input-prefix}-height-large);
+      padding: var(--#{$input-prefix}-padding-large);
+      font-size: var(--#{$input-prefix}-font-size-large);
+    }
+
+    .#{$input-prefix}__prefix,
+    .#{$input-prefix}__suffix {
+      font-size: var(--#{$input-prefix}-icon-size-large);
+    }
+  }
+}
+// #endregion
+// ==================================================
+
+// ==================================================
+// #region 输入框尺寸样式组合
+// ==================================================
+@mixin input-size-style {
+  @include input-small-size-style;
+  @include input-large-size-style;
+}
+// #endregion
+// ==================================================

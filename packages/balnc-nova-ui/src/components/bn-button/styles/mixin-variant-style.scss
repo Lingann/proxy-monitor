@@ -1,0 +1,137 @@
+@use './variables' as *;
+
+// ======================================================
+// 按钮变量混入
+// ======================================================
+
+// 外边框按钮变量
+@mixin button-variant-variables {
+  // 外边框按钮变量
+  --bn-btn-outlined-border-width: var(--bn-border-width-md);
+  --bn-btn-outlined-border-style: solid;
+  --bn-btn-outlined-shadow: none;
+
+  // 实体按钮变量
+  --bn-btn-solid-border-width: 0;
+  --bn-btn-solid-border-style: solid;
+  --bn-btn-solid-shadow: none;
+
+  // 链接按钮变量
+  --bn-btn-link-color: var(--bn-text-color-link);
+  --bn-btn-link-hover-color: var(--bn-text-color-link-hover);
+  --bn-btn-link-active-color: var(--bn-text-color-link-active);
+  --bn-btn-link-disabled-color: var(--bn-text-color-link-disabled);
+  --bn-btn-link-border-width: 0;
+  --bn-btn-link-border-style: none;
+  --bn-btn-link-shadow: none;
+
+  // 文本按钮变量
+  --bn-btn-text-border-width: 0;
+  --bn-btn-text-border-style: none;
+  --bn-btn-text-shadow: none;
+
+  // 虚线按钮变量
+  --bn-btn-dashed-border-width: var(--bn-border-width-md);
+  --bn-btn-dashed-border-style: dashed;
+  --bn-btn-dashed-shadow: none;
+
+  // 填充按钮变量
+  --bn-btn-soft-border-width: 0;
+  --bn-btn-soft-border-style: none;
+  --bn-btn-soft-shadow: none;
+}
+
+// ======================================================
+// 按钮样式混入
+// ======================================================
+
+// 外边框按钮样式
+@mixin button-outlined-style {
+  .#{$button-prefix}.#{$button-prefix}-variant-outlined {
+    border-style: var(--bn-btn-outlined-border-style);
+    border-width: var(--bn-btn-outlined-border-width);
+    box-shadow: var(--bn-btn-outlined-shadow);
+  }
+}
+
+// 实体按钮样式
+@mixin button-solid-style {
+  .#{$button-prefix}.#{$button-prefix}-variant-solid {
+    border-style: var(--bn-btn-solid-border-style);
+    border-width: var(--bn-btn-solid-border-width);
+    box-shadow: var(--bn-btn-solid-shadow);
+  }
+}
+
+// 链接按钮样式
+@mixin button-link-style {
+  .#{$button-prefix}.#{$button-prefix}-variant-link {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    border-style: var(--bn-btn-link-border-style);
+    border-width: var(--bn-btn-link-border-width);
+    box-shadow: var(--bn-btn-link-shadow);
+
+    &:hover,
+    &:focus {
+      color: var(--bn-btn-link-hover-color);
+    }
+
+    &:active {
+      color: var(--bn-btn-link-active-color);
+    }
+  }
+
+  .#{$button-prefix}-link[disabled] {
+    color: var(--bn-btn-link-disabled-color);
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}
+
+// 文本按钮样式
+@mixin button-text-style {
+  .#{$button-prefix}.#{$button-prefix}-variant-text {
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    border-style: var(--bn-btn-text-border-style);
+  }
+
+  .#{$button-prefix}.#{$button-prefix}-variant-text[disabled] {
+    color: var(--bn-btn-text-disabled-color);
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}
+
+// 虚线按钮样式
+@mixin button-dashed-style {
+  .#{$button-prefix}.#{$button-prefix}-variant-dashed {
+    border-style: var(--bn-btn-dashed-border-style);
+    border-width: var(--bn-btn-dashed-border-width);
+    box-shadow: var(--bn-btn-dashed-shadow);
+  }
+}
+
+// 填充按钮样式
+@mixin button-soft-style {
+  .#{$button-prefix}.#{$button-prefix}-variant-soft {
+    border-style: var(--bn-btn-soft-border-style);
+    border-width: var(--bn-btn-soft-border-width);
+    box-shadow: var(--bn-btn-soft-shadow);
+  }
+}
+
+// 按钮变体样式
+@mixin button-variant-style {
+  @include button-link-style;
+  @include button-outlined-style;
+  @include button-solid-style;
+  @include button-text-style;
+  @include button-dashed-style;
+  @include button-soft-style;
+}

@@ -1,0 +1,24 @@
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             Divider style entry
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+@use './mixin-base-style' as *;
+@use './mixin-size-style' as *;
+@use './mixin-color-style' as *;
+@use './mixin-state-style' as *;
+@use './mixin-variant-style' as *;
+
+.#{$divider-prefix} {
+  @include divider-base-variables;
+}
+
+@include divider-base-style;
+@include divider-size-style;
+@include divider-color-style;
+@include divider-state-style;
+@include divider-variant-style;

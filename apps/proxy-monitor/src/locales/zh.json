@@ -1,0 +1,241 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "page": "页",
+    "save": "保存",
+    "saving": "保存中...",
+    "no_results": "无结果",
+    "please_select": "请选择",
+    "input_placeholder": "请输入",
+    "search": "搜索",
+    "search_placeholder": "请输入搜索内容",
+    "no_options": "无选项",
+    "total": "共"
+  },
+  "app": {
+    "title": "代理监控"
+  },
+  "modules": {
+    "network_monitor": "网络监控",
+    "settings": "应用设置",
+    "component_library": "组件库",
+    "system_proxy": "系统代理"
+  },
+  "component_demos": {
+    "bn_select_item": {
+      "basic": {
+        "trigger_label": "点击选择",
+        "content": "选择内容"
+      },
+      "click": {
+        "trigger_label": "点击选择",
+        "content": "点击选择的内容"
+      },
+      "hover": {
+        "trigger_label": "悬停选择",
+        "content": "悬停选择的内容"
+      }
+    },
+    "bn_select": {
+      "role_placeholder": "请选择角色",
+      "roles": {
+        "admin": "管理员",
+        "user": "用户",
+        "guest": "访客"
+      }
+    },
+    "bn_input": {
+      "basic_placeholder": "请输入内容",
+      "username_placeholder": "请输入用户名",
+      "disabled_value": "禁用的输入框"
+    },
+    "bn_form_item": {
+      "labels": {
+        "username": "用户名",
+        "email_address": "邮箱地址"
+      },
+      "placeholders": {
+        "username": "请输入用户名",
+        "email_address": "请输入邮箱地址"
+      }
+    },
+    "bn_form": {
+      "labels": {
+        "username": "用户名",
+        "email": "邮箱",
+        "role": "角色"
+      },
+      "placeholders": {
+        "username": "请输入用户名",
+        "email": "请输入邮箱",
+        "role": "请选择角色"
+      },
+      "roles": {
+        "admin": "管理员",
+        "user": "用户",
+        "guest": "访客"
+      },
+      "actions": {
+        "rules": {
+          "username_required": "用户名必填",
+          "email_required": "邮箱必填"
+        },
+        "validate_result": "验证结果: {result}",
+        "validate_success": "成功",
+        "validate_failure": "失败",
+        "validate_error": "验证错误: {error}",
+        "reset_done": "表单已重置",
+        "set_defaults": "已设置为管理员默认值",
+        "button_validate": "验证",
+        "button_reset": "重置",
+        "button_get_values": "获取值",
+        "button_set_values": "设置值",
+        "output_placeholder": "// 输出将显示在这里"
+      },
+      "validation": {
+        "rules": {
+          "username_required": "用户名必填",
+          "username_min": "至少3个字符",
+          "email_required": "邮箱必填",
+          "email_invalid": "请输入有效的邮箱",
+          "role_required": "角色必选"
+        },
+        "result_log": "验证结果:",
+        "error_log": "验证失败:",
+        "button_validate": "验证表单"
+      }
+    }
+  },
+  "monitor": {
+    "network_traffic": "网络流量",
+    "process_list": "进程列表",
+    "search_placeholder": "搜索 PID 或名称",
+    "analyze": "分析",
+    "refresh": "刷新",
+    "total_upload": "总上传速度",
+    "total_download": "总下载速度",
+    "processes": "进程",
+    "connections": "连接",
+    "servers": "服务器",
+    "memory": "内存占用",
+    "cpu": "CPU 占用",
+    "status_analyzing": "分析中...",
+    "status_complete": "分析完成！",
+    "status_complete_count": "分析完成！发现 {count} 个活跃连接。"
+  },
+  "settings": {
+    "title": "应用设置",
+    "select_language": "选择语言",
+    "language": "语言",
+    "theme": "主题",
+    "theme_light": "亮色",
+    "theme_dark": "暗色",
+    "select_theme": "选择主题",
+    "process_filters": "进程过滤器",
+    "save": "保存设置",
+    "saved": "设置已保存！"
+  },
+  "table": {
+    "pid": "PID",
+    "name": "名称",
+    "category": "类别",
+    "download": "下载",
+    "upload": "上传",
+    "connections": "连接数",
+    "actions": "操作",
+    "ip_address": "IP地址",
+    "ports": "端口",
+    "count": "数量",
+    "purpose": "用途",
+    "local_address": "本地地址",
+    "remote_address": "远程地址",
+    "state": "状态",
+    "no_data": "无数据",
+    "no_processes": "未发现进程",
+    "no_connections": "未发现连接",
+    "no_active_connections": "无活跃连接"
+  },
+  "category": {
+    "third_party": "第三方"
+  },
+  "purpose": {
+    "https": "HTTPS 加密连接",
+    "http": "HTTP 连接",
+    "custom": "自定义协议连接",
+    "unknown": "未知用途"
+  },
+  "details": {
+    "title": "进程详情",
+    "basic_info": "基本信息",
+    "active_connections": "活跃连接",
+    "process_servers": "连接的服务器"
+  },
+  "actions": {
+    "view_details": "查看详情",
+    "limit_speed": "限制网速",
+    "more_actions": "更多操作",
+    "end_process": "结束进程",
+    "locate_file": "定位文件",
+    "properties": "属性"
+  },
+  "messages": {
+    "limit_speed_unavailable": "限制网速功能暂不可用（需系统驱动）",
+    "confirm_end_process": "确定要结束进程 {pid} 吗？",
+    "locating_file": "正在定位进程 {pid} 的文件...",
+    "properties_for": "进程 {pid} 的属性...",
+    "save_success": "保存成功",
+    "save_error": "保存失败",
+    "no_addresses_found": "未找到该进程的网络地址",
+    "added_to_bypass": "已添加 {count} 个地址到绕过列表",
+    "add_to_bypass_error": "添加到绕过列表失败",
+    "remove_from_bypass_unavailable": "从绕过列表移除功能开发中"
+  },
+  "form": {
+    "validation": {
+      "required": "该字段为必填项",
+      "required_with_field": "{field}为必填项",
+      "min": "最小长度为 {min}",
+      "max": "最大长度为 {max}",
+      "len": "长度必须为 {len}",
+      "pattern": "格式不正确",
+      "email": "请输入有效的邮箱地址",
+      "url": "请输入有效的链接地址",
+      "number": "请输入有效的数字",
+      "string": "请输入有效的文本",
+      "validator": "校验失败",
+      "default": "校验失败",
+      "default_with_field": "{field}不合法"
+    }
+  },
+  "proxy": {
+    "status": "代理状态",
+    "enabled_status": "已启用",
+    "disabled_status": "已禁用",
+    "enable": "启用代理",
+    "disable": "禁用代理",
+    "server": "代理服务器",
+    "server_placeholder": "例如: 127.0.0.1:7890",
+    "server_hint": "格式: IP地址:端口 或 域名:端口，支持HTTP和HTTPS代理",
+    "bypass": "不使用代理的地址",
+    "bypass_placeholder": "例如: localhost;127.*;192.168.*",
+    "bypass_hint": "多个地址用分号分隔，支持通配符 *",
+    "bypass_rules": "绕过规则列表",
+    "add_rule": "添加规则",
+    "address": "地址",
+    "description": "描述",
+    "rule_enabled": "启用",
+    "created_at": "创建时间",
+    "edit": "编辑",
+    "delete": "删除",
+    "confirm_delete": "确定要删除此规则吗？",
+    "load_error": "加载代理配置失败",
+    "save_success": "代理配置已保存",
+    "save_error": "保存代理配置失败",
+    "proxy_enabled": "代理已启用",
+    "proxy_disabled": "代理已禁用",
+    "toggle_error": "切换代理状态失败",
+    "add_to_bypass": "添加到绕过列表",
+    "remove_from_bypass": "从绕过列表移除"
+  }
+}
+

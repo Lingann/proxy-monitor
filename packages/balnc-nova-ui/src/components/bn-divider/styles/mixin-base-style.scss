@@ -1,0 +1,113 @@
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             Divider base styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin divider-base-style {
+  .#{$divider-prefix} {
+    box-sizing: border-box;
+    margin: var(--#{$divider-prefix}-margin);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    color: var(--#{$divider-prefix}-text-color);
+    list-style: none;
+    border-top: var(--#{$divider-prefix}-border-width) var(--#{$divider-prefix}-border-style)
+      var(--#{$divider-prefix}-color);
+
+    &--horizontal {
+      clear: both;
+      display: flex;
+      width: 100%;
+      min-width: 100%;
+    }
+
+    &--vertical {
+      position: relative;
+      top: -0.06em;
+      display: inline-block;
+      height: var(--#{$divider-prefix}-vertical-height);
+      margin: var(--#{$divider-prefix}-vertical-margin);
+      vertical-align: middle;
+      border-top: 0;
+      border-left: var(--#{$divider-prefix}-border-width) var(--#{$divider-prefix}-border-style)
+        var(--#{$divider-prefix}-color);
+    }
+
+    &--dashed {
+      border-top-style: dashed;
+
+      &.#{$divider-prefix}--vertical {
+        border-top: 0;
+        border-left-style: dashed;
+      }
+    }
+
+    &--dotted {
+      border-top-style: dotted;
+
+      &.#{$divider-prefix}--vertical {
+        border-top: 0;
+        border-left-style: dotted;
+      }
+    }
+
+    &--left,
+    &--right,
+    &--center {
+      display: flex;
+      align-items: center;
+
+      &::before,
+      &::after {
+        flex: 1 1 auto;
+        content: '';
+        border-top: var(--#{$divider-prefix}-border-width) var(--#{$divider-prefix}-border-style)
+          var(--#{$divider-prefix}-color);
+      }
+
+      &.#{$divider-prefix}--dashed {
+        &::before,
+        &::after {
+          border-top-style: dashed;
+        }
+      }
+
+      &.#{$divider-prefix}--dotted {
+        &::before,
+        &::after {
+          border-top-style: dotted;
+        }
+      }
+    }
+
+    &--left {
+      &::before {
+        max-width: var(--#{$divider-prefix}-orientation-left-width, 10%);
+      }
+    }
+
+    &--right {
+      &::after {
+        max-width: var(--#{$divider-prefix}-orientation-right-width, 10%);
+      }
+    }
+
+    &__inner {
+      display: inline-block;
+      padding: var(--#{$divider-prefix}-text-padding);
+      font-weight: var(--#{$divider-prefix}-text-font-weight);
+    }
+
+    &--plain {
+      .#{$divider-prefix}__inner {
+        font-weight: var(--#{$divider-prefix}-plain-text-font-weight);
+      }
+    }
+  }
+}

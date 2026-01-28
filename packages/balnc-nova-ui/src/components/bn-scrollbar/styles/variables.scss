@@ -1,0 +1,25 @@
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             Scrollbar variables
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@mixin scrollbar-size-variables {
+  --bn-scrollbar-width: 8px;
+  --bn-scrollbar-height: 8px;
+  --bn-scrollbar-min-size: 40px;
+  --bn-scrollbar-border-radius: 4px;
+}
+
+@mixin scrollbar-color-variables {
+  --bn-scrollbar-track-color: var(--bn-neutral-color-2);
+  --bn-scrollbar-thumb-color: var(--bn-neutral-color-5);
+  --bn-scrollbar-thumb-hover-color: var(--bn-neutral-color-6);
+  --bn-scrollbar-thumb-active-color: var(--bn-neutral-color-7);
+  --bn-scrollbar-track-color-dark: var(--bn-neutral-color-8);
+  --bn-scrollbar-thumb-color-dark: var(--bn-neutral-color-6);
+  --bn-scrollbar-thumb-hover-color-dark: var(--bn-neutral-color-5);
+  --bn-scrollbar-thumb-active-color-dark: var(--bn-neutral-color-4);
+}

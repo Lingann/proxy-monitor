@@ -1,0 +1,20 @@
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             Blockquote style entry
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+@use './mixin-base-style' as *;
+@use './mixin-size-style' as *;
+@use './mixin-color-style' as *;
+@use './mixin-state-style' as *;
+@use './mixin-variant-style' as *;
+
+@include blockquote-base-style;
+@include blockquote-size-style;
+@include blockquote-color-style;
+@include blockquote-state-style;
+@include blockquote-variant-style;

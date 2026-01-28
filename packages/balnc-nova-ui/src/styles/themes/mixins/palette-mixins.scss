@@ -1,0 +1,33 @@
+// ======================================================
+// 色板相关混合宏
+// ======================================================
+
+@use '../functions/color-functions' as color;
+
+/**
+ * 生成内部RGB值变量
+ * @param {String} $name - 色板名称 (如primary, success等)
+ * @param {Map} $palette - 色板颜色映射
+ * @param {String} $prefix - CSS变量前缀，默认为bn
+ */
+@mixin generate-palette-rgb-inner-vars($name, $palette, $prefix: 'bn') {
+  @each $level, $color in $palette {
+    $inner-var-name: --#{$prefix}-#{$name}-inner-#{$level};
+
+    #{$inner-var-name}: #{color.rgb-to-string(color.hex-to-rgb($color))};
+  }
+}
+
+/**
+ * 生成颜色变量 (使用inner变量)
+ * @param {String} $name - 色板名称 (如primary, success等)
+ * @param {Map} $palette - 色板颜色映射
+ * @param {String} $prefix - CSS变量前缀，默认为bn
+ */
+@mixin generate-palette-rgb-color-vars($name, $palette, $prefix: 'bn') {
+  @each $level, $color in $palette {
+    $color-var-name: --#{$prefix}-#{$name}-color-#{$level};
+
+    #{$color-var-name}: rgb(var(--#{$prefix}-#{$name}-inner-#{$level}));
+  }
+}

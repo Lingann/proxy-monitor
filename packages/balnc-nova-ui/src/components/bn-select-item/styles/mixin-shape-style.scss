@@ -1,0 +1,21 @@
+@use './variables' as *;
+
+@mixin select-item-shape-variables {
+  --bn-select-item-border-radius-square: var(--bn-border-radius-md);
+  --bn-select-item-border-radius-circle: var(--bn-border-radius-circle);
+  --bn-select-item-border-radius-capsule: var(--bn-border-radius-pill);
+}
+
+@mixin select-item-shape-style {
+  .#{$select-item-prefix}--shape-square {
+    border-radius: var(--bn-select-item-border-radius-square);
+  }
+
+  .#{$select-item-prefix}--shape-circle {
+    border-radius: var(--bn-select-item-border-radius-circle);
+  }
+
+  .#{$select-item-prefix}--shape-capsule {
+    border-radius: var(--bn-select-item-border-radius-capsule);
+  }
+}

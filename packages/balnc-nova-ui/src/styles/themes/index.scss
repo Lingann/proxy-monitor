@@ -1,0 +1,50 @@
+/**
+ * 主题系统入口文件
+ */
+
+// 功能函数 - 需要在色板定义前引入
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:math';
+@use './functions/math-functions' as math-funcs;
+@use './functions/string-functions' as string-funcs;
+@use './functions/color-functions' as color-funcs;
+@use './functions/palette-functions' as palette-funcs;
+
+// 基础变量
+@use './common/typography-variables';
+@use './common/text-variables';
+@use './common/line-height-variables';
+@use './common/spacing-variables';
+@use './common/sizing-variables';
+@use './common/border-variables';
+@use './common/background-variables';
+@use './common/shadow-variables';
+@use './common/filter-variables';
+// @use './common/opacity'; // 暂时注释不存在的文件
+@use './common/transition-variables';
+@use './common/responsive-variables';
+// @use './common/zindex'; // 暂时注释不存在的文件
+
+// 色彩系统
+@use './palettes/primary-palette';
+@use './palettes/success-palette';
+@use './palettes/warning-palette';
+@use './palettes/danger-palette';
+@use './palettes/info-palette';
+@use './palettes/neutral-palette';
+
+// 主题
+@use './themes/index' as themes;
+
+// 主题切换器
+@use './utils/theme-switcher';
+
+// 转发所有公共 API，这样外部文件可以访问导入的模块
+@forward './functions/math-functions';
+@forward './functions/string-functions';
+@forward './functions/color-functions';
+@forward './functions/palette-functions';
+@forward './common/typography-variables';
+@forward './common/text-variables';
+

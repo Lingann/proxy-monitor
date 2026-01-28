@@ -1,0 +1,65 @@
+/**
+ * ******************************************************
+ * @file                     mixin-size-style.scss
+ * @description             Heading responsive styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin heading-size-style {
+  @media (width <= 576px) {
+    h1,
+    .#{$heading-prefix}-h1 {
+      font-size: calc(var(--bn-h1-font-size) * var(--bn-heading-mobile-scale));
+    }
+    h2,
+    .#{$heading-prefix}-h2 {
+      font-size: calc(var(--bn-h2-font-size) * var(--bn-heading-mobile-scale));
+    }
+    h3,
+    .#{$heading-prefix}-h3 {
+      font-size: calc(var(--bn-h3-font-size) * var(--bn-heading-mobile-scale));
+    }
+    h4,
+    .#{$heading-prefix}-h4 {
+      font-size: calc(var(--bn-h4-font-size) * var(--bn-heading-mobile-scale));
+    }
+    h5,
+    .#{$heading-prefix}-h5 {
+      font-size: calc(var(--bn-h5-font-size) * var(--bn-heading-mobile-scale));
+    }
+    h6,
+    .#{$heading-prefix}-h6 {
+      font-size: calc(var(--bn-h6-font-size) * var(--bn-heading-mobile-scale));
+    }
+  }
+
+  @media (width >= 577px) and (width <= 992px) {
+    h1,
+    .#{$heading-prefix}-h1 {
+      font-size: calc(var(--bn-h1-font-size) * var(--bn-heading-tablet-scale));
+    }
+    h2,
+    .#{$heading-prefix}-h2 {
+      font-size: calc(var(--bn-h2-font-size) * var(--bn-heading-tablet-scale));
+    }
+    h3,
+    .#{$heading-prefix}-h3 {
+      font-size: calc(var(--bn-h3-font-size) * var(--bn-heading-tablet-scale));
+    }
+    h4,
+    .#{$heading-prefix}-h4 {
+      font-size: calc(var(--bn-h4-font-size) * var(--bn-heading-tablet-scale));
+    }
+    h5,
+    .#{$heading-prefix}-h5 {
+      font-size: calc(var(--bn-h5-font-size) * var(--bn-heading-tablet-scale));
+    }
+    h6,
+    .#{$heading-prefix}-h6 {
+      font-size: calc(var(--bn-h6-font-size) * var(--bn-heading-tablet-scale));
+    }
+  }
+}

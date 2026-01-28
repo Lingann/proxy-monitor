@@ -1,0 +1,56 @@
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             Base style mixin
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             「代码基础样式混入」
+ * 定义代码块与行内代码基础样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin code-base-style {
+  // 内联代码样式
+  code:not([class*='language-']) {
+    padding: var(--bn-code-padding);
+    font-family: var(--bn-code-font-family);
+    font-size: var(--bn-code-font-size);
+    line-height: var(--bn-code-line-height);
+    color: var(--bn-code-color);
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    background-color: var(--bn-code-background-color);
+    border-radius: var(--bn-code-border-radius);
+  }
+
+  // 代码块内的代码不需要背景和内边距
+  pre code:not([class*='language-']) {
+    padding: 0;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  // 代码块基础样式
+  pre:not([class*='language-']) {
+    max-height: var(--bn-pre-max-height);
+    padding: var(--bn-pre-padding);
+    overflow: auto;
+    font-family: var(--bn-code-font-family);
+    line-height: var(--bn-pre-line-height);
+    color: var(--bn-pre-color);
+    overflow-wrap: normal;
+    white-space: pre;
+    background-color: var(--bn-pre-background-color);
+    border: var(--bn-pre-border-width) var(--bn-pre-border-style) var(--bn-pre-border-color);
+    border-radius: var(--bn-pre-border-radius);
+  }
+}
+

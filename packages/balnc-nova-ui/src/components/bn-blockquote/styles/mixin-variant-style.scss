@@ -1,0 +1,80 @@
+/**
+ * ******************************************************
+ * @file                     mixin-variant-style.scss
+ * @description             Blockquote variant styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin blockquote-variant-style {
+  .#{$blockquote-prefix}-info {
+    color: var(--bn-blockquote-info-color);
+    background-color: var(--bn-blockquote-info-background-color);
+    border-left-color: var(--bn-blockquote-info-border-color);
+  }
+
+  .#{$blockquote-prefix}-success {
+    color: var(--bn-blockquote-success-color);
+    background-color: var(--bn-blockquote-success-background-color);
+    border-left-color: var(--bn-blockquote-success-border-color);
+  }
+
+  .#{$blockquote-prefix}-warning {
+    color: var(--bn-blockquote-warning-color);
+    background-color: var(--bn-blockquote-warning-background-color);
+    border-left-color: var(--bn-blockquote-warning-border-color);
+  }
+
+  .#{$blockquote-prefix}-danger {
+    color: var(--bn-blockquote-danger-color);
+    background-color: var(--bn-blockquote-danger-background-color);
+    border-left-color: var(--bn-blockquote-danger-border-color);
+  }
+
+  .#{$blockquote-prefix}-with-icon {
+    position: relative;
+    padding-left: calc(var(--bn-blockquote-padding-left) * 2 + 20px);
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: var(--bn-blockquote-padding-left);
+      width: 20px;
+      height: 20px;
+      content: '';
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    &.#{$blockquote-prefix}-info::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230284c7' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z'/%3E%3C/svg%3E");
+    }
+
+    &.#{$blockquote-prefix}-success::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2316a34a' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E");
+    }
+
+    &.#{$blockquote-prefix}-warning::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d97706' d='M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z'/%3E%3C/svg%3E");
+    }
+
+    &.#{$blockquote-prefix}-danger::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23dc2626' d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'/%3E%3C/svg%3E");
+    }
+  }
+
+  .#{$blockquote-prefix}-full-width {
+    padding: var(--bn-padding-md);
+    margin-right: 0;
+    margin-left: 0;
+    text-align: center;
+    border-top: var(--bn-blockquote-border-width) var(--bn-blockquote-border-style)
+      var(--bn-blockquote-border-color);
+    border-bottom: var(--bn-blockquote-border-width) var(--bn-blockquote-border-style)
+      var(--bn-blockquote-border-color);
+    border-left: none;
+  }
+}

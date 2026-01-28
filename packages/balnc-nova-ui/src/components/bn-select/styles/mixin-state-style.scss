@@ -1,0 +1,37 @@
+/**
+ * ******************************************************
+ * @file                     mixin-state-style.scss
+ * @description             Select state styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin select-state-style {
+  .#{$select-prefix}--open {
+    .#{$select-prefix}__trigger {
+      border-color: var(--bn-select-border-focus);
+    }
+
+    .#{$select-prefix}__arrow {
+      transform: rotate(180deg);
+    }
+
+    .#{$select-prefix}__dropdown {
+      display: block;
+    }
+  }
+
+  .#{$select-prefix}--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .#{$select-prefix}--error {
+    .#{$select-prefix}__trigger {
+      border-color: var(--bn-select-error);
+    }
+  }
+}

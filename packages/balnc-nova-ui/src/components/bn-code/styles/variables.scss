@@ -1,0 +1,62 @@
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             Component variables
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             「代码组件变量定义」
+ * 定义代码组件前缀与变量混入
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+$code-prefix: bn-code;
+$pre-prefix: bn-pre;
+
+// ======================================================
+// 代码文本变量混入
+// ======================================================
+
+// 代码文本基础变量
+@mixin code-base-variables {
+}
+
+// 代码文本颜色变量
+@mixin code-color-variables {
+  // 代码文本暗色模式颜色
+  --bn-code-color-dark: var(--bn-danger-color-4);
+  --bn-code-background-color-dark: var(--bn-neutral-color-8);
+
+  // 代码块颜色
+  --bn-pre-color: var(--bn-text-color-base);
+  --bn-pre-background-color: var(--bn-neutral-color-1);
+  --bn-pre-border-color: var(--bn-border-color-base);
+
+  // 代码块暗色模式颜色
+  --bn-pre-color-dark: var(--bn-text-color-base-dark);
+  --bn-pre-background-color-dark: var(--bn-neutral-color-9);
+  --bn-pre-border-color-dark: var(--bn-border-color-base-dark);
+}
+
+// 代码块尺寸变量
+@mixin code-size-variables {
+  // 代码块内边距
+  --bn-pre-padding: var(--bn-padding-md);
+
+  // 代码块边框
+  --bn-pre-border-width: var(--bn-border-width-sm);
+  --bn-pre-border-style: solid;
+  --bn-pre-border-radius: var(--bn-border-radius-md);
+
+  // 代码块最大高度
+  --bn-pre-max-height: 400px;
+
+  // 代码块行高
+  --bn-code-line-height: var(--bn-line-height-md);
+  --bn-pre-line-height: var(--bn-line-height-md);
+}
+

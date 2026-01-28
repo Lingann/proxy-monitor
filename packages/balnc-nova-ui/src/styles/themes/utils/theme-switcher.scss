@@ -1,0 +1,119 @@
+// ======================================================
+// 主题切换工具
+// ======================================================
+
+// 主题切换类
+.theme-switcher {
+  // 主题切换按钮样式
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--bn-button-padding-y-md) var(--bn-button-padding-x-md);
+    color: var(--bn-text-color);
+    cursor: pointer;
+    background-color: var(--bn-bg-default);
+    border: 1px solid var(--bn-border-color);
+    border-radius: var(--bn-border-radius-md);
+    transition: var(--bn-transition-normal);
+
+    &:hover {
+      background-color: var(--bn-bg-hover);
+    }
+
+    // 图标容器
+    &-icon {
+      width: var(--bn-icon-size-md);
+      height: var(--bn-icon-size-md);
+      margin-right: 0.5rem;
+
+      // 暗色主题图标隐藏
+      .moon-icon {
+        display: block;
+      }
+
+      .sun-icon {
+        display: none;
+      }
+
+      // 亮色主题时显示月亮图标
+      .dark-mode &,
+      [data-theme='dark'] & {
+        .moon-icon {
+          display: none;
+        }
+
+        .sun-icon {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// 全局主题切换钩子
+html {
+  &.theme-transition {
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+
+    *,
+    *::before,
+    *::after {
+      transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease !important;
+      transition-delay: 0 !important;
+    }
+  }
+}
+
+// JavaScript 辅助函数
+// 将以下JavaScript函数添加到相应的JS文件中：
+//
+// /**
+//  * 切换暗色/亮色主题
+//  */
+// function toggleTheme() {
+//   // 添加过渡类
+//   document.documentElement.classList.add('theme-transition');
+//
+//   // 获取当前主题
+//   const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+//
+//   // 切换主题
+//   if (isDarkMode) {
+//     document.documentElement.setAttribute('data-theme', 'light');
+//     localStorage.setItem('theme', 'light');
+//   } else {
+//     document.documentElement.setAttribute('data-theme', 'dark');
+//     localStorage.setItem('theme', 'dark');
+//   }
+//
+//   // 移除过渡类（延迟移除以确保过渡完成）
+//   setTimeout(() => {
+//     document.documentElement.classList.remove('theme-transition');
+//   }, 300);
+// }
+//
+// /**
+//  * 初始化主题
+//  */
+// function initTheme() {
+//   // 检查存储的主题或系统首选项
+//   const storedTheme = localStorage.getItem('theme');
+//   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+//
+//   // 应用主题
+//   if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+//     document.documentElement.setAttribute('data-theme', 'dark');
+//   } else {
+//     document.documentElement.setAttribute('data-theme', 'light');
+//   }
+// }
+//
+// // 在DOM加载完成后初始化主题
+// document.addEventListener('DOMContentLoaded', initTheme);

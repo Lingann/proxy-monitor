@@ -1,0 +1,171 @@
+/**
+ * ******************************************************
+ * @file                     input.tsx
+ * @description             「基础输入框组件」
+ * 提供基础的输入框功能，支持字数统计
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+import './styles/index.scss'
+
+import { computed, defineComponent, onUnmounted, toRef } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+import { useFieldValidation } from '../../shared/validation'
+import { useInputEvent } from './composables/use-input-event'
+import { inputProps } from './props/input-props'
+
+/* ================================================== */
+/* 区域：组件定义 */
+/* ================================================== */
+
+export const BnInput = defineComponent({
+  name: 'BnInput',
+  inheritAttrs: false,
+  emits: ['update:modelValue'],
+  props: inputProps(),
+  setup(props, { attrs, slots, emit, expose }) {
+    const { t } = useI18n()
+
+    const typeRef = computed(() => props.type)
+
+    const {
+      validateState,
+      validateMessage,
+      validate,
+      clearValidate,
+      showError,
+    } = useFieldValidation({
+      fieldValue: toRef(props, 'modelValue'),
+      rules: toRef(props, 'rules')
+    })
+
+    /* 使用事件处理组合式函数 */
+    const {
+      focused,
+      handleInput,
+      handleChange,
+      handleFocus,
+      handleBlur: baseHandleBlur,
+      handleClear,
+      clearState
+    } = useInputEvent(props, emit, props.maxLength)
+
+    /* 包装 blur 事件处理以支持 trim */
+    const handleBlur = (event: FocusEvent) => {
+      baseHandleBlur(event, props.trim, props.modelValue)
+
+      validate('blur')
+    }
+
+    /* 过滤掉class属性，避免传递到input元素 */
+    const { class: _, ...inputAttrs } = attrs
+
+    /* 计算当前字数 */
+    const currentLengthRef = computed(() => props.modelValue?.length ?? 0)
+
+    /* 计算是否超出最大长度 */
+    const isExceededRef = computed(() => {
+      if (!props.maxLength) return false
+
+      return currentLengthRef.value > props.maxLength
+    })
+
+    /* 计算占位符文本 */
+    const placeholderTextRef = computed(() => props.placeholder || t('common.input_placeholder'))
+
+    const isErrorRef = computed(() => props.error || validateState.value === 'error')
+
+    const errorMessageRef = computed(() => props.errorMessage || validateMessage.value)
+
+    const shouldShowErrorMessageRef = computed(() => isErrorRef.value && !!errorMessageRef.value)
+
+    /* 资源清理 */
+    onUnmounted(() => clearState())
+
+    expose({
+      validate,
+      clearValidate,
+      showError
+    })
+
+    /* 渲染函数 */
+    return () => (
+      <div
+        class={[
+          'bn-input',
+          { 'bn-input--block': props.block },
+          { [`bn-input--${props.size}`]: props.size !== 'medium' },
+          attrs.class
+        ]}
+      >
+        <div
+          class={[
+            'bn-input__wrapper',
+            {
+              'bn-input__wrapper--focused': focused.value,
+              'bn-input__wrapper--disabled': props.disabled,
+              'bn-input__wrapper--error': isErrorRef.value
+            }
+          ]}
+        >
+          {slots.prefix?.()}
+          <input
+            class={[
+              'bn-input__inner',
+              {
+                'bn-input__inner--error': isErrorRef.value,
+                'bn-input__inner--disabled': props.disabled,
+                'bn-input__inner--readonly': props.readonly
+              }
+            ]}
+            disabled={props.disabled}
+            maxlength={props.maxLength}
+            placeholder={placeholderTextRef.value}
+            readonly={props.readonly}
+            type={typeRef.value}
+            value={props.modelValue}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            onKeydown={props.onKeydown}
+            onInput={(e: Event) => {
+              handleInput((e.target as HTMLInputElement).value)
+            }}
+            {...inputAttrs}
+          />
+          {slots.suffix?.()}
+          {props.clearable && props.modelValue && !props.disabled && !props.readonly && (
+            <span class="bn-input__clear" onClick={handleClear}>
+              <span class="bn-input__clear-icon">
+                <svg aria-hidden="true" data-icon="close" fill="currentColor" focusable="false" height="1em" viewBox="64 64 896 896" width="1em">
+                  <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z" />
+                </svg>
+              </span>
+            </span>
+          )}
+        </div>
+        {shouldShowErrorMessageRef.value && (
+          <div class="bn-input__error-message">{errorMessageRef.value}</div>
+        )}
+        {props.showCount && (
+          <div
+            class={[
+              'bn-input__count',
+              { 'bn-input__count--exceeded': isExceededRef.value }
+            ]}
+          >
+            {currentLengthRef.value}{props.maxLength ? ` / ${props.maxLength}` : ''}
+          </div>
+        )}
+      </div>
+    )
+  }
+})
+
+/* ================================================== */
+/* 区域结束：组件定义 */
+/* ================================================== */
+
+export default BnInput

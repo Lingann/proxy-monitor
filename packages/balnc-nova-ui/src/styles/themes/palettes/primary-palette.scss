@@ -1,0 +1,21 @@
+// ======================================================
+// 主色板 Primary
+// ======================================================
+@use '../functions/palette-functions' as palette;
+
+// 主色板 - 基础色
+$primary-5: #1890ff !default;
+
+// 自定义梯度（可选）
+$primary-custom-colors: () !default;
+
+// 暗色模式基础色
+$primary-5-dark: #177ddc !default;
+
+// 自定义暗色梯度（可选）
+$primary-dark-custom-colors: () !default;
+
+// 色板计算
+$primary-palette: palette.create-palette('primary', $primary-5, $primary-custom-colors);
+
+$primary-palette-dark: palette.create-palette('primary', $primary-5-dark, $primary-dark-custom-colors);

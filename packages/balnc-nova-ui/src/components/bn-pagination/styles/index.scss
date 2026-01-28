@@ -1,0 +1,33 @@
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             Styles entry file
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             「分页样式入口文件」
+ * 加载所有分页相关样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+@use './mixin-base-style' as *;
+@use './mixin-size-style' as *;
+@use './mixin-color-style' as *;
+@use './mixin-state-style' as *;
+@use './mixin-variant-style' as *;
+
+.#{$pagination-prefix} {
+  @include pagination-base-variables;
+}
+
+@include pagination-base-style;
+@include pagination-size-style;
+@include pagination-color-style;
+@include pagination-state-style;
+@include pagination-variant-style;
+

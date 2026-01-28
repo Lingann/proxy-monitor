@@ -1,0 +1,33 @@
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             Styles entry file
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             「表格样式入口文件」
+ * 加载所有表格相关样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+@use './mixin-base-style' as *;
+@use './mixin-size-style' as *;
+@use './mixin-color-style' as *;
+@use './mixin-state-style' as *;
+@use './mixin-variant-style' as *;
+
+.#{$table-wrapper-prefix} {
+  @include table-base-variables;
+}
+
+@include table-base-style;
+@include table-size-style;
+@include table-color-style;
+@include table-state-style;
+@include table-variant-style;
+

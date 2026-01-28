@@ -1,0 +1,57 @@
+@use './variables' as *;
+
+@mixin select-item-size-variables {
+  --bn-select-item-height-small: var(--bn-size-sm);
+  --bn-select-item-height-medium: var(--bn-size-md);
+  --bn-select-item-height-large: var(--bn-size-lg);
+  --bn-select-item-line-height-small: var(--bn-select-item-height-small);
+  --bn-select-item-line-height-medium: var(--bn-select-item-height-medium);
+  --bn-select-item-line-height-large: var(--bn-select-item-height-large);
+  --bn-select-item-font-size-small: var(--bn-font-size-sm);
+  --bn-select-item-font-size-medium: var(--bn-font-size-md);
+  --bn-select-item-font-size-large: var(--bn-font-size-lg);
+  --bn-select-item-padding-horizontal-small: var(--bn-padding-horizontal-sm);
+  --bn-select-item-padding-horizontal-medium: var(--bn-padding-horizontal-md);
+  --bn-select-item-padding-horizontal-large: var(--bn-padding-horizontal-lg);
+  --bn-select-item-padding-vertical-small: 0;
+  --bn-select-item-padding-vertical-medium: 0;
+  --bn-select-item-padding-vertical-large: 0;
+}
+
+@mixin select-item-size-style {
+  .#{$select-item-prefix} {
+    height: var(--bn-select-item-height-medium);
+    padding: var(--bn-select-item-padding-vertical-medium) var(--bn-select-item-padding-horizontal-medium);
+    font-size: var(--bn-select-item-font-size-medium);
+    line-height: var(--bn-select-item-line-height-medium);
+    --bn-select-item-padding-vertical: var(--bn-select-item-padding-vertical-medium);
+    --bn-select-item-padding-horizontal: var(--bn-select-item-padding-horizontal-medium);
+  }
+
+  .#{$select-item-prefix}--size-small {
+    height: var(--bn-select-item-height-small);
+    padding: var(--bn-select-item-padding-vertical-small) var(--bn-select-item-padding-horizontal-small);
+    font-size: var(--bn-select-item-font-size-small);
+    line-height: var(--bn-select-item-line-height-small);
+    --bn-select-item-padding-vertical: var(--bn-select-item-padding-vertical-small);
+    --bn-select-item-padding-horizontal: var(--bn-select-item-padding-horizontal-small);
+  }
+
+  .#{$select-item-prefix}--size-medium {
+    height: var(--bn-select-item-height-medium);
+    padding: var(--bn-select-item-padding-vertical-medium) var(--bn-select-item-padding-horizontal-medium);
+    font-size: var(--bn-select-item-font-size-medium);
+    line-height: var(--bn-select-item-line-height-medium);
+    --bn-select-item-padding-vertical: var(--bn-select-item-padding-vertical-medium);
+    --bn-select-item-padding-horizontal: var(--bn-select-item-padding-horizontal-medium);
+  }
+
+  .#{$select-item-prefix}--size-large {
+    height: var(--bn-select-item-height-large);
+    padding: var(--bn-select-item-padding-vertical-large) var(--bn-select-item-padding-horizontal-large);
+    font-size: var(--bn-select-item-font-size-large);
+    line-height: var(--bn-select-item-line-height-large);
+    --bn-select-item-padding-vertical: var(--bn-select-item-padding-vertical-large);
+    --bn-select-item-padding-horizontal: var(--bn-select-item-padding-horizontal-large);
+  }
+}

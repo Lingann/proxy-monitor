@@ -1,0 +1,29 @@
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             Checkbox style entry
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+@use './mixin-base-style' as *;
+@use './mixin-size-style' as *;
+@use './mixin-color-style' as *;
+@use './mixin-state-style' as *;
+@use './mixin-variant-style' as *;
+
+.#{$checkbox-prefix} {
+  @include checkbox-base-variables;
+}
+
+.dark-mode .#{$checkbox-prefix},
+[data-theme='dark'] .#{$checkbox-prefix} {
+  @include checkbox-dark-variables;
+}
+
+@include checkbox-base-style;
+@include checkbox-size-style;
+@include checkbox-color-style;
+@include checkbox-state-style;
+@include checkbox-variant-style;

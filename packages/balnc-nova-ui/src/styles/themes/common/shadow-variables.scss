@@ -1,0 +1,92 @@
+// ======================================================
+// 阴影变量
+// ======================================================
+
+@use '../functions/color-functions' as color;
+
+// 阴影变量混入
+// @mixin shadow-variables - 定义所有阴影相关的CSS变量
+@mixin shadow-variables {
+  // 默认阴影
+  --bn-shadow-none: none;
+  --bn-shadow-xs: 0 1px 2px rgb(0 0 0 / 5%);
+  --bn-shadow-sm: 0 2px 4px rgb(0 0 0 / 5%);
+  --bn-shadow-md: 0 4px 6px rgb(0 0 0 / 10%);
+  --bn-shadow-lg: 0 10px 15px rgb(0 0 0 / 10%);
+  --bn-shadow-xl: 0 20px 25px rgb(0 0 0 / 15%);
+  --bn-shadow-2xl: 0 25px 50px rgb(0 0 0 / 20%);
+  --bn-shadow-inner: inset 0 2px 4px rgb(0 0 0 / 5%);
+
+  // 颜色阴影
+  --bn-shadow-primary-xs: 0 1px 2px rgba(var(--bn-primary-inner-5), 0.1);
+  --bn-shadow-primary-sm: 0 2px 4px rgba(var(--bn-primary-inner-5), 0.15);
+  --bn-shadow-primary-md: 0 4px 6px rgba(var(--bn-primary-inner-5), 0.25);
+  --bn-shadow-primary-lg: 0 10px 15px rgba(var(--bn-primary-inner-5), 0.25);
+  --bn-shadow-primary-xl: 0 20px 25px rgba(var(--bn-primary-inner-5), 0.3);
+  --bn-shadow-success-md: 0 4px 6px rgba(var(--bn-success-inner-5), 0.25);
+  --bn-shadow-warning-md: 0 4px 6px rgba(var(--bn-warning-inner-5), 0.25);
+  --bn-shadow-danger-md: 0 4px 6px rgba(var(--bn-danger-inner-5), 0.25);
+  --bn-shadow-info-md: 0 4px 6px rgba(var(--bn-info-inner-5), 0.25);
+
+  // 阴影叠加效果
+  --bn-shadow-md-up: 0 -4px 6px rgb(0 0 0 / 10%);
+  --bn-shadow-md-right: 4px 0 6px rgb(0 0 0 / 10%);
+  --bn-shadow-md-left: -4px 0 6px rgb(0 0 0 / 10%);
+
+  // 立体阴影效果
+  --bn-shadow-elevation-1: 0 1px 2px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 5%);
+  --bn-shadow-elevation-2: 0 1px 2px rgb(0 0 0 / 5%), 0 2px 8px rgb(0 0 0 / 10%);
+  --bn-shadow-elevation-3: 0 1px 3px rgb(0 0 0 / 10%), 0 4px 12px rgb(0 0 0 / 15%);
+  --bn-shadow-elevation-4: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 20%);
+
+  // 特效阴影
+  --bn-shadow-glow-primary: 0 0 10px rgba(var(--bn-primary-inner-5), 0.5);
+  --bn-shadow-glow-success: 0 0 10px rgba(var(--bn-success-inner-5), 0.5);
+  --bn-shadow-glow-warning: 0 0 10px rgba(var(--bn-warning-inner-5), 0.5);
+  --bn-shadow-glow-danger: 0 0 10px rgba(var(--bn-danger-inner-5), 0.5);
+  --bn-shadow-glow-info: 0 0 10px rgba(var(--bn-info-inner-5), 0.5);
+}
+
+// 暗色模式阴影变量混入
+// @mixin shadow-variables-dark - 定义所有暗色模式下需要变化的阴影相关CSS变量
+@mixin shadow-variables-dark {
+  // 默认阴影 - 暗色模式下阴影需要更强烈，使用白色阴影以增强效果
+  --bn-shadow-xs: 0 1px 2px rgb(0 0 0 / 20%);
+  --bn-shadow-sm: 0 2px 4px rgb(0 0 0 / 25%);
+  --bn-shadow-md: 0 4px 6px rgb(0 0 0 / 30%);
+  --bn-shadow-lg: 0 10px 15px rgb(0 0 0 / 40%);
+  --bn-shadow-xl: 0 20px 25px rgb(0 0 0 / 50%);
+  --bn-shadow-2xl: 0 25px 50px rgb(0 0 0 / 60%);
+  --bn-shadow-inner: inset 0 2px 4px rgb(0 0 0 / 20%);
+
+  // 颜色阴影 - 增强暗色模式下的色彩阴影可见度
+  --bn-shadow-primary-xs: 0 1px 2px rgba(var(--bn-primary-inner-5), 0.3);
+  --bn-shadow-primary-sm: 0 2px 4px rgba(var(--bn-primary-inner-5), 0.35);
+  --bn-shadow-primary-md: 0 4px 6px rgba(var(--bn-primary-inner-5), 0.4);
+  --bn-shadow-primary-lg: 0 10px 15px rgba(var(--bn-primary-inner-5), 0.45);
+  --bn-shadow-primary-xl: 0 20px 25px rgba(var(--bn-primary-inner-5), 0.5);
+  --bn-shadow-success-md: 0 4px 6px rgba(var(--bn-success-inner-5), 0.4);
+  --bn-shadow-warning-md: 0 4px 6px rgba(var(--bn-warning-inner-5), 0.4);
+  --bn-shadow-danger-md: 0 4px 6px rgba(var(--bn-danger-inner-5), 0.4);
+  --bn-shadow-info-md: 0 4px 6px rgba(var(--bn-info-inner-5), 0.4);
+
+  // 阴影叠加效果
+  --bn-shadow-md-up: 0 -4px 6px rgb(0 0 0 / 30%);
+  --bn-shadow-md-right: 4px 0 6px rgb(0 0 0 / 30%);
+  --bn-shadow-md-left: -4px 0 6px rgb(0 0 0 / 30%);
+
+  // 立体阴影效果
+  --bn-shadow-elevation-1: 0 1px 2px rgb(0 0 0 / 20%), 0 1px 4px rgb(0 0 0 / 20%);
+  --bn-shadow-elevation-2: 0 1px 2px rgb(0 0 0 / 20%), 0 2px 8px rgb(0 0 0 / 30%);
+  --bn-shadow-elevation-3: 0 1px 3px rgb(0 0 0 / 30%), 0 4px 12px rgb(0 0 0 / 35%);
+  --bn-shadow-elevation-4: 0 2px 4px rgb(0 0 0 / 30%), 0 8px 16px rgb(0 0 0 / 40%);
+
+  // 特效阴影 - 增强发光效果
+  --bn-shadow-glow-primary: 0 0 12px rgba(var(--bn-primary-inner-5), 0.7);
+  --bn-shadow-glow-success: 0 0 12px rgba(var(--bn-success-inner-5), 0.7);
+  --bn-shadow-glow-warning: 0 0 12px rgba(var(--bn-warning-inner-5), 0.7);
+  --bn-shadow-glow-danger: 0 0 12px rgba(var(--bn-danger-inner-5), 0.7);
+  --bn-shadow-glow-info: 0 0 12px rgba(var(--bn-info-inner-5), 0.7);
+}
+
+

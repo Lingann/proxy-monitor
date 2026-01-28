@@ -1,0 +1,49 @@
+/**
+ * ******************************************************
+ * @file                     mixin-size-style.scss
+ * @description             Checkbox size styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin checkbox-size-style {
+  .#{$checkbox-prefix}--small {
+    font-size: var(--bn-checkbox-font-size-sm, 12px);
+
+    .#{$checkbox-prefix}__inner {
+      width: var(--bn-checkbox-size-sm, 14px);
+      height: var(--bn-checkbox-size-sm, 14px);
+
+      &::after {
+        width: calc(var(--bn-checkbox-check-width, 4px) - 0.5px);
+        height: calc(var(--bn-checkbox-check-height, 7px) - 1px);
+        border-width: 1.25px;
+      }
+    }
+  }
+
+  .#{$checkbox-prefix}--large {
+    font-size: var(--bn-checkbox-font-size-lg, 16px);
+
+    .#{$checkbox-prefix}__inner {
+      width: var(--bn-checkbox-size-lg, 18px);
+      height: var(--bn-checkbox-size-lg, 18px);
+
+      &::after {
+        width: calc(var(--bn-checkbox-check-width, 4px) + 0.5px);
+        height: calc(var(--bn-checkbox-check-height, 7px) + 1px);
+        border-width: 1.75px;
+      }
+    }
+  }
+
+  .#{$checkbox-group-prefix}--small {
+    gap: 6px;
+  }
+
+  .#{$checkbox-group-prefix}--large {
+    gap: 10px;
+  }
+}

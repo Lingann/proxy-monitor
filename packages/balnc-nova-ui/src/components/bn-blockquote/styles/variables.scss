@@ -1,0 +1,43 @@
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             Blockquote variables and prefixes
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+$blockquote-prefix: bn-blockquote;
+
+@mixin blockquote-base-variables {
+  --bn-blockquote-padding-left: 1rem;
+  --bn-blockquote-margin: var(--bn-spacing-md) 0;
+  --bn-blockquote-border-width: 4px;
+  --bn-blockquote-border-style: solid;
+  --bn-blockquote-font-style: italic;
+  --bn-blockquote-font-size: var(--bn-font-size-md);
+  --bn-blockquote-line-height: var(--bn-line-height-md);
+}
+
+@mixin blockquote-color-variables {
+  --bn-blockquote-color: var(--bn-text-color-secondary);
+  --bn-blockquote-border-color: var(--bn-primary-color-3);
+  --bn-blockquote-background-color: transparent;
+  --bn-blockquote-color-dark: var(--bn-text-color-secondary-dark);
+  --bn-blockquote-border-color-dark: var(--bn-primary-color-6);
+  --bn-blockquote-background-color-dark: var(--bn-bg-color-component-dark);
+}
+
+@mixin blockquote-variant-variables {
+  --bn-blockquote-info-border-color: var(--bn-border-color-info);
+  --bn-blockquote-info-background-color: var(--bn-bg-color-info-soft-base);
+  --bn-blockquote-info-color: var(--bn-text-color-info-base);
+  --bn-blockquote-success-border-color: var(--bn-border-color-success);
+  --bn-blockquote-success-background-color: var(--bn-bg-color-success-soft-base);
+  --bn-blockquote-success-color: var(--bn-text-color-success-base);
+  --bn-blockquote-warning-border-color: var(--bn-border-color-warning);
+  --bn-blockquote-warning-background-color: var(--bn-bg-color-warning-soft-base);
+  --bn-blockquote-warning-color: var(--bn-text-color-warning-base);
+  --bn-blockquote-danger-border-color: var(--bn-border-color-danger);
+  --bn-blockquote-danger-background-color: var(--bn-bg-color-danger-soft-base);
+  --bn-blockquote-danger-color: var(--bn-text-color-danger-base);
+}

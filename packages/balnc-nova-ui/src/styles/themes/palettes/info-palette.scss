@@ -1,0 +1,21 @@
+// ======================================================
+// 信息色板 Info
+// ======================================================
+@use '../functions/palette-functions' as palette;
+
+// 信息色板 - 基础色
+$info-5: #1890ff !default;
+
+// 自定义梯度（可选）
+$info-custom-colors: () !default;
+
+// 暗色模式基础色
+$info-5-dark: #177ddc !default;
+
+// 自定义暗色梯度（可选）
+$info-dark-custom-colors: () !default;
+
+// 色板计算
+$info-palette: palette.create-palette('info', $info-5, $info-custom-colors);
+
+$info-palette-dark: palette.create-palette('info', $info-5-dark, $info-dark-custom-colors);

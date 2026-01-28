@@ -1,0 +1,58 @@
+/**
+ * ******************************************************
+ * @file                     mixin-clear-style.scss
+ * @description             「输入框清除按钮样式混入」
+ * 定义输入框组件的清除按钮样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+// ==================================================
+// #region 输入框清除按钮样式混入
+// ==================================================
+@mixin input-clear-style {
+  .#{$input-prefix}__clear {
+    position: absolute;
+    top: 50%;
+    right: 11px;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--#{$input-prefix}-icon-size-medium);
+    height: var(--#{$input-prefix}-icon-size-medium);
+    margin-top: calc(-1 * var(--#{$input-prefix}-icon-size-medium) / 2);
+    color: var(--bn-text-color-secondary, rgb(0 0 0 / 65%));
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all var(--#{$input-prefix}-transition-duration);
+
+    .#{$input-prefix}__wrapper:hover & {
+      opacity: 1;
+    }
+
+    &:hover {
+      color: var(--bn-text-color-base, rgb(0 0 0 / 88%));
+      background-color: var(--bn-bg-color-active, rgb(0 0 0 / 8%));
+    }
+  }
+
+  .#{$input-prefix}__clear-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--#{$input-prefix}-icon-size-medium);
+    height: var(--#{$input-prefix}-icon-size-medium);
+    font-size: var(--#{$input-prefix}-icon-size-medium);
+
+    svg {
+      width: 0.85em;
+      height: 0.85em;
+    }
+  }
+}
+// #endregion
+// ==================================================

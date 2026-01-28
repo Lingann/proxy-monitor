@@ -1,0 +1,170 @@
+// ======================================================
+// 背景变量
+// ======================================================
+
+// 背景变量混入
+// @mixin background-variables - 定义所有背景相关的CSS变量
+@mixin background-variables {
+  // 基础背景色
+  --bn-bg-color-base: #fff;
+  --bn-bg-color-secondary: #f5f5f5;
+  --bn-bg-color-tertiary: #ebebeb;
+  --bn-bg-color-inverse: #000;
+
+  // 基础状态背景色
+  --bn-bg-color-hover: #f5f5f5;
+  --bn-bg-color-active: #ddd;
+  --bn-bg-color-selected: #3a3a3a;
+  --bn-bg-color-disabled: #f5f5f5;
+
+  // 功能背景色
+
+  // 主色背景
+  --bn-bg-color-primary-base: var(--bn-primary-color-5);
+  --bn-bg-color-primary-hover: var(--bn-primary-color-4);
+  --bn-bg-color-primary-active: var(--bn-primary-color-6);
+  --bn-bg-color-primary-selected: var(--bn-primary-color-5);
+  --bn-bg-color-primary-disabled: var(--bn-primary-color-2);
+
+  // 成功色背景
+  --bn-bg-color-success-base: var(--bn-success-color-5);
+  --bn-bg-color-success-hover: var(--bn-success-color-4);
+  --bn-bg-color-success-active: var(--bn-success-color-6);
+  --bn-bg-color-success-selected: var(--bn-success-color-5);
+  --bn-bg-color-success-disabled: var(--bn-success-color-2);
+
+  // 警告色背景
+  --bn-bg-color-warning-base: var(--bn-warning-color-5);
+  --bn-bg-color-warning-hover: var(--bn-warning-color-4);
+  --bn-bg-color-warning-active: var(--bn-warning-color-6);
+  --bn-bg-color-warning-selected: var(--bn-warning-color-5);
+  --bn-bg-color-warning-disabled: var(--bn-warning-color-2);
+
+  // 危险色背景
+  --bn-bg-color-danger-base: var(--bn-danger-color-5);
+  --bn-bg-color-danger-hover: var(--bn-danger-color-4);
+  --bn-bg-color-danger-active: var(--bn-danger-color-6);
+  --bn-bg-color-danger-selected: var(--bn-danger-color-5);
+  --bn-bg-color-danger-disabled: var(--bn-danger-color-2);
+
+  // 信息色背景
+  --bn-bg-color-info-base: var(--bn-info-color-5);
+  --bn-bg-color-info-hover: var(--bn-info-color-4);
+  --bn-bg-color-info-active: var(--bn-info-color-6);
+  --bn-bg-color-info-selected: var(--bn-info-color-5);
+  --bn-bg-color-info-disabled: var(--bn-info-color-2);
+
+
+  // 功能背景色-深色
+  --bn-bg-color-primary-dark: var(--bn-primary-color-9);
+  --bn-bg-color-success-dark: var(--bn-success-color-9);
+  --bn-bg-color-warning-dark: var(--bn-warning-color-9);
+  --bn-bg-color-danger-dark: var(--bn-danger-color-9);
+  --bn-bg-color-info-dark: var(--bn-info-color-9);
+
+  // 深色状态
+  --bn-bg-color-primary-dark-hover: var(--bn-primary-color-8);
+  --bn-bg-color-primary-dark-active: var(--bn-primary-color-9);
+  --bn-bg-color-primary-dark-selected: var(--bn-primary-color-9);
+
+  // 特殊背景色
+  --bn-bg-color-mask: rgb(0 0 0 / 50%);
+  --bn-bg-color-overlay: rgb(0 0 0 / 50%);
+  --bn-bg-color-backdrop: rgb(0 0 0 / 50%);
+
+  // 渐变背景色
+  --bn-bg-color-primary-gradient: linear-gradient(to right, var(--bn-primary-color-5), var(--bn-primary-color-4));
+  --bn-bg-color-success-gradient: linear-gradient(to right, var(--bn-success-color-5), var(--bn-success-color-4));
+  --bn-bg-color-warning-gradient: linear-gradient(to right, var(--bn-warning-color-5), var(--bn-warning-color-4));
+  --bn-bg-color-danger-gradient: linear-gradient(to right, var(--bn-danger-color-5), var(--bn-danger-color-4));
+  --bn-bg-color-info-gradient: linear-gradient(to right, var(--bn-info-color-5), var(--bn-info-color-4));
+
+    // 半透明背景色
+  --bn-bg-color-soft-base: rgb(255 255 255 / 50%);
+  --bn-bg-color-soft-active: #ddd;
+  --bn-bg-color-soft-hover: #ebebeb;
+  --bn-bg-color-soft-selected: #3a3a3a;
+  --bn-bg-color-soft-disabled: #f5f5f5;
+  --bn-bg-color-soft-dark: rgb(0 0 0 / 50%);
+
+  --bn-bg-color-primary-soft-base: rgba(var(--bn-primary-inner-5), 0.2);
+  --bn-bg-color-primary-soft-hover: rgba(var(--bn-primary-inner-5), 0.1);
+  --bn-bg-color-primary-soft-active: rgba(var(--bn-primary-inner-5), 0.3);
+  --bn-bg-color-primary-soft-selected: rgba(var(--bn-primary-inner-5), 0.4);
+
+  --bn-bg-color-success-soft-base: rgba(var(--bn-success-inner-5), 0.2);
+  --bn-bg-color-success-soft-hover: rgba(var(--bn-success-inner-5), 0.1);
+  --bn-bg-color-success-soft-active: rgba(var(--bn-success-inner-5), 0.3);
+  --bn-bg-color-success-soft-selected: rgba(var(--bn-success-inner-5), 0.4);
+
+  --bn-bg-color-info-soft-base: rgba(var(--bn-info-inner-5), 0.2);
+  --bn-bg-color-info-soft-hover: rgba(var(--bn-info-inner-5), 0.1);
+  --bn-bg-color-info-soft-active: rgba(var(--bn-info-inner-5), 0.3);
+  --bn-bg-color-info-soft-selected: rgba(var(--bn-info-inner-5), 0.4);
+
+  --bn-bg-color-warning-soft-base: rgba(var(--bn-warning-inner-5), 0.2);
+  --bn-bg-color-warning-soft-hover: rgba(var(--bn-warning-inner-5), 0.1);
+  --bn-bg-color-warning-soft-active: rgba(var(--bn-warning-inner-5), 0.3);
+  --bn-bg-color-warning-soft-selected: rgba(var(--bn-warning-inner-5), 0.4);
+
+  --bn-bg-color-danger-soft-base: rgba(var(--bn-danger-inner-5), 0.2);
+  --bn-bg-color-danger-soft-hover: rgba(var(--bn-danger-inner-5), 0.1);
+  --bn-bg-color-danger-soft-active: rgba(var(--bn-danger-inner-5), 0.3);
+  --bn-bg-color-danger-soft-selected: rgba(var(--bn-danger-inner-5), 0.4);
+}
+
+// 暗色模式背景变量混入
+// @mixin background-variables-dark - 定义所有暗色模式下需要变化的背景相关CSS变量
+@mixin background-variables-dark {
+  // 暗色模式基础背景色 - 主要变化
+  --bn-bg-color-base: #121212; // 深色背景
+  --bn-bg-color-secondary: #1e1e1e; // 次级深色背景
+  --bn-bg-color-tertiary: #2c2c2c; // 第三级深色背景
+  --bn-bg-color-inverse: #fff; // 反转为白色
+
+  // 暗色模式基础状态背景色 - 调整亮度
+  --bn-bg-color-hover: #2c2c2c;
+  --bn-bg-color-active: #3a3a3a;
+  --bn-bg-color-selected: #3a3a3a;
+  --bn-bg-color-disabled: #2c2c2c;
+
+  // 特殊背景色调整
+  --bn-bg-color-mask: rgb(0 0 0 / 70%); // 更暗
+  --bn-bg-color-overlay: rgb(0 0 0 / 70%); // 更暗
+  --bn-bg-color-backdrop: rgb(0 0 0 / 70%); // 更暗
+
+  // 半透明背景色调整
+  --bn-bg-color-soft-base: rgb(255 255 255 / 10%); // 更暗的半透明白色
+  --bn-bg-color-soft-dark: rgb(0 0 0 / 80%); // 更暗的半透明黑色
+  --bn-bg-color-soft-selected: #3a3a3a;
+  --bn-bg-color-soft-hover: #3a3a3a;
+  --bn-bg-color-soft-active: #3a3a3a;
+
+  // 功能色不需要大幅修改，仅微调适应暗色视觉
+  // 淡色状态调整透明度
+  --bn-bg-color-primary-soft-base: rgba(var(--bn-primary-inner-5), 0.2);
+  --bn-bg-color-primary-soft-hover: rgba(var(--bn-primary-inner-5), 0.15);
+  --bn-bg-color-primary-soft-active: rgba(var(--bn-primary-inner-5), 0.25);
+  --bn-bg-color-primary-soft-selected: rgba(var(--bn-primary-inner-5), 0.25);
+
+  --bn-bg-color-success-soft-base: rgba(var(--bn-success-inner-5), 0.2);
+  --bn-bg-color-success-soft-hover: rgba(var(--bn-success-inner-5), 0.15);
+  --bn-bg-color-success-soft-active: rgba(var(--bn-success-inner-5), 0.25);
+  --bn-bg-color-success-soft-selected: rgba(var(--bn-success-inner-5), 0.25);
+
+  --bn-bg-color-warning-soft-base: rgba(var(--bn-warning-inner-5), 0.2);
+  --bn-bg-color-warning-soft-hover: rgba(var(--bn-warning-inner-5), 0.15);
+  --bn-bg-color-warning-soft-active: rgba(var(--bn-warning-inner-5), 0.25);
+  --bn-bg-color-warning-soft-selected: rgba(var(--bn-warning-inner-5), 0.25);
+
+  --bn-bg-color-danger-soft-base: rgba(var(--bn-danger-inner-5), 0.2);
+  --bn-bg-color-danger-soft-hover: rgba(var(--bn-danger-inner-5), 0.15);
+  --bn-bg-color-danger-soft-active: rgba(var(--bn-danger-inner-5), 0.25);
+  --bn-bg-color-danger-soft-selected: rgba(var(--bn-danger-inner-5), 0.25);
+
+  --bn-bg-color-info-soft-base: rgba(var(--bn-info-inner-5), 0.2);
+  --bn-bg-color-info-soft-hover: rgba(var(--bn-info-inner-5), 0.15);
+  --bn-bg-color-info-soft-active: rgba(var(--bn-info-inner-5), 0.25);
+  --bn-bg-color-info-soft-selected: rgba(var(--bn-info-inner-5), 0.25);
+}
+

@@ -1,0 +1,88 @@
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             Base style mixin
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             「分页基础样式混入」
+ * 定义分页布局与通用样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin pagination-base-style {
+  .#{$pagination-prefix} {
+    padding: var(--bn-pagination-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--bn-border-color-base);
+    background-color: var(--bn-bg-color-base);
+  }
+
+  .#{$pagination-prefix}__info {
+    color: var(--bn-text-color-secondary);
+    font-size: var(--bn-font-size-sm);
+  }
+
+  .#{$pagination-prefix}__total {
+    color: var(--bn-text-color-secondary);
+    font-size: var(--bn-font-size-sm);
+  }
+
+  .#{$pagination-prefix}__controls {
+    display: flex;
+    gap: var(--bn-pagination-gap);
+    align-items: center;
+  }
+
+  .#{$pagination-prefix}__size {
+    margin: var(--bn-pagination-size-margin);
+  }
+
+  .#{$pagination-prefix}__pages {
+    display: flex;
+    align-items: center;
+    gap: var(--bn-pagination-gap);
+  }
+
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--bn-pagination-btn-padding, 4px);
+    min-width: var(--bn-pagination-btn-size, 32px);
+    height: var(--bn-pagination-btn-size, 32px);
+    border: 1px solid var(--bn-border-color-base);
+    background-color: var(--bn-bg-color-base);
+    color: var(--bn-text-color-base);
+    border-radius: var(--bn-pagination-btn-radius, 4px);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-icon:hover:not(:disabled) {
+    border-color: var(--bn-border-color-hover);
+    color: var(--bn-text-color-primary-base);
+  }
+
+  .btn-icon:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--bn-bg-color-secondary);
+  }
+
+  .page-info {
+    font-size: var(--bn-font-size-sm);
+    color: var(--bn-text-color-base);
+    min-width: var(--bn-pagination-page-info-min-width, 60px);
+    text-align: center;
+  }
+}
+

@@ -1,0 +1,78 @@
+{
+  "name": "proxy-monitor",
+  "version": "2.0.0",
+  "description": "Network connection monitoring tool built with Electron + TypeScript",
+  "type": "module",
+  "main": "dist/main/index.js",
+  "scripts": {
+    "dev": "tsc && concurrently \"vite\" \"cross-env NODE_ENV=development electron .\"",
+    "dev:renderer": "vite",
+    "dev:main": "cross-env NODE_ENV=development electron .",
+    "build": "tsc && vite build",
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "keywords": [
+    "network",
+    "monitor",
+    "proxy",
+    "electron",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@balnc-nova-ui/core": "workspace:*",
+    "better-sqlite3": "^12.6.2",
+    "echarts": "^6.0.0",
+    "ejs": "^4.0.1",
+    "electron-ejs": "^1.2.1",
+    "execa": "^9.6.1",
+    "fuse.js": "^7.1.0",
+    "lucide-vue-next": "^0.562.0",
+    "systeminformation": "^5.30.5",
+    "vue": "^3.5.27",
+    "vue-i18n": "^11.2.8",
+    "vue-router": "^4.6.4",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/ejs": "^3.1.5",
+    "@types/node": "^25.0.10",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vitejs/plugin-vue-jsx": "^5.1.3",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.4.0",
+    "sass": "^1.97.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "electron-builder"
+    ]
+  },
+  "build": {
+    "appId": "com.proxy-monitor.app",
+    "productName": "Proxy Monitor",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "src/renderer/app-styles.css",
+      "src/locales/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "requestedExecutionLevel": "requireAdministrator"
+    }
+  }
+}

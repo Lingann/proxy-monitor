@@ -1,0 +1,25 @@
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             Styles entry file
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             「表单项样式入口文件」
+ * 加载所有表单项相关样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+@use './mixin-base-style' as *;
+
+.#{$form-item-prefix} {
+  @include form-item-base-variables;
+}
+
+@include form-item-base-style;
+

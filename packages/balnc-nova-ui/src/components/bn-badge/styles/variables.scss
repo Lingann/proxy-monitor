@@ -1,0 +1,119 @@
+/**
+ * ******************************************************
+ * @file                     variables.scss
+ * @description             「徽章组件变量」
+ * 定义徽章组件的CSS变量
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+// 组件前缀
+$badge-prefix: bn-badge;
+
+// ==================================================
+// #region 徽章变量混入
+// ==================================================
+
+// 徽章基础变量
+@mixin badge-base-variables {
+  // 徽章内部尺寸 - 独立于全局主题变量
+  // 小尺寸徽章参数
+  --#{$badge-prefix}-min-width-sm: 16px;
+  --#{$badge-prefix}-height-sm: 16px;
+  --#{$badge-prefix}-padding-sm: 0 4px;
+  --#{$badge-prefix}-font-size-sm: 10px;
+  --#{$badge-prefix}-line-height-sm: 16px;
+
+  // 中尺寸徽章参数
+  --#{$badge-prefix}-min-width-md: 20px;
+  --#{$badge-prefix}-height-md: 20px;
+  --#{$badge-prefix}-padding-md: 0 6px;
+  --#{$badge-prefix}-font-size-md: 12px;
+  --#{$badge-prefix}-line-height-md: 20px;
+
+  // 大尺寸徽章参数
+  --#{$badge-prefix}-min-width-lg: 24px;
+  --#{$badge-prefix}-height-lg: 24px;
+  --#{$badge-prefix}-padding-lg: 0 8px;
+  --#{$badge-prefix}-font-size-lg: 14px;
+  --#{$badge-prefix}-line-height-lg: 24px;
+
+  // 徽章圆角 - 独立定义
+  --#{$badge-prefix}-border-radius-sm: 2px;
+  --#{$badge-prefix}-border-radius-md: 10px;
+  --#{$badge-prefix}-border-radius-lg: 12px;
+  --#{$badge-prefix}-border-radius-circle: 20px;
+
+  // 徽章边框
+  --#{$badge-prefix}-border-width: 1px;
+  --#{$badge-prefix}-border-style: solid;
+
+  // 徽章点尺寸 - 独立定义
+  --#{$badge-prefix}-dot-size-sm: 6px;
+  --#{$badge-prefix}-dot-size-md: 8px;
+  --#{$badge-prefix}-dot-size-lg: 10px;
+
+  // 徽章文本样式
+  --#{$badge-prefix}-text-margin: 8px;
+  --#{$badge-prefix}-text-font-size: 14px;
+  --#{$badge-prefix}-text-color: rgb(0 0 0 / 85%);
+
+  // 徽章阴影
+  --#{$badge-prefix}-box-shadow: 0 0 0 1px #fff;
+}
+
+// 徽章颜色变量
+@mixin badge-color-variables {
+  // 徽章基础颜色 - 可以引用全局颜色变量，但提供默认值
+  --#{$badge-prefix}-color: var(--bn-text-color-inverse, #fff);
+  --#{$badge-prefix}-bg-color: var(--bn-color-neutral-base, #d9d9d9);
+  --#{$badge-prefix}-border-color: var(--bn-color-neutral-base, #d9d9d9);
+
+  // 徽章状态颜色
+  --#{$badge-prefix}-primary-color: var(--bn-text-color-inverse, #fff);
+  --#{$badge-prefix}-primary-bg-color: var(--bn-color-primary-base, #1890ff);
+  --#{$badge-prefix}-primary-border-color: var(--bn-color-primary-base, #1890ff);
+
+  // 徽章成功颜色
+  --#{$badge-prefix}-success-color: var(--bn-text-color-inverse, #fff);
+  --#{$badge-prefix}-success-bg-color: var(--bn-color-success-base, #52c41a);
+  --#{$badge-prefix}-success-border-color: var(--bn-color-success-base, #52c41a);
+
+  // 徽章警告颜色
+  --#{$badge-prefix}-warning-color: var(--bn-text-color-inverse, #fff);
+  --#{$badge-prefix}-warning-bg-color: var(--bn-color-warning-base, #faad14);
+  --#{$badge-prefix}-warning-border-color: var(--bn-color-warning-base, #faad14);
+
+  // 徽章危险颜色
+  --#{$badge-prefix}-danger-color: var(--bn-text-color-inverse, #fff);
+  --#{$badge-prefix}-danger-bg-color: var(--bn-color-danger-base, #ff4d4f);
+  --#{$badge-prefix}-danger-border-color: var(--bn-color-danger-base, #ff4d4f);
+
+  // 徽章信息颜色
+  --#{$badge-prefix}-info-color: var(--bn-text-color-inverse, #fff);
+  --#{$badge-prefix}-info-bg-color: var(--bn-color-info-base, #1890ff);
+  --#{$badge-prefix}-info-border-color: var(--bn-color-info-base, #1890ff);
+
+  // 徽章轮廓颜色
+  --#{$badge-prefix}-outline-color: var(--bn-text-color-base, #333);
+  --#{$badge-prefix}-outline-bg-color: transparent;
+}
+
+// 徽章位置变量
+@mixin badge-position-variables {
+  // 徽章偏移量 - 根据图片调整为合适的偏移
+  --bn-badge-offset-x: 50%;
+  --bn-badge-offset-y: -50%;
+
+  // 点模式的偏移量
+  --bn-badge-dot-offset-x: 50%;
+  --bn-badge-dot-offset-y: -50%;
+
+  // 徽章定位
+  --#{$badge-prefix}-position-top: 0;
+  --#{$badge-prefix}-position-right: 0;
+  --#{$badge-prefix}-position-z-index: 10;
+}
+
+// #endregion
+// ==================================================

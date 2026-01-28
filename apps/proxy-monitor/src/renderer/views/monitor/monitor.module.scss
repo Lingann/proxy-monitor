@@ -1,0 +1,152 @@
+.container {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid var(--border-color);
+    
+    .label {
+        color: var(--text-secondary);
+        font-size: 12px;
+    }
+    
+    .value {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+}
+
+.chart-section {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
+    
+    h3 {
+        margin: 0 0 16px 0;
+        font-size: 16px;
+        color: var(--text-primary);
+    }
+    
+    .chart-container {
+        height: 240px;
+        width: 100%;
+    }
+}
+
+.table-section {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 16px;
+    height: calc(100vh - 450px);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+        
+        h3 {
+            margin: 0;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+    }
+}
+
+/* Actions in Table - Global because rendered by helper */
+:global(.action-cell) {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+:global(.btn-icon) {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 6px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    
+    &:hover {
+        background: var(--hover-bg);
+        color: var(--text-primary);
+    }
+}
+
+/* Details View */
+.view-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    
+    h2 {
+        margin: 0;
+        border: none;
+        padding: 0;
+    }
+}
+
+.details-content {
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.info-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 32px;
+    
+    h3 {
+        margin-top: 0;
+        font-size: 16px;
+        margin-bottom: 16px;
+        color: var(--text-primary);
+    }
+    
+    p {
+        margin: 8px 0;
+        font-size: 14px;
+        color: var(--text-secondary);
+    }
+    
+    strong {
+        color: var(--text-primary);
+        min-width: 100px;
+        display: inline-block;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

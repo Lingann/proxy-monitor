@@ -1,0 +1,137 @@
+// ======================================================
+// 数学计算函数
+// ======================================================
+@use 'sass:math';
+@use 'sass:meta';
+
+// 将像素值转换为rem
+// @param {Number} $pixels - 像素值
+// @param {Number} $base - 基础字体大小（默认为16px）
+// @return {Number} - rem值
+@function px-to-rem($pixels, $base: 16px) {
+  @if math.is-unitless($pixels) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if math.is-unitless($base) {
+    $base: $base * 1px;
+  }
+
+  @return $pixels / $base * 1rem;
+}
+
+// 将像素值转换为em
+// @param {Number} $pixels - 像素值
+// @param {Number} $base - 基础字体大小
+// @return {Number} - em值
+@function px-to-em($pixels, $base: 16px) {
+  @if math.is-unitless($pixels) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if math.is-unitless($base) {
+    $base: $base * 1px;
+  }
+
+  @return $pixels / $base * 1em;
+}
+
+// 将rem值转换为像素
+// @param {Number} $rems - rem值
+// @param {Number} $base - 基础字体大小（默认为16px）
+// @return {Number} - 像素值
+@function rem-to-px($rems, $base: 16px) {
+  @if math.is-unitless($base) {
+    $base: $base * 1px;
+  }
+
+  @return $rems * $base / 1rem;
+}
+
+// 计算百分比
+// @param {Number} $size - 目标尺寸
+// @param {Number} $context - 上下文尺寸
+// @return {Number} - 百分比值
+@function percentage-of($size, $context) {
+  @return $size / $context * 100%;
+}
+
+// 计算宽高比
+// @param {Number} $width - 宽度
+// @param {Number} $height - 高度
+// @return {Number} - 宽高比值
+@function aspect-ratio($width, $height) {
+  @return $width / $height;
+}
+
+// 限制值在指定范围内
+// @param {Number} $value - 要限制的值
+// @param {Number} $min - 最小值
+// @param {Number} $max - 最大值
+// @return {Number} - 限制后的值
+@function value-clamp($value, $min, $max) {
+  @return min(max($value, $min), $max);
+}
+
+// 计算视窗单位 (vw)
+// @param {Number} $size - 目标尺寸（像素）
+// @param {Number} $viewport-width - 视窗宽度（像素），默认为1440px
+// @return {Number} - vw值
+@function vw($size, $viewport-width: 1440px) {
+  @return percentage-of($size, $viewport-width) * 1vw / 1%;
+}
+
+// 计算视窗单位 (vh)
+// @param {Number} $size - 目标尺寸（像素）
+// @param {Number} $viewport-height - 视窗高度（像素），默认为900px
+// @return {Number} - vh值
+@function vh($size, $viewport-height: 900px) {
+  @return percentage-of($size, $viewport-height) * 1vh / 1%;
+}
+
+// 返回间距单位的倍数
+// @param {Number} $multiplier - 间距倍数
+// @param {Number} $spacer - 基础间距单位
+// @return {Number} - 计算后的间距值
+@function spacer($multiplier, $spacer: 1rem) {
+  @return $spacer * $multiplier;
+}
+
+// 计算两个值的平均值
+// @param {Number} $value1 - 第一个值
+// @param {Number} $value2 - 第二个值
+// @return {Number} - 平均值
+@function average($value1, $value2) {
+  @return ($value1 + $value2) / 2;
+}
+
+// 检查是否为有效数字
+// @param {Any} $value - 要检查的值
+// @return {Boolean} - 如果是数字则返回true
+@function is-number($value) {
+  @return meta.type-of($value) == 'number';
+}
+
+// 根据权重计算值
+// @param {Number} $base - 基础值
+// @param {Number} $value - 目标值
+// @param {Number} $weight - 权重 (0-1)
+// @return {Number} - 计算后的值
+@function weighted-value($base, $value, $weight) {
+  @return $base + ($value - $base) * $weight;
+}
+
+// 将任意单位转换为像素
+// @param {Number} $value - 要转换的值
+// @return {Number} - 像素值
+@function to-px($value) {
+  @if math.unit($value) == 'rem' {
+    @return rem-to-px($value);
+  } @else if math.unit($value) == 'em' {
+    @return rem-to-px($value);
+  } @else if math.unit($value) == '%' {
+    @error "Cannot convert % to px without context.";
+  } @else {
+    @return $value;
+  }
+}

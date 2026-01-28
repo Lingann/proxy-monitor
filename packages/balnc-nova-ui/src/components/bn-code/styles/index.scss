@@ -1,0 +1,35 @@
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             Styles entry file
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+/**
+ * ******************************************************
+ * @file                     index.scss
+ * @description             「代码样式入口文件」
+ * 加载所有代码相关样式
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+@use './mixin-base-style' as *;
+@use './mixin-size-style' as *;
+@use './mixin-color-style' as *;
+@use './mixin-state-style' as *;
+@use './mixin-variant-style' as *;
+
+:root {
+  @include code-base-variables;
+  @include code-color-variables;
+  @include code-size-variables;
+}
+
+@include code-base-style;
+@include code-size-style;
+@include code-color-style;
+@include code-state-style;
+@include code-variant-style;
+

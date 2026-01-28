@@ -1,0 +1,74 @@
+@use '../../palettes/primary-palette' as primary;
+@use '../../palettes/neutral-palette' as neutral;
+@use '../../palettes/success-palette' as success;
+@use '../../palettes/warning-palette' as warning;
+@use '../../palettes/danger-palette' as danger;
+@use '../../palettes/info-palette' as info;
+@use '../../mixins/palette-mixins' as palette-mixins;
+
+// 默认主题中的选择器
+:root {
+  // 1. 内部变量 --bn-primary-inner-{1-9}
+  @include palette-mixins.generate-palette-rgb-inner-vars('primary', primary.$primary-palette);
+
+  // 2. 色板变量 --bn-primary-color-{1-9}
+  @include palette-mixins.generate-palette-rgb-color-vars('primary', primary.$primary-palette);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-primary-inner-1: 18, 29, 44;
+
+  // 1. 内部变量 --bn-danger-inner-{1-9}
+  @include palette-mixins.generate-palette-rgb-inner-vars('danger', danger.$danger-palette);
+
+  // 2. 色板变量 --bn-danger-color-{1-9}
+  @include palette-mixins.generate-palette-rgb-color-vars('danger', danger.$danger-palette);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-danger-inner-1: 18, 29, 44;
+
+  // 1. 内部变量 --bn-warning-inner-{1-9}
+  @include palette-mixins.generate-palette-rgb-inner-vars('warning', warning.$warning-palette);
+
+  // 2. 色板变量 --bn-warning-color-{1-9}
+  @include palette-mixins.generate-palette-rgb-color-vars('warning', warning.$warning-palette);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-warning-inner-1: 18, 29, 44;
+
+  // 1. 内部变量 --bn-success-inner-{1-9}
+  @include palette-mixins.generate-palette-rgb-inner-vars('success', success.$success-palette);
+
+  // 2. 色板变量 --bn-success-color-{1-9}
+  @include palette-mixins.generate-palette-rgb-color-vars('success', success.$success-palette);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-success-inner-1: 18, 29, 44;
+
+  // 1. 内部变量 --bn-info-inner-{1-9}
+  @include palette-mixins.generate-palette-rgb-inner-vars('info', info.$info-palette);
+
+  // 2. 色板变量 --bn-info-color-{1-9}
+  @include palette-mixins.generate-palette-rgb-color-vars('info', info.$info-palette);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-info-inner-1: 18, 29, 44;
+
+  // 1. 内部变量 --bn-neutral-inner-{1-9}
+  @include palette-mixins.generate-palette-rgb-inner-vars('neutral', neutral.$neutral-palette);
+
+  // 2. 色板变量 --bn-neutral-color-{1-9}
+  @include palette-mixins.generate-palette-rgb-color-vars('neutral', neutral.$neutral-palette);
+
+  // 如果需要覆盖主色板中的暗色模式变量，可以在这里设置
+  // 例如：
+  // --bn-neutral-inner-1: 18, 29, 44;
+}
+
+
+
+

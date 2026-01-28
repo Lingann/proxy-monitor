@@ -1,0 +1,61 @@
+/**
+ * ******************************************************
+ * @file                     mixin-base-style.scss
+ * @description             Scrollbar base styles
+ * @author                  blancnova-web
+ * ******************************************************
+ */
+
+@use './variables' as *;
+
+@mixin scrollbar-base-style {
+  ::-webkit-scrollbar {
+    width: var(--bn-scrollbar-width);
+    height: var(--bn-scrollbar-height);
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--bn-scrollbar-track-color);
+    border-radius: var(--bn-scrollbar-border-radius);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    min-width: var(--bn-scrollbar-min-size);
+    min-height: var(--bn-scrollbar-min-size);
+    background-color: var(--bn-scrollbar-thumb-color);
+    border-radius: var(--bn-scrollbar-border-radius);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--bn-scrollbar-thumb-hover-color);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background-color: var(--bn-scrollbar-thumb-active-color);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  * {
+    scrollbar-color: var(--bn-scrollbar-thumb-color) var(--bn-scrollbar-track-color);
+    scrollbar-width: thin;
+  }
+}
+
+@mixin scrollbar-container-style {
+  .bn-scrollbar-container {
+    overflow: auto;
+    scrollbar-width: thin;
+
+    &.bn-scrollbar-hidden {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
